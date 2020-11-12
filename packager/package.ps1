@@ -1,4 +1,4 @@
-Get-Location
+Set-Location packager
 $solpath = '..\solution_components'
 Import-Module ./Microsoft.Federal.PowerApps.SolutionGenerator.dll
 $xml = Resolve-SolutionGenerator $solpath
