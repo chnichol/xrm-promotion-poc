@@ -1,3 +1,4 @@
+Get-Host | Select-Object Version
 Set-Location packager
 $solpath = '..\solution_components'
 Import-Module ./Microsoft.Federal.PowerApps.SolutionGenerator.dll
