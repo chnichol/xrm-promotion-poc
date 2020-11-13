@@ -7,4 +7,4 @@ New-Item -Path "../solution_components/other" -Name "solution.xml" -ItemType Fil
 
 ./SolutionPackager.exe /action:Pack /zipfile:import.zip /folder:"..\solution_components"
 
-Expand-Archive -Path import.Zip -DestinationPath ../import/
+Expand-Archive -Path import.Zip -DestinationPath ../artifacts/
