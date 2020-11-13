@@ -1,6 +1,6 @@
 Set-Location packager
 $solpath = '..\solution_components'
-Import-Module ./Microsoft.Federal.PowerApps.SolutionGenerator.dll
+Import-Module ./Microsoft.Federal.PowerApps.SolutionBuilder.dll
 $xml = Resolve-SolutionGenerator $solpath
 New-Item -Path "../solution_components/other" -Name "solution.xml" -ItemType File -Force -Value $xml
 
