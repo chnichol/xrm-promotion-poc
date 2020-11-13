@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run Packager
       run: powershell .\packager\package.ps1
+      env:
+        CRM_CONN:  ${{ secrets.CRM_CONN }}
       shell: pwsh
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
