@@ -17,12 +17,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
+    - name: Run Packager
       run: powershell .\packager\package.ps1
       shell: pwsh
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: import 
+        name: import artifacts 
         path: |
-          import
+          artifacts
