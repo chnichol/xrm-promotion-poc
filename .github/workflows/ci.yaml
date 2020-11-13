@@ -20,3 +20,9 @@ jobs:
     - name: Run a one-line script
       run: powershell .\packager\package.ps1
       shell: pwsh
+    - name: Archive Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: import 
+        path: |
+          import
