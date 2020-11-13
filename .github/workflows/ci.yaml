@@ -19,3 +19,4 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: powershell .\packager\package.ps1
+      shell: pwsh
