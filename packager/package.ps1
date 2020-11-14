@@ -20,7 +20,7 @@ foreach($entity in $data){
         $_.psobject.properties | ForEach-Object {
             $datahash = @{}
             $datahash[$_.Name] = $_.Value
-            New-CrmRecord -conn $conn -EntityLogicalName $entity.entitylogicalname -Fields $datahash
+            New-CrmRecord -conn $env:CRM_CONN -EntityLogicalName $entity.entitylogicalname -Fields $datahash
         }
     }
 }
