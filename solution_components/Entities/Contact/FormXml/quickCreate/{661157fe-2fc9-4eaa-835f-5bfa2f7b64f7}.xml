@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}</formid>
+    <IntroducedVersion>6.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form maxWidth="1920">
+      <tabs>
+        <tab id="{944eb91f-70c3-4108-9213-a6a3cded00d4}" name="tab_1" showlabel="false">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section id="{d9e7bd09-e405-43ec-b40e-e395a5b6b288}" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3d3ca293-d5c9-a7c2-5e2a-499deab2b804}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{46d35317-b8b1-ca0d-5dc4-979781b9ccca}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0d7572bb-3013-3d42-4a08-b5434bdb1034}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Job Title" languagecode="1033" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{eccbffb5-6ab0-4519-8385-edb753ade08b}" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Contact Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{787ab52c-7943-e590-2622-e903245d81e0}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Work Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" uniqueid="{233dce46-4aa1-c949-360c-8b2912641041}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02a88212-3167-2142-72bb-a8406c512b40}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Work Phone" languagecode="1033" />
+                        </labels>
+                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{baca3545-cd7a-8102-5b14-8ce758ba86ba}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Personal Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress2" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{228e65a9-b79c-2abd-bb5d-71a86023dd44}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Personal Phone" languagecode="1033" />
+                        </labels>
+                        <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{9f78ce5e-ca0f-46d7-94df-ea4af42b5f54}" name="tab_1_column_3_section_1" columns="1" showlabel="false" showbar="false" IsUserDefined="0">
+                  <labels>
+                    <label description="section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{55ea454d-551f-434c-88eb-a39f0a6c641a}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="2">
+        <Role Id="{598ebe55-1d79-e911-a95a-001dd800e50d}" />
+        <Role Id="{aa92be55-1d79-e911-a95a-001dd800e50d}" />
+      </DisplayConditions>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Contact Quick Create" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Default quick create form for Contact" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

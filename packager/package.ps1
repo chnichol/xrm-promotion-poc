@@ -14,4 +14,15 @@ $solutionFileName = 'import.zip'
 
 Import-CrmSolution -conn $env:CRM_CONN -SolutionFilePath "$currentLocation\$solutionFileName" -PublishChanges -ActivatePlugIns -SkipDependancyOnProductUpdateCheckOnInstall
 
+$data = Get-Content data.JSON | ConvertFrom-Json
+foreach($entity in $data){
+    $entity.data | ForEach-Object {
+        $_.psobject.properties | ForEach-Object {
+            $datahash = @{}
+            $datahash[$_.Name] = $_.Value
+            New-CrmRecord -conn $conn -EntityLogicalName $entity.entitylogicalname -Fields $datahash
+        }
+    }
+}
+
 Expand-Archive -Path import.Zip -DestinationPath ../artifacts/

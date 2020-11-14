@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <systemform unmodified="1">
+  <systemform>
     <formid>{26843818-6508-4afe-9342-5fae2ebf15ca}</formid>
     <IntroducedVersion>8.0.0.0</IntroducedVersion>
     <FormPresentation>0</FormPresentation>
     <FormActivationState>1</FormActivationState>
     <form>
-      <hiddencontrols />
+      <hiddencontrols></hiddencontrols>
       <tabs>
-        <tab verticallayout="true" id="{c610debb-05fc-462e-9ec5-8ed646b3e585}" name="step_2" locklevel="0" expanded="true">
+        <tab verticallayout="true" id="{835e8ba4-5212-4fbf-975f-f2fca8daaf84}" name="pagestep3" locklevel="0" expanded="true">
           <labels>
-            <label description="Personal Information" languagecode="1033" />
+            <label description="Enter New Password" languagecode="1033" />
           </labels>
-          <tabheader id="{837323dc-5c7a-4560-bc76-678bc7936cbe}">
-            <rows />
+          <tabheader id="{804245f5-7742-4971-9070-968d8a8ea7b4}">
+            <rows></rows>
           </tabheader>
-          <tabfooter id="{19fca1d0-7453-4f7f-a2df-fce4085aee40}">
+          <tabfooter id="{7fccbe7f-3bc5-480b-a25d-25e23278633e}">
             <rows>
               <row>
-                <cell id="{c08851fb-434b-48ce-879c-f57b7af3cd60}">
+                <cell id="{6fa17301-fb26-4551-855d-50d5d0872e3a}">
                   <labels>
                     <label description="Next" languagecode="1033" />
                   </labels>
-                  <control id="c610debb-05fc-462e-9ec5-8ed646b3e585_next" datafieldname="c610debb-05fc-462e-9ec5-8ed646b3e585_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                  <control id="835e8ba4-5212-4fbf-975f-f2fca8daaf84_next" datafieldname="835e8ba4-5212-4fbf-975f-f2fca8daaf84_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
                 </cell>
               </row>
             </rows>
@@ -30,87 +30,17 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showbar="false" columns="1" id="{5619cf68-1293-472a-b988-f4f5bdb2f3da}" name="step_2_section1">
+                <section showbar="false" columns="1" id="{230354e4-5e15-4fff-90b2-e5a565e34042}" name="pagestep3_section1">
                   <labels>
-                    <label description="Basic Information" languagecode="1033" />
+                    <label description="" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{e6d92425-0d3b-41bc-a85d-8d305d99d9f3}" showlabel="true" visible="true">
+                      <cell id="{e7d8ef31-9579-4b87-b94e-b76db77041bf}" showlabel="true" visible="true">
                         <labels>
-                          <label description="First Name" languagecode="1033" />
+                          <label description="New password" languagecode="1033" />
                         </labels>
-                        <control id="firstname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="firstname" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{9c161690-7174-6a67-db6c-334230a4612c}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Middle Name" languagecode="1033" />
-                        </labels>
-                        <control id="middlename" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="middlename" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{a11529c4-bd0a-435e-58c8-2647ad6ea8a2}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Last Name" languagecode="1033" />
-                        </labels>
-                        <control id="lastname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="lastname" disabled="false" />
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section showbar="false" columns="1" id="{9fd7b424-7795-4623-8e90-6aa8f5f2934e}" name="step_2_section2">
-                  <labels>
-                    <label description="Communication Information" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{ae849ac6-d002-873b-d947-89cc71d16d5c}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Email" languagecode="1033" />
-                        </labels>
-                        <control id="emailaddress1" classid="{ada2203e-b4cd-49be-9ddf-234642b43b52}" datafieldname="emailaddress1" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{314a7e40-3da0-6cb0-40a9-64add288c619}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Mobile Phone" languagecode="1033" />
-                        </labels>
-                        <control id="mobilephone" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="mobilephone" disabled="false" />
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section showbar="false" columns="1" id="{6f4cdfd0-2482-4a31-91c3-449349fb69e8}" name="step_2_section2_2">
-                  <labels>
-                    <label description="Personal Information" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{02c65396-6149-b769-385d-cc34c3e7c982}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Married" languagecode="1033" />
-                        </labels>
-                        <control id="familystatuscode" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="familystatuscode" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{60cc3ed2-74ad-7ac3-915a-6bc70187dda4}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Spouse Name" languagecode="1033" />
-                        </labels>
-                        <control id="spousesname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="spousesname" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{295c3899-b185-1506-1618-b5a4cb39206c}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Birthday" languagecode="1033" />
-                        </labels>
-                        <control id="birthdate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="birthdate" disabled="false" />
+                        <control id="adx_identity_newpassword" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="adx_identity_newpassword" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -119,27 +49,27 @@
             </column>
           </columns>
         </tab>
-        <tab verticallayout="true" id="{043dc848-5c9b-b5c1-9417-c4c55740395d}" name="step_25" locklevel="0" expanded="true">
+        <tab verticallayout="true" id="{7b40b93e-da23-43a9-8212-d90efa6a3a34}" name="pagestep7" locklevel="0" expanded="true">
           <labels>
-            <label description="Work Information" languagecode="1033" />
+            <label description="Removing Password" languagecode="1033" />
           </labels>
-          <tabheader id="{f1550be0-8bb1-4a36-bd62-c3d4c017663c}">
-            <rows />
+          <tabheader id="{55f2309b-176f-4fb6-8ce1-d2c9f6d23071}">
+            <rows></rows>
           </tabheader>
-          <tabfooter id="{bd181cd2-00b4-415f-9a2d-c2d3c0f5b144}">
+          <tabfooter id="{823b3892-0de4-4bde-ba79-07c345e3f772}">
             <rows>
               <row>
-                <cell id="{213e45ca-c4d7-4fe4-9215-01179f5663e3}">
+                <cell id="{e76d8e94-8db8-4eaa-ae76-a657b5b2c8dc}">
                   <labels>
                     <label description="Back" languagecode="1033" />
                   </labels>
-                  <control id="043dc848-5c9b-b5c1-9417-c4c55740395d_back" datafieldname="043dc848-5c9b-b5c1-9417-c4c55740395d_back" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                  <control id="7b40b93e-da23-43a9-8212-d90efa6a3a34_back" datafieldname="7b40b93e-da23-43a9-8212-d90efa6a3a34_back" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
                 </cell>
-                <cell id="{82c10112-9da3-4ba1-b787-e623c109b76e}">
+                <cell id="{d1d1691d-8a67-41e0-ba36-df17b327b2aa}">
                   <labels>
-                    <label description="Done" languagecode="1033" />
+                    <label description="Next" languagecode="1033" />
                   </labels>
-                  <control id="043dc848-5c9b-b5c1-9417-c4c55740395d_next" datafieldname="043dc848-5c9b-b5c1-9417-c4c55740395d_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                  <control id="7b40b93e-da23-43a9-8212-d90efa6a3a34_next" datafieldname="7b40b93e-da23-43a9-8212-d90efa6a3a34_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
                 </cell>
               </row>
             </rows>
@@ -147,56 +77,170 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showbar="false" columns="1" id="{572541b3-4b24-22a4-dd06-804781d98de0}" name="step_25_section1">
+                <section showbar="false" columns="1" id="{19395d8a-2ef2-4452-88c4-1f5c8f479b18}" name="pagestep7_section1">
                   <labels>
-                    <label description="Basic Information" languagecode="1033" />
+                    <label description="" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{224bd215-5ff6-4a29-a15c-8934550b90c8}" showlabel="true" visible="true">
+                      <cell id="{4e49384c-6e85-4752-99c8-41776bfabd5e}" showlabel="true" visible="true">
                         <labels>
-                          <label description="Company" languagecode="1033" />
+                          <label description="Do you want to remove password for this contact?" languagecode="1033" />
                         </labels>
-                        <control id="contact_customer_accounts:name" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="name" relationship="contact_customer_accounts" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{e5555391-9783-12c3-d3c3-c8118609a8e7}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Parent Account" languagecode="1033" />
-                        </labels>
-                        <control id="contact_customer_accounts:parentaccountid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="parentaccountid" relationship="contact_customer_accounts" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{abaaba89-ce23-e6c3-be5e-9633624039cd}" showlabel="true" visible="true">
-                        <labels>
-                          <label description="Industry" languagecode="1033" />
-                        </labels>
-                        <control id="contact_customer_accounts:industrycode" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="industrycode" relationship="contact_customer_accounts" disabled="false" />
+                        <control id="adx_confirmremovepassword" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="adx_confirmremovepassword" disabled="false" />
                       </cell>
                     </row>
                   </rows>
                 </section>
-                <section showbar="false" columns="1" id="{36e2bc43-1028-405b-9fb8-c3af6ba2f831}" name="step_25_section1_3">
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{8eb18f36-0161-4659-8383-de2a55a8725f}" name="pagestep11" locklevel="0" expanded="true">
+          <labels>
+            <label description="Confirmation" languagecode="1033" />
+          </labels>
+          <tabheader id="{e74af1b5-0d9b-4ff1-a3b7-29bf682c2097}">
+            <rows></rows>
+          </tabheader>
+          <tabfooter id="{468349bf-3b4a-4d28-b4a3-b266f856be60}">
+            <rows>
+              <row>
+                <cell id="{1430e9e4-7aec-4c82-8503-2ac2753011f2}">
                   <labels>
-                    <label description="Communication Information" languagecode="1033" />
+                    <label description="Back" languagecode="1033" />
+                  </labels>
+                  <control id="8eb18f36-0161-4659-8383-de2a55a8725f_back" datafieldname="8eb18f36-0161-4659-8383-de2a55a8725f_back" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+                <cell id="{9c7aa696-c696-41eb-a068-3ea68e8ab0bf}">
+                  <labels>
+                    <label description="Done" languagecode="1033" />
+                  </labels>
+                  <control id="8eb18f36-0161-4659-8383-de2a55a8725f_next" datafieldname="8eb18f36-0161-4659-8383-de2a55a8725f_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+              </row>
+            </rows>
+          </tabfooter>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{960bf421-e47a-4e3d-b5a4-7dc37b9c99bd}" name="pagestep11_section1">
+                  <labels>
+                    <label description="" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{58aa1140-4259-443d-7aac-b910dd7535e9}" showlabel="true" visible="true">
+                      <cell id="{a86fe19c-34a7-46a4-a7d7-4025402cfd58}" showlabel="true" visible="true">
                         <labels>
-                          <label description="Office Phone" languagecode="1033" />
+                          <label description="Password has been changed successfully. You can close this window." languagecode="1033" />
                         </labels>
-                        <control id="contact_customer_accounts:telephone1" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="telephone1" relationship="contact_customer_accounts" disabled="false" />
+                        <control id="60990dc8-7a7d-49d7-bac2-d53c4864265b" classid="{39354e4a-5015-4d74-8031-ea9eb73a1322}" datafieldname="" isunbound="true">
+                          <parameters>
+                            <IsTitle>false</IsTitle>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{d3897a39-855e-4940-bf92-9cc7feb64c42}" name="pagestep15" locklevel="0" expanded="true">
+          <labels>
+            <label description="Cancel Removing Password" languagecode="1033" />
+          </labels>
+          <tabheader id="{41fa37c0-fa14-4b24-9ff7-3e4df0addfc1}">
+            <rows></rows>
+          </tabheader>
+          <tabfooter id="{7df238ad-37cb-42df-ab90-cc7af6990ab5}">
+            <rows>
+              <row>
+                <cell id="{227b4069-0eca-4ca4-b5a0-fd2c45702bcd}">
+                  <labels>
+                    <label description="Back" languagecode="1033" />
+                  </labels>
+                  <control id="d3897a39-855e-4940-bf92-9cc7feb64c42_back" datafieldname="d3897a39-855e-4940-bf92-9cc7feb64c42_back" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+                <cell id="{2e45d3f0-0361-40a0-8238-1428c038b7e2}">
+                  <labels>
+                    <label description="Done" languagecode="1033" />
+                  </labels>
+                  <control id="d3897a39-855e-4940-bf92-9cc7feb64c42_next" datafieldname="d3897a39-855e-4940-bf92-9cc7feb64c42_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+              </row>
+            </rows>
+          </tabfooter>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{47e96e47-c9d1-410e-9ea4-86763f765f8f}" name="pagestep15_section1">
+                  <labels>
+                    <label description="" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell id="{959cb776-33e8-c9a1-4729-31a1311ede28}" showlabel="true" visible="true">
+                      <cell id="{50d9b3d5-696a-43a8-95d6-3cb0817e2b33}" showlabel="true" visible="true">
                         <labels>
-                          <label description="Website" languagecode="1033" />
+                          <label description="You can close this window." languagecode="1033" />
                         </labels>
-                        <control id="contact_customer_accounts:websiteurl" classid="{71716b6c-711e-476c-8ab8-5d11542bfb47}" datafieldname="websiteurl" relationship="contact_customer_accounts" disabled="false" />
+                        <control id="eebbd106-eaed-4719-bf7e-233a1ffec365" classid="{39354e4a-5015-4d74-8031-ea9eb73a1322}" datafieldname="" isunbound="true">
+                          <parameters>
+                            <IsTitle>false</IsTitle>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{b2b04c9a-2d00-474c-b944-4e504ac95a97}" name="pagestep19" locklevel="0" expanded="true">
+          <labels>
+            <label description="Confirmation" languagecode="1033" />
+          </labels>
+          <tabheader id="{32a5b105-43aa-4d17-9ce6-6a9896d3dbbd}">
+            <rows></rows>
+          </tabheader>
+          <tabfooter id="{0bfa507a-de79-413d-987a-2a04ecb3501b}">
+            <rows>
+              <row>
+                <cell id="{8d4b54b8-58b7-4d13-bcee-ef7c70fea56a}">
+                  <labels>
+                    <label description="Back" languagecode="1033" />
+                  </labels>
+                  <control id="b2b04c9a-2d00-474c-b944-4e504ac95a97_back" datafieldname="b2b04c9a-2d00-474c-b944-4e504ac95a97_back" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+                <cell id="{319774c1-270a-4f55-854f-126cd466e494}">
+                  <labels>
+                    <label description="Done" languagecode="1033" />
+                  </labels>
+                  <control id="b2b04c9a-2d00-474c-b944-4e504ac95a97_next" datafieldname="b2b04c9a-2d00-474c-b944-4e504ac95a97_next" classid="{00ad73da-bd4d-49c6-88a8-2f4f4cad4a20}" isunbound="true" />
+                </cell>
+              </row>
+            </rows>
+          </tabfooter>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{4da00fae-2b46-4cee-ac37-38e0a3fdd2cf}" name="pagestep19_section1">
+                  <labels>
+                    <label description="" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2f9d7a76-ca39-4824-83ba-4d9ead3ffa38}" showlabel="true" visible="true">
+                        <labels>
+                          <label description="Password has been changed successfully. You can close this window." languagecode="1033" />
+                        </labels>
+                        <control id="de971d89-7bb1-450c-b4ae-2bf4f91d3bf7" classid="{39354e4a-5015-4d74-8031-ea9eb73a1322}" datafieldname="" isunbound="true">
+                          <parameters>
+                            <IsTitle>false</IsTitle>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
