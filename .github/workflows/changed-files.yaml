@@ -21,10 +21,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: jitterbit/get-changed-files@v1 
-        with: 
-          format: 'json'
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: Write-Host $env:changes
+        run: Write-Host ${{ steps.files.outputs.all }}
         env:
           changes:  ${{ steps.files.outputs.all }} 
