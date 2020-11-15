@@ -15,16 +15,16 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: jitterbit/get-changed-files@v1 
-
+        with: 
+          format: 'json'
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "${changed_file}"
-          done
+        run: Write-Host $env:changes
+        env:
+          changes:  ${{ steps }} 
