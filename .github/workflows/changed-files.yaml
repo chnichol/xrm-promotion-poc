@@ -27,4 +27,4 @@ jobs:
       - name: Run a one-line script
         run: Write-Host $env:changes
         env:
-          changes:  ${{ steps }} 
+          changes:  ${{ steps.files.outputs.all }} 
