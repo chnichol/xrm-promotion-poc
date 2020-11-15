@@ -19,10 +19,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - id: files
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: jitterbit/get-changed-files@v1 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: Write-Host ${{ steps.files.outputs.all }}
-        env:
-          changes:  ${{ steps.files.outputs.all }} 
+      - run: Write-Host ${{ steps.files.outputs.all }}
