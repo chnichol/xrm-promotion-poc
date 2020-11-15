@@ -26,6 +26,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - run: console.log(${{ steps.files.outputs.all }} )
+      - run: console.log('thing')
         env:
           CI: true
