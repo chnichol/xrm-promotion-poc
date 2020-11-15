@@ -20,6 +20,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - id: files
-      - uses: jitterbit/get-changed-files@v1 
+        uses: jitterbit/get-changed-files@v1 
       - name: Run a one-line script
         run: Write-Host ${{ steps.files.outputs.all }}
