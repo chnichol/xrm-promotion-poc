@@ -15,17 +15,15 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - id: files
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: jitterbit/get-changed-files@v1 
       # Runs a single command using the runners shell
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - run: console.log('thing')
+      - name: Run a one-line script
+        run: Write-Host ${{ steps.files.outputs.all }}
         env:
-          CI: true
+          changes:  ${{ steps.files.outputs.all }} 
