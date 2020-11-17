@@ -3,7 +3,7 @@ const xml2js = require('xml2js');
 const fs = require('fs');
 const path = require('path');
 const parser = new xml2js.Parser({ async: false });
-console.log(process.ENV.CRM_CONN);
+console.log(process.env.TEST);
 const folderPath = '../solution_components';
 
 const component_filter = fs.readdirSync(folderPath)
