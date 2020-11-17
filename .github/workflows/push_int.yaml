@@ -24,7 +24,8 @@ jobs:
       with:
         node-version: '12.x'
     - name: Generate Build Artifacts
-      run: powershell .\packager\package.ps1
+    - run: node .\packager\solutionGeneration.js
+    - run: powershell .\packager\package.ps1
       env:
         CRM_CONN:  ${{ secrets.CRM_CONN }}
       shell: pwsh
