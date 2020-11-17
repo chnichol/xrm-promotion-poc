@@ -17,9 +17,8 @@ jobs:
 
     steps:
     - id: files
-      uses: jitterbit/get-changed-files@v1 
+    - uses: jitterbit/get-changed-files@v1 
     - uses: actions/checkout@v1
-    - name: Build Artifacts  
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
