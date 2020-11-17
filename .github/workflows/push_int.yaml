@@ -19,8 +19,11 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1 
     - uses: actions/checkout@v1
-    - name: Run Packager
-      run: powershell .\packager\package.ps1
+    - name: Generate Build Artifacts  
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: powershell .\packager\package.ps1
       env:
         CRM_CONN:  ${{ secrets.CRM_CONN }}
       shell: pwsh
