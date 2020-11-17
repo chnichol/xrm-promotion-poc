@@ -5,6 +5,8 @@ name: Push to Int
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ release ]
     
@@ -14,6 +16,8 @@ jobs:
     runs-on: windows-2019
 
     steps:
+    - id: files
+      uses: jitterbit/get-changed-files@v1 
     - uses: actions/checkout@v1
     - name: Run Packager
       run: powershell .\packager\package.ps1
