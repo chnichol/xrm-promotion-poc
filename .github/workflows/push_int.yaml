@@ -19,11 +19,10 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1 
     - uses: actions/checkout@v1
-    - name: Install Node  
-      uses: actions/setup-node@v1
+    - name: Build Artifacts  
+    - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - name: Generate Build Artifacts
     - run: npm install
     - run: node .\packager\solutionGeneration.js
     - run: powershell .\packager\package.ps1
