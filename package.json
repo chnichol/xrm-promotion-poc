@@ -1,0 +1,25 @@
+{
+  "name": "xrm-promotion-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "flatmap": "0.0.3",
+    "xml2js": "^0.4.23",
+    "xmljs": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chnichol/xrm-promotion-poc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chnichol/xrm-promotion-poc/issues"
+  },
+  "homepage": "https://github.com/chnichol/xrm-promotion-poc#readme"
+}
