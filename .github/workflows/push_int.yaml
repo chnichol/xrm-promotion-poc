@@ -28,6 +28,7 @@ jobs:
       run: powershell .\packager\package.ps1
       env:
         CRM_CONN:  ${{ secrets.CRM_CONN }}
+        TEST: "Testing env"
       shell: pwsh
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
