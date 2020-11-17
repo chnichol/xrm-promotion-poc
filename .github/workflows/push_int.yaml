@@ -22,14 +22,13 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+      env:
+        CRM_CONN:  ${{ secrets.CRM_CONN }}
+        TEST: "Testing env"
     - run: npm install
     - run: node .\packager\solutionGeneration.js
     - name: Import Spread Components
       run: powershell .\packager\package.ps1
-      env:
-        CRM_CONN:  ${{ secrets.CRM_CONN }}
-        TEST: "Testing env"
-      shell: pwsh
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
       with:
