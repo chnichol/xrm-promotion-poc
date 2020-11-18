@@ -5,15 +5,31 @@
   <Workflows />
   <FieldSecurityProfiles />
   <Templates />
+  <ConnectionRoles />
+  <SiteMap />
   <EntityMaps />
   <EntityRelationships />
   <EnvironmentVariables />
   <OrganizationSettings />
   <optionsets />
-  <Dashboards />
+  <Reports />
   <InteractionCentricDashboards />
+  <WebResources />
   <CustomControls />
+  <SolutionPluginAssemblies />
+  <SdkMessageProcessingSteps />
+  <AppModuleSiteMaps />
   <EntityDataProviders />
+  <CanvasApps />
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="new_sharedcommondataserviceforapps_75f93">
+      <connectionreferencedisplayname>Common Data Service (current environment)</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
   <Languages>
     <Language>1033</Language>
   </Languages>

@@ -1,1 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><ImportExportXml xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="9.1.0.24350" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive"><SolutionManifest><UniqueName>US1000IMPORT</UniqueName><LocalizedNames /><RootComponents><RootComponent schemaName="contact" type="1" behavior="2" /><RootComponent schemaName="govcdm_eeocasecontact" type="1" behavior="2" /><RootComponent schemaName="govcdm_eeoinformalcomplaint" type="1" behavior="2" /></RootComponents><Descriptions /><Version>1.0.0.1</Version><Managed>0</Managed><Publisher><UniqueName>DefaultPublishere2sandbox</UniqueName><LocalizedNames /><Descriptions /><CustomizationPrefix>new</CustomizationPrefix><CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix><Addresses /></Publisher><MissingDependencies /></SolutionManifest></ImportExportXml>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.1.0.24350" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>US2181</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="US-2181" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.6</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>DefaultPublishere2sandbox</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="DefaultPublishere2sandbox" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Default publisher for this organization" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>new</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="contact" behavior="0" />
+      <RootComponent type="1" schemaName="govcdm_eeocasecontact" behavior="0" />
+      <RootComponent type="1" schemaName="govcdm_eeoinformalcomplaint" behavior="0" />
+      <RootComponent type="9" schemaName="govcdm_adraggrieveddecision" behavior="0" />
+      <RootComponent type="20" behavior="0" parentId="{236750cd-45ae-4939-ab12-b24b920ced93}" />
+      <RootComponent type="29" id="{28920155-1862-4b42-8209-80bce3694773}" behavior="0" />
+      <RootComponent type="29" id="{cbbaa868-1a26-eb11-a813-00224804996b}" behavior="0" />
+      <RootComponent type="29" id="{e2990caa-1a26-eb11-a813-00224804996b}" behavior="0" />
+      <RootComponent type="31" id="{d4360d99-0321-eb11-a813-000d3a378724}" schemaName="1033{a788a3de-f207-4573-a983-7af0867a7857}" behavior="0" />
+      <RootComponent type="36" id="{b6c38bb9-2423-471d-8b38-e3b99ed80e7a}" behavior="0" />
+      <RootComponent type="39" id="{134212ac-d749-dc11-a46c-0019b9204ed3}" behavior="0" />
+      <RootComponent type="60" id="{497207fc-3825-eb11-a813-00224804996b}" behavior="0" />
+      <RootComponent type="60" id="{57220268-843b-e511-80d1-00155db10d2b}" behavior="0" />
+      <RootComponent type="61" schemaName="msdyncrm_/libs/ckeditor/plugins/superimage/lang/ar.js" behavior="0" />
+      <RootComponent type="61" schemaName="new_/folder/folder2/script.js" behavior="0" />
+      <RootComponent type="61" schemaName="new_test.js" behavior="0" />
+      <RootComponent type="62" schemaName="new_test" behavior="0" />
+      <RootComponent type="62" behavior="0" />
+      <RootComponent type="63" id="{8e91c0f0-7b79-4614-a5b0-273d3e539c00}" behavior="0" />
+      <RootComponent type="91" id="{8bb8f5e8-679d-4182-bd22-1d3e3b397486}" schemaName="VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" behavior="0" />
+      <RootComponent type="92" id="{d4939b21-2926-eb11-a813-00224804996b}" behavior="0" />
+      <RootComponent type="300" schemaName="new_app_dc23c" behavior="0" />
+      <RootComponent type="380" schemaName="msdyn_ShouldShowPeekButton" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>
