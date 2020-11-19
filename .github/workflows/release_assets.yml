@@ -1,8 +1,7 @@
-on:
-  push:
-    pull_request: [ release ]
-
 name: Build Release Assets
+
+on:
+  pull_request: [ release ]
 
 jobs:
   build:
