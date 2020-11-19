@@ -23,7 +23,7 @@ jobs:
           CRM_CONN:  ${{ secrets.CRM_CONN }}
           all_comp: ${{ steps.files.outputs.all }}
       - name: Import Spread Components
-        run: powershell .\packager\release.ps1
+        run: powershell .\packager\release_assets.ps1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
