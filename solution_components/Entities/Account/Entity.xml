@@ -31,7 +31,7 @@
           <MaxLength>160</MaxLength>
           <Length>320</Length>
           <displaynames>
-            <displayname description="Account Name " languagecode="1033" />
+            <displayname description="Account Name" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Type the company or business name." languagecode="1033" />
