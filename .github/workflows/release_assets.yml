@@ -1,7 +1,8 @@
 name: Build Release Assets
 
 on:
-  pull_request: [ release ]
+  pull_request: 
+    branches: [ release ]
 
 jobs:
   build:
