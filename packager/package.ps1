@@ -25,4 +25,4 @@ foreach($entity in $data){
     }
 }
 
-Expand-Archive -Path import.Zip -DestinationPath ../artifacts/
+Expand-Archive -Path import.Zip -DestinationPath ../artifacts/solution
