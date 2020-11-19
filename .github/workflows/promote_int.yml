@@ -1,0 +1,33 @@
+name: Push to Int
+
+on:
+  pull_request:
+    branches: [ release ]
+    
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - id: files
+      uses: jitterbit/get-changed-files@v1   
+      with:
+        format: 'json'
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm install
+    - run: node .\packager\solutionGeneration.js
+      env:
+        CRM_CONN:  ${{ secrets.CRM_CONN }}
+        all_comp: ${{ steps.files.outputs.all }}
+    - name: Import Spread Components
+      run: powershell .\packager\import_artifact.ps1
+    - name: Archive Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: import artifacts 
+        path: |
+          artifacts
