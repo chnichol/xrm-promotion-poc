@@ -1,7 +1,7 @@
 name: Build Release Assets
 
 on:
-  pull_request: 
+  push: 
     branches: [ release ]
 
 jobs:
