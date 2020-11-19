@@ -28,7 +28,7 @@ jobs:
     - run: node .\packager\solutionGeneration.js
       env:
         CRM_CONN:  ${{ secrets.CRM_CONN }}
-        TEST: ${{ steps.files.outputs.all }}
+        all_comp: ${{ steps.files.outputs.all }}
     - name: Import Spread Components
       run: powershell .\packager\package.ps1
     - name: Archive Build Artifacts
