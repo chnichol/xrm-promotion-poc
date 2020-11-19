@@ -21,10 +21,11 @@ jobs:
       - run: npm install
       - run: node .\packager\solutionGeneration.js
         env:
-          CRM_CONN:  ${{ secrets.CRM_CONN }}
           all_comp: ${{ steps.files.outputs.all }}
       - name: Import Spread Components
         run: powershell .\packager\release_assets.ps1
+        env:
+          CRM_CONN:  ${{ secrets.CRM_CONN }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
