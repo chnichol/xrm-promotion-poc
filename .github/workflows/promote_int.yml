@@ -24,7 +24,7 @@ jobs:
         CRM_CONN:  ${{ secrets.CRM_CONN }}
         all_comp: ${{ steps.files.outputs.all }}
     - name: Import Spread Components
-      run: powershell .\packager\import_artifact.ps1
+      run: powershell .\packager\import_artifacts.ps1
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
       with:
