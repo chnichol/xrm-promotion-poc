@@ -2,7 +2,7 @@ name: Push to Int
 
 on:
   pull_request:
-    branches: [ release ]
+    branches: [ development ]
     
 jobs:
   build:

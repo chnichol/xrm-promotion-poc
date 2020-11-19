@@ -1,4 +1,6 @@
 node_modules
+export
+import
 artifacts
 changes
 .ionide

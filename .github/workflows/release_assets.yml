@@ -1,8 +1,8 @@
-on:
-  push:
-    branches: [ main ]
-
 name: Build Release Assets
+
+on:
+  pull_request: 
+    branches: [ release ]
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
           CRM_CONN:  ${{ secrets.CRM_CONN }}
           all_comp: ${{ steps.files.outputs.all }}
       - name: Import Spread Components
-        run: powershell .\packager\release.ps1
+        run: powershell .\packager\release_assets.ps1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -42,6 +42,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./my-artifact.zip
-          asset_name: my-artifact.zip
+          asset_path: ./packager/import.zip
+          asset_name: import.zip
           asset_content_type: application/zip
