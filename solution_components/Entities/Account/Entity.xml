@@ -31,7 +31,7 @@
           <MaxLength>20</MaxLength>
           <Length>40</Length>
           <displaynames>
-            <displayname description="Account Number" languagecode="1033" />
+            <displayname description="Account Number " languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Type an ID number or code for the account to quickly search and identify the account in system views." languagecode="1033" />
