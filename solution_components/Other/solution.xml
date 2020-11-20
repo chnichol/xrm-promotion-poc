@@ -6,7 +6,7 @@
       <LocalizedName description="New Work" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.3</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>DefaultPublishere2sandbox</UniqueName>
