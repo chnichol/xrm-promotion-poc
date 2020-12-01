@@ -15,8 +15,6 @@ console.log(`All changed files: ${all_comp}`);
 
 const component_filter = all_comp.filter(f=> f.match(folderPath));
 
-console.log(`solution_component changes: ${component_filter}`);
-
 fs.readdirSync(`${folderPath}/${entityPath}`)
   .filter((f) => component_filter.find((c) => c.match(`${folderPath}/${entityPath}/${f}`)))
   .map((f, i) => {
