@@ -110,7 +110,8 @@ console.log(`All changed files: ${all_comp}`);
 all_comp
   .filter((f) => f.match(folderPath))
   .map((f) => {
-    component_filter_map[f.split("/")[1]](f)
+    const compType = f.split("/")[1];
+    component_filter_map[compType] && component_filter_map[compType](f)
   });
 
   fse.copySync(path.join(folderPath, otherPath, 'Customizations.xml'), path.join(changesPath, otherPath, 'Customizations.xml'));
