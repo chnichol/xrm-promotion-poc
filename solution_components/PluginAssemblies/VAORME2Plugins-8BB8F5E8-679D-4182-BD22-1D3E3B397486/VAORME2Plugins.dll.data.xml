@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginAssemblyId="8bb8f5e8-679d-4182-bd22-1d3e3b397486" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/VAORME2Plugins-8BB8F5E8-679D-4182-BD22-1D3E3B397486/VAORME2Plugins.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.ADRCaseCreation, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="27408760-d682-46a5-b067-69a32d44fbea" Name="VA.ORME2.Plugins.ADRCaseCreation">
+      <FriendlyName>53942596-de79-4be0-89f1-75d12352ca26</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.ADRCaseNumberGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="1dc767ef-9505-493f-b305-27922755684e" Name="VA.ORME2.Plugins.ADRCaseNumberGenerator">
+      <FriendlyName>5ead8eec-55ca-44b8-bfae-6eff5521ec65</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.CATSCaseNumberGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="1a62d4b1-23da-4652-a930-b81af645500d" Name="VA.ORME2.Plugins.CATSCaseNumberGenerator">
+      <FriendlyName>84d7da34-fbe8-409c-a914-f90fa563ac69</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.ChildCaseClosureUpdate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="a143a583-2596-4c3e-afe9-f1198dad8879" Name="VA.ORME2.Plugins.ChildCaseClosureUpdate">
+      <FriendlyName>997709ce-fedb-4d01-a292-513e93a97c26</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.ClaimsADRBasicWorkflow, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="9f02b60d-6ee7-49e7-a1ba-fafc76f9bcbb" Name="VA.ORME2.Plugins.ClaimsADRBasicWorkflow">
+      <FriendlyName>5887dc7d-a04f-4f78-a891-ab7c80f1f54e</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.HPPCaseNumberGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="5b3ce645-28c9-4c12-8ff6-b032d31fbd9d" Name="VA.ORME2.Plugins.HPPCaseNumberGenerator">
+      <FriendlyName>1bddee3a-2937-49ac-bb92-c8c00a91b562</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.MapFieldsFromHppInquiryToHppCase, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="42b96a22-8b38-4b49-9420-5117d7ad0dbe" Name="VA.ORME2.Plugins.MapFieldsFromHppInquiryToHppCase">
+      <FriendlyName>7602a3e5-1dbb-4c4d-b84d-2fd2cd978ddc</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.SetInvestigatorDueDate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="2f8a9082-191d-48b3-b9bb-c22a50fd460e" Name="VA.ORME2.Plugins.SetInvestigatorDueDate">
+      <FriendlyName>82164f52-d882-4989-93c1-67fcab68db43</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.ADRNeutralEmailNotfication, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="4d05ccb5-b90d-41d5-9d8f-4c863da29157" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.ADRNeutralEmailNotfication">
+      <FriendlyName>c67eab37-8abc-41f2-8cf3-6f04e2f4c52b</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.ADRRespondentCreate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="33fbbcec-316c-47d1-a589-2843a3dd1e46" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.ADRRespondentCreate">
+      <FriendlyName>06b73d12-7d84-44ed-a5c2-fa3d364e51d2</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CaseConsolidation, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="c0bea7bd-f56e-4dc9-b925-6eac779ec3be" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CaseConsolidation">
+      <FriendlyName>642d1264-abb0-4111-88ef-8a8c8f04add9</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CaseReferralHistoryAssignment, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="fc91f5b6-723c-41fc-ab5e-787bd202f2da" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CaseReferralHistoryAssignment">
+      <FriendlyName>136812d3-b773-43ac-bd98-30a0911866a8</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CommPackageEmailSend, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="85ff7964-4c21-427e-9154-31c355523355" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CommPackageEmailSend">
+      <FriendlyName>e7ba8400-8d69-4017-a6b8-a3370e951e91</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.ComplianceCaseNumberGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="1373d28b-d65b-4aeb-a032-ac48be63c5b8" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.ComplianceCaseNumberGenerator">
+      <FriendlyName>d9c3fc5c-704b-43cb-a750-de8919efce9b</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateEvaluationOnADRResolved, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="3d9f689a-1741-45b9-9344-6354fcc61847" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateEvaluationOnADRResolved">
+      <FriendlyName>63dfd8b3-5f33-4ba7-9037-962aa6289fbe</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSettlementAgreementProposedOnUpdateofADR, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="8b0a6722-5b30-4a36-aa00-88f5d088d0bf" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSettlementAgreementProposedOnUpdateofADR">
+      <FriendlyName>212eb1dc-c015-4e1f-bdca-1e5e9f73d7fd</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureFromADRMapDocument, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="df84d06a-bce3-4c5c-9cc1-020995c1afb3" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureFromADRMapDocument">
+      <FriendlyName>0137c2c0-4d2a-4977-8603-3e42f2efa278</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureOnStatusApprovedofSettlementAgreement, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="54b911ac-cde1-4e0d-9c73-02a0927765e7" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureOnStatusApprovedofSettlementAgreement">
+      <FriendlyName>0ec1a418-5f3a-43f2-9d73-cded4bb9a844</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureOnStatusApprovedofWithdrawal, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="b29e32a7-78e1-425d-91e8-d10569627b99" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateSummaryOfClosureOnStatusApprovedofWithdrawal">
+      <FriendlyName>8c4d4fdf-27a7-4620-aef8-501a72c92e35</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateWithdrawalProposedOnUpdateOfADRResolution, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="a284fab3-ac65-4936-a72e-5c1332aa6fb0" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateWithdrawalProposedOnUpdateOfADRResolution">
+      <FriendlyName>a43f80b8-0bfa-4428-87da-47671a7c9698</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateWithdrawalSummaryOfClosureFromADRMapDocument, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="b78cf16c-d1dd-4d83-b0cd-89225786c7c9" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.CreateWithdrawalSummaryOfClosureFromADRMapDocument">
+      <FriendlyName>d0b68e55-deab-4ea9-b6ad-659ebcff80eb</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.DocumentWordTemplateGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="32fae3f5-ec74-4b0b-9456-9c62b307e777" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.DocumentWordTemplateGenerator">
+      <FriendlyName>2e8637e6-99ed-4060-ba69-8abcb4666f68</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.ECPCaseNumberGenerator, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="5ba46203-e4e0-482d-b1dd-5a53f618f094" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.ECPCaseNumberGenerator">
+      <FriendlyName>ceaa193c-49fc-4fa8-b9d5-f25a841b11f3</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.EEOCaseClaimStatusRollup, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="38464c0d-ea90-4328-8350-9809587098b7" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.EEOCaseClaimStatusRollup">
+      <FriendlyName>4128fa1e-5634-4f2e-87c5-0a8d6f7d675f</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.EmailAttachementWorkflow, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="e0bb9a4c-376f-421b-b01e-a0807ca7d3b9" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.EmailAttachementWorkflow">
+      <FriendlyName>eede28c8-1926-46f0-8fff-8af3ea975d9b</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.GenerateInquiryNameOnCreate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="1f299314-fa8d-497f-88f9-9d2c0805a931" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.GenerateInquiryNameOnCreate">
+      <FriendlyName>2a35410d-28a2-4bc8-b992-c809a9375e64</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.GetGlobalSettlementCases, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="ab7c9229-263d-4e42-a84a-88d85f868eb8" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.GetGlobalSettlementCases">
+      <FriendlyName>9e46b612-a141-4dda-8927-0db4208a7605</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.LinkClaimsADROnCreate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="cf03b23f-5864-44de-9950-e6ab813a1c2a" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.LinkClaimsADROnCreate">
+      <FriendlyName>0914d77e-3ed2-4140-a79c-9b656b18d3bd</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.PortalMultiSelectMapper, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="7d269f7b-3ad1-4f6d-8368-eeb75d2fdc66" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.PortalMultiSelectMapper">
+      <FriendlyName>04fec273-dbdc-470f-8ddc-3310080db8a2</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.RecordAttachmentMover, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="38ff700a-8d7e-4ad5-afbd-33e5486d9c7f" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.RecordAttachmentMover">
+      <FriendlyName>7390fb92-7024-425d-9d33-9dff0643461e</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.RetrieveFirstEEORMO, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="51b3fae6-8562-41cf-9ae6-2aee88121b5b" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.RetrieveFirstEEORMO">
+      <FriendlyName>82ab7041-b919-451d-92d5-2b9b2836a0b9</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.SamplePlugin, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="a5d9886f-f56d-4206-b477-af7578163455" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.SamplePlugin">
+      <FriendlyName>96dc3ee8-d031-4b10-a2c8-d8d1dd8e22fd</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.SendEmailWithAttachment, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="32053f66-3887-4783-b68f-9e4aa59c5bd3" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.SendEmailWithAttachment">
+      <FriendlyName>7f847f43-13d3-40b0-87c6-57e5b4cd526d</FriendlyName>
+      <WorkflowActivityGroupName>VA.ORME2.Plugins (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.TeamMemberFliterPlugin, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="9d642c49-bb8f-4255-b8f6-e4ff616696a2" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.TeamMemberFliterPlugin">
+      <FriendlyName>53e26819-ef34-48c9-9f2a-ce844bf77b7e</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA.ORME2.Plugins.VA.ORME2_Plugins.ValidateHppCaseFields, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="cfee8182-2ee8-4352-93ee-e66df582ddb1" Name="VA.ORME2.Plugins.VA.ORME2_Plugins.ValidateHppCaseFields">
+      <FriendlyName>f6632e5f-8f9a-47b0-a06d-7d3b94ea748c</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA_ORME2.MixedCaseIndicatiorOnClaimCreate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="1aa5ecb1-4430-4df4-8912-5d676c589d67" Name="VA_ORME2.MixedCaseIndicatiorOnClaimCreate">
+      <FriendlyName>9712c1e3-1029-4a2e-9d52-a845adfc6956</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="VA_ORME2.MixedCaseIndicatorOnClaimUpdate, VA.ORME2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bde91419098d6024" PluginTypeId="b57fcfe3-d513-4395-a5ce-5bbbd4592531" Name="VA_ORME2.MixedCaseIndicatorOnClaimUpdate">
+      <FriendlyName>059c98b0-52f3-4964-9001-82f9cb59bdf9</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>
