@@ -1,7 +1,7 @@
 name: Build Release Assets
 
 on:
-  pull_request: 
+  push: 
     branches: [ release ]
 
 jobs:
@@ -21,20 +21,21 @@ jobs:
       - run: npm install
       - run: node .\packager\solutionGeneration.js
         env:
-          CRM_CONN:  ${{ secrets.CRM_CONN }}
           all_comp: ${{ steps.files.outputs.all }}
-      - name: Import Spread Components
+      - name: Build Spread Release Assets
         run: powershell .\packager\release_assets.ps1
+        env:
+          CRM_CONN:  ${{ secrets.CRM_CONN }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
           draft: false
-          prerelease: false
+          prerelease: true
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1

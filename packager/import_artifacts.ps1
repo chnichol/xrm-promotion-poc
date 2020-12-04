@@ -1,7 +1,7 @@
 Install-Module Microsoft.Xrm.Data.PowerShell -Scope CurrentUser -Force
 
 Set-Location packager
-$solpath = '..\solution_components'
+$solpath = '..\changes'
 
 Import-Module ./Microsoft.Federal.PowerApps.SolutionBuilder.dll
 $xml = Resolve-SolutionGenerator $solpath
