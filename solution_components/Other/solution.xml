@@ -1,31 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.1.0.24949" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="9.1.0.24350" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive">
   <SolutionManifest>
-    <UniqueName>NewWork</UniqueName>
-    <LocalizedNames>
-      <LocalizedName description="New Work" languagecode="1033" />
-    </LocalizedNames>
+    <UniqueName>US1000IMPORT</UniqueName>
+    <LocalizedNames />
+    <RootComponents>
+      <RootComponent schemaName="new_test" type="80" behavior="0" />
+      <RootComponent schemaName="new_app2_1cc69" type="300" behavior="0" />
+      <RootComponent schemaName="new_app_dc23c" type="300" behavior="0" />
+      <RootComponent schemaName="account" type="1" behavior="0" />
+      <RootComponent schemaName="contact" type="1" behavior="0" />
+      <RootComponent schemaName="govcdm_eeocasecontact" type="1" behavior="0" />
+      <RootComponent schemaName="govcdm_eeoinformalcomplaint" type="1" behavior="0" />
+      <RootComponent schemaName="newprocess" type="1" behavior="0" />
+      <RootComponent id="{497207fc-3825-eb11-a813-00224804996b}" type="60" behavior="0" />
+      <RootComponent schemaName="govcdm_adraggrieveddecision" type="9" behavior="0" />
+      <RootComponent type="62" behavior="0" />
+      <RootComponent schemaName=":RibbonDiffXml" type="50" behavior="0" />
+      <RootComponent schemaName="va.orme2.plugins, version=1.0.0.0, culture=neutral, publickeytoken=bde91419098d6024" id="{8bb8f5e8-679d-4182-bd22-1d3e3b397486}" type="91" behavior="0" />
+      <RootComponent schemaName="1033{a788a3de-f207-4573-a983-7af0867a7857}" id="{d4360d99-0321-eb11-a813-000d3a378724}" type="31" behavior="0" />
+      <RootComponent id="{62177254-f534-eb11-a813-000d3a3679b0}" type="31" behavior="0" />
+      <RootComponent schemaName="1033{1b308213-d735-45ff-a7d1-7a7394a3b1b3}" id="{c6050f9f-0321-eb11-a813-000d3a378724}" type="31" behavior="0" />
+      <RootComponent id="{88b87c37-1472-4798-ac48-d56509eb6e1d}" type="20" behavior="0" />
+      <RootComponent id="{1b46abcc-ed34-eb11-a813-000d3a3679b0}" type="20" behavior="0" />
+      <RootComponent id="{69b2dfd2-ed34-eb11-a813-000d3a3679b0}" type="20" behavior="0" />
+      <RootComponent id="{d4939b21-2926-eb11-a813-00224804996b}" type="92" behavior="0" />
+      <RootComponent schemaName="new_/folder/badname" type="61" behavior="0" />
+      <RootComponent schemaName="new_/folder/folder2/script.js" type="61" behavior="0" />
+      <RootComponent id="{e2990caa-1a26-eb11-a813-00224804996b}" type="29" behavior="0" />
+      <RootComponent id="{cbbaa868-1a26-eb11-a813-00224804996b}" type="29" behavior="0" />
+    </RootComponents>
     <Descriptions />
-    <Version>1.0.0.6</Version>
+    <Version>1.0.0.1</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>DefaultPublishere2sandbox</UniqueName>
-      <LocalizedNames>
-        <LocalizedName description="DefaultPublishere2sandbox" languagecode="1033" />
-      </LocalizedNames>
-      <Descriptions>
-        <Description description="Default publisher for this organization" languagecode="1033" />
-      </Descriptions>
-      <EMailAddress xsi:nil="true"></EMailAddress>
-      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <LocalizedNames />
+      <Descriptions />
       <CustomizationPrefix>new</CustomizationPrefix>
       <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
       <Addresses />
     </Publisher>
-    <RootComponents>
-      <RootComponent type="1" schemaName="account" behavior="2" />
-      <RootComponent type="1" schemaName="contact" behavior="2" />
-    </RootComponents>
     <MissingDependencies />
   </SolutionManifest>
 </ImportExportXml>
