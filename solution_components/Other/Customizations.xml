@@ -5,21 +5,13 @@
   <Workflows />
   <FieldSecurityProfiles />
   <Templates />
-  <RibbonDiffXml />
-  <SiteMap />
   <EntityMaps />
   <EntityRelationships />
   <OrganizationSettings />
   <optionsets />
-  <Reports />
-  <InteractionCentricDashboards />
   <WebResources />
   <CustomControls />
-  <SolutionPluginAssemblies />
-  <SdkMessageProcessingSteps />
-  <AppModules />
   <EntityDataProviders />
-  <CanvasApps />
   <Languages>
     <Language>1033</Language>
   </Languages>

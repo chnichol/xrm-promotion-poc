@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1611375607202" clover="3.2.0">
+  <project timestamp="1611375607203" name="All files">
+    <metrics statements="26" coveredstatements="1" conditionals="15" coveredconditionals="5" methods="12" coveredmethods="1" elements="53" coveredelements="7" complexity="0" loc="26" ncloc="26" packages="6" files="9" classes="9"/>
+    <package name="control">
+      <metrics statements="2" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="enableField.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\control\enableField.js">
+        <metrics statements="1" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+      <file name="getFormContextControl.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\control\getFormContextControl.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="date">
+      <metrics statements="1" coveredstatements="1" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <file name="clearFutureDate.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\date\clearFutureDate.js">
+        <metrics statements="1" coveredstatements="1" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="5" falsecount="1"/>
+      </file>
+    </package>
+    <package name="form">
+      <metrics statements="2" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="formTypeExecution.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\form\formTypeExecution.js">
+        <metrics statements="1" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="3"/>
+      </file>
+      <file name="formTypeUpdateExecution.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\form\formTypeUpdateExecution.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="govcdm_.forms.contact">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="main.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\govcdm_\forms\contact\main.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="govcdm_.forms.contact.form">
+      <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="enableOnUpdate.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\govcdm_\forms\contact\form\enableOnUpdate.js">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utility">
+      <metrics statements="15" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="consts.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\utility\consts.js">
+        <metrics statements="14" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="pipe.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\utility\pipe.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
