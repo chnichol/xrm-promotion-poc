@@ -84,6 +84,41 @@ component_filter_map[entitiesPath] = (dir) => {
       );
     });
 
+    // Map generated Entity.xml
+    if (
+      fs.existsSync(`${enttiyDirPath}/Attributes`) &&
+      fs.existsSync(`${enttiyDirPath}/Entity.xml`)
+    ) {
+      const attrs = [];
+      const entXml = fs.readFileSync(`${enttiyDirPath}/Entity.xml`, {
+        encoding: "UTF-8",
+      });
+      fse.readdirSync(`${enttiyDirPath}/Attributes`).map((a) =>
+        attrs.push(
+          JSON.parse(
+            fs.readFileSync(`${enttiyDirPath}/Attributes/${a}`, {
+              encoding: "UTF-8",
+            })
+          )
+        )
+      );
+      xml2js.parseString(entXml, (err, result) => {
+        result.Entity.EntityInfo[0].entity[0].attributes = [{ attribute: [] }];
+
+          result.Entity.EntityInfo[0].entity[0].attributes[0].attribute = [
+            ...attrs,
+          ];
+
+          const builder = new xml2js.Builder();
+          const xml = builder.buildObject(result);
+
+          fs.writeFileSync(
+            `${changesPath}/${entitiesPath}/${entDir}/Entity.xml`,
+            xml,
+            { encoding: "utf8", flag: "w" }
+          );
+      });
+    }
 
 };
 component_filter_map[interactionCentricDashboardsPath] = (dir) => {
