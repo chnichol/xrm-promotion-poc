@@ -35,7 +35,7 @@ fs.existsSync(`${folderPath}/${entityPath}`) &&
                 fs.writeFileSync(
                   `${folderPath}/${entityPath}/${eF}/Attributes/${a.LogicalName[0]}.json`,
                   JSON.stringify(a),
-                  { flag: "a+" }
+                  { encoding: "utf8", flag: "w" }
                 );
               })
             )
