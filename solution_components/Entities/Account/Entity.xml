@@ -2,9 +2,9 @@
 <Entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name LocalizedName="Account" OriginalName="">Account</Name>
   <EntityInfo>
-    <entity Name="Account" unmodified="1">
+    <entity Name="Account">
       <attributes>
-        <attribute PhysicalName="Address1_City" unmodified="1">
+        <attribute PhysicalName="Address1_City">
           <Type>nvarchar</Type>
           <Name>address1_city</Name>
           <LogicalName>address1_city</LogicalName>
@@ -32,7 +32,7 @@
           <MaxLength>80</MaxLength>
           <Length>160</Length>
           <displaynames>
-            <displayname description="Address 1: City" languagecode="1033" />
+            <displayname description="Address 1: CITY" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Type the city for the primary address." languagecode="1033" />

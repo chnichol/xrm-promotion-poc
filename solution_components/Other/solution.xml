@@ -6,7 +6,7 @@
       <LocalizedName description="ALM_Test" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.1</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>DefaultPublishere2poc</UniqueName>
