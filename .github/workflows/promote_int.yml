@@ -19,6 +19,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: npm install
+    - run: npm run build
     - run: node .\packager\solutionGeneration.js
       env:
         all_comp: ${{ steps.files.outputs.all }}
