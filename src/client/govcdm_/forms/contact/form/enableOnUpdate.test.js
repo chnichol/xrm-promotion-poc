@@ -117,7 +117,6 @@ describe("Email address form create", () => {
     enableOnUpdate(executionContext);
 
     const emailCtrl = fCon.getControl("emailaddress1");
-    console.log("toBeTruthy emailaddress1: " + emailCtrl.getDisabled());
     expect(emailCtrl.getDisabled()).toBeTruthy();
   });
 });
