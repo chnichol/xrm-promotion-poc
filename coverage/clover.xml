@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611534699593" clover="3.2.0">
-  <project timestamp="1611534699593" name="All files">
-    <metrics statements="26" coveredstatements="25" conditionals="15" coveredconditionals="8" methods="12" coveredmethods="11" elements="53" coveredelements="44" complexity="0" loc="26" ncloc="26" packages="6" files="9" classes="9"/>
+<coverage generated="1611600888243" clover="3.2.0">
+  <project timestamp="1611600888243" name="All files">
+    <metrics statements="26" coveredstatements="26" conditionals="15" coveredconditionals="14" methods="12" coveredmethods="12" elements="53" coveredelements="52" complexity="0" loc="26" ncloc="26" packages="6" files="9" classes="9"/>
     <package name="control">
       <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="enableField.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\control\enableField.js">
@@ -10,21 +10,21 @@
       </file>
       <file name="getFormContextControl.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\control\getFormContextControl.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
       </file>
     </package>
     <package name="date">
-      <metrics statements="1" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="1" coveredstatements="1" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
       <file name="clearFutureDate.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\date\clearFutureDate.js">
-        <metrics statements="1" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="6"/>
+        <metrics statements="1" coveredstatements="1" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="cond" truecount="6" falsecount="0"/>
       </file>
     </package>
     <package name="form">
       <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
       <file name="formTypeExecution.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\form\formTypeExecution.js">
         <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
-        <line num="1" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="1" count="2" type="cond" truecount="3" falsecount="0"/>
       </file>
       <file name="formTypeUpdateExecution.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\form\formTypeUpdateExecution.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -42,11 +42,11 @@
       <file name="enableOnUpdate.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\govcdm_\forms\contact\form\enableOnUpdate.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
       </file>
     </package>
     <package name="utility">
@@ -70,7 +70,7 @@
       </file>
       <file name="pipe.js" path="C:\Users\chnichol\source\repos\xrm-promotion-poc\src\client\utility\pipe.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
       </file>
     </package>
   </project>
