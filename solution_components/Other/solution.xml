@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.1.0.26147" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.1.0.26443" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ALM_Test</UniqueName>
     <LocalizedNames>
-      <LocalizedName description="ALM_Test" languagecode="1033" />
+      <LocalizedName description="GOAT Solution" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.3</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>DefaultPublishere2poc</UniqueName>
@@ -81,8 +81,199 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="2" />
+      <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="60" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       <RootComponent type="61" schemaName="govcdm_/forms/contact/main.js" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required key="0" type="1" schemaName="govcdm_eeocasecontact" displayName="EEO Case Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="2" type="1" schemaName="govcdm_adrneutralcertification" displayName="Neutral Certification" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="3" type="1" schemaName="govcdm_eeoalternativedispute" displayName="Alternative Dispute Resolution" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="4" type="1" schemaName="govcdm_eeoharassmentprevention" displayName="Harassment Prevention" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="5" type="1" schemaName="govcdm_eeocaserespondent" displayName="EEO Case RMO" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="6" type="1" schemaName="govcdm_inquiry" displayName="Inquiry" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="7" type="2" schemaName="adx_identity_username" displayName="User Name" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2006.0)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="8" type="2" schemaName="govcdm_contactneutralsource" displayName="Neutral Source" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="9" type="2" schemaName="businesscardattributes" displayName="BusinessCardAttributes" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_SalesPatch201904 (9.0.1912.1007)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="10" type="2" schemaName="govcdm_issupervisor" displayName="Supervisor" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="11" type="2" schemaName="govcdm_vafacility" displayName="VA Facility" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="12" type="2" schemaName="govcdm_vaorganization" displayName="VA Organization" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="13" type="2" schemaName="govcdm_bargainingunit" displayName="Is Union Official?" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="14" type="2" schemaName="adx_identity_twofactorenabled" displayName="Two Factor Enabled" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2006.0)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="15" type="2" schemaName="businesscard" displayName="Business Card" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_SalesPatch201904 (9.0.1912.1007)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="16" type="2" schemaName="govcdm_isneutral" displayName="Is Neutral?" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="17" type="2" schemaName="govcdm_seniormanager" displayName="Senior Manager" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="18" type="2" schemaName="govcdm_contactneutraltype" displayName="Neutral Type" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="19" type="2" schemaName="govcdm_unionnotified" displayName="* Delete Me: Has the Union been Notified?" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="20" type="2" schemaName="govcdm_address1statepicklist" displayName="Mailing Address State" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="21" type="10" schemaName="govcdm_contact_govcdm_eeoalternativedispute_ADRInitiator" displayName="govcdm_contact_govcdm_eeoalternativedispute_ADRInitiator" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="10" schemaName="govcdm_contact_govcdm_inquiry" displayName="govcdm_contact_govcdm_inquiry" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="23" type="10" schemaName="govcdm_contact_govcdm_eeocaserespondent_RMO" displayName="govcdm_contact_govcdm_eeocaserespondent_RMO" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="24" type="10" schemaName="govcdm_contact_govcdm_eeoharassmentprevention_HPPAlleger" displayName="govcdm_contact_govcdm_eeoharassmentprevention_HPPAlleger" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="25" type="10" schemaName="govcdm_contact_govcdm_adrneutralcertification" displayName="govcdm_contact_govcdm_adrneutralcertification" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="26" type="10" schemaName="govcdm_govcdm_vafacility_contact_VAFacility" displayName="govcdm_govcdm_vafacility_contact_VAFacility" parentSchemaName="govcdm_vafacility" parentDisplayName="VA Facility" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="27" type="10" schemaName="govcdm_contact_govcdm_eeocasecontact_Contact" displayName="govcdm_contact_govcdm_eeocasecontact_Contact" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="28" type="10" schemaName="govcdm_govcdm_vaorganization_contact_VAOrganization" displayName="govcdm_govcdm_vaorganization_contact_VAOrganization" parentSchemaName="govcdm_vaorganization" parentDisplayName="VA Organization" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="29" type="10" schemaName="govcdm_contact_govcdm_eeoalternativedispute_ADRORMPointofContact" displayName="govcdm_contact_govcdm_eeoalternativedispute_ADRORMPointofContact" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="30" type="26" schemaName="Active EEO Case Sec Supplemental Investigator" displayName="Active EEO Case Sec Supplemental Investigator" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{90b38c47-6494-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="31" type="26" schemaName="Active EEO Case Agency Representative" displayName="Active EEO Case Agency Representative" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{d5ea50ff-6394-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="32" type="26" schemaName="Active Inquiries" displayName="Active Inquiries" parentSchemaName="govcdm_inquiry" parentDisplayName="Inquiry" solution="Active" id="{2c552b48-e126-4b01-acfe-c4170cbc577e}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="33" type="26" schemaName="Active ADRs" displayName="Active ADRs" parentSchemaName="govcdm_eeoalternativedispute" parentDisplayName="Alternative Dispute Resolution" solution="Active" id="{b210a1f6-2102-4df6-8724-67a9644548f1}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="34" type="26" schemaName="Active EEO Case Witness" displayName="Active EEO Case Witness" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{c5a57c59-6494-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="35" type="26" schemaName="Active EEO Case Complainant Representative" displayName="Active EEO Case Complainant Representative" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{f8766617-6494-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="36" type="26" schemaName="Active Neutral Certifications" displayName="Active Neutral Certifications" parentSchemaName="govcdm_adrneutralcertification" parentDisplayName="Neutral Certification" solution="Active" id="{4e4b05ae-aab5-4d12-ad0c-835c49fd1b9d}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="37" type="26" schemaName="Active EEO Case Complainant" displayName="Active EEO Case Complainant" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{6ed340e1-6394-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="38" type="26" schemaName="Active EEO Case Contacts" displayName="Active EEO Case Contacts" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{923cde83-7c46-4d05-b74b-d6e9916535d2}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="39" type="26" schemaName="Active EEO Case Reviewer" displayName="Active EEO Case Reviewer" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{54414f29-6494-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="40" type="26" schemaName="Active Harassment Prevention" displayName="Active Harassment Prevention" parentSchemaName="govcdm_eeoharassmentprevention" parentDisplayName="Harassment Prevention" solution="Active" id="{7ce05a4e-009e-4bb0-a8ce-6cacba5a985e}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="41" type="26" schemaName="Active EEO Case Respondents" displayName="Active EEO Case Respondents" parentSchemaName="govcdm_eeocaserespondent" parentDisplayName="EEO Case RMO" solution="Active" id="{21d08771-67fb-4b07-89b6-45b3419b5822}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="42" type="26" schemaName="Active EEO Case Supplemental Investigator" displayName="Active EEO Case Supplemental Investigator" parentSchemaName="govcdm_eeocasecontact" parentDisplayName="EEO Case Contact" solution="Active" id="{c11b6a3b-6494-ea11-a811-001dd8309076}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="43" type="59" schemaName="ADR by Month" displayName="ADR by Month" parentSchemaName="govcdm_eeoalternativedispute" parentDisplayName="Alternative Dispute Resolution" solution="Active" id="{36505b50-d391-e911-a98a-001dd83080ab}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="1" type="60" displayName="Contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="44" type="66" schemaName="Intelligence.BusinessCardReaderControl.BusinessCardReader" displayName="Intelligence.BusinessCardReaderControl.BusinessCardReader" solution="BaseCustomControlsCore (9.0.2011.6000)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="45" type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701176)" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="46" type="61" schemaName="govcdm_contactFormJavascript" displayName="govcdm_contactFormJavascript" solution="Active" />
+        <Dependent key="1" type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>
