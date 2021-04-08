@@ -5,7 +5,7 @@
     <IntroducedVersion>5.0.0.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form maxWidth="1920" shownavigationbar="true" showImage="true">
+    <form maxWidth="1920" shownavigationbar="true" showImage="true" headerdensity="HighWithControls">
       <ancestor id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       <hiddencontrols>
         <data id="fullname" datafieldname="fullname" classid="{5546E6CD-394C-4bee-94A8-4425E17EF6C6}" />
@@ -104,7 +104,7 @@
                         <labels>
                           <label description="Work Email" languagecode="1033" />
                         </labels>
-                        <control disabled="true" id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" uniqueid="{b4e468ed-0a2c-454c-ec5d-9989089687a1}" />
+                        <control disabled="false" id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" uniqueid="{b4e468ed-0a2c-454c-ec5d-9989089687a1}" />
                       </cell>
                     </row>
                     <row>
@@ -1663,6 +1663,27 @@
       <DisplayConditions FallbackForm="true" Order="1">
         <Everyone />
       </DisplayConditions>
+      <footer id="{052ffdb5-2ba8-4b1d-9e7b-330b8453ee9d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{fcf4af8d-f358-4bb3-b809-f07f81ed12b6}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{80b6eedd-d8d7-4cab-8fa2-5f3e39527893}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{505ab375-8180-4d39-b2dd-2afab497d158}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
     </form>
     <LocalizedNames>
       <LocalizedName description="Contact" languagecode="1033" />

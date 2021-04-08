@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,24 +89,22 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,22 +119,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const CANNOT_SET_FUTURE_DATE = 'Cannot set future date';
-const CANNOT_SET_FUTURE_DATE_ID = 'CANNOT_SET_FUTURE_DATE';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const CANNOT_SET_FUTURE_DATE = <span class="cstat-no" title="statement not covered" >'Cannot set future date';</span>
+const CANNOT_SET_FUTURE_DATE_ID = <span class="cstat-no" title="statement not covered" >'CANNOT_SET_FUTURE_DATE';</span>
 &nbsp;
-const RECORD_MUST_BE_SAVED = 'Cannot set field until record saved';
-const RECORD_MUST_BE_SAVED_ID = 'RECORD_MUST_BE_SAVED';
+const RECORD_MUST_BE_SAVED = <span class="cstat-no" title="statement not covered" >'Cannot set field until record saved';</span>
+const RECORD_MUST_BE_SAVED_ID = <span class="cstat-no" title="statement not covered" >'RECORD_MUST_BE_SAVED';</span>
 &nbsp;
-const LOCALHOST = 'http://localhost:3000';
-const WEBAPI = `${typeof(process) === 'object' ? LOCALHOST : <span class="branch-1 cbranch-no" title="branch not covered" >''}</span>/api/data/v9.0`;
-const WHOAMI = 'WhoAmI';
-const GET = 'GET';
-const POST = 'POST';
-const PATCH = 'PATCH';
-const DELETE = 'DELETE';
-const CLIENT_URL = typeof(location) === 'object' &amp;&amp; location.origin;
-const FORM_TYPE_CREATE = 1;
-const FORM_TYPE_UPDATE = 2;
+const LOCALHOST = <span class="cstat-no" title="statement not covered" >'http://localhost:3000';</span>
+const WEBAPI = <span class="cstat-no" title="statement not covered" >`${typeof(process) === 'object' ? LOCALHOST : ''}/api/data/v9.0`;</span>
+const WHOAMI = <span class="cstat-no" title="statement not covered" >'WhoAmI';</span>
+const GET = <span class="cstat-no" title="statement not covered" >'GET';</span>
+const POST = <span class="cstat-no" title="statement not covered" >'POST';</span>
+const PATCH = <span class="cstat-no" title="statement not covered" >'PATCH';</span>
+const DELETE = <span class="cstat-no" title="statement not covered" >'DELETE';</span>
+const CLIENT_URL = <span class="cstat-no" title="statement not covered" >typeof(location) === 'object' &amp;&amp; location.origin;</span>
+const FORM_TYPE_CREATE = <span class="cstat-no" title="statement not covered" >1;</span>
+const FORM_TYPE_UPDATE = <span class="cstat-no" title="statement not covered" >2;</span>
 &nbsp;
 export {
   CANNOT_SET_FUTURE_DATE,
@@ -160,7 +160,7 @@ export {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jan 25 2021 17:02:48 GMT-0500 (Eastern Standard Time)
+                at Mon Feb 22 2021 15:18:16 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

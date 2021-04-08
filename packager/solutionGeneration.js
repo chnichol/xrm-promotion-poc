@@ -5,8 +5,17 @@ const path = require("path");
 const parser = new xml2js.Parser({ async: false });
 
 const changesPath = "changes";
-const all_comp =
-  (process.env.all_comp && JSON.parse(process.env.all_comp)) || [];
+const all_comp = fs
+  .readFileSync("branch.diff", { encoding: "UTF-8" })
+  .match(/.\t.*/gi)
+  .reduce((acc, cur) => {
+    const spl = cur.split("\t");
+    acc.push({
+      action: spl[0],
+      file: spl[1],
+    });
+    return acc;
+  }, []);
 
 const folderPath = "solution_components";
 const appModulesPath = "AppModules";
@@ -20,7 +29,7 @@ const pluginAssembliesPath = "PluginAssemblies";
 const sdkMessageProcessingStepsPath = "SdkMessageProcessingSteps";
 const webResourcesPath = "WebResources";
 const workflowsPath = "Workflows";
-
+debugger
 /*
 
 const component_dir_map = {};
@@ -200,6 +209,7 @@ console.log(`Component folder: ${folderPath}`);
 console.log(`All changed files: ${all_comp}`);
 
 all_comp
+  .map(c=>c.file)
   .map(f=>f.match(`${folderPath}/${entitiesPath}`) && f.split('/').slice(0,3).join('/') || f)
   .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
   .filter((f) => f.match(folderPath))
