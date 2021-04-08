@@ -20,10 +20,17 @@ jobs:
     - run: node .\packager\solutionGeneration.js
       env:
         all_comp: ${{ steps.files.outputs.all }}
-    - name: Import Spread Components
+    - name: Build Solution
       run: powershell .\packager\import_artifacts.ps1
-      env:
-        CRM_CONN:  ${{ secrets.CRM_CONN }}
+    - name: Import solution to prod env
+      uses: microsoft/powerplatform-actions/import-solution@v0
+      with:
+        environment-url: 'https://e2poc.crm9.dynamics.com/'
+        user-name: 'christopher.nichols@e2poc.onmicrosoft.com'
+        password-secret: ${{ secrets.PASSWORD }}
+        solution-file: import.zip
+        force-overwrite: true
+        publish-changes: true
     - name: Archive Build Artifacts
       uses: actions/upload-artifact@v2
       with:
