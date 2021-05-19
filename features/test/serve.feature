@@ -1,6 +1,6 @@
 @BDDSTORY-DST-1
 Feature: Serve coffee
-As a coffee loverI can get coffee from the machineSo I can enjoy the rest of the day
+As a coffee lover I can get coffee from the machineSo I can enjoy the rest of the day
 
   Background:
     Given the coffee machine is started
@@ -11,11 +11,3 @@ As a coffee loverI can get coffee from the machineSo I can enjoy the rest of the
     Given the coffee machine is started
     When I take a coffee
     Then coffee should be served
-
-  @BDDTEST-DST-3
-  Scenario: It is possible to take 10 coffees after the message "Fill water tank" is displayed
-    
-
-  @BDDTEST-DST-4
-  Scenario: When the water tank is filled, the message disappears
-    
