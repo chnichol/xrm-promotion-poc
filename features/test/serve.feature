@@ -8,6 +8,6 @@ As a coffee lover I can get coffee from the machineSo I can enjoy the rest of th
 
   @BDDTEST-DST-2
   Scenario: Message "Fill water tank" is displayed after 50 coffees are taken
-    Given the coffee machine is started
+    Given the coffe machine has been used 50 times
     When I take a coffee
     Then coffee should be served
