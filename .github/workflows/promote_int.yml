@@ -10,6 +10,10 @@ jobs:
     runs-on: windows-2019
 
     steps:
+    - id: files
+      uses: jitterbit/get-changed-files@v1   
+      with:
+        format: 'json'
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
