@@ -14,7 +14,7 @@ var hppAdminForm = (function (exports) {
 	};
 
 	var enableField = function enableField(ctrl) {
-	  debugger;;
+	  debugger;
 	  ctrl && ctrl.setDisabled(false);
 	};
 
