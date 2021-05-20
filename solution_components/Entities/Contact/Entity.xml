@@ -10,7 +10,7 @@
         <LocalizedCollectionName description="Contacts" languagecode="1033" />
       </LocalizedCollectionNames>
       <Descriptions>
-        <Description description="Person or persons with whom a business unit has a relationship, such as customer, supplier, and colleague." languagecode="1033" />
+        <Description description="Person with whom a business unit has a relationship, such as customer, supplier, and colleague." languagecode="1033" />
       </Descriptions>
       <attributes />
       <EntitySetName>contacts</EntitySetName>
