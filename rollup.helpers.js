@@ -1,3 +1,12 @@
+import babel from "rollup-plugin-babel";
+import resolve from "rollup-plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import replace from "rollup-plugin-replace";
+import { terser } from "rollup-plugin-terser";
+import strip from "rollup-plugin-strip";
+import alias from "rollup-plugin-alias";
+import path from 'path';
+
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.substr(1);
 
 export const generateName = (config, filename) => path
