@@ -55,10 +55,12 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "xml-loader": "^1.2.1",
+    "xrm-cli": "file:../cli",
     "xrm-mock": "^3.4.21"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "npx rollup -c",
+    "cli": "node node_modules/xrm-cli",
     "test": "jest --ci --coverage"
   },
   "repository": {
