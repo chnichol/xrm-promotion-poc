@@ -1,4 +1,4 @@
-import { generateRollup } from './rollup.helpers'
+import { findFiles, generateRollup } from './rollup.helpers'
 
 const config = {
     distRoot: {
@@ -8,8 +8,4 @@ const config = {
     srcRoot: './src/client'
 };
 
-const files = [
-    './src/client/govcdm_/forms/contact/main.js'
-];
-
-export default generateRollup(config, files);
+export default generateRollup(config, findFiles(config.srcRoot, /main.js/g));

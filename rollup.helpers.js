@@ -5,9 +5,24 @@ import replace from "rollup-plugin-replace";
 import { terser } from "rollup-plugin-terser";
 import strip from "rollup-plugin-strip";
 import alias from "rollup-plugin-alias";
+import fs from 'fs';
 import path from 'path';
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.substr(1);
+
+export const findFiles = (dirname, pattern) => {
+    const results = [];
+    fs.readdirSync(dirname).forEach(p => {
+        const filePath = path.join(dirname, p);
+        if (fs.lstatSync(filePath).isDirectory()) {
+            findFiles(filePath, pattern).forEach(f => results.push(f));
+        }
+        else if (pattern.test(path.basename(filePath)) || pattern.test(path.normalize(filePath))) {
+            results.push(filePath);
+        }
+    });
+    return results;
+};
 
 export const generateName = (config, filename) => path
     .relative(path.normalize(config.srcRoot), path.normalize(filename)) // Get the file path relative to the source directory
