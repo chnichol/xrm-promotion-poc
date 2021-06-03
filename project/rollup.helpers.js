@@ -75,7 +75,6 @@ export const generateBuildRollup = (config, filename) => ({
     },
     plugins: [
         alias({
-            //'client/*': 'src/client/*',
             debug: 'node_modules/debug/dist/debug.js'
         }),
         resolve({
@@ -104,9 +103,6 @@ export const generateDebugRollup = (config, filename) => ({
         sourcemap: 'inline'
     },
     plugins: [
-        // alias({
-        //     client: 'src/client'
-        // }),
         resolve({
             jsnext: true,
             main: true,
