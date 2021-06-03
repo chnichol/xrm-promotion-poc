@@ -1,5 +1,5 @@
 import msal from '@azure/msal-node';
-import { getConfig } from '../config';
+import { getConfig } from '../common/config';
 
 export default async (refreshToken: string): Promise<msal.AuthenticationResult | undefined> => {
     const config = await getConfig();
