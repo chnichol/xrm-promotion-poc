@@ -21,7 +21,7 @@ export default (): Promise<msal.AuthenticationResult> => new Promise(async (reso
             app.locals.pkceCodes.verifier = verifier;
 
             const authCodeUrlParameters = {
-                scopes: [ 'openid' ],
+                scopes: [ `${config.dynamics}/user_impersonation` ],
                 redirectUri: config.urls.redirect,
                 codeChallenge: app.locals.pkceCodes.challenge,
                 codeChallengeMethod: app.locals.pkceCodes.challengeMethod
@@ -34,7 +34,7 @@ export default (): Promise<msal.AuthenticationResult> => new Promise(async (reso
     app.get('/redirect', (request, response) => {
         const tokenRequest = {
             code: (request.query.code ?? '').toString(),
-            scopes: [ 'openid' ],
+            scopes: [ `${config.dynamics}/user_impersonation` ],
             redirectUri: config.urls.redirect,
             codeVerifier: app.locals.pkceCodes.verifier
         };
