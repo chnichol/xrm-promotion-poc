@@ -8,6 +8,7 @@ interface Auth {
 
 interface Config {
     readonly auth: Auth;
+    readonly dynamics: string;
     readonly urls: Urls;
 }
 
