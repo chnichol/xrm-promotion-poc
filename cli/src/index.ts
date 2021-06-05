@@ -1,3 +1,4 @@
+import generator from './generator';
 import webResource from './webResource';
 
 /**
@@ -7,6 +8,9 @@ import webResource from './webResource';
  */
 function main(command: string, args: string[]) {
     switch (command) {
+        case 'generate':
+            generator(args);
+            break;
         case 'wr':
         case 'web-resource':
             webResource(args);
