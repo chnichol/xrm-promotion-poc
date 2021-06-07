@@ -5,6 +5,7 @@ import replace from "rollup-plugin-replace";
 import { terser } from "rollup-plugin-terser";
 import strip from "rollup-plugin-strip";
 import alias from "rollup-plugin-alias";
+import typescript from '@rollup/plugin-typescript';
 import fs from 'fs';
 import path from 'path';
 
@@ -37,7 +38,10 @@ export const generateName = (config, filename) => path
 /** Generate the build path by mapping the source file to the build directory. */
 export const generateBuildPath = (config, filename) => path.join(
     config.distRoot.build,
-    path.relative(path.normalize(config.srcRoot), path.normalize(filename))
+    path.relative(
+        path.normalize(config.srcRoot),
+        path.normalize(filename).replace(/\.ts/g, '.js')
+    )
 );
 
 /** 
@@ -52,7 +56,7 @@ export const generateDebugPath = (config, filename) => path.join(
             .split(/\\|\//g)
             .filter(s => !!s)
             .map((f, i, a) => i === a.length - 1
-                ? f.split('.')[0] + '.debug.' + f.split('.', 2)[1]
+                ? f.split('.')[0] + '.debug.' + f.split('.', 2)[1].replace(/ts/g, 'js')
                 : f
             )
             .join(path.sep)
@@ -71,14 +75,14 @@ export const generateBuildRollup = (config, filename) => ({
     },
     plugins: [
         alias({
-            debug: 'node_modules/debug/dist/debug.js',
+            debug: 'node_modules/debug/dist/debug.js'
         }),
         resolve({
             jsnext: true,
             main: true,
             browser: true,
         }),
-        commonjs(),
+        (path.extname(filename) === '.ts' ? typescript() : commonjs()),
         babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true
@@ -104,7 +108,7 @@ export const generateDebugRollup = (config, filename) => ({
             main: true,
             browser: true,
         }),
-        commonjs(),
+        (path.extname(filename) === '.ts' ? typescript() : commonjs()),
         babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true

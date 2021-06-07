@@ -8,4 +8,4 @@ const config = {
     srcRoot: './src/client'
 };
 
-export default generateRollup(config, findFiles(config.srcRoot, /main.js/g));
+export default generateRollup(config, findFiles(config.srcRoot, /main\.(js|ts)/g));
