@@ -1,11 +1,13 @@
 import { getToken } from '../auth';
 import { getConfig } from '../common/config';
 import lookup from './lookup';
+import publish from './publish';
 import query from './query';
 import update from './update';
 
 export {
     lookup,
+    publish,
     query,
     update
 }

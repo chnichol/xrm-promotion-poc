@@ -2,7 +2,7 @@ import axios from "axios"
 import { getApiUrl, getAuthHeader } from "."
 import { QueryResponse } from "../types";
 
-export default async (entity: string, filter?: { [key: string]: string; }, select?: string[]): Promise<QueryResponse<any>> => {
+export default async <T> (entity: string, filter?: { [key: string]: string; }, select?: string[]): Promise<QueryResponse<T>> => {
     const query = [];
     if (filter) {
         query.push('$filter=' + Object.keys(filter).map(k => `${k} eq '${filter[k]}'`).join(' and '));    
@@ -17,5 +17,5 @@ export default async (entity: string, filter?: { [key: string]: string; }, selec
             Authorization: await getAuthHeader()
         }
     });
-    return response.data as QueryResponse<any>;
+    return response.data as QueryResponse<T>;
 }
