@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "cli": "ts-node src/cli.ts"
   },
   "bin": {
     "xrm-cli": "dist/index.js"
