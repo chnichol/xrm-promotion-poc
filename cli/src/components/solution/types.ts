@@ -1,3 +1,5 @@
+import SolutionComponent from '../solutioncomponent/types';
+
 /**
  * A solution which contains CRM customizations.
  * 
@@ -11,7 +13,7 @@ export enum SolutionType {
     Internal = 2
 }
 
-interface Properties {
+export interface Properties {
     /**
      * Date and time when the solution was created.
      * @alias Created On
@@ -129,7 +131,7 @@ interface Properties {
     readonly versionnumber: number;
 }
 
-interface LookupProperties {
+export interface LookupProperties {
     /**
      * A link to an optional configuration page for this solution.
      * @readonly
@@ -165,7 +167,7 @@ interface LookupProperties {
     readonly _publisherid_value: string;
 }
 
-interface SingleValuedNavigationProperties {
+export interface SingleValuedNavigationProperties {
     /**
      * @see WebResource.solution_configuration_webresource
      */
@@ -204,7 +206,7 @@ interface SingleValuedNavigationProperties {
     publisherid: any;
 }
 
-interface CollectionValuedNavigationProperties {
+export interface CollectionValuedNavigationProperties {
     /**
      * @see CanvasApp.FK_CanvasApp_Solution
      */
@@ -236,11 +238,14 @@ interface CollectionValuedNavigationProperties {
     /**
      * @see Role.solution_role
      */
-    solution_role: any[];
+    solution_role: {
+        roleid: string;
+        name: string;
+    };
     /**
      * @see SolutionComponent.solutionid
      */
-    solution_solutioncomponent: any[];
+    solution_solutioncomponent: SolutionComponent;
     /**
      * @see SyncError.regardingobjectid_solution_syncerror
      */

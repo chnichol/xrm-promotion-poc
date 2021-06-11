@@ -99,8 +99,8 @@ export const update = async (method: 'PATCH' | 'PUT', entity: string, id: string
 interface GenericApi<ResourceType> {
     lookup(id: string): Promise<ResourceType>;
     query(): Promise<ResourceType[]>;
-    query<S extends keyof ResourceType>(parameters: { filter: Partial<ResourceType>, select: S[] }): Promise<{ [Property in S]: ResourceType[Property] }[]>;
-    query<S extends keyof ResourceType>(parameters: { select: S[] }): Promise<{ [Property in S]: ResourceType[Property] }[]>;
+    query<S extends keyof ResourceType>(parameters: { filter: Partial<ResourceType>, select: S[] }): Promise<{ [Key in S]: ResourceType[Key] }[]>;
+    query<S extends keyof ResourceType>(parameters: { select: S[] }): Promise<{ [Key in S]: ResourceType[Key] }[]>;
     query(parameters: { filter: Partial<ResourceType> }): Promise<ResourceType[]>;
     update(method: 'PUT', id: string, data: ResourceType): Promise<void>;
     update(method: 'PATCH', id: string, data: Partial<ResourceType>): Promise<void>;
@@ -115,8 +115,8 @@ class Api<ResourceType> implements GenericApi<ResourceType> {
         return lookup(this._resource, id);
     }
     query(): Promise<ResourceType[]>;
-    query<S extends keyof ResourceType>(parameters: { filter: Partial<ResourceType>; select: S[]; }): Promise<{ [Property in S]: ResourceType[Property]; }[]>;
-    query<S extends keyof ResourceType>(parameters: { select: S[]; }): Promise<{ [Property in S]: ResourceType[Property]; }[]>;
+    query<S extends keyof ResourceType>(parameters: { filter: Partial<ResourceType>; select: S[]; }): Promise<{ [Key in S]: ResourceType[Key]; }[]>;
+    query<S extends keyof ResourceType>(parameters: { select: S[]; }): Promise<{ [Key in S]: ResourceType[Key]; }[]>;
     query(parameters: { filter: Partial<ResourceType>; }): Promise<ResourceType[]>;
     query(parameters?: any) {
         return query<any>(this._resource, parameters.filter, parameters.select).then(r => r.value);
@@ -129,7 +129,7 @@ class Api<ResourceType> implements GenericApi<ResourceType> {
 }
 
 const api = {
-    solution: new Api<Solution>('solution'),
+    solution: new Api<Solution>('solutions'),
     webresource: new Api<WebResource>('webresourceset'),
     publish
 };

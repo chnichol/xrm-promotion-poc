@@ -1,7 +1,6 @@
 import yargs from 'yargs';
 import { cli as generateTypes } from './generateTypeDef';
 import { cli as getEntity } from './getEntity';
-import { cli as getSolutions } from './getSolution';
 import { cli as getWebResources } from './getWebResource';
 import { cli as listSolutions } from './listSolutions';
 import { cli as publishEntities } from './publishEntity';
@@ -35,19 +34,6 @@ import { cli as publishWebResources } from './publishWebResource';
             .array('entities')
             .array('solution')
         , (args: any)=> getEntity(args._.slice(1).map((a: any) => a.toString()), args)
-    )
-    .command('get-solutions', 'Gets the solution definition for a provided resource.'
-        , (builder: any)=> builder
-            .usage('get-solutions <solutions> [options]')
-            .positional('solutions', {
-                description: 'Solutions to get'
-            })
-            .option('outdir', {
-                description: 'Folder to save solution files',
-                type: 'string'
-            })
-            .array('solutions')
-        , (args: any)=> getSolutions(args._.slice(1).map((a: any) => a.toString()), args)
     )
     .command('get-webresources', 'Gets the web resources.'
         , (builder: any)=> builder
