@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from '../auth';
 import { getConfig } from '../common/config';
-import { RequestBody, QueryBody, ExpandBody, UpdateRequest, UpdateBody } from './types';
+import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
 
 export interface PublishManifest {
     dashboards?: string[];
@@ -15,18 +15,6 @@ export interface PublishManifest {
 export interface QueryResponse<T> {
     '@odata.context': string;
     value: T;
-}
-
-const createPublishSection = (sectionName: string, rowName: string, uuids: string[]) => {
-    return `<${sectionName}>${uuids.map(uuid => `<${rowName}>${uuid}</${rowName}>`)}</${sectionName}>`;
-}
-
-const createFilterString = (filter: { [key: string]: string | undefined }) => {
-    return '$filter=' + Object.keys(filter).filter(k => filter[k]).map(k => `${k} eq ${filter[k]}`).join(' and ');
-}
-
-const createSelectString = (select: string[]) => {
-    return '$select=' + select.join(',');
 }
 
 const createExpandString = (expand: ExpandBody[]) => {
@@ -48,17 +36,45 @@ const createExpandString = (expand: ExpandBody[]) => {
     return '$expand=' + mainString.join(',');
 }
 
+const createFilterString = (filter: { [key: string]: string | undefined }) => {
+    return '$filter=' + Object.keys(filter).filter(k => filter[k]).map(k => `${k} eq ${filter[k]}`).join(' and ');
+}
+
+const createPublishSection = (sectionName: string, rowName: string, uuids: string[]) => {
+    return `<${sectionName}>${uuids.map(uuid => `<${rowName}>${uuid}</${rowName}>`)}</${sectionName}>`;
+}
+
+const createQueryString = (query: { filter?: { [key: string]: string | undefined }, select?: string[], expand?: ExpandBody[] }) => {
+    const terms = [];
+    if (query.filter && Object.keys(query.filter).length > 0) {
+        terms.push(createFilterString(query.filter));    
+    }
+    if (query.select && query.select.length > 0) {
+        terms.push(createSelectString(query.select));
+    }
+    if (query.expand && query.expand.length > 0) {
+        terms.push(createExpandString(query.expand));
+    }
+    return terms.length ? '?' + terms.join('&') : '';
+}
+
+const createSelectString = (select: string[]) => {
+    return '$select=' + select.join(',');
+}
+
 const getApiUrl = async () => `${(await getConfig()).dynamics}/api/data/v9.0`;
 
 const getAuthHeader = async () => ((token) => `${token.tokenType} ${token.accessToken}`)(await getToken());
 
-export const lookup = async <T> (entity: string, id: string): Promise<T> => {
-    const response = await axios.get(await getApiUrl() + `/${entity}(${id})`, {
+export const lookup = async <T> (lookupBody: LookupBody): Promise<T> => {
+    const queryString = createQueryString(lookupBody);
+    const url = `${await getApiUrl()}/${lookupBody.resource}(${lookupBody.id})${queryString}`;
+    const response = await axios.get(url, {
         headers: {
             Authorization: await getAuthHeader()
         }
     });
-    return response.data;
+    return response.data as T;
 }
 
 export const publish = async (manifest: PublishManifest) => {
@@ -85,17 +101,7 @@ export const publish = async (manifest: PublishManifest) => {
 }
 
 export const query = async <T> (queryBody: QueryBody): Promise<QueryResponse<T>> => {
-    const query = [];
-    if (queryBody.filter) {
-        query.push(createFilterString(queryBody.filter));    
-    }
-    if (queryBody.select) {
-        query.push(createSelectString(queryBody.select));
-    }
-    if (queryBody.expand) {
-        query.push(createExpandString(queryBody.expand));
-    }
-    const queryString = query.length ? '?' + query.join('&') : '';
+    const queryString = createQueryString(queryBody);
     const url = `${await getApiUrl()}/${queryBody.resource}${queryString}`;
     const response = await axios.get(url, {
         headers: {
@@ -105,11 +111,11 @@ export const query = async <T> (queryBody: QueryBody): Promise<QueryResponse<T>>
     return response.data as QueryResponse<T>;
 }
 
-export const update = async (method: 'PATCH' | 'PUT', entity: string, id: string, data: any): Promise<void> => {
-    const url = `${await getApiUrl()}/${entity}(${id})`;
-    switch (method) {
+export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
+    const url = `${await getApiUrl()}/${updateBody.resource}(${updateBody.id})`;
+    switch (updateBody.method) {
         case 'PATCH':
-            await axios.patch(url, data, {
+            await axios.patch(url, updateBody.data, {
                 headers: {
                     Authorization: await getAuthHeader(),
                     'If-Match': '*'
@@ -117,7 +123,7 @@ export const update = async (method: 'PATCH' | 'PUT', entity: string, id: string
             });
             break;
         case 'PUT':
-            await axios.put(url, data, {
+            await axios.put(url, updateBody.data, {
                 headers: {
                     Authorization: await getAuthHeader()
                 }
@@ -131,8 +137,8 @@ export default async <Properties, Response>(request: RequestBody | UpdateBody<Pr
         case 'query': 
             return (await query<Response>(request)).value;
         case 'lookup':
-            return await lookup<Response>(request.resource, request.id);
+            return await lookup<Response>(request);
         case 'update':
-            return (await update(request.method, request.resource, request.id, request.data)) as any;
+            return (await update(request)) as any;
     }
 }

@@ -1,4 +1,5 @@
-import { Argv, boolean } from 'yargs';
+import { Argv } from 'yargs';
+import { getPositionals } from '../../common';
 import { getConfig, saveConfig } from '../../common/config';
 
 interface Options {
@@ -43,7 +44,7 @@ export const command = (yargs: Argv<{}>) => yargs.command('remove'
             description: 'Remove all solutions from the project configuration.',
             type: 'boolean'
         })
-    , args => remove(args._.slice(1).map(a => a.toString()), args)
+    , args => remove(getPositionals(args), args)
 );
 
 export default remove;

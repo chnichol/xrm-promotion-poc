@@ -1,32 +1,36 @@
 import { Argv } from 'yargs';
 import api from '../../api';
-import { isUuid, parseFile } from '../../common';
+import { isUuid } from '../../common';
 import { getConfig } from '../../common/config';
 import { getProjectSolutions } from '.';
-import { Solution } from './types';
 
 interface Options {
     source?: string;
 }
 
-const list = async (options: Options) => {
+const list = async (source: 'config' | 'local' | 'remote') => {
     let solutions: { solutionid: string, uniquename: string }[] = [];
-    switch(options.source) {
+    switch(source) {
         case 'config':
             solutions = ((await getConfig()).project.solutions ?? []).map(s => isUuid(s) ? { solutionid: s, uniquename: '' } : { solutionid: '', uniquename: s });
             break;
         case 'local':
-            solutions = await Promise.all((await getProjectSolutions()).map(s => parseFile<Solution>(s)))
+            solutions = await getProjectSolutions();
             break;
         case 'remote':
             solutions = await api.solution.query({ select: [ 'solutionid', 'uniquename' ] }).execute();
             break;
     }
+    return solutions;
+};
+
+const listCommand = async (options: Options) => {
+    const solutions = await list(options.source as any);
     const rows = solutions
         .sort((s1, s2) => s1.uniquename.localeCompare(s2.uniquename))
         .map(s => ({ 'Unique Name': s.uniquename, 'Solution ID': s.solutionid }));
     console.table(rows);
-};
+}
 
 export const command = (yargs: Argv<{}>) => yargs.command('list', 'List things'
     , builder => builder
@@ -37,7 +41,7 @@ export const command = (yargs: Argv<{}>) => yargs.command('list', 'List things'
             choices: [ 'config', 'local', 'remote' ],
             type: 'string'
         })
-    , args => list(args)
+    , args => listCommand(args)
 );
 
 export default list;

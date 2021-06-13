@@ -1,6 +1,6 @@
 import { Argv } from 'yargs';
 import api from '../../api';
-import { isUuid, quote } from '../../common';
+import { getPositionals, isUuid, quote } from '../../common';
 import { getConfig, saveConfig } from '../../common/config';
 
 const add = async (names?: string[]) => {
@@ -48,7 +48,7 @@ export const command = (yargs: Argv<{}>) => yargs.command('add'
         })
         .require(1, 'Missing required positional, "solutions"')
         .array('solutions')
-    , args => add(args._.slice(1).map(a => a.toString()))
+    , args => add(getPositionals(args))
 );
 
 export default add;

@@ -11,9 +11,12 @@ export const createSearchUrl = (url: string, parameters: { [key: string]: string
     return searchUrl;
 }
 
-const uuidRegex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/g;
+export const getPositionals = (args: { _: (number | string)[] }) => args._.slice(1).map(a => a.toString());
 
-export const isUuid = (text: string) => (text.match(uuidRegex) ?? []).length > 0;
+export const isUuid = (text: string) => {
+    const uuidRegex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/g;
+    return (text.match(uuidRegex) ?? []).length > 0
+}
 
 export const mkdir = (path: string) => fs.mkdir(path, { recursive: true })
     .catch(e => {

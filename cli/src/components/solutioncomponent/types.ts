@@ -1,4 +1,10 @@
-type SolutionComponent = Properties & LookupProperties;
+import Solution from "../solution/types";
+
+type SolutionComponent = Properties & LookupProperties & {
+    [Key in keyof SingleValuedNavigationProperties]?: SingleValuedNavigationProperties;
+} & {
+    [Key in keyof CollectionValuedNavigationProperties]?: CollectionValuedNavigationProperties[Key][];
+};
 
 export default SolutionComponent;
 
@@ -102,21 +108,95 @@ export enum ComponentType {
 }
 
 export type Properties = {
+    /**
+     * The object type code of the component.
+     * @alias Object Type Code
+     * @readonly
+     */
     readonly componenttype: ComponentType;
+    /**
+     * Date and time when the solution was created.
+     * @alias Created On
+     * @readonly
+     */
     readonly createdon: Date;
+    /**
+     * Indicates whether this component is metadata or data.
+     * @alias Is this component metadata
+     * @readonly
+     */
     readonly ismetadata: boolean;
+    /**
+     * Date and time when the solution was last modified.
+     * @alias Modified On
+     * @readonly
+     */
     readonly modifiedon: Date;
+    /**
+     * Unique identifier of the object with which the component is associated.
+     * @alias Regarding
+     * @readonly
+     */
     readonly objectid: string;
+    /**
+     * Indicates the include behavior of the root component.
+     * @alias Root Component Behavior
+     * @readonly
+     */
     readonly rootcomponentbehavior: ComponentBehavior;
+    /**
+     * The parent ID of the subcomponent, which will be a root.
+     * @alias Root Solution Component ID
+     * @readonly
+     */
     readonly rootsolutioncomponentid: string;
+    /**
+     * Unique identifier of the solution component.
+     * @alias Solution Component Identifier
+     * @readonly
+     */
     readonly solutioncomponentid: string;
+    /**
+     * @readonly
+     */
     readonly versionnumber: string;
 }
 
 export type LookupProperties = {
+    /**
+     * Unique identifier of the user who created the solution.
+     * @readonly
+     */
     readonly _createdby_value: string;
+    /**
+     * Unique identifier of the delegate user who created the solution.
+     * @readonly
+     */
     readonly _createdonbehalfby_value: string;
+    /**
+     * Unique identifier of the user who last modified the solution.
+     * @readonly
+     */
     readonly _modifiedby_value: string;
+    /**
+     * Unique identifier of the delegate user who modified the solution.
+     * @readonly
+     */
     readonly _modifiedonbehalfby_value: string;
+    /**
+     * Unique identifier of the solution.
+     * @readonly
+     */
     readonly _solutionid_value: string;
+}
+
+export type SingleValuedNavigationProperties = {
+    createdonbehalfby: any;
+    modifiedonbehalfby: any;
+    rootsolutioncomponentid_solutioncomponent: SolutionComponent;
+    solutionid: Solution;
+}
+
+export type CollectionValuedNavigationProperties = {
+    solutioncomponent_parent_solutioncomponent: SolutionComponent;
 }

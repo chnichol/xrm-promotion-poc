@@ -1,9 +1,8 @@
 import path from 'path';
 import { Argv } from 'yargs';
 import api from '../../api';
-import { isUuid, mkdir, quote, saveFile } from '../../common';
+import { getPositionals, isUuid, mkdir, quote, saveFile } from '../../common';
 import { getConfig, getPath } from '../../common/config';
-import { ComponentType } from '../solutioncomponent/types';
 
 interface Options {
     outdir?: string;
@@ -63,7 +62,7 @@ export const command = (yargs: Argv<{}>) => yargs.command('pull'
             description: 'Directory to save solution definitions to.',
             type: 'string'
         })
-    , args => pull(args._.slice(1).map(a => a.toString()), args)
+    , args => pull(getPositionals(args), args)
 );
 
 export default pull;

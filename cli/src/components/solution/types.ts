@@ -5,7 +5,13 @@ import SolutionComponent from '../solutioncomponent/types';
  * 
  * See {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/solution?view=dynamics-ce-odata-9 docs.microsoft.com}
  */
-export interface Solution extends Properties, LookupProperties, SingleValuedNavigationProperties, CollectionValuedNavigationProperties {}
+type Solution = Properties & LookupProperties & {
+    [Key in keyof SingleValuedNavigationProperties]?: SingleValuedNavigationProperties[Key];
+} & {
+    [Key in keyof CollectionValuedNavigationProperties]?: CollectionValuedNavigationProperties[Key][];
+};
+
+export default Solution;
 
 export enum SolutionType {
     None = 0,
@@ -13,7 +19,7 @@ export enum SolutionType {
     Internal = 2
 }
 
-export interface Properties {
+export type Properties = {
     /**
      * Date and time when the solution was created.
      * @alias Created On
@@ -131,7 +137,7 @@ export interface Properties {
     readonly versionnumber: number;
 }
 
-export interface LookupProperties {
+export type LookupProperties = {
     /**
      * A link to an optional configuration page for this solution.
      * @readonly
@@ -167,7 +173,7 @@ export interface LookupProperties {
     readonly _publisherid_value: string;
 }
 
-export interface SingleValuedNavigationProperties {
+export type SingleValuedNavigationProperties = {
     /**
      * @see WebResource.solution_configuration_webresource
      */
@@ -206,42 +212,39 @@ export interface SingleValuedNavigationProperties {
     publisherid: any;
 }
 
-export interface CollectionValuedNavigationProperties {
+export type CollectionValuedNavigationProperties = {
     /**
      * @see CanvasApp.FK_CanvasApp_Solution
      */
-    FK_CanvasApp_Solution: any[];
+    FK_CanvasApp_Solution: any;
     /**
      * @see Package.package_solution
      */
-    package_solution: any[];
+    package_solution: any;
     /**
      * @see FileAttachment.FileAttachment_Solution
      */
-    regardingobjectid_fileattachment_solution: any[];
+    regardingobjectid_fileattachment_solution: any;
     /**
      * @see FieldPermission.solution_fieldpermission
      */
-    solution_fieldpermission: any[]
+    solution_fieldpermission: any;
     /**
      * @see FieldSecurityProfile.solution_fieldsecurityprofile
      */
-    solution_fieldsecurityprofile: any[];
+    solution_fieldsecurityprofile: any;
     /**
      * @see Solution.parentsolutionid
      */
-    solution_parent_solution: any[];
+    solution_parent_solution: any;
     /**
      * @see Privilege.solution_privilege
      */
-    solution_privilege: any[];
+    solution_privilege: any;
     /**
      * @see Role.solution_role
      */
-    solution_role: {
-        roleid: string;
-        name: string;
-    };
+    solution_role: any;
     /**
      * @see SolutionComponent.solutionid
      */
@@ -249,5 +252,5 @@ export interface CollectionValuedNavigationProperties {
     /**
      * @see SyncError.regardingobjectid_solution_syncerror
      */
-    solution_Solution_SyncErrors: any[];
+    solution_Solution_SyncErrors: any;
 }
