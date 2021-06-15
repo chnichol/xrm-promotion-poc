@@ -29,11 +29,11 @@ export type QueryBody = {
 }
 
 export type PatchBody<Properties> = {
-    type: 'update',
-    method: 'PATCH',
-    resource: string,
-    id: string,
-    data: Partial<Properties>
+    type: 'update';
+    method: 'PATCH';
+    resource: string;
+    id: string;
+    data: Partial<Properties>;
 }
 
 export type PutBody<Properties> = {

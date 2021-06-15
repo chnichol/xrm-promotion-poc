@@ -1,16 +1,24 @@
-import SolutionComponent from '../solutioncomponent/types';
+import { Component } from '../../components/types';
+import CanvasApp from './CanvasApp';
+import FieldPermission from './FieldPermission';
+import FieldSecurityProfile from './FieldSecurityProfile';
+import FileAttachment from './FileAttachment';
+import Organization from './Organization';
+import Package from './Package';
+import Privilege from './Privilege';
+import Publisher from './Publisher';
+import Role from './Role';
+import SolutionComponent from './SolutionComponent';
+import SyncError from './SyncError';
+import SystemUser from './SystemUser';
+import WebResource from './WebResource';
 
 /**
  * A solution which contains CRM customizations.
  * 
  * See {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/solution?view=dynamics-ce-odata-9 docs.microsoft.com}
  */
-type Solution = Properties & LookupProperties & {
-    [Key in keyof SingleValuedNavigationProperties]?: SingleValuedNavigationProperties[Key];
-} & {
-    [Key in keyof CollectionValuedNavigationProperties]?: CollectionValuedNavigationProperties[Key][];
-};
-
+type Solution = Component<Properties, LookupProperties, SingleValuedNavigationProperties, CollectionValuedNavigationProperties>;
 export default Solution;
 
 export enum SolutionType {
@@ -22,47 +30,47 @@ export enum SolutionType {
 export type Properties = {
     /**
      * Date and time when the solution was created.
-     * @alias Created On
+     * @display Created On
      * @readonly
      */
     readonly createdon: Date;
     /**
      * Description of the solution.
-     * @alias Description
+     * @display Description
      */
     description: string;
     /**
      * User display name for the solution.
-     * @alias Display Name
+     * @display Display Name
      */
     friendlyname: string;
     /**
      * Date and time when the solution was installed/upgraded.
-     * @alias Installed On
+     * @display Installed On
      * @readonly
      */
     readonly installedon: Date;
     /**
      * Information about whether the solution is api managed.
-     * @alias Is Api Managed Solution
+     * @display Is Api Managed Solution
      * @readonly
      */
     readonly isapimanaged: boolean;
     /**
      * Indicates whether the solution is managed or unmanaged.
-     * @alias Package Type
+     * @display Package Type
      * @readonly
      */
     readonly ismanaged: boolean;
     /**
      * Indicates whether the solution is visible outside of the platform.
-     * @alias Is Visible Outside Platform
+     * @display Is Visible Outside Platform
      * @readonly
      */
     readonly isvisible: boolean;
     /**
      * Date and time when the solution was last modified.
-     * @alias Modified On
+     * @display Modified On
      * @readonly
      */
     readonly modifiedon: Date;
@@ -87,37 +95,37 @@ export type Properties = {
     readonly pinpointsolutionid: number;
     /**
      * Unique identifier of the solution.
-     * @alias Solution Identifier
+     * @display Solution Identifier
      */
     solutionid: string;
     /**
      * Solution package source organization version.
-     * @alias Solution Package Version
+     * @display Solution Package Version
      */
     solutionpackageversion: string;
     /**
      * Solution Type.
-     * @alias Solution Type
+     * @display Solution Type
      */
     solutiontype: SolutionType;
     /**
      * The template suffix of this solution.
-     * @alias Suffix
+     * @display Suffix
      */
     templatesuffix: string;
     /**
      * Thumbprint of the solution signature.
-     * @alias Thumbprint
+     * @display Thumbprint
      */
     thumbprint: string;
     /**
      * The unique name of this solution.
-     * @alias Name
+     * @display Name
      */
     uniquename: string;
     /**
      * Date and time when the solution was updated.
-     * @alias Updated On
+     * @display Updated On
      * @readonly
      */
     readonly updatedon: Date;
@@ -128,7 +136,7 @@ export type Properties = {
     readonly upgradeinfo: string;
     /**
      * Solution version, used to identify a solution for upgrades and hotfixes.
-     * @alias Version
+     * @display Version
      */
     version: string;
     /**
@@ -174,83 +182,26 @@ export type LookupProperties = {
 }
 
 export type SingleValuedNavigationProperties = {
-    /**
-     * @see WebResource.solution_configuration_webresource
-     */
-    configurationpageid: any;
-    /**
-     * @see SystemUser.lk_solution_createdby
-     */
-    createdby: any;
-    /**
-     * @see SystemUser.lk_solutionbase_createdonbehalfby
-     */
-    createdonbehalfby: any;
-    /**
-     * @see FileAttachment.solution_fileid
-     */
-    fileid: any;
-    /**
-     * @see SystemUser.lk_solution_modifiedby
-     */
-    modifiedby: any;
-    /**
-     * @see SystemUser.lk_solutionbase_modifiedonbehalfby
-     */
-    modifiedonbehalfby: any;
-    /**
-     * @see Organization.organization_solution
-     */
-    organizationid: any;
-    /**
-     * @see Solution.solution_parent_solution
-     */
-    parentsolutionid: any;
-    /**
-     * @see Publisher.publisher_solution
-     */
-    publisherid: any;
+    configurationpageid: WebResource;
+    createdby: SystemUser;
+    createdonbehalfby: SystemUser;
+    fileid: FileAttachment;
+    modifiedby: SystemUser;
+    modifiedonbehalfby: SystemUser;
+    organizationid: Organization;
+    parentsolutionid: Solution;
+    publisherid: Publisher;
 }
 
 export type CollectionValuedNavigationProperties = {
-    /**
-     * @see CanvasApp.FK_CanvasApp_Solution
-     */
-    FK_CanvasApp_Solution: any;
-    /**
-     * @see Package.package_solution
-     */
-    package_solution: any;
-    /**
-     * @see FileAttachment.FileAttachment_Solution
-     */
-    regardingobjectid_fileattachment_solution: any;
-    /**
-     * @see FieldPermission.solution_fieldpermission
-     */
-    solution_fieldpermission: any;
-    /**
-     * @see FieldSecurityProfile.solution_fieldsecurityprofile
-     */
-    solution_fieldsecurityprofile: any;
-    /**
-     * @see Solution.parentsolutionid
-     */
-    solution_parent_solution: any;
-    /**
-     * @see Privilege.solution_privilege
-     */
-    solution_privilege: any;
-    /**
-     * @see Role.solution_role
-     */
-    solution_role: any;
-    /**
-     * @see SolutionComponent.solutionid
-     */
+    FK_CanvasApp_Solution: CanvasApp;
+    package_solution: Package;
+    regardingobjectid_fileattachment_solution: FileAttachment;
+    solution_fieldpermission: FieldPermission;
+    solution_fieldsecurityprofile: FieldSecurityProfile;
+    solution_parent_solution: Solution;
+    solution_privilege: Privilege;
+    solution_role: Role;
     solution_solutioncomponent: SolutionComponent;
-    /**
-     * @see SyncError.regardingobjectid_solution_syncerror
-     */
-    solution_Solution_SyncErrors: any;
+    solution_Solution_SyncErrors: SyncError;
 }

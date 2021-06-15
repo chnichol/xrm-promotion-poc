@@ -1,11 +1,13 @@
-import Solution from "../solution/types";
+import { Component } from '../../components/types';
+import Solution from "./Solution";
+import SystemUser from './SystemUser';
 
-type SolutionComponent = Properties & LookupProperties & {
-    [Key in keyof SingleValuedNavigationProperties]?: SingleValuedNavigationProperties;
-} & {
-    [Key in keyof CollectionValuedNavigationProperties]?: CollectionValuedNavigationProperties[Key][];
-};
-
+/**
+ * A component of a CRM solution.
+ * 
+ * See {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/solutioncomponent?view=dynamics-ce-odata-9 docs.microsoft.com}
+ */
+type SolutionComponent = Component<Properties, LookupProperties, SingleValuedNavigationProperties, CollectionValuedNavigationProperties>;
 export default SolutionComponent;
 
 export enum ComponentBehavior {
@@ -110,49 +112,49 @@ export enum ComponentType {
 export type Properties = {
     /**
      * The object type code of the component.
-     * @alias Object Type Code
+     * @display Object Type Code
      * @readonly
      */
     readonly componenttype: ComponentType;
     /**
      * Date and time when the solution was created.
-     * @alias Created On
+     * @display Created On
      * @readonly
      */
     readonly createdon: Date;
     /**
      * Indicates whether this component is metadata or data.
-     * @alias Is this component metadata
+     * @display Is this component metadata
      * @readonly
      */
     readonly ismetadata: boolean;
     /**
      * Date and time when the solution was last modified.
-     * @alias Modified On
+     * @display Modified On
      * @readonly
      */
     readonly modifiedon: Date;
     /**
      * Unique identifier of the object with which the component is associated.
-     * @alias Regarding
+     * @display Regarding
      * @readonly
      */
     readonly objectid: string;
     /**
      * Indicates the include behavior of the root component.
-     * @alias Root Component Behavior
+     * @display Root Component Behavior
      * @readonly
      */
     readonly rootcomponentbehavior: ComponentBehavior;
     /**
      * The parent ID of the subcomponent, which will be a root.
-     * @alias Root Solution Component ID
+     * @display Root Solution Component ID
      * @readonly
      */
     readonly rootsolutioncomponentid: string;
     /**
      * Unique identifier of the solution component.
-     * @alias Solution Component Identifier
+     * @display Solution Component Identifier
      * @readonly
      */
     readonly solutioncomponentid: string;
@@ -191,8 +193,8 @@ export type LookupProperties = {
 }
 
 export type SingleValuedNavigationProperties = {
-    createdonbehalfby: any;
-    modifiedonbehalfby: any;
+    createdonbehalfby: SystemUser;
+    modifiedonbehalfby: SystemUser;
     rootsolutioncomponentid_solutioncomponent: SolutionComponent;
     solutionid: Solution;
 }

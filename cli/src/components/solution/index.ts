@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { parseFile } from '../../common';
 import { getConfig, getPath } from '../../common/config';
-import Solution from './types';
+import Solution from '../../types/entity/Solution';
 
 export const getProjectSolutionFiles = async (names?: string[]): Promise<string[]> => {
     const config = await getConfig();

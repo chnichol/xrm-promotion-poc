@@ -1,4 +1,5 @@
 import axios from 'axios';
+import JSONBigInt from 'json-bigint';
 import { getToken } from '../auth';
 import { getConfig } from '../common/config';
 import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
@@ -72,9 +73,11 @@ export const lookup = async <T> (lookupBody: LookupBody): Promise<T> => {
     const response = await axios.get(url, {
         headers: {
             Authorization: await getAuthHeader()
-        }
+        },
+        transformResponse: [ data => data ]
     });
-    return response.data as T;
+    const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
+    return data as T;
 }
 
 export const publish = async (manifest: PublishManifest) => {
@@ -106,26 +109,30 @@ export const query = async <T> (queryBody: QueryBody): Promise<QueryResponse<T>>
     const response = await axios.get(url, {
         headers: {
             Authorization: await getAuthHeader()
-        }
+        },
+        transformResponse: [ data => data ]
     });
-    return response.data as QueryResponse<T>;
+    const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
+    return data as QueryResponse<T>;
 }
 
 export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
     const url = `${await getApiUrl()}/${updateBody.resource}(${updateBody.id})`;
     switch (updateBody.method) {
         case 'PATCH':
-            await axios.patch(url, updateBody.data, {
+            await axios.patch(url, JSONBigInt({ useNativeBigInt: true }).stringify(updateBody.data), {
                 headers: {
                     Authorization: await getAuthHeader(),
+                    'Content-Type': 'application/json',
                     'If-Match': '*'
                 }
             });
             break;
         case 'PUT':
-            await axios.put(url, updateBody.data, {
+            await axios.put(url, JSONBigInt({ useNativeBigInt: true }).stringify(updateBody.data), {
                 headers: {
-                    Authorization: await getAuthHeader()
+                    Authorization: await getAuthHeader(),
+                    'Content-Type': 'application/json'
                 }
             });
             break;
@@ -134,7 +141,7 @@ export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
 
 export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties>): Promise<Response> => {
     switch (request.type) {
-        case 'query': 
+        case 'query':
             return (await query<Response>(request)).value;
         case 'lookup':
             return await lookup<Response>(request);

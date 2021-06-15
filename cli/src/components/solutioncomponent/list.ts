@@ -2,13 +2,13 @@ import { Argv } from 'yargs';
 import api from '../../api';
 import { getPositionals, isUuid } from '../../common';
 import { getProjectSolutions } from '../solution';
-import { ComponentType } from './types';
+import { ComponentType } from '../../types/entity/SolutionComponent';
 
 interface Options {
     source?: string;
 }
 
-const list = async (names: string[], source: string) => {
+const list = async (names: string[], source: 'local' | 'remote') => {
     if (source === 'local') {
         const solutions = (await getProjectSolutions(names)).map(s => ({
             solutionid: s.solutionid,
@@ -35,7 +35,7 @@ const listCommand = async (names: string[], options: Options) => {
     if (names.length === 0) {
         names = (await getProjectSolutions()).map(s => s.solutionid);
     }
-    const solutions = await list(names, options.source ?? 'local');
+    const solutions = await list(names, (options.source ?? 'local') as any);
     const results: {
         'Solution': string,
         'Component ID': string,
