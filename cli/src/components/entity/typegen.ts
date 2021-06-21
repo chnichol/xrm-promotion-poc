@@ -78,14 +78,14 @@ const saveEntityTypeDef = async (file: string, attributes: AttributeMetadata[]) 
 const typegen = async (name: string) => {
     const config = await getConfig();
     const entityPaths = getPath(config).entity({ logicalname: name });
-    const typeFile = path.join(entityPaths.directory, 'index.d.ts');
+    const typeFile = path.join(entityPaths.directory, 'index.ts');
     const attributes = await parseFile<AttributeMetadata[]>(entityPaths.attributes);
     await saveEntityTypeDef(typeFile, attributes);
 }
 
 const typegenIndex = async (names: string[]) => {
     const config = await getConfig();
-    const indexFile = path.join(getPath(config).entities, 'index.d.ts');
+    const indexFile = path.join(getPath(config).entities, 'index.ts');
     const entities = await loadEntityIndex(indexFile);
     names.forEach(name => {
         if (!entities.has(name)) {
