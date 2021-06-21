@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { parse } from 'jsonc-parser';
 import { getExtension } from '../components/webresource';
-import { WebResourceType } from '../types';
+import { WebResourceType } from '../types/entity/WebResource';
 
 export default interface Config {
     auth: {
