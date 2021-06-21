@@ -115,4 +115,4 @@ export const command = (yargs: Argv<{}>) => yargs.command('typegen'
     , args => typegenCommand(getPositionals(args))
 );
 
-export default typegen;
+export default typegenCommand;
