@@ -1,3 +1,4 @@
+import cli from './components/cli';
 import entity from './components/entity/cli';
 import solution from './components/solution/cli';
 import solutioncomponent from './components/solutioncomponent/cli';
@@ -19,6 +20,6 @@ switch(command) {
         webresource(argv);
         break;
     default:
-        console.log('help');
+        cli(argv);
 }
 
