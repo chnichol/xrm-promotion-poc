@@ -1,0 +1,36 @@
+{
+    "@odata.etag": "W/\"5915151\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "publishedon": "2021-04-30T19:56:02Z",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "introducedversion": "1.0",
+    "formid": "1329af78-3212-4175-a04a-28eb404d6dd4",
+    "istabletenabled": false,
+    "isdesktopenabled": false,
+    "formidunique": "d0a1816e-ae1d-4ba3-bb7b-75842b584b5f",
+    "ismanaged": false,
+    "isdefault": false,
+    "objecttypecode": "new_sapling",
+    "type": 2,
+    "componentstate": 0,
+    "formpresentation": 1,
+    "formactivationstate": 1,
+    "versionnumber": 5915151,
+    "isairmerged": false,
+    "name": "Information",
+    "uniquename": null,
+    "version": null,
+    "_ancestorformid_value": null,
+    "description": "A form for this entity.",
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    }
+}

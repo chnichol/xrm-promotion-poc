@@ -1,0 +1,47 @@
+{
+    "@odata.etag": "W/\"8446986\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "isenabledformobileclient": false,
+    "displayname": "Image for Testing",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "_createdby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "introducedversion": "1.0",
+    "dependencyxml": "<Dependencies><Dependency componentType=\"WebResource\"/></Dependencies>",
+    "isavailableformobileoffline": false,
+    "ismanaged": false,
+    "webresourcetype": 6,
+    "createdon": "2021-06-07T15:18:04Z",
+    "componentstate": 0,
+    "_modifiedby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "versionnumber": 8446986,
+    "webresourceid": "7dc78688-a3c7-eb11-bacc-0022480967f8",
+    "modifiedon": "2021-06-14T19:57:48Z",
+    "name": "new_testImage",
+    "webresourceidunique": "73efffed-38a0-4b9b-8db3-82df6f4e48cd",
+    "contentfileref": null,
+    "contentjson": null,
+    "contentjsonfileref_name": null,
+    "contentfileref_name": null,
+    "_modifiedonbehalfby_value": null,
+    "silverlightversion": null,
+    "languagecode": null,
+    "_createdonbehalfby_value": null,
+    "contentjsonfileref": null,
+    "description": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    },
+    "ishidden": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "ishidden"
+    }
+}

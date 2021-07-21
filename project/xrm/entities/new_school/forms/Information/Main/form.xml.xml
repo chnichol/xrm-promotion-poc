@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<form headerdensity="HighWithControls">
+  <tabs>
+    <tab verticallayout="true" id="{d46ee5e5-4dcf-40ad-965c-0bcfdff1721c}" IsUserDefined="1" expanded="true" visible="true" name="tab_general">
+      <labels>
+        <label description="General" languagecode="1033"/>
+      </labels>
+      <columns>
+        <column width="100%">
+          <sections>
+            <section name="section_general_create" id="919538c8-b3d6-4b40-9f27-9fe29c1cc527" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+              <labels>
+                <label description="General, Create" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{51b09c66-4848-447a-ba71-b2d49d4aa848}" locklevel="0">
+                    <labels>
+                      <label description="Name" languagecode="1033"/>
+                    </labels>
+                    <control id="new_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="new_name" disabled="false"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{f4d927c2-bdee-44ae-83d3-331320b0431c}" locklevel="0">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+            <section name="section_general_update" id="f962b670-239a-422e-b71d-26ae16faa452" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false">
+              <labels>
+                <label description="General, Edit" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{74a2cac0-bd4e-4d4d-8077-51c77a644724}">
+                    <labels>
+                      <label description="Name" languagecode="1033"/>
+                    </labels>
+                    <control id="new_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_name"/>
+                  </cell>
+                  <cell id="{2a2b5848-c28e-4e58-8543-d26f10b15dcf}" locklevel="0">
+                    <labels>
+                      <label description="ID" languagecode="1033"/>
+                    </labels>
+                    <control id="new_id" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="new_id" disabled="true"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{cad8a040-892a-4ec7-b484-e2d7a772747a}">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid"/>
+                  </cell>
+                  <cell id="{7770f93c-f2ed-4751-9567-2af23a01f829}" locklevel="0">
+                    <labels>
+                      <label description="Planted Saplings" languagecode="1033"/>
+                    </labels>
+                    <control id="new_plantedsaplings" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="new_plantedsaplings" disabled="false"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+            <section name="section_contact" id="44f5107f-f8aa-4c39-bef7-5df3824f2909" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+              <labels>
+                <label description="Contact" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{86c60035-6a0e-48c9-ba6d-9189adc6a3ce}" locklevel="0">
+                    <labels>
+                      <label description="Email" languagecode="1033"/>
+                    </labels>
+                    <control id="new_email" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="new_email" disabled="false"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+            <section name="section_address" id="1ce296fa-6623-4a40-8b65-1fe34cce88be" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+              <labels>
+                <label description="Address" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{9856d1f8-b688-4d09-8a43-94b01ecfb4d0}" locklevel="0">
+                    <labels>
+                      <label description="Street" languagecode="1033"/>
+                    </labels>
+                    <control id="new_addressstreet" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="new_addressstreet" disabled="false"/>
+                  </cell>
+                  <cell id="{89cd05bc-8584-4332-a2fa-5478ee222845}" locklevel="0">
+                    <labels>
+                      <label description="Time Zone" languagecode="1033"/>
+                    </labels>
+                    <control id="new_addresstimezone" classid="{7C624A0B-F59E-493D-9583-638D34759266}" datafieldname="new_addresstimezone" disabled="false"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{66f7106b-6d93-47e6-97ea-66e1d04ed471}" locklevel="0">
+                    <labels>
+                      <label description="City" languagecode="1033"/>
+                    </labels>
+                    <control id="new_addresscity" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="new_addresscity" disabled="false"/>
+                  </cell>
+                  <cell showlabel="false" locklevel="0" id="{f355db19-3501-47a6-b88f-dbf894027787}">
+                    <labels>
+                      <label description="" languagecode="1033"/>
+                    </labels>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{8f4ea392-3a80-4f74-b082-7e27904de0ae}" locklevel="0">
+                    <labels>
+                      <label description="State" languagecode="1033"/>
+                    </labels>
+                    <control id="new_addressstate" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="new_addressstate" disabled="false"/>
+                  </cell>
+                  <cell showlabel="false" locklevel="0" id="{d5410db5-9524-4654-9591-97e80c2ea54f}">
+                    <labels>
+                      <label description="" languagecode="1033"/>
+                    </labels>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{eea2232b-6dc9-4d8e-b614-907cb434ff80}" locklevel="0">
+                    <labels>
+                      <label description="Zip" languagecode="1033"/>
+                    </labels>
+                    <control id="new_addresszip" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="new_addresszip" disabled="false"/>
+                  </cell>
+                  <cell showlabel="false" locklevel="0" id="{2d5f7ea1-b704-46cf-9756-1712e9d75ba1}">
+                    <labels>
+                      <label description="" languagecode="1033"/>
+                    </labels>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+            <section name="section_related" id="c286861a-5735-4ae0-8e3c-5dce9f56c04e" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+              <labels>
+                <label description="Related" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell locklevel="0" id="{b7d384f3-66ae-4d6c-9507-29f03d684bf0}" rowspan="1" colspan="1">
+                    <labels>
+                      <label description="Students" languagecode="1033"/>
+                    </labels>
+                    <control id="subgrid_students" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                      <parameters>
+                        <TargetEntityType>new_student</TargetEntityType>
+                        <ViewId>{0D42F777-94C5-4FF1-B574-EB8EBA932EDF}</ViewId>
+                        <ViewIds>{0D42F777-94C5-4FF1-B574-EB8EBA932EDF}</ViewIds>
+                        <EnableViewPicker>false</EnableViewPicker>
+                        <RelationshipName>new_Student_new_School_new_School</RelationshipName>
+                      </parameters>
+                    </control>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+          </sections>
+        </column>
+      </columns>
+    </tab>
+  </tabs>
+  <header id="{45bc54ad-56d7-4f6f-95e5-955abc59911a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{720575ff-8e6c-49fd-a96b-9a95e95517a5}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{d651e0ca-f1f5-4e97-a3f4-279f78c6b5ba}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{f0e69462-d59b-4143-b027-bd1538549372}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </header>
+  <footer id="{2fa2ee7b-b98e-40ab-b97b-056628e3e09f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{cfdb0a3e-13e6-43ae-a6b3-830ac6ea9da6}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{91050c0c-ec21-4a90-a815-024198e83149}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{1d0d9469-c049-4626-a57f-d7e940d9c2d5}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </footer>
+  <DisplayConditions Order="0" FallbackForm="true">
+    <Everyone/>
+  </DisplayConditions>
+  <formLibraries>
+    <Library name="new_clientSideSample" libraryUniqueId="{13f49073-c32d-481d-bc7e-95333f961910}"/>
+  </formLibraries>
+  <events>
+    <event name="onchange" application="true" active="true" attribute="new_addresscity">
+      <Handlers>
+        <Handler functionName="schoolForm.onAddressChange" libraryName="new_clientSideSample" handlerUniqueId="{9ef76d70-e799-4245-a8ca-1a2ba28eaea1}" enabled="true" parameters="" passExecutionContext="true"/>
+      </Handlers>
+    </event>
+    <event name="onchange" application="true" active="true" attribute="new_addressstate">
+      <Handlers>
+        <Handler functionName="schoolForm.onAddressChange" libraryName="new_clientSideSample" handlerUniqueId="{7bd9c03a-fadb-42bc-b86e-69d60360a9b1}" enabled="true" parameters="" passExecutionContext="true"/>
+      </Handlers>
+    </event>
+    <event name="onload" application="true" active="true">
+      <Handlers>
+        <Handler functionName="new_clientSideSample.schoolForm.onLoad" libraryName="new_clientSideSample" handlerUniqueId="{56a65ae5-1efb-48bb-9d41-29ee6c66505e}" enabled="true" parameters="" passExecutionContext="true"/>
+      </Handlers>
+    </event>
+  </events>
+</form>

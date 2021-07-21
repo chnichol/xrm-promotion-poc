@@ -1,0 +1,36 @@
+{
+    "@odata.etag": "W/\"5888325\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "publishedon": "2021-04-30T16:10:23Z",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "introducedversion": "1.0",
+    "formid": "6a72a096-2240-4ca0-8d66-f5c761683439",
+    "istabletenabled": false,
+    "isdesktopenabled": false,
+    "formidunique": "429b4781-0600-425b-8d93-78122ac7b408",
+    "ismanaged": false,
+    "isdefault": false,
+    "objecttypecode": "new_school",
+    "type": 6,
+    "componentstate": 0,
+    "formpresentation": 1,
+    "formactivationstate": 1,
+    "description": null,
+    "versionnumber": 5888325,
+    "isairmerged": false,
+    "name": "Information",
+    "uniquename": null,
+    "version": null,
+    "_ancestorformid_value": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    }
+}

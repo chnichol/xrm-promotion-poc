@@ -1,0 +1,119 @@
+{
+    "MetadataId": "d820753e-5a8d-4a5a-aa8a-dc794104ee9e",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Uniqueidentifier",
+    "ColumnNumber": 1,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0",
+    "EntityLogicalName": "new_school",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": true,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": true,
+    "IsFilterable": true,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_schoolid",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "new_SchoolId",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-04-29T18:07:42Z",
+    "ModifiedOn": "2021-04-29T18:07:42Z",
+    "SourceType": null,
+    "AutoNumberFormat": null,
+    "AttributeTypeName": {
+        "Value": "UniqueidentifierType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Unique identifier for entity instances",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "a17b23c6-15a9-eb11-b1ac-002248045db0",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Unique identifier for entity instances",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "a17b23c6-15a9-eb11-b1ac-002248045db0",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "School",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "a27b23c6-15a9-eb11-b1ac-002248045db0",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "School",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "a27b23c6-15a9-eb11-b1ac-002248045db0",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "SystemRequired",
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

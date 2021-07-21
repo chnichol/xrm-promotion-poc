@@ -1,12 +1,14 @@
-import yargs from 'yargs';
-import { command as pullCommand } from './pull';
-import { command as pushCommand } from './push';
-import { command as typegenCommand } from './typegen';
+import { CommandModule } from '../cli';
+import pull from './pull';
+import push from './push';
+import typegen from './typegen';
 
-export default (argv: string[]) => {
-    const cli = yargs(argv.slice(1)).scriptName('entity');
-    pullCommand(cli);
-    pushCommand(cli);
-    typegenCommand(cli);
-    return cli.help().argv;
+const cli: CommandModule = {
+    name: 'entity',
+    commands: {
+        pull,
+        push,
+        typegen
+    }
 }
+export default cli;

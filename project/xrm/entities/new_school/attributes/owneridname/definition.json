@@ -1,0 +1,117 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.StringAttributeMetadata",
+    "MetadataId": "8f8fc29d-264a-4600-a4a2-f816251a5418",
+    "HasChanged": null,
+    "AttributeOf": "ownerid",
+    "AttributeType": "String",
+    "ColumnNumber": 18,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0",
+    "EntityLogicalName": "new_school",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": false,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "owneridname",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "OwnerIdName",
+    "ExternalName": null,
+    "IsLogical": true,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-04-29T18:07:42Z",
+    "ModifiedOn": "2021-04-29T18:07:42Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "Format": "Text",
+    "ImeMode": "Auto",
+    "MaxLength": 100,
+    "YomiOf": null,
+    "IsLocalizable": false,
+    "DatabaseLength": 320,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "StringType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Name of the owner",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "cd7b23c6-15a9-eb11-b1ac-002248045db0",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Name of the owner",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "cd7b23c6-15a9-eb11-b1ac-002248045db0",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [],
+        "UserLocalizedLabel": null
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "SystemRequired",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "FormatName": {
+        "Value": "Text"
+    }
+}

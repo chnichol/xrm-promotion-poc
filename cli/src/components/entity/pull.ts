@@ -1,33 +1,30 @@
-import { Argv } from 'yargs';
 import api from '../../api';
-import { getPositionals, isUuid, mkdir, quote, saveFile } from '../../common';
+import { isUuid, mkdir, quote, saveFile } from '../../common';
 import Config, { getConfig, getPath } from '../../common/config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
-import listSolutionComponents from '../solutioncomponent/list';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import Entity from '../../types/entity/Entity';
+import { Command } from '../cli';
+import { getProjectSolutionComponents } from '../solutioncomponent';
 
 const save = async (config: Config, entity: Entity, metadata: EntityMetadata) => {
-    const paths = getPath(config).entity(entity);
-    await mkdir(paths.directory);
-    await saveFile(paths.definition, entity);
+    const entityPaths = getPath(config).entity(entity);
+    await mkdir(entityPaths.directory);
+    await saveFile(entityPaths.definition, entity);
     if (metadata.Attributes) {
-        await saveFile(paths.attributes, metadata.Attributes);
+        for (let a in metadata.Attributes) {
+            const attribute = metadata.Attributes[a];
+            const attributePaths = getPath(config).attribute(entity.logicalname, attribute.LogicalName);
+            await mkdir(attributePaths.directory);
+            await saveFile(attributePaths.definition, attribute);
+        }
     }
-    await saveFile(paths.metadata, { ...metadata, Attributes: undefined });
+    await saveFile(entityPaths.metadata, { ...metadata, Attributes: undefined });
 }
 
-const pull = async (names: string[]) => {
+const pull: Command = async (names: string[]) => {
     const config = await getConfig();
-    const solutions = await listSolutionComponents([], 'local');
-    const components = new Set<string>();
-    solutions.forEach(solution => {
-        solution.solution_solutioncomponent?.filter(component => {
-            return component.componenttype === ComponentType.Entity;
-        }).forEach(component => {
-            components.add(component.objectid);
-        });
-    });
+    const [ components ] = await getProjectSolutionComponents(ComponentType.Entity);
     names = (names.length === 0 ? Array.from(components) : names);
 
     const entities = new Set<string>();
@@ -58,17 +55,4 @@ const pull = async (names: string[]) => {
         }
     }    
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('pull'
-    , 'Pulls the latest entity definitions from dynamics.'
-    , builder => builder
-        .usage('$0 pull <entities>')
-        .positional('entities', {
-            description: 'Entities to pull the latest of.',
-            type: 'string'
-        })
-        .array('entities')
-    , args => pull(getPositionals(args))
-);
-
 export default pull;

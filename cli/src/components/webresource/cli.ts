@@ -1,10 +1,14 @@
-import yargs from 'yargs';
-import { command as pullCommand } from './pull';
-import { command as pushCommand } from './push';
+import { CommandModule } from '../cli';
+import build from './build';
+import pull from './pull';
+import push from './push';
 
-export default (argv: string[]) => {
-    const cli = yargs(argv.slice(1)).scriptName('web-resource');
-    pullCommand(cli);
-    pushCommand(cli);
-    return cli.help().argv;
+const cli: CommandModule = {
+    name: ['web-resource', 'webresource', 'wr'],
+    commands: {
+        build,
+        pull,
+        push
+    }
 }
+export default cli;

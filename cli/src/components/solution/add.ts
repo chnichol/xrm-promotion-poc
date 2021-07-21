@@ -1,9 +1,9 @@
-import { Argv } from 'yargs';
 import api from '../../api';
-import { getPositionals, isUuid, quote } from '../../common';
+import { isUuid, quote } from '../../common';
 import { getConfig, saveConfig } from '../../common/config';
+import { Command } from '../cli';
 
-const add = async (names?: string[]) => {
+const add: Command = async (names?: string[]) => {
     const config = await getConfig();
     names = names ?? [];
     const solutions = config.project.solutions ?? [];
@@ -37,18 +37,4 @@ const add = async (names?: string[]) => {
     config.project.solutions = solutions;
     await saveConfig(config);
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('add'
-    , 'Adds solutions to the project configuration.'
-    , builder => builder
-        .usage('$0 add <solutions>')
-        .positional('solutions', {
-            description: 'Solutions to add to the project configuration.',
-            type: 'string'
-        })
-        .require(1, 'Missing required positional, "solutions"')
-        .array('solutions')
-    , args => add(getPositionals(args))
-);
-
 export default add;

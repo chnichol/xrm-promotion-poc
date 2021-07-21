@@ -1,17 +1,14 @@
 import { Argv } from 'yargs';
 import { getPositionals } from '../../common';
 import { getConfig, saveConfig } from '../../common/config';
+import { Command } from '../cli';
 
-interface Options {
-    all?: boolean;
-}
-
-const remove = async (names: string[], options: Options) => {
+const remove: Command = async (names: string[]) => {
     const config = await getConfig();
     const solutions = config.project.solutions ?? [];
     const set = new Set<string>(solutions);
 
-    if (options.all) {
+    if (names.length === 0) {
         config.project.solutions = [];
     }
     else {
@@ -30,21 +27,4 @@ const remove = async (names: string[], options: Options) => {
 
     await saveConfig(config);
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('remove'
-    , 'Removes solutions from the project configuration.'
-    , builder => builder
-        .usage('$0 remove <solutions>')
-        .positional('solutions', {
-            description: 'Solutions to remove from the project configuration.',
-            type: 'string'
-        })
-        .array('solutions')
-        .option('all', {
-            description: 'Remove all solutions from the project configuration.',
-            type: 'boolean'
-        })
-    , args => remove(getPositionals(args), args)
-);
-
 export default remove;

@@ -1,0 +1,47 @@
+{
+    "@odata.etag": "W/\"8448084\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "isenabledformobileclient": false,
+    "displayname": "Custom JS",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "_createdby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "introducedversion": "1.0",
+    "isavailableformobileoffline": false,
+    "ismanaged": false,
+    "description": "Custom TypeScript",
+    "webresourcetype": 3,
+    "createdon": "2021-05-05T19:50:16Z",
+    "componentstate": 0,
+    "_modifiedby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "versionnumber": 8448084,
+    "webresourceid": "5390ba1b-dbad-eb11-8236-000d3a5a7463",
+    "modifiedon": "2021-06-16T19:00:40Z",
+    "name": "new_deployTest",
+    "webresourceidunique": "d33a88cf-52d5-4878-866a-3c41122c4a6b",
+    "contentfileref": null,
+    "contentjson": null,
+    "contentjsonfileref_name": null,
+    "contentfileref_name": null,
+    "_modifiedonbehalfby_value": null,
+    "silverlightversion": null,
+    "languagecode": null,
+    "_createdonbehalfby_value": null,
+    "contentjsonfileref": null,
+    "dependencyxml": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    },
+    "ishidden": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "ishidden"
+    }
+}

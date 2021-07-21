@@ -1,0 +1,47 @@
+{
+    "@odata.etag": "W/\"9456674\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "isenabledformobileclient": false,
+    "displayname": "Sample of Client Side Scripts",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "_createdby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "introducedversion": "1.0",
+    "dependencyxml": "<Dependencies><Dependency componentType=\"WebResource\"/></Dependencies>",
+    "languagecode": 1033,
+    "isavailableformobileoffline": false,
+    "ismanaged": false,
+    "description": "Client side scripts for the ramp up project.",
+    "webresourcetype": 3,
+    "createdon": "2021-05-03T18:28:37Z",
+    "componentstate": 0,
+    "_modifiedby_value": "48523d66-3897-eb11-b1ac-000d3a315cb3",
+    "versionnumber": 9456674,
+    "webresourceid": "9bfc925f-3dac-eb11-8236-000d3a5a7463",
+    "modifiedon": "2021-07-08T20:18:31Z",
+    "name": "new_clientSideSample",
+    "webresourceidunique": "5952db63-9e5c-4220-b032-6d2e6bb0acc5",
+    "contentfileref": null,
+    "contentjson": null,
+    "contentjsonfileref_name": null,
+    "contentfileref_name": null,
+    "_modifiedonbehalfby_value": null,
+    "silverlightversion": null,
+    "_createdonbehalfby_value": null,
+    "contentjsonfileref": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    },
+    "ishidden": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "ishidden"
+    }
+}

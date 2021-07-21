@@ -1,12 +1,8 @@
 import path from 'path';
-import { Argv } from 'yargs';
 import api from '../../api';
-import { getPositionals, isUuid, mkdir, quote, saveFile } from '../../common';
+import { isUuid, mkdir, quote, saveFile } from '../../common';
 import { getConfig, getPath } from '../../common/config';
-
-interface Options {
-    outdir?: string;
-}
+import { Command } from '../cli';
 
 const save = async (outdir: string, solution: any) => {
     const outfile = path.join(outdir, solution.uniquename + '.json');
@@ -14,11 +10,11 @@ const save = async (outdir: string, solution: any) => {
     await saveFile(outfile, solution);
 }
 
-const pull = async (names: string[], options: Options) => {
+const pull: Command = async (names: string[]) => {
     const config = await getConfig();
 
     names = (names.length === 0 ? config.project.solutions : names);
-    const outdir = options.outdir ?? getPath(config).solutions;
+    const outdir = getPath(config).solutions;
     
     const solutions = new Set<string>();
     for (let i = 0; i < names?.length; i++) {
@@ -48,21 +44,4 @@ const pull = async (names: string[], options: Options) => {
         }
     }
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('pull'
-    , 'Pulls the latest solution definition from dynamics.'
-    , builder => builder
-        .usage('$0 pull <solutions>')
-        .positional('solutions', {
-            description: 'Solutions to pull the latest of.',
-            type: 'string'
-        })
-        .array('solutions')
-        .option('outdir', {
-            description: 'Directory to save solution definitions to.',
-            type: 'string'
-        })
-    , args => pull(getPositionals(args), args)
-);
-
 export default pull;

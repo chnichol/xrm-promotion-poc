@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<form headerdensity="HighWithControls">
+  <tabs>
+    <tab verticallayout="true" id="{cd828e47-b87d-4fc4-b1f9-848b01308eaf}" IsUserDefined="1">
+      <labels>
+        <label description="General" languagecode="1033"/>
+      </labels>
+      <columns>
+        <column width="100%">
+          <sections>
+            <section showlabel="false" showbar="false" IsUserDefined="0" id="{268dd42b-5eb1-4bb2-9d79-a166f3c1370f}">
+              <labels>
+                <label description="General" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{b891186f-2966-4d2f-b717-a9e92db6d20b}">
+                    <labels>
+                      <label description="Name" languagecode="1033"/>
+                    </labels>
+                    <control id="new_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_name"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{ede10810-99db-46ad-bfcd-fe84fb342682}" locklevel="0">
+                    <labels>
+                      <label description="School" languagecode="1033"/>
+                    </labels>
+                    <control id="new_school" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="new_school" disabled="false"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{6a714ff1-dbc4-4022-928a-2dc22ee8c6f5}" locklevel="0">
+                    <labels>
+                      <label description="Planted Saplings" languagecode="1033"/>
+                    </labels>
+                    <control id="new_plantedsaplings" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="new_plantedsaplings" disabled="false"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{95c150bc-0a40-4d69-a1e7-07e53b6e1eac}">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{0eeab156-b7d0-4dcb-819c-21daa4bc65ae}" locklevel="0">
+                    <labels>
+                      <label description="Number Of Times I'm Cool" languagecode="1033"/>
+                    </labels>
+                    <control id="new_numberoftimesimcool" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="new_numberoftimesimcool" disabled="false"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+          </sections>
+        </column>
+      </columns>
+    </tab>
+  </tabs>
+  <header id="{5e5e45c7-4cb4-4119-a90f-8cab49a2f7a9}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{afd5ad65-27c7-463d-b029-c0f3f8869af1}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{40e3ce74-1cf5-40e5-9232-c5ba841aaf03}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{42d5c1ca-4a20-4db8-9745-8c9db4739efc}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </header>
+  <footer id="{2b89cc83-e22d-4904-a1b3-37e6f640de37}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{24672a4a-6eff-4a58-bb0f-5edb03db745a}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{ce8968d4-053b-4015-ad78-650251ced9a5}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{28e8da12-34c4-450a-873c-0888f2a58879}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </footer>
+  <DisplayConditions Order="0" FallbackForm="true">
+    <Everyone/>
+  </DisplayConditions>
+</form>

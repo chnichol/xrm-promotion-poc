@@ -1,4 +1,4 @@
-import { Component } from '../../components/types';
+import { Component } from '..';
 import Solution from "./Solution";
 import SystemUser from './SystemUser';
 

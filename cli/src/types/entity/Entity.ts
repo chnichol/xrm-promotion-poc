@@ -1,4 +1,4 @@
-import { Component, ComponentState } from '../../components/types';
+import { Component, ComponentState } from '..';
 import CatalogAssignment from './CatalogAssignment';
 import EntityAnalyticsConfig from './EntityAnalyticsConfig';
 import SolutionComponentConfiguration from './SolutionComponentConfiguration';

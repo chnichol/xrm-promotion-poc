@@ -1,4 +1,4 @@
-import { Component } from '../../components/types';
+import { Component } from '..';
 import CanvasApp from './CanvasApp';
 import FieldPermission from './FieldPermission';
 import FieldSecurityProfile from './FieldSecurityProfile';

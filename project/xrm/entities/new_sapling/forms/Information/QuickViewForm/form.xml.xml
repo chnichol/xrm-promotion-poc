@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<form>
+  <tabs>
+    <tab verticallayout="true" id="{fc329ce8-8817-4231-86b8-e8f122821e42}" IsUserDefined="1">
+      <labels>
+        <label description="" languagecode="1033"/>
+      </labels>
+      <columns>
+        <column width="100%">
+          <sections>
+            <section showlabel="false" showbar="false" IsUserDefined="0" id="{1eb2ef51-763c-4cee-91ba-80e64d482fd7}">
+              <labels>
+                <label description="GENERAL" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{c231e908-fb4c-4895-82a5-8a5390453d07}">
+                    <labels>
+                      <label description="ID" languagecode="1033"/>
+                    </labels>
+                    <control id="new_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_id"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{fb653055-1b52-4502-84cf-d2b677a545ca}">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+          </sections>
+        </column>
+      </columns>
+    </tab>
+  </tabs>
+</form>

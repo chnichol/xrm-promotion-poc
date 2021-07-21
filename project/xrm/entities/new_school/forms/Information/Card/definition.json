@@ -1,0 +1,36 @@
+{
+    "@odata.etag": "W/\"5888299\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "9a9b85f4-b739-4e73-ac00-2dfc8ab4f337",
+    "publishedon": "2021-04-30T16:10:23Z",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "introducedversion": "1.0",
+    "formid": "b303ffe8-148b-41b4-bc37-b53850a9a056",
+    "istabletenabled": false,
+    "isdesktopenabled": false,
+    "formidunique": "366c6c7d-304b-4ba0-964e-649bc2048c4b",
+    "ismanaged": false,
+    "isdefault": false,
+    "objecttypecode": "new_school",
+    "type": 11,
+    "componentstate": 0,
+    "formpresentation": 1,
+    "formactivationstate": 1,
+    "description": "A card form for this entity.",
+    "versionnumber": 5888299,
+    "isairmerged": false,
+    "name": "Information",
+    "uniquename": null,
+    "version": null,
+    "_ancestorformid_value": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    }
+}
