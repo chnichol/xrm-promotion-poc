@@ -1,0 +1,134 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.DateTimeAttributeMetadata",
+    "MetadataId": "8736d13a-096e-4c6d-80cd-2f56cc20c313",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "DateTime",
+    "ColumnNumber": 30,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0",
+    "EntityLogicalName": "new_student",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "overriddencreatedon",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "OverriddenCreatedOn",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-04-30T16:11:02Z",
+    "ModifiedOn": "2021-04-30T16:11:02Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "MinSupportedValue": "1753-01-01T00:00:00Z",
+    "MaxSupportedValue": "9999-12-30T23:59:59Z",
+    "Format": "DateOnly",
+    "ImeMode": "Inactive",
+    "SourceTypeMask": 0,
+    "FormulaDefinition": "",
+    "AttributeTypeName": {
+        "Value": "DateTimeType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Date and time that the record was migrated.",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "bc9ae1a2-cea9-eb11-b1ac-002248045453",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Date and time that the record was migrated.",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "bc9ae1a2-cea9-eb11-b1ac-002248045453",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Record Created On",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "bd9ae1a2-cea9-eb11-b1ac-002248045453",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Record Created On",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "bd9ae1a2-cea9-eb11-b1ac-002248045453",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "DateTimeBehavior": {
+        "Value": "UserLocal"
+    },
+    "CanChangeDateTimeBehavior": {
+        "Value": false,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifybehavior"
+    }
+}

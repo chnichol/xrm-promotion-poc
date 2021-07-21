@@ -1,11 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { detailedDiff } from 'deep-object-diff';
-import { Argv } from 'yargs';
 import api from '../../api';
-import { getPositionals, parseFile, parseFileB64, quote } from "../../common";
-import Config, { getConfig, getPath } from "../../common/config"
-import WebResource from "../../types/entity/WebResource";
+import { parseFile, parseFileB64, quote } from '../../common';
+import Config, { getConfig, getPath } from '../../common/config'
+import WebResource from '../../types/entity/WebResource';
+import { Command } from '../cli';
 
 interface Diff {
     added: object;
@@ -23,7 +23,7 @@ const load = async (config: Config, name: string) => {
     return definition;
 }
 
-const push = async (names: string[]) => {
+const push: Command = async (names: string[]) => {
     const config = await getConfig();
     if (names.length === 0) {
         const dir = getPath(config).webresources;
@@ -59,17 +59,4 @@ const push = async (names: string[]) => {
         }
     }
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('push'
-    , 'Pushes local web resource changes to dynamics.'
-    , builder => builder
-        .usage('$0 push <web-resources>')
-        .positional('web-resources', {
-            description: 'Web resources to push.',
-            type: 'string'
-        })
-        .array('web-resources')
-    , args => push(getPositionals(args))
-);
-
 export default push;

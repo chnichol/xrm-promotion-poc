@@ -1,4 +1,27 @@
-import ExecutionContext from './api/executionContext';
+import Attribute from './attribute';
+import Collection from './collection';
+import Control from './control';
+import ExecutionContext from './executionContext';
+export {
+    Attribute,
+    Collection,
+    Control,
+    ExecutionContext
+}
+
+import FormContext, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
+export {
+    Entity,
+    FooterSection,
+    FormContext,
+    FormContextData,
+    FormContextUI,
+    FormType,
+    HeaderSection,
+    Section,
+    Tab
+}
+
 import { AlertStrings, ConfirmResponse, ConfirmStrings, ErrorOptions } from './common/dialog';
 import { FormOptions, QuickCreateOptions } from './common/entityForm';
 import { File, OpenFileOptions } from './common/file';
@@ -7,10 +30,6 @@ import { DialogNavigationOptions, InlineNavigationOptions } from './common/navig
 import Notification from './common/notification';
 import PageInput, { CreateEntityRecord } from './common/pageInput';
 import { SizeOptions } from './common/size';
-
-export {
-    ExecutionContext
-}
 
 declare global {
     namespace Xrm {

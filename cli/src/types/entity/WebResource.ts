@@ -1,12 +1,12 @@
-import BooleanManagedProperty from "../complex/BooleanManagedProperty";
-import { Component, ComponentState } from "../../components/types";
-import FileAttachment from "./FileAttachment";
+import { Component, ComponentState } from '..';
+import BooleanManagedProperty from '../complex/BooleanManagedProperty';
+import FileAttachment from './FileAttachment';
 import Organization from './Organization';
-import SystemUser from "./SystemUser";
-import Solution from "./Solution";
-import Theme from "./Theme";
-import SavedQueryVisualization from "./SavedQueryVisualization";
-import UserQueryVisualization from "./UserQueryVisualization";
+import SystemUser from './SystemUser';
+import Solution from './Solution';
+import Theme from './Theme';
+import SavedQueryVisualization from './SavedQueryVisualization';
+import UserQueryVisualization from './UserQueryVisualization';
 
 /**
  * Data equivalent to files used in Web development. Web resources provide client-side components that are used to provide custom user interface elements.

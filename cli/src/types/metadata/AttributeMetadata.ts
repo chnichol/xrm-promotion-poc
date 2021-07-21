@@ -1,10 +1,14 @@
+import { Component } from '..';
 import AttributeRequiredLevelManagedProperty from '../complex/AttributeRequiredLevelManagedProperty';
 import AttributeTypeDisplayName from '../complex/AttributeTypeDisplayName';
 import BooleanManagedProperty from '../complex/BooleanManagedProperty';
 import Label from '../complex/Label';
 import AttributeTypeCode from '../enum/AttributeTypeCode';
 
-type AttributeMetadata = {
+type AttributeMetadata = Component<Properties, {}, {}, {}>;
+export default AttributeMetadata;
+
+export type Properties = {
     /** The name of the attribute that this attribute extends. */
     AttributeOf: string;
     /** The type for the attribute. */
@@ -102,5 +106,3 @@ type AttributeMetadata = {
     /** A value that indicates the source type for a calculated or rollup attribute. */
     SourceType: number;
 }
-
-export default AttributeMetadata;

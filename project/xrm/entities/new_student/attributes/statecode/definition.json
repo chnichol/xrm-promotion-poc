@@ -1,0 +1,121 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.StateAttributeMetadata",
+    "MetadataId": "851d358a-49b3-40a6-9345-394beefdf22b",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "State",
+    "ColumnNumber": 24,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0",
+    "EntityLogicalName": "new_student",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": true,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "statecode",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "statecode",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-04-30T16:11:02Z",
+    "ModifiedOn": "2021-04-30T16:11:02Z",
+    "SourceType": null,
+    "AutoNumberFormat": null,
+    "DefaultFormValue": null,
+    "AttributeTypeName": {
+        "Value": "StateType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Status of the Student",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "a59ae1a2-cea9-eb11-b1ac-002248045453",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Status of the Student",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "a59ae1a2-cea9-eb11-b1ac-002248045453",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Status",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "a69ae1a2-cea9-eb11-b1ac-002248045453",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Status",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "a69ae1a2-cea9-eb11-b1ac-002248045453",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "SystemRequired",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

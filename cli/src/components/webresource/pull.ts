@@ -1,9 +1,9 @@
-import { Argv } from 'yargs';
 import api from '../../api';
-import { getPositionals, isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
+import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
 import Config, { getConfig, getPath } from '../../common/config';
-import listSolutionComponents from '../solutioncomponent/list';
 import { ComponentType } from '../../types/entity/SolutionComponent';
+import { Command } from '../cli';
+import { getProjectSolutionComponents } from '../solutioncomponent';
 
 const save = async (config: Config, webResource: any) => {
     const paths = getPath(config).webresource(webResource);
@@ -12,17 +12,9 @@ const save = async (config: Config, webResource: any) => {
     await saveFileB64(paths.content as string, webResource.content);
 }
 
-const pull = async (names: string[]) => {
+const pull: Command = async (names: string[]) => {
     const config = await getConfig();
-    const solutions = await listSolutionComponents([], 'local');
-    const components = new Set<string>();
-    solutions.forEach(solution => {
-        solution.solution_solutioncomponent?.filter(component => {
-            return component.componenttype === ComponentType.WebResource;
-        }).forEach(component => {
-            components.add(component.objectid);
-        });
-    });
+    const [ components ] = await getProjectSolutionComponents(ComponentType.WebResource);
     names = (names.length === 0 ? Array.from(components) : names);
 
     const webResources = new Set<string>();
@@ -52,17 +44,4 @@ const pull = async (names: string[]) => {
         }
     }    
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('pull'
-    , 'Pulls the latest web resource definitions from dynamics.'
-    , builder => builder
-        .usage('$0 pull <web-resources>')
-        .positional('web-resources', {
-            description: 'Web resources to pull the latest of.',
-            type: 'string'
-        })
-        .array('web-resources')
-    , args => pull(getPositionals(args))
-);
-
 export default pull;

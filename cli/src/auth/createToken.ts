@@ -1,11 +1,11 @@
-import express = require('express');
-import msal = require('@azure/msal-node');
-import open = require('open');
+import { AuthenticationResult, CryptoProvider, PublicClientApplication } from '@azure/msal-node';
+import express from 'express';
+import open from 'open';
 import { getConfig } from '../common/config';
 
-export default (): Promise<msal.AuthenticationResult> => new Promise(async (resolve) => {
+export default (): Promise<AuthenticationResult> => new Promise(async (resolve) => {
     const config = await getConfig();
-    const pca = new msal.PublicClientApplication({ auth: config.auth });
+    const pca = new PublicClientApplication({ auth: config.auth });
     const app = express();
 
     app.locals.pkceCodes = {
@@ -15,7 +15,7 @@ export default (): Promise<msal.AuthenticationResult> => new Promise(async (reso
     };
 
     app.get('/', (_, response) => {
-        const cryptoProvider = new msal.CryptoProvider();
+        const cryptoProvider = new CryptoProvider();
         cryptoProvider.generatePkceCodes().then(({ challenge, verifier }) => {
             app.locals.pkceCodes.challenge = challenge;
             app.locals.pkceCodes.verifier = verifier;
@@ -48,7 +48,6 @@ export default (): Promise<msal.AuthenticationResult> => new Promise(async (reso
             }
         });
     });
-
     const server = app.listen(config.urls.port);
     const process = await open(config.urls.home, {app: { name: open.apps.edge, arguments: [ '--new-window' ]}});
 });

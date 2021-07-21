@@ -1,4 +1,4 @@
-import { Component } from '../../components/types';
+import { Component } from '..';
 import BooleanManagedProperty from '../complex/BooleanManagedProperty';
 import EntitySetting from '../complex/EntitySetting';
 import Label from '../complex/Label';

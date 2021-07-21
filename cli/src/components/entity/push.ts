@@ -1,12 +1,11 @@
 import { detailedDiff } from 'deep-object-diff';
-import { Argv } from 'yargs';
-import { getPositionals, parseFile, quote } from '../../common';
-import { getConfig, getPath } from '../../common/config';
-import AttributeMetadata from '../../types/metadata/AttributeMetadata';
-import EntityMetadata from '../../types/metadata/EntityMetadata';
-import { getProjectEntities } from '.';
-import Entity from '../../types/entity/Entity';
 import api from '../../api';
+import { parseFile, quote } from '../../common';
+import { getConfig, getPath } from '../../common/config';
+import EntityMetadata from '../../types/metadata/EntityMetadata';
+import Entity from '../../types/entity/Entity';
+import { Command } from '../cli';
+import { getProjectEntities } from '.';
 
 type Diff = {
     added: object;
@@ -20,14 +19,13 @@ const loadDefinition = async (name: string) => {
 }
 
 const loadMetadata = async (name: string) => {
-    const files = getPath(await getConfig()).entity({ logicalname: name });
-    const metadata = await parseFile<EntityMetadata>(files.metadata);
-    const attributes = await parseFile<AttributeMetadata[]>(files.attributes);
-    metadata.Attributes = attributes;
+    const paths = getPath(await getConfig());
+    const entityFiles = paths.entity({ logicalname: name });
+    const metadata = await parseFile<EntityMetadata>(entityFiles.metadata);
     return metadata;
 }
 
-const push = async (names: string[]) => {
+const push: Command = async (names: string[]) => {
     const projectNames = new Set<string>(await getProjectEntities());
     names = (names.length === 0 ? Array.from(projectNames) : names);
     for (let i = 0; i < names.length; i++) {
@@ -47,7 +45,6 @@ const push = async (names: string[]) => {
                     Object.keys(diff.deleted).length > 0 ||
                     Object.keys(diff.updated).length > 0) {
                     console.warn(`The definition file for "${name}" has been changed, but can't be updated.`);
-                    console.log(diff);
                 }
             }
         }
@@ -63,24 +60,10 @@ const push = async (names: string[]) => {
             if (remote) {
                 const diff = detailedDiff(remote, local) as Diff;
                 if (Object.keys(diff.updated).length > 0) {
-                    console.log(diff.updated);
                     await api.entityMetadata.put(remote.MetadataId, local).execute();
                 }
             }
         }
     }
 }
-
-export const command = (yargs: Argv<{}>) => yargs.command('push'
-    , 'Pushes local entity changes to dynamics.'
-    , builder => builder
-        .usage('$0 push entities')
-        .positional('entities', {
-            description: 'Entities to push.',
-            type: 'string'
-        })
-        .array('entities')
-    , args => push(getPositionals(args))
-);
-
 export default push;

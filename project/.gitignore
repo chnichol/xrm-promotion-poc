@@ -1,0 +1,5 @@
+.xrm
+cli
+node_modules
+package-lock.json
+secrets.json

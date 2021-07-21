@@ -2,7 +2,7 @@
   "name": "@types/xrm-api",
   "version": "1.0.0",
   "description": "",
-  "main": "./index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {},
   "author": "",
   "license": "ISC",
