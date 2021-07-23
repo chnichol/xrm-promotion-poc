@@ -9,7 +9,7 @@ import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
 
 const typegenImports = async (stream: fs.FileHandle) => {
-    await stream.write(`import { Attribute } from 'xrm-api';${os.EOL}`);
+    await stream.write(`import { Attribute } from 'xrm-types';${os.EOL}`);
     await stream.write(`import Entity from '../../index';${os.EOL}`);
     await stream.write(os.EOL);
 }

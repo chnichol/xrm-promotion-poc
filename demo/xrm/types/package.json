@@ -6,7 +6,7 @@
   "author": "Microsoft",
   "license": "MIT",
   "devDependencies": {
-    "xrm-api-types": "file:../../../types"
+    "xrm-types": "file:../../../types"
   },
   "dependencies": {}
 }

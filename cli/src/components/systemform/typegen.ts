@@ -13,7 +13,7 @@ const loadFormXml = async (file: string) => {
 }
 
 const saveImports = async (stream: fs.FileHandle, attributes: Attribute[]) => {
-    await stream.write(`import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-api';${os.EOL}`);
+    await stream.write(`import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';${os.EOL}`);
     for (let a in attributes) {
         const attribute = attributes[a];
         await stream.write(`import ${attribute.name} from '../../../attributes/${attribute.name}/index';${os.EOL}`);

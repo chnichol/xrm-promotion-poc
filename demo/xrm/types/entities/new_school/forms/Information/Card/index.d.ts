@@ -1,4 +1,4 @@
-import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-api';
+import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
 import statuscode from '../../../attributes/statuscode/index';
 import new_name from '../../../attributes/new_name/index';
 import ownerid from '../../../attributes/ownerid/index';

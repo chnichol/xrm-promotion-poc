@@ -1,4 +1,4 @@
-import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-api';
+import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
 import new_name from '../../../attributes/new_name/index';
 import ownerid from '../../../attributes/ownerid/index';
 import new_id from '../../../attributes/new_id/index';
@@ -358,11 +358,4 @@ export default interface GeneratedFormContext extends FormContext {
     getAttribute(name: 'new_addresscity'): Attribute_new_addresscity;
     getAttribute(name: 'new_addressstate'): Attribute_new_addressstate;
     getAttribute(name: 'new_addresszip'): Attribute_new_addresszip;
-}
-
-
-function doo(formContext: GeneratedFormContext) {
-    const ctrlAttr = formContext.ui.tabs.get('tab_general').sections.get('section_address').controls.get('new_addressstreet').getAttribute();
-    const shortAttr = formContext.getAttribute('new_addressstreet');
-    shortAttr.getValue()
 }

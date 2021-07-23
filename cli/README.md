@@ -6,6 +6,8 @@ Base toolkit that provides a unified interface to build Dynamics projects.
 
 ## Installing the CLI
 
+##### *These steps will need to be performed any time you are updating the CLI.*
+
 The CLI should be installed as a global NPM package so it can be used without a `package.json` file and `node_modules` folder.
 
 To install the CLI globally, navigate to the root repo folder and run the following command:
