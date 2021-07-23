@@ -1,4 +1,4 @@
-import FormContext from 'xrm-generated/entities/new_sapling/forms/Information/Main';
+import { FormContext } from 'xrm-api-types';
 
 export default function createSapling(primaryControl: FormContext) {
     const saplingForm = {

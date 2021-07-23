@@ -1,6 +1,6 @@
 import Lookup from '../../common/lookup';
 
-export default interface Entity<T extends string> {
+type Entity<T extends string> = {
     getDataXml(): string;
     getEntityName(): T;
     getEntityReference(): Lookup<T>;
@@ -10,3 +10,4 @@ export default interface Entity<T extends string> {
     isValid(): boolean;
     save(): void;
 }
+export default Entity;

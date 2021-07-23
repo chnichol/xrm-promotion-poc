@@ -1,4 +1,4 @@
-import FooterSection from 'footerSection';
+import FooterSection from './footerSection';
 import HeaderSection from './headerSection';
 import Section from './section';
 import Tab from './tab';

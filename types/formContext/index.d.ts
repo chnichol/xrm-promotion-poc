@@ -1,11 +1,9 @@
 import FormContextData, { Entity } from './data';
+import FormContextUI, { FooterSection, FormType, HeaderSection, Section, Tab } from './ui';
+
 export {
     FormContextData,
-    Entity
-}
-
-import FormContextUI, { FooterSection, FormType, HeaderSection, Section, Tab } from './ui';
-export {
+    Entity,
     FormContextUI,
     FooterSection,
     FormType,
@@ -15,6 +13,6 @@ export {
 }
 
 export default interface FormContext {
-    data: FormContextData,
-    ui: FormContextUI
+    data: FormContextData;
+    ui: FormContextUI;
 }

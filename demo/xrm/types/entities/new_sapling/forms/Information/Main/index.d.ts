@@ -1,4 +1,5 @@
-import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-api';
+import { Collection, Entity, FormContextData, FormContextUI, Section, Tab } from 'xrm-api';
+import FromContext from 'xrm-api/formContext/index';
 import new_id from '../../../attributes/new_id/index';
 import new_student from '../../../attributes/new_student/index';
 import new_school from '../../../attributes/new_school/index';

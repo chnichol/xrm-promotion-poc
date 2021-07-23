@@ -5,6 +5,8 @@
   "scripts": {},
   "author": "Microsoft",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "xrm-api-types": "file:../../../types"
+  },
   "dependencies": {}
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@types/xrm-api",
+  "name": "xrm-types",
   "version": "1.0.0",
   "description": "",
   "types": "./index.d.ts",
