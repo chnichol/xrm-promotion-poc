@@ -2,9 +2,6 @@ import Attribute from './attribute';
 import Collection from './collection';
 import Control from './control';
 import ExecutionContext from './executionContext';
-
-import FormContex, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
-
 export {
     Attribute,
     Collection,
@@ -13,6 +10,7 @@ export {
     Entity
 }
 
+import FormContex, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
 export {
     FormContext,
     FooterSection,
