@@ -1,8 +1,8 @@
 import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
-import statuscode from '../../../attributes/statuscode/index';
-import new_id from '../../../attributes/new_id/index';
-import ownerid from '../../../attributes/ownerid/index';
-import createdon from '../../../attributes/createdon/index';
+import statuscode from '../../../attributes/statuscode';
+import new_id from '../../../attributes/new_id';
+import ownerid from '../../../attributes/ownerid';
+import createdon from '../../../attributes/createdon';
 
 interface Attribute_statuscode_ControlCollection extends Collection<Control_statuscode> {
     get(): (Control_statuscode)[];

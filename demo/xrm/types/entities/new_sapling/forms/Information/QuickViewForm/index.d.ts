@@ -1,6 +1,6 @@
 import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
-import new_id from '../../../attributes/new_id/index';
-import ownerid from '../../../attributes/ownerid/index';
+import new_id from '../../../attributes/new_id';
+import ownerid from '../../../attributes/ownerid';
 
 interface Attribute_new_id_ControlCollection extends Collection<Control_new_id> {
     get(): (Control_new_id)[];

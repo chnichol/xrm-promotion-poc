@@ -1,9 +1,9 @@
 import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
-import new_name from '../../../attributes/new_name/index';
-import new_school from '../../../attributes/new_school/index';
-import new_plantedsaplings from '../../../attributes/new_plantedsaplings/index';
-import ownerid from '../../../attributes/ownerid/index';
-import new_numberoftimesimcool from '../../../attributes/new_numberoftimesimcool/index';
+import new_name from '../../../attributes/new_name';
+import new_school from '../../../attributes/new_school';
+import new_plantedsaplings from '../../../attributes/new_plantedsaplings';
+import ownerid from '../../../attributes/ownerid';
+import new_numberoftimesimcool from '../../../attributes/new_numberoftimesimcool';
 
 interface Attribute_new_name_ControlCollection extends Collection<Control_new_name> {
     get(): (Control_new_name)[];

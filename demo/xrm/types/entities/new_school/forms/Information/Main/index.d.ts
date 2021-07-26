@@ -1,14 +1,14 @@
 import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
-import new_name from '../../../attributes/new_name/index';
-import ownerid from '../../../attributes/ownerid/index';
-import new_id from '../../../attributes/new_id/index';
-import new_plantedsaplings from '../../../attributes/new_plantedsaplings/index';
-import new_email from '../../../attributes/new_email/index';
-import new_addressstreet from '../../../attributes/new_addressstreet/index';
-import new_addresstimezone from '../../../attributes/new_addresstimezone/index';
-import new_addresscity from '../../../attributes/new_addresscity/index';
-import new_addressstate from '../../../attributes/new_addressstate/index';
-import new_addresszip from '../../../attributes/new_addresszip/index';
+import new_name from '../../../attributes/new_name';
+import ownerid from '../../../attributes/ownerid';
+import new_id from '../../../attributes/new_id';
+import new_plantedsaplings from '../../../attributes/new_plantedsaplings';
+import new_email from '../../../attributes/new_email';
+import new_addressstreet from '../../../attributes/new_addressstreet';
+import new_addresstimezone from '../../../attributes/new_addresstimezone';
+import new_addresscity from '../../../attributes/new_addresscity';
+import new_addressstate from '../../../attributes/new_addressstate';
+import new_addresszip from '../../../attributes/new_addresszip';
 
 interface Attribute_new_name_ControlCollection extends Collection<Control_new_name | Control_new_name> {
     get(): (Control_new_name | Control_new_name)[];
