@@ -1,5 +1,5 @@
-import { Attribute } from 'xrm-types';
-import Entity from '../../index';
+import { Attribute } from "xrm-types";
+import Entity from "../../index";
 
-export default interface statuscode extends Attribute<Entity['statuscode']> {
+export default interface statuscode extends Attribute<Entity["statuscode"]> {
 }

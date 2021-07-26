@@ -1,5 +1,5 @@
-import { Attribute } from 'xrm-types';
-import Entity from '../../index';
+import { Attribute } from "xrm-types";
+import Entity from "../../index";
 
-export default interface modifiedby extends Attribute<Entity['modifiedby']> {
+export default interface modifiedby extends Attribute<Entity["modifiedby"]> {
 }

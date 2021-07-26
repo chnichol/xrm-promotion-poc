@@ -1,5 +1,5 @@
-import { Attribute } from 'xrm-types';
-import Entity from '../../index';
+import { Attribute } from "xrm-types";
+import Entity from "../../index";
 
-export default interface overriddencreatedon extends Attribute<Entity['overriddencreatedon']> {
+export default interface overriddencreatedon extends Attribute<Entity["overriddencreatedon"]> {
 }

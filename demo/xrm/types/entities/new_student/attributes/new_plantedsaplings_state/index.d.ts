@@ -1,5 +1,5 @@
-import { Attribute } from 'xrm-types';
-import Entity from '../../index';
+import { Attribute } from "xrm-types";
+import Entity from "../../index";
 
-export default interface new_plantedsaplings_state extends Attribute<Entity['new_plantedsaplings_state']> {
+export default interface new_plantedsaplings_state extends Attribute<Entity["new_plantedsaplings_state"]> {
 }
