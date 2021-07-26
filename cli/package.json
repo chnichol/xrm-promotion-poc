@@ -7,6 +7,7 @@
     "build": "tsc",
     "cli": "node dist/index.js",
     "dev": "ts-node src/index.ts",
+    "update": "node scripts/update.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -38,6 +39,7 @@
     "json-bigint": "^1.0.0",
     "jsonc-parser": "^3.0.0",
     "open": "^8.2.0",
+    "ts-morph": "^11.0.3",
     "uuid": "^8.3.2",
     "xml-formatter": "^2.4.0",
     "xml2js": "^0.4.23",
