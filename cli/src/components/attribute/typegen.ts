@@ -26,8 +26,9 @@ const typegen: Command = async (names: string[]) => {
             typedef.addImportDeclaration({ moduleSpecifier: '../../index', defaultImport: 'Entity' });
             typedef.addInterface({
                 name: definition.LogicalName,
+                docs: definition.Description?.UserLocalizedLabel?.Label ? [ definition.Description.UserLocalizedLabel.Label ] : undefined,
                 extends: [`Attribute<Entity["${definition.LogicalName}"]>`],
-                isDefaultExport: true,
+                isDefaultExport: true
             });
         }
     }

@@ -32,9 +32,9 @@ export type Properties = {
     /** The Microsoft Dynamics 365 version that the attribute was deprecated in. */
     DeprecatedVersion: string;
     /** The label containing the description for the attribute. */
-    Description: Label;
+    Description?: Label;
     /** A label containing the display name for the attribute. */
-    DisplayName: Label;
+    DisplayName?: Label;
     /** The logicla name of the entity that contains the attribute. */
     EntityLogicalName: string;
     /**  */
