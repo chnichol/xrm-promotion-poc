@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export const ILMERGE_PATH = (() => {
+export const ILMERGE_PATH: string = (() => {
     if (process.platform !== 'win32') {
         console.warn('.NET SDK Tools are only available on Windows');
         return '';
@@ -27,7 +27,7 @@ export const ILMERGE_PATH = (() => {
     return exe;
 })();
 
-export const NET_SDK_TOOLS_PATH = (() => {
+export const NET_SDK_TOOLS_PATH: string = (() => {
     if (process.platform !== 'win32') {
         console.warn('.NET SDK Tools are only available on Windows');
         return '';

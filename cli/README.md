@@ -4,6 +4,20 @@ Base toolkit that provides a unified interface to build Dynamics projects.
 
 ---
 
+## Installing the CLI
+
+##### *These steps will need to be performed any time you are updating the CLI.*
+
+Because of some cleanup steps required after installing the `xrm-cli` as a global module, an update script has been provided. To execute it, simply run the following command in the cli directory:
+
+```
+npm run update
+```
+
+This will install the xrm-cli as a global utility which can then be accessed by entering `xrm-cli` in the command line.
+
+---
+
 ## Syntax
 
 ```

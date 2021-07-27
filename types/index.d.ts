@@ -6,14 +6,14 @@ export {
     Attribute,
     Collection,
     Control,
-    ExecutionContext
+    ExecutionContext,
+    Entity
 }
 
-import FormContext, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
+import FormContex, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
 export {
-    Entity,
-    FooterSection,
     FormContext,
+    FooterSection,
     FormContextData,
     FormContextUI,
     FormType,
@@ -30,6 +30,7 @@ import { DialogNavigationOptions, InlineNavigationOptions } from './common/navig
 import Notification from './common/notification';
 import PageInput, { CreateEntityRecord } from './common/pageInput';
 import { SizeOptions } from './common/size';
+
 
 declare global {
     namespace Xrm {

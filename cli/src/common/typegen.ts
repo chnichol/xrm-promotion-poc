@@ -1,8 +1,15 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { OptionalKind, MethodSignatureStructure } from 'ts-morph';
 import { mkdir } from '.';
 
-export const generatePackage = async (file: string) => {
+export const generateMethod = (name: string, parameters?: { [key: string]: string; }, returnType?: string): OptionalKind<MethodSignatureStructure> => ({
+    name,
+    parameters: parameters ? Object.keys(parameters).map(key => ({ name: key, type: parameters[key]})) : undefined,
+    returnType
+});
+
+export const generatePackage = async (file: string): Promise<void> => {
     const pkg = {
         name: '@types/xrm-generated',
         version: '1.0.0',

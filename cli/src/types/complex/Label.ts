@@ -9,7 +9,7 @@ type Label = {
     /** The collection of localized labels. */
     LocalizedLabels: LocalizedLabel[];
     /** The label for the language of the current user. */
-    UserLocalizedLabel: LocalizedLabel;
+    UserLocalizedLabel?: LocalizedLabel;
 }
 
 export default Label;

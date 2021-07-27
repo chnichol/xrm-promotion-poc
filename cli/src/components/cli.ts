@@ -33,7 +33,7 @@ export type CommandSet = {
 
 export type Command = (names: string[]) => Promise<void>;
 
-const command = (argv: Argv<{}>, modules: CommandModule[], command: keyof CommandSet, description: string) => argv.command(command
+const command = (argv: Argv<unknown>, modules: CommandModule[], command: keyof CommandSet, description: string) => argv.command(command
     , description
     , builder => builder
         .usage(`$0 ${command} [component] [names...]`)
@@ -69,13 +69,19 @@ const run = async (modules: CommandModule[], command: keyof CommandSet, componen
     }
     else {
         const cmds = modules.filter(m => m.commands[command]).map(m => m.commands[command] as Command);
-        for (let c in cmds) {
+        for (const c in cmds) {
             cmds[c](names ?? []);
         }
     }
 }
 
-export default (argv: string[]) => {
+type CliResult = {
+    [x: string]: unknown;
+    _: (string | number)[];
+    $0: string;
+}
+
+export default (argv: string[]): CliResult | Promise<CliResult> => {
     const commands: {
         [key in keyof Required<CommandSet>]: string
     } = {
@@ -88,7 +94,7 @@ export default (argv: string[]) => {
         typegen: 'Generate code based on component definitions.'
     }
     const cli = yargs(argv).scriptName('xrm-cli');
-    for (let c in commands) {
+    for (const c in commands) {
         const k = c as keyof CommandSet;
         command(cli, commandModules, k, commands[k]);
     }

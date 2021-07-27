@@ -8,9 +8,9 @@ import { Command } from '../cli';
 import { getProjectEntities } from '.';
 
 type Diff = {
-    added: object;
-    deleted: object;
-    updated: object;
+    added: Record<string, unknown>;
+    deleted: Record<string, unknown>;
+    updated: Record<string, unknown>;
 }
 
 const loadDefinition = async (name: string) => {

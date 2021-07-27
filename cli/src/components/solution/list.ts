@@ -1,16 +1,7 @@
-import { Argv } from 'yargs';
 import api from '../../api';
 import { isUuid } from '../../common';
 import { getConfig } from '../../common/config';
 import { getProjectSolutions } from '.';
-
-// TODO: Figure out how best to implement this using the standard CLI patterns.
-
-// IDEA: Remove this command and replace it with the solutioncomponent.list command.
-
-interface Options {
-    source?: string;
-}
 
 type ListRow = {
     solutionid: string;
@@ -20,7 +11,7 @@ type ListRow = {
     isRemote: boolean;
 }
 
-const list = async () => {
+const list = async (): Promise<void> => {
     const solutions = new Map<string, ListRow>();
     ((await getConfig()).project.solutions ?? []).forEach(s => {
         if (!isUuid(s)) {

@@ -3,9 +3,9 @@ import path from 'path';
 import { getConfig } from '../../common/config';
 import { WebResourceType } from '../../types/entity/WebResource';
 
-export const getExtension = (webResource: { webresourcetype: WebResourceType }) => WebResourceType[webResource.webresourcetype].toLowerCase().replace(/jscript/g, 'js');
+export const getExtension = (webResource: { webresourcetype: WebResourceType }): string => WebResourceType[webResource.webresourcetype].toLowerCase().replace(/jscript/g, 'js');
 
-export const getWebResourceProjects = async () => {
+export const getWebResourceProjects = async (): Promise<string[]> => {
     const config = await getConfig();
     const root = path.join(config.project.webresources, 'src');
     const webResources = (await Promise.all(

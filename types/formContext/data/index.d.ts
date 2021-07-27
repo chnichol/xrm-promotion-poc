@@ -3,6 +3,7 @@ export {
     Entity
 }
 
-export default interface FormContextData {
+type FormContextData = {
     entity: Entity<string>;
 }
+export default FormContextData;

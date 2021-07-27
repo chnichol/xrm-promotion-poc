@@ -1,11 +1,12 @@
 import api from '../../api';
-import { getPositionals, isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
+import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
 import Config, { getConfig, getPath } from '../../common/config';
+import PluginAssembly from '../../types/entity/PluginAssembly';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import { Command } from '../cli';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 
-const save = async (config: Config, pluginAssembly: any) => {
+const save = async (config: Config, pluginAssembly: PluginAssembly) => {
     const paths = getPath(config).pluginassembly(pluginAssembly.name);
     await mkdir(paths.directory);
     await saveFile(paths.definition, { ...pluginAssembly, content: undefined });

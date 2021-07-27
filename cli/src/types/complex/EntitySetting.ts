@@ -3,6 +3,7 @@
  */
 type EntitySetting = {
     Name: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Value: any;
 }
 
