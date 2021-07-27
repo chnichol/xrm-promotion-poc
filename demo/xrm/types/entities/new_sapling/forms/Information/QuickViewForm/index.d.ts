@@ -1,13 +1,13 @@
-import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';
-import new_id from '../../../attributes/new_id';
-import ownerid from '../../../attributes/ownerid';
+import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from "xrm-types";
+import new_id from "../../../attributes/new_id";
+import ownerid from "../../../attributes/ownerid";
 
 interface Attribute_new_id_ControlCollection extends Collection<Control_new_id> {
     get(): (Control_new_id)[];
-    get(index: number): (Control_new_id);
-    get(name: 'new_id'): Control_new_id;
     get(predicate: (value: Control_new_id, index: number) => boolean): (Control_new_id)[];
     getLength(): 1;
+    get(index: number): (Control_new_id);
+    get(name: 'new_id'): Control_new_id;
 }
 
 interface Attribute_new_id extends new_id {
@@ -16,10 +16,10 @@ interface Attribute_new_id extends new_id {
 
 interface Attribute_ownerid_ControlCollection extends Collection<Control_ownerid> {
     get(): (Control_ownerid)[];
-    get(index: number): (Control_ownerid);
-    get(name: 'ownerid'): Control_ownerid;
     get(predicate: (value: Control_ownerid, index: number) => boolean): (Control_ownerid)[];
     getLength(): 1;
+    get(index: number): (Control_ownerid);
+    get(name: 'ownerid'): Control_ownerid;
 }
 
 interface Attribute_ownerid extends ownerid {
@@ -29,13 +29,13 @@ interface Attribute_ownerid extends ownerid {
 interface Entity_AttributeCollection extends Collection<Attribute_new_id | Attribute_ownerid> {
     get(): (Attribute_new_id | Attribute_ownerid)[];
     get(index: number): (Attribute_new_id | Attribute_ownerid);
-    get(name: 'new_id'): Attribute_new_id;
-    get(name: 'ownerid'): Attribute_ownerid;
     get(predicate: (value: Attribute_new_id | Attribute_ownerid, index: number) => boolean): (Attribute_new_id | Attribute_ownerid)[];
     getLength(): 2;
+    get(name: 'new_id'): Attribute_new_id;
+    get(name: 'ownerid'): Attribute_ownerid;
 }
 
-interface DataEntity extends Entity<'new_sapling'> {
+interface DataEntity extends Entity<new_sapling> {
     attributes: Entity_AttributeCollection;
 }
 
@@ -54,20 +54,18 @@ interface Control_ownerid {
 interface UI_ControlCollection extends Collection<Control_new_id | Control_ownerid> {
     get(): (Control_new_id | Control_ownerid)[];
     get(index: number): (Control_new_id | Control_ownerid);
-    get(name: 'new_id'): Control_new_id;
-    get(name: 'ownerid'): Control_ownerid;
     get(predicate: (value: Control_new_id | Control_ownerid, index: number) => boolean): (Control_new_id | Control_ownerid)[];
     getLength(): 2;
+    get(name: 'new_id'): Control_new_id;
+    get(name: 'ownerid'): Control_ownerid;
 }
 
 interface UI_Tab0_Section0_ControlCollection extends Collection<Control_new_id | Control_ownerid> {
     get(): [Control_new_id, Control_ownerid];
-    get(index: number): never;
-    get(name: 'new_id'): Control_new_id;
-    get(index: number): never;
-    get(name: 'ownerid'): Control_ownerid;
     get(predicate: (value: Control_new_id | Control_ownerid, index: number) => boolean): (Control_new_id | Control_ownerid)[];
     getLength(): 2;
+    get(index: number): never;
+    get(name: string): never;
 }
 
 interface UI_Tab0_Section0 extends Section {
@@ -77,10 +75,10 @@ interface UI_Tab0_Section0 extends Section {
 
 interface UI_Tab0_SectionCollection extends Collection<UI_Tab0_Section0> {
     get(): [UI_Tab0_Section0];
+    get(predicate): (UI_Tab0_Section0)[];
+    getLength(): 1;
     get(index: 0): UI_Tab0_Section0;
     get(name: 'undefined'): UI_Tab0_Section0;
-    get(predicate: (value: UI_Tab0_Section0, index: number) => boolean): (UI_Tab0_Section0)[];
-    getLength(): 1;
 }
 
 interface UI_Tab0 extends Tab {
@@ -90,9 +88,9 @@ interface UI_Tab0 extends Tab {
 
 interface UI_TabCollection extends Collection<UI_Tab0> {
     get(): [UI_Tab0];
+    get(predicate: (value: UI_Tab0, index: number) => boolean): (UI_Tab0)[];
     get(index: 0): UI_Tab0;
     get(name: 'undefined'): UI_Tab0;
-    get(predicate: (value: UI_Tab0, index: number) => boolean): (UI_Tab0)[];
 }
 
 interface UI extends FormContextUI {

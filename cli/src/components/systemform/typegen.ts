@@ -1,9 +1,11 @@
 import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
+import { Project, SourceFile } from 'ts-morph';
 import { getEntityForms } from '.';
 import { mkdir, parseFileXML } from '../../common';
 import { getConfig, getPath } from '../../common/config';
+import { generateMethod } from '../../common/typegen';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
 import { Attribute, Control, Form, FormXML, ProjectForm, Section, Tab } from './types';
@@ -12,221 +14,268 @@ const loadFormXml = async (file: string) => {
     return await parseFileXML<FormXML>(file);
 }
 
-const saveImports = async (stream: fs.FileHandle, attributes: Attribute[]) => {
-    await stream.write(`import { Collection, Entity, FormContext, FormContextData, FormContextUI, Section, Tab } from 'xrm-types';${os.EOL}`);
-    for (let a in attributes) {
-        const attribute = attributes[a];
-        await stream.write(`import ${attribute.name} from '../../../attributes/${attribute.name}';${os.EOL}`);
-    }
-    await stream.write(os.EOL);
+const saveImports = (attributes: Attribute[], sourceFile: SourceFile) => {
+    sourceFile.addImportDeclaration({
+        moduleSpecifier: 'xrm-types',
+        namedImports: [ 'Collection', 'Entity', 'FormContext', 'FormContextData', 'FormContextUI', 'Section', 'Tab' ]
+    });
+    sourceFile.addImportDeclarations(attributes.map(attribute => ({
+        moduleSpecifier: `../../../attributes/${attribute.name}`,
+        defaultImport: attribute.name
+    })));
 }
 
-const saveAttributeControlCollection = async (stream: fs.FileHandle, attribute: Attribute) => {
+const saveAttributeControlCollection = (attribute: Attribute, sourceFile: SourceFile) => {
     const names = attribute.controls.map(c => `Control_${c}`);
     const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
     const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`; 
-    await stream.write(`interface Attribute_${attribute.name}_ControlCollection extends Collection<${union}> {${os.EOL}`);
-    await stream.write(`    get(): ${list};${os.EOL}`);
-    for (let c in attribute.controls) {
-        const control = attribute.controls[c];
-        await stream.write(`    get(index: number): (${union});${os.EOL}`);
-        await stream.write(`    get(name: '${control}'): Control_${control};${os.EOL}`);
-    }
-    await stream.write(`    get(predicate: (value: ${union}, index: number) => boolean): (${union})[];${os.EOL}`);
-    await stream.write(`    getLength(): ${attribute.controls.length};${os.EOL}`)
-    await stream.write(`}${os.EOL}${os.EOL}`);
+    sourceFile.addInterface({
+        name: `Attribute_${attribute.name}_ControlCollection`,
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, list),
+            generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
+            generateMethod('getLength', undefined, attribute.controls.length.toString()),
+        ].concat(
+            attribute.controls.map(control => ([
+                generateMethod('get', { index: 'number' }, `(${union})`),
+                generateMethod('get', { name: `'${control}'` }, `Control_${control}`)
+            ])).reduce((acc, val) => acc.concat(val), [])
+        )
+    });
 }
 
-const saveAttributes = async (stream: fs.FileHandle, attributes: Attribute[]) => {
-    for (let a in attributes) {
-        const attribute = attributes[a];
-        await saveAttributeControlCollection(stream, attribute);
-    
-        await stream.write(`interface Attribute_${attribute.name} extends ${attribute.name} {${os.EOL}`);
-        await stream.write(`    controls: Attribute_${attribute.name}_ControlCollection;${os.EOL}`);
-        await stream.write(`}${os.EOL}${os.EOL}`);
-    }
+const saveAttributes = (attributes: Attribute[], sourceFile: SourceFile) => {
+    attributes.forEach(attribute => {
+        if (attribute.name) {
+            saveAttributeControlCollection(attribute, sourceFile);
+            sourceFile.addInterface({
+                name: `Attribute_${attribute.name}`,
+                extends: [ attribute.name ],
+                properties: [
+                    { name: 'controls', type: `Attribute_${attribute.name}_ControlCollection` }
+                ]
+            })
+        }
+    });
 }
 
-const saveControls = async (stream: fs.FileHandle, controls: Control[]) => {
-    for (let c in controls) {
-        const control = controls[c];
+const saveControls = (controls: Control[], sourceFile: SourceFile) => {
+    controls.forEach(control => {
         const attribute = control.field ? `Attribute_${control.field}` : 'undefined';
-        await stream.write(`interface Control_${control.id} {${os.EOL}`);
-        await stream.write(`    getAttribute(): ${attribute};${os.EOL}`);
-        await stream.write(`}${os.EOL}${os.EOL}`);
-    }
+        sourceFile.addInterface({
+            name: `Control_${control.id}`,
+            methods: [
+                generateMethod('getAttribute', undefined, attribute)
+            ]
+        });
+    });
 }
 
-const saveDataEntityAttributeCollection = async (stream: fs.FileHandle, attributes: Attribute[]) => {
+const saveDataEntityAttributeCollection = (attributes: Attribute[], sourceFile: SourceFile) => {
     const names = attributes.map(a => `Attribute_${a.name}`);
     const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
-    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`; 
-    await stream.write(`interface Entity_AttributeCollection extends Collection<${union}> {${os.EOL}`);
-    await stream.write(`    get(): ${list};${os.EOL}`);
-    await stream.write(`    get(index: number): (${union});${os.EOL}`);
-    for (let a in attributes) {
-        const attribute = attributes[a];
-        if (attribute.name) {
-            await stream.write(`    get(name: '${attribute.name}'): Attribute_${attribute.name};${os.EOL}`);
-        }
-    }
-    await stream.write(`    get(predicate: (value: ${union}, index: number) => boolean): (${union})[];${os.EOL}`);
-    await stream.write(`    getLength(): ${attributes.length};${os.EOL}`)
-    await stream.write(`}${os.EOL}${os.EOL}`);
+    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`;
+    sourceFile.addInterface({
+        name: 'Entity_AttributeCollection',
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, list),
+            generateMethod('get', { index: 'number' }, `(${union})`),
+            generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
+            generateMethod('getLength', undefined, attributes.length.toString())
+        ].concat(
+            attributes.filter(attribute => attribute.name).map(attribute => [
+                generateMethod('get', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
+            ]).reduce((acc, val) => acc.concat(val), [])
+        )
+    })
 }
 
-const saveDataEntity = async (stream: fs.FileHandle, entity: string, attributes: Attribute[]) => {
-    await saveDataEntityAttributeCollection(stream, attributes);
-    await stream.write(`interface DataEntity extends Entity<'${entity}'> {${os.EOL}`);
-    await stream.write(`    attributes: Entity_AttributeCollection;${os.EOL}`);
-    await stream.write(`}${os.EOL}${os.EOL}`);
+const saveDataEntity = (entity: string, attributes: Attribute[], sourceFile: SourceFile) => {
+    saveDataEntityAttributeCollection(attributes, sourceFile);
+    sourceFile.addInterface({
+        name: 'DataEntity',
+        extends: [ `Entity<${entity}>` ],
+        properties: [
+            { name: 'attributes', type: 'Entity_AttributeCollection' }
+        ]
+    });
 }
 
-const saveData = async (stream: fs.FileHandle, form: Form) => {
-    await saveDataEntity(stream, form.entity, form.attributes);
-    await stream.write(`interface Data extends FormContextData {${os.EOL}`);
-    await stream.write(`    entity: DataEntity;${os.EOL}`);
-    await stream.write(`}${os.EOL}${os.EOL}`);
+const saveData = (form: Form, sourceFile: SourceFile) => {
+    saveDataEntity(form.entity, form.attributes, sourceFile);
+    sourceFile.addInterface({
+        name: 'Data',
+        extends: [ 'FormContextData' ],
+        properties: [
+            { name: 'entity', type: 'DataEntity' }
+        ]
+    });
 }
 
-const saveUiTabSectionControlCollection = async (stream: fs.FileHandle, tabIndex: number, section: Section) => {
-    const names = section.controls.map(c => `Control_${c.id}`);
-    const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
-    const tuple = names.length === 0 ? '[]' : `[${names.join(', ')}]`; 
-    await stream.write(`interface UI_Tab${tabIndex}_Section${section.index}_ControlCollection extends Collection<${union}> {${os.EOL}`);
-    await stream.write(`    get(): ${tuple};${os.EOL}`);
-    if (section.controls.length === 0) {
-        await stream.write(`    get(index: number): never;${os.EOL}`);
-        await stream.write(`    get(name: string): never;${os.EOL}`);
-    }
-    else {
-        for (let c in section.controls) {
-            const control = section.controls[c];
-            await stream.write(`    get(index: number): never;${os.EOL}`);
-            await stream.write(`    get(name: '${control.id}'): Control_${control.id};${os.EOL}`);
-        }
-    }
-    await stream.write(`    get(predicate: (value: ${union}, index: number) => boolean): (${union})[];${os.EOL}`);
-    await stream.write(`    getLength(): ${section.controls.length};${os.EOL}`)
-    await stream.write(`}${os.EOL}${os.EOL}`);
-}
-
-const saveUiTabSections = async (stream: fs.FileHandle, tab: Tab) => {
-    for (let s in tab.sections) {
-        const section = tab.sections[s];
-        await saveUiTabSectionControlCollection(stream, tab.index, section);
-
-        await stream.write(`interface UI_Tab${tab.index}_Section${section.index} extends Section {${os.EOL}`);
-        await stream.write(`    controls: UI_Tab${tab.index}_Section${section.index}_ControlCollection;${os.EOL}`);
-        await stream.write(`    getName(): '${section.name}';${os.EOL}`);
-        await stream.write(`}${os.EOL}${os.EOL}`);
-    }
-}
-
-const saveUiTabSectionCollection = async (stream: fs.FileHandle, tab: Tab) => {
-    const names = tab.sections.map(s => `UI_Tab${tab.index}_Section${s.index}`);
-    await stream.write(`interface UI_Tab${tab.index}_SectionCollection extends Collection<${names.join(' | ')}> {${os.EOL}`);
-    await stream.write(`    get(): [${names.join(', ')}];${os.EOL}`);
-    for (let s in tab.sections) {
-        const section = tab.sections[s];
-        await stream.write(`    get(index: ${section.index}): UI_Tab${tab.index}_Section${section.index};${os.EOL}`);
-        await stream.write(`    get(name: '${section.name}'): UI_Tab${tab.index}_Section${section.index};${os.EOL}`);
-    }
-    await stream.write(`    get(predicate: (value: ${names.join(' | ')}, index: number) => boolean): (${names.join(' | ')})[];${os.EOL}`);
-    await stream.write(`    getLength(): ${tab.sections.length};${os.EOL}`);
-    await stream.write(`}${os.EOL}${os.EOL}`);
-}
-
-const saveUiTabs = async (stream: fs.FileHandle, tabs: Tab[]) => {
-    for (let t in tabs) {
-        const tab = tabs[t];
-        await saveUiTabSections(stream, tab);
-        await saveUiTabSectionCollection(stream, tab);
-
-        await stream.write(`interface UI_Tab${tab.index} extends Tab {${os.EOL}`);
-        await stream.write(`    sections: UI_Tab${tab.index}_SectionCollection;${os.EOL}`)
-        if (tab.name) {
-            await stream.write(`    getName(): '${tab.name}';${os.EOL}`);
-        }
-        else {
-            await stream.write(`    getName(): undefined;${os.EOL}`);
-        }
-        await stream.write(`}${os.EOL}${os.EOL}`);
-    }
-}
-
-const saveUiTabCollection = async (stream: fs.FileHandle, tabs: Tab[]) => {
-    const names = tabs.map(t => `UI_Tab${t.index}`);
-    await stream.write(`interface UI_TabCollection extends Collection<${names.join(' | ')}> {${os.EOL}`);
-    await stream.write(`    get(): [${names.join(', ')}];${os.EOL}`);
-    for (let t in tabs) {
-        const tab = tabs[t];
-        await stream.write(`    get(index: ${tab.index}): UI_Tab${tab.index};${os.EOL}`);
-        await stream.write(`    get(name: '${tab.name}'): UI_Tab${tab.index};${os.EOL}`);
-    }
-    await stream.write(`    get(predicate: (value: ${names.join(' | ')}, index: number) => boolean): (${names.join(' | ')})[];${os.EOL}`);
-    await stream.write(`}${os.EOL}${os.EOL}`);
-}
-
-const saveUiControlCollection = async (stream: fs.FileHandle, controls: Control[]) => {
+const saveUiControlCollection = (controls: Control[], sourceFile: SourceFile) => {
     const names = controls.map(c => `Control_${c.id}`);
     const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
     const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`; 
-    await stream.write(`interface UI_ControlCollection extends Collection<${union}> {${os.EOL}`);
-    await stream.write(`    get(): ${list};${os.EOL}`);
-    // TODO: Figure out if the order of controls is deterministic.
-    await stream.write(`    get(index: number): (${union});${os.EOL}`);
-    for (let c in controls) {
-        const control = controls[c];
-        await stream.write(`    get(name: '${control.id}'): Control_${control.id};${os.EOL}`);
+    sourceFile.addInterface({
+        name: 'UI_ControlCollection',
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, list),
+            generateMethod('get', { index: 'number' }, `(${union})`), // TODO: Figure out if the order of controls is deterministic.
+            generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
+            generateMethod('getLength', undefined, controls.length.toString())
+        ].concat(
+            controls.map(control => [
+                generateMethod('get', { name: `'${control.id}'`}, `Control_${control.id}`)
+            ]).reduce((acc, val) => acc.concat(val), [])
+        )
+    });
+}
+
+const saveUiTabSectionControlCollection = (tabIndex: number, section: Section, sourceFile: SourceFile) => {
+    const names = section.controls.map(c => `Control_${c.id}`);
+    const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
+    const tuple = names.length === 0 ? '[]' : `[${names.join(', ')}]`;
+    sourceFile.addInterface({
+        name: `UI_Tab${tabIndex}_Section${section.index}_ControlCollection`,
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, tuple),
+            generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
+            generateMethod('getLength', undefined, section.controls.length.toString())
+        ].concat(
+            ((controls) => {
+                if (controls.length) {
+                    return [
+                        generateMethod('get', { index: 'number' }, 'never'),
+                        generateMethod('get', { name: 'string' }, 'never')
+                    ];
+                }
+                else {
+                    return controls.map(control => [
+                        generateMethod('get', { index: 'number' }, 'never'),
+                        generateMethod('get', { name: `'${control.id}'` }, `Control_${control.id}`)
+                    ]).reduce((acc, val) => acc.concat(val), [])
+                }
+            })(section.controls)
+        )
+    });
+}
+
+const saveUiTabSections = (tab: Tab, sourceFile: SourceFile) => {
+    for (let s in tab.sections) {
+        const section = tab.sections[s];
+        saveUiTabSectionControlCollection(tab.index, section, sourceFile);
+        sourceFile.addInterface({
+            name: `UI_Tab${tab.index}_Section${section.index}`,
+            extends: [ 'Section' ],
+            properties: [
+                { name: 'controls', type: `UI_Tab${tab.index}_Section${section.index}_ControlCollection` }
+            ],
+            methods: [
+                generateMethod('getName', undefined, `'${section.name}'`)
+            ]
+        });
     }
-    await stream.write(`    get(predicate: (value: ${union}, index: number) => boolean): (${union})[];${os.EOL}`);
-    await stream.write(`    getLength(): ${controls.length};${os.EOL}`)
-    await stream.write(`}${os.EOL}${os.EOL}`);
 }
 
-const saveUi = async (stream: fs.FileHandle, form: Form) => {
-    await saveControls(stream, form.controls);
-    await saveUiControlCollection(stream, form.controls);
-    await saveUiTabs(stream, form.tabs);
-    await saveUiTabCollection(stream, form.tabs);
-    await stream.write(`interface UI extends FormContextUI {${os.EOL}`);
-    await stream.write(`    controls: UI_ControlCollection;${os.EOL}`);
-    await stream.write(`    tabs: UI_TabCollection;${os.EOL}`);
-    await stream.write(`}${os.EOL}${os.EOL}`);
+const saveUiTabSectionCollection = (tab: Tab, sourceFile: SourceFile) => {
+    const names = tab.sections.map(s => `UI_Tab${tab.index}_Section${s.index}`);
+    const union = names.join(' | ');
+    const tuple = `[${names.join(', ')}]`;
+    sourceFile.addInterface({
+        name: `UI_Tab${tab.index}_SectionCollection`,
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, tuple),
+            generateMethod('get', { predicate: `` }, `(${union})[]`),
+            generateMethod('getLength', undefined, tab.sections.length.toString())
+        ].concat(
+            tab.sections.map(section => [
+                generateMethod('get', { index: section.index.toString() }, `UI_Tab${tab.index}_Section${section.index}`),
+                generateMethod('get', { name: `'${section.name}'` }, `UI_Tab${tab.index}_Section${section.index}`)
+            ]).reduce((acc, val) => acc.concat(val), [])
+        )
+    });
 }
 
-const saveTypeDef = async (file: string, form: Form) => {
-    await mkdir(path.dirname(file));
-    const stream = await fs.open(file, 'w');
-    
-    await saveImports(stream, form.attributes);
-    await saveAttributes(stream, form.attributes);
-    
-    await saveData(stream, form);
-    await saveUi(stream, form);
-    
-
-    await stream.write(`export default interface GeneratedFormContext extends FormContext {${os.EOL}`);
-    await stream.write(`    data: Data;${os.EOL}`);
-    await stream.write(`    ui: UI;${os.EOL}`);
-    for (let a in form.attributes) {
-        const attribute = form.attributes[a];
-        if (attribute.name) {
-            await stream.write(`    getAttribute(name: '${attribute.name}'): Attribute_${attribute.name};${os.EOL}`);
-        }
-    }
-    await stream.write(`}${os.EOL}`);
-
-    await stream.close();
+const saveUiTabs = (tabs: Tab[], sourceFile: SourceFile) => {
+    tabs.forEach(tab => {
+        saveUiTabSections(tab, sourceFile);
+        saveUiTabSectionCollection(tab, sourceFile);
+        sourceFile.addInterface({
+            name: `UI_Tab${tab.index}`,
+            extends: [ 'Tab' ],
+            properties: [
+                { name: 'sections', type: `UI_Tab${tab.index}_SectionCollection` }
+            ],
+            methods: [
+                tab.name ? generateMethod('getName', undefined, `'${tab.name}'`) : generateMethod('getName', undefined, 'undefined')
+            ]
+        });
+    });
 }
 
-const typegenForm = async (entity: string, projectForm: ProjectForm) => {
+const saveUiTabCollection = (tabs: Tab[], sourceFile: SourceFile) => {
+    const names = tabs.map(t => `UI_Tab${t.index}`);
+    const union = names.join(' | ');
+    const tuple = `[${names.join(', ')}]`;
+    sourceFile.addInterface({
+        name: 'UI_TabCollection',
+        extends: [ `Collection<${union}>` ],
+        methods: [
+            generateMethod('get', undefined, tuple),
+            generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
+        ].concat(
+            tabs.map(tab => [
+                generateMethod('get', { index: tab.index.toString() }, `UI_Tab${tab.index}`),
+                generateMethod('get', { name: `'${tab.name}'` }, `UI_Tab${tab.index}`)
+            ]).reduce((acc, val) => acc.concat(val), [])
+        )
+    });
+}
+
+const saveUi = (form: Form, sourceFile: SourceFile) => {
+    saveControls(form.controls, sourceFile);
+    saveUiControlCollection(form.controls, sourceFile);
+    saveUiTabs(form.tabs, sourceFile);
+    saveUiTabCollection(form.tabs, sourceFile);
+    sourceFile.addInterface({
+        name: 'UI',
+        extends: [ 'FormContextUI' ],
+        properties: [
+            { name: 'controls', type: 'UI_ControlCollection' },
+            { name: 'tabs', type: 'UI_TabCollection' }
+        ]
+    });
+}
+
+const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
+    saveImports(form.attributes, sourceFile);
+    saveAttributes(form.attributes, sourceFile);
+    saveData(form, sourceFile);
+    saveUi(form, sourceFile);
+    sourceFile.addInterface({
+        name: 'GeneratedFormContext',
+        extends: [ 'FormContext' ],
+        isDefaultExport: true,
+        properties: [
+            { name: 'data', type: 'Data' },
+            { name: 'ui', type: 'UI' }
+        ],
+        methods: form.attributes.map(attribute => [
+            generateMethod('getAttribute', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
+        ]).reduce((acc, val) => acc.concat(val), [])
+    });
+}
+
+const typegenForm = async (entity: string, projectForm: ProjectForm, project: Project) => {
     const config = await getConfig();
     for (let t in projectForm.types) {
         const type = projectForm.types[t];
-        const paths = await getPath(config).systemform(entity, projectForm.name, type.name);
+        const paths = getPath(config).systemform(entity, projectForm.name, type.name);
         const file = paths.typedef;
         const fileXml = paths.form;
         const formXml = await loadFormXml(fileXml);
@@ -281,18 +330,21 @@ const typegenForm = async (entity: string, projectForm: ProjectForm) => {
         });
         form.attributes = Array.from(attributes).map(([name, controls]) => ({ name, controls }));
 
-        await saveTypeDef(file, form);
+        const sourceFile = project.createSourceFile(file, undefined, { overwrite: true });
+        saveTypeDef(form, sourceFile);
+        await sourceFile.save();
     }
 }
 
 const typegen: Command = async (names: string[]) => {
-    const entities = await getProjectEntities();
-    names = names.length === 0 ? entities : names;
+    names = names.length === 0 ? await getProjectEntities() : names;
+    const project = new Project();
     for (let n in names) {
         const forms = await getEntityForms(names[n]);
         for (let j = 0; j < 1; j++) {
-            typegenForm(names[n], forms[j]);
+            typegenForm(names[n], forms[j], project);
         }
     }
+    await project.save();
 }
 export default typegen;
