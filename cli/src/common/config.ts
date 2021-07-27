@@ -29,6 +29,7 @@ export const getConfig = (): Promise<Config> => new Promise<Config>(resolve => {
     fs.readFile('./xrm.json', 'utf8').then(data => resolve(parse(data) as Config));
 });
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getPath = (config: Config) => ({
     attributes: (entity: string) => path.join(config.project.root, 'entities', entity, 'attributes'),
     attribute: (entity: string, attribute: string) => ({
@@ -60,7 +61,7 @@ export const getPath = (config: Config) => ({
     },
     webresources: path.join(config.project.root, 'webresources'),
     webresource: (webresource: { name: string, webresourcetype?: WebResourceType }) => ({
-        content: webresource.webresourcetype ? path.join(config.project.root, 'webresources', webresource.name, 'content.' + getExtension(webresource as any)) : undefined,
+        content: webresource.webresourcetype ? path.join(config.project.root, 'webresources', webresource.name, 'content.' + getExtension({ webresourcetype: webresource.webresourcetype })) : undefined,
         directory: path.join(config.project.root, 'webresources', webresource.name),
         definition: path.join(config.project.root, 'webresources', webresource.name, 'definition.json'),
         typedef: path.join(config.project.types, 'webresources', webresource.name, 'index.d.ts')

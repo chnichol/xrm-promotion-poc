@@ -1,5 +1,3 @@
-import { Argv } from 'yargs';
-import { getPositionals } from '../../common';
 import { getConfig, saveConfig } from '../../common/config';
 import { Command } from '../cli';
 

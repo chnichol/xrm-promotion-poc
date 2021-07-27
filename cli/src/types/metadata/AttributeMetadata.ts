@@ -5,7 +5,7 @@ import BooleanManagedProperty from '../complex/BooleanManagedProperty';
 import Label from '../complex/Label';
 import AttributeTypeCode from '../enum/AttributeTypeCode';
 
-type AttributeMetadata = Component<Properties, {}, {}, {}>;
+type AttributeMetadata = Component<Properties, unknown, unknown, unknown>;
 export default AttributeMetadata;
 
 export type Properties = {

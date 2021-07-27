@@ -5,7 +5,7 @@ export type Filter<T> = {
 export type ExpandBody = {
     property: string;
     filter?: {
-        [key: string]: any;
+        [key: string]: any;     // eslint-disable-line @typescript-eslint/no-explicit-any
     }
     select?: string[];
 }
@@ -22,7 +22,7 @@ export type QueryBody = {
     type: 'query',
     resource: string,
     filter?: {
-        [key: string]: any;
+        [key: string]: any;     // eslint-disable-line @typescript-eslint/no-explicit-any
     }
     select?: string[],
     expand?: ExpandBody[]

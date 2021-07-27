@@ -2,10 +2,11 @@ import api from '../../api';
 import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
 import Config, { getConfig, getPath } from '../../common/config';
 import { ComponentType } from '../../types/entity/SolutionComponent';
+import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 
-const save = async (config: Config, webResource: any) => {
+const save = async (config: Config, webResource: WebResource) => {
     const paths = getPath(config).webresource(webResource);
     await mkdir(paths.directory);
     await saveFile(paths.definition, { ...webResource, content: undefined });

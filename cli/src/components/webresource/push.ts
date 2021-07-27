@@ -8,9 +8,9 @@ import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';
 
 interface Diff {
-    added: object;
-    deleted: object;
-    updated: object;
+    added: Record<string, unknown>;
+    deleted: Record<string, unknown>;
+    updated: Record<string, unknown>;
 }
 
 const load = async (config: Config, name: string) => {
@@ -41,10 +41,11 @@ const push: Command = async (names: string[]) => {
             filter: { name: quote(names[i]) }
         }).execute();
         switch(results.length) {
-            case 0:
+            case 0: {
                 console.warn(`No remote web resources found where name="${names[i]}"`);
                 break;
-            case 1:
+            }
+            case 1: {
                 const remote = results[0];
                 const diff = detailedDiff(remote, webResource) as Diff;
                 if (Object.keys(diff.updated).length > 0) {
@@ -54,8 +55,10 @@ const push: Command = async (names: string[]) => {
                     });
                 }
                 break;
-            default:
+            }
+            default: {
                 console.warn(`Multiple remote web resources found where name="${names[i]}"`);
+            }
         }
     }
 }

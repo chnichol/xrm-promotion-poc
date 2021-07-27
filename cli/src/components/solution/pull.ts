@@ -2,9 +2,10 @@ import path from 'path';
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
 import { getConfig, getPath } from '../../common/config';
+import Solution from '../../types/entity/Solution';
 import { Command } from '../cli';
 
-const save = async (outdir: string, solution: any) => {
+const save = async (outdir: string, solution: Solution) => {
     const outfile = path.join(outdir, solution.uniquename + '.json');
     await mkdir(outdir);
     await saveFile(outfile, solution);

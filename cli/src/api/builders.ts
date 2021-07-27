@@ -127,7 +127,7 @@ export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S
             data: data
         });
     }
-    put(id: string, data: P) {
+    put(id: string, data: P): UpdateRequest<P> {
         return new UpdateRequestBuilder<P>({
             type: 'update',
             method: 'PUT',

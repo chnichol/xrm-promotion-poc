@@ -80,7 +80,7 @@ export const lookup = async <T> (lookupBody: LookupBody): Promise<T> => {
     return data as T;
 }
 
-export const publish = async (manifest: PublishManifest) => {
+export const publish = async (manifest: PublishManifest): Promise<void> => {
     const url = `${await getApiUrl()}/PublishXml`;
     const xml = [
         '<?xml version="1.0" encoding="utf-8"?>',
@@ -116,6 +116,7 @@ export const query = async <T> (queryBody: QueryBody): Promise<QueryResponse<T>>
     return data as QueryResponse<T>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
     const url = `${await getApiUrl()}/${updateBody.resource}(${updateBody.id})`;
     switch (updateBody.method) {
@@ -146,6 +147,6 @@ export default async <Properties, Response>(request: RequestBody | UpdateBody<Pr
         case 'lookup':
             return await lookup<Response>(request);
         case 'update':
-            return (await update(request)) as any;
+            return (await update(request)) as unknown as Response;
     }
 }

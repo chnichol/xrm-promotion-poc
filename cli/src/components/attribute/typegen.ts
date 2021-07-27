@@ -12,10 +12,10 @@ const typegen: Command = async (names: string[]) => {
     const config = await getConfig();
     const entities = await getProjectEntities();
     names = names.length === 0 ? entities : names;
-    for (let n in names) {
+    for (const n in names) {
         const name = names[n];
         const attributes = await getEntityAttributes(name);
-        for (let a in attributes) {
+        for (const a in attributes) {
             const attribute = attributes[a];
             const definitionFile = getPath(config).attribute(name, attribute).definition;
             const definition = await parseFile<AttributeMetadata>(definitionFile);

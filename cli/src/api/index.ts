@@ -38,10 +38,10 @@ import { ApiBuilder } from './builders';
 import { publish } from './handler';
 
 const api = {
-    any: (url: string) => new ApiBuilder<any, any, any, any>(url),
-    attribute: (entityId: string) => new ApiBuilder<AttributeMetadataProperties, {}, {}, {}>(`EntityDefinitions(${entityId})/Attributes`),
-    entity: new ApiBuilder<EntityProperties, {}, {}, EntityCollections>('entities'),
-    entityMetadata: new ApiBuilder<EntityMetadataProperties, {}, {}, EntityMetadataCollections>('EntityDefinitions'),
+    any: (url: string): ApiBuilder<unknown, unknown, unknown, unknown> => new ApiBuilder<unknown, unknown, unknown, unknown>(url),
+    attribute: (entityId: string): ApiBuilder<AttributeMetadataProperties, unknown, unknown, unknown> => new ApiBuilder<AttributeMetadataProperties, unknown, unknown, unknown>(`EntityDefinitions(${entityId})/Attributes`),
+    entity: new ApiBuilder<EntityProperties, unknown, unknown, EntityCollections>('entities'),
+    entityMetadata: new ApiBuilder<EntityMetadataProperties, unknown, unknown, EntityMetadataCollections>('EntityDefinitions'),
     pluginAssembly: new ApiBuilder<PluginAssemblyProperties, PluginAssemblyLookups, PluginAssemblySingles, PluginAssemblyCollections>('pluginassemblies'),
     solution: new ApiBuilder<SolutionProperties, SolutionLookups, SolutionSingles, SolutionCollections>('solutions'),
     systemform: new ApiBuilder<SystemFormProperties, SystemFormLookups, SystemFormSingles, SystemFormCollections>('systemforms'),

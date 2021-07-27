@@ -14,22 +14,28 @@ const save = async (config: Config, form: SystemForm) => {
     await mkdir(paths.directory);
     await saveFile(paths.definition, { ...form, formjson: undefined, formxml: undefined });
     switch (config.project.forms) {
-        case 'json':
+        case 'json': {
             const json = JSONBigInt.parse(form.formjson);
             await saveFile(paths.form + '.json', json);
             try {
                 await fs.rm(paths.form + '.xml');
             }
-            catch {}
+            catch (e) {
+                console.error(e);
+            }
             break;
-        case 'xml':
+        }
+        case 'xml': {
             const xml = await xml2js.parseStringPromise(form.formxml);
             await saveFileXML(paths.form + '.xml', xml);
             try {
                 await fs.rm(paths.form + '.json');
             }
-            catch {}
+            catch (e) {
+                console.error(e);
+            }
             break;
+        }
     }
 }
 

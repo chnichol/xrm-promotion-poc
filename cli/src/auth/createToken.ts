@@ -1,25 +1,24 @@
 import { AuthenticationResult, CryptoProvider, PublicClientApplication } from '@azure/msal-node';
 import express from 'express';
 import open from 'open';
-import { getConfig } from '../common/config';
+import Config, { getConfig } from '../common/config';
 
-export default (): Promise<AuthenticationResult> => new Promise(async (resolve) => {
-    const config = await getConfig();
-    const pca = new PublicClientApplication({ auth: config.auth });
+const createApp = (config: Config) => {
     const app = express();
-
+    const pca = new PublicClientApplication({ auth: config.auth });
+    
     app.locals.pkceCodes = {
         challenge: '',
         challengeMethod: 'S256',
         verifier: ''
     };
-
+    
     app.get('/', (_, response) => {
         const cryptoProvider = new CryptoProvider();
         cryptoProvider.generatePkceCodes().then(({ challenge, verifier }) => {
             app.locals.pkceCodes.challenge = challenge;
             app.locals.pkceCodes.verifier = verifier;
-
+    
             const authCodeUrlParameters = {
                 scopes: [ `${config.dynamics}/user_impersonation` ],
                 redirectUri: config.urls.redirect,
@@ -30,24 +29,37 @@ export default (): Promise<AuthenticationResult> => new Promise(async (resolve) 
                 .then(url => response.redirect(url));
         });
     });
-
-    app.get('/redirect', (request, response) => {
-        const tokenRequest = {
-            code: (request.query.code ?? '').toString(),
-            scopes: [ `${config.dynamics}/user_impersonation` ],
-            redirectUri: config.urls.redirect,
-            codeVerifier: app.locals.pkceCodes.verifier
-        };
-
-        pca.acquireTokenByCode(tokenRequest).then(token => {
-            response.sendStatus(200);
-            process.kill();
-            server.close();
-            if (token) {
-                resolve(token);
-            }
+    
+    const token = new Promise<AuthenticationResult>(resolve => {
+        app.get('/redirect', (request, response) => {
+            const tokenRequest = {
+                code: (request.query.code ?? '').toString(),
+                scopes: [ `${config.dynamics}/user_impersonation` ],
+                redirectUri: config.urls.redirect,
+                codeVerifier: app.locals.pkceCodes.verifier
+            };
+        
+            pca.acquireTokenByCode(tokenRequest).then(token => {
+                response.sendStatus(200);
+                if (token) {
+                    resolve(token);
+                }
+            });
         });
     });
-    const server = app.listen(config.urls.port);
+    return { app, token };
+};
+
+export default async (): Promise<AuthenticationResult> => {
+    const config = await getConfig();
+    const app = createApp(config);
+
+    const server = app.app.listen(config.urls.port);
     const process = await open(config.urls.home, {app: { name: open.apps.edge, arguments: [ '--new-window' ]}});
-});
+
+    const token = await app.token;
+    process.kill();
+    server.close();
+
+    return token;
+};

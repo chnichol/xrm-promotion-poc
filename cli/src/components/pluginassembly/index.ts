@@ -3,7 +3,7 @@ import path from 'path';
 import { exists } from '../../common';
 import { getConfig, getPath } from '../../common/config';
 
-export const getPluginAssemblyComponents = async () => {
+export const getPluginAssemblyComponents = async (): Promise<string[]> => {
     const config = await getConfig();
     const componentRoot = getPath(config).pluginassemblies;
     const components = (await Promise.all(
@@ -20,7 +20,7 @@ export const getPluginAssemblyComponents = async () => {
     return components;
 }
 
-export const getPluginAssemblyProjects = async () => {
+export const getPluginAssemblyProjects = async (): Promise<string[]> => {
     const config = await getConfig();
     const projects = (await Promise.all(
         (await fs.readdir(config.project.pluginassemblies)).map(async item => {

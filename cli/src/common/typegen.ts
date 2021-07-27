@@ -9,7 +9,7 @@ export const generateMethod = (name: string, parameters?: { [key: string]: strin
     returnType
 });
 
-export const generatePackage = async (file: string) => {
+export const generatePackage = async (file: string): Promise<void> => {
     const pkg = {
         name: '@types/xrm-generated',
         version: '1.0.0',

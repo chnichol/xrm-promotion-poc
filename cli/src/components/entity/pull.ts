@@ -12,7 +12,7 @@ const save = async (config: Config, entity: Entity, metadata: EntityMetadata) =>
     await mkdir(entityPaths.directory);
     await saveFile(entityPaths.definition, entity);
     if (metadata.Attributes) {
-        for (let a in metadata.Attributes) {
+        for (const a in metadata.Attributes) {
             const attribute = metadata.Attributes[a];
             const attributePaths = getPath(config).attribute(entity.logicalname, attribute.LogicalName);
             await mkdir(attributePaths.directory);
@@ -37,10 +37,11 @@ const pull: Command = async (names: string[]) => {
 
         const property = isUuid(name) ? 'entityid' : 'logicalname';
         switch(results.length) {
-            case 0:
+            case 0: {
                 console.warn(`No entities found where ${property}="${name}"`)
                 break;
-            case 1:
+            }
+            case 1: {
                 if (!components.has(results[0].entityid)) {
                     console.warn(`No solution includes the entity ${results[0].logicalname} (${results[0].entityid})`);
                 }
@@ -50,8 +51,10 @@ const pull: Command = async (names: string[]) => {
                     await save(config, results[0], metadata);
                 }
                 break;
-            default:
+            }
+            default: {
                 console.warn(`Multiple entities found where ${property}="${name}"`)
+            }
         }
     }    
 }

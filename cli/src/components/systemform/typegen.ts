@@ -1,9 +1,6 @@
-import fs from 'fs/promises';
-import os from 'os';
-import path from 'path';
 import { Project, SourceFile } from 'ts-morph';
 import { getEntityForms } from '.';
-import { mkdir, parseFileXML } from '../../common';
+import { parseFileXML } from '../../common';
 import { getConfig, getPath } from '../../common/config';
 import { generateMethod } from '../../common/typegen';
 import { Command } from '../cli';
@@ -165,8 +162,7 @@ const saveUiTabSectionControlCollection = (tabIndex: number, section: Section, s
 }
 
 const saveUiTabSections = (tab: Tab, sourceFile: SourceFile) => {
-    for (let s in tab.sections) {
-        const section = tab.sections[s];
+    tab.sections.forEach(section => {
         saveUiTabSectionControlCollection(tab.index, section, sourceFile);
         sourceFile.addInterface({
             name: `UI_Tab${tab.index}_Section${section.index}`,
@@ -178,7 +174,7 @@ const saveUiTabSections = (tab: Tab, sourceFile: SourceFile) => {
                 generateMethod('getName', undefined, `'${section.name}'`)
             ]
         });
-    }
+    });
 }
 
 const saveUiTabSectionCollection = (tab: Tab, sourceFile: SourceFile) => {
@@ -273,7 +269,7 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
 
 const typegenForm = async (entity: string, projectForm: ProjectForm, project: Project) => {
     const config = await getConfig();
-    for (let t in projectForm.types) {
+    for (const t in projectForm.types) {
         const type = projectForm.types[t];
         const paths = getPath(config).systemform(entity, projectForm.name, type.name);
         const file = paths.typedef;
@@ -339,7 +335,7 @@ const typegenForm = async (entity: string, projectForm: ProjectForm, project: Pr
 const typegen: Command = async (names: string[]) => {
     names = names.length === 0 ? await getProjectEntities() : names;
     const project = new Project();
-    for (let n in names) {
+    for (const n in names) {
         const forms = await getEntityForms(names[n]);
         for (let j = 0; j < 1; j++) {
             typegenForm(names[n], forms[j], project);

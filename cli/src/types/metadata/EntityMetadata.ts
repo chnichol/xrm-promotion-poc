@@ -5,11 +5,14 @@ import Label from '../complex/Label';
 import SecurityPrivilegeMetadata from '../complex/SecurityPrivilegeMetadata';
 import OwnershipTypes from '../enum/OwnershipTypes';
 import AttributeMetadata from './AttributeMetadata';
+import EntityKeyMetadata from './EntityKeyMetadata';
+import ManyToManyRelationshipMetadata from './ManyToManyRelationshipMetadata';
+import OneToManyRelationshipMetadata from './OneToManyRelationshipMetadata';
 
 /**
  * See {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/entitymetadata?view=dynamics-ce-odata-9 docs.microsoft.com}
  */
-type EntityMetadata = Component<Properties, {}, {}, CollectionValuedNavigationProperties>;
+type EntityMetadata = Component<Properties, unknown, unknown, CollectionValuedNavigationProperties>;
 export default EntityMetadata;
 
 export type Properties = {
@@ -219,8 +222,8 @@ export type Properties = {
 
 export type CollectionValuedNavigationProperties = {
     Attributes: AttributeMetadata;
-    Keys: any;
-    ManyToManyRelationships: any;
-    ManyToOneRelationships: any;
-    OneToManyRelationships: any;
+    Keys: EntityKeyMetadata;
+    ManyToManyRelationships: ManyToManyRelationshipMetadata;
+    ManyToOneRelationships: OneToManyRelationshipMetadata;
+    OneToManyRelationships: OneToManyRelationshipMetadata;
 }

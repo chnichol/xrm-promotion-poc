@@ -1,4 +1,3 @@
-import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, quote } from '../../common';
 import { getConfig, getPath } from '../../common/config';
@@ -7,12 +6,6 @@ import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
 import { getEntityAttributes } from '.';
 import Entity from '../../types/entity/Entity';
-
-type Diff = {
-    added: object;
-    deleted: object;
-    updated: object;
-}
 
 const loadAttributeDefinition = async (entity: string, attribute: string) => {
     const file = getPath(await getConfig()).attribute(entity, attribute).definition;
@@ -46,7 +39,7 @@ const push: Command = async (names: string[]) => {
     }
 
     const attributeKeys = Array.from(attributes.keys());
-    for (let a in attributeKeys) {
+    for (const a in attributeKeys) {
         const entityName = attributeKeys[a];
         // If there are entities which do not have attribute lists,
         // populate their lists with the full entity attribute list.
@@ -54,7 +47,7 @@ const push: Command = async (names: string[]) => {
 
         const entity = await loadEntityDefinition(entityName);
         const attributeApi = api.attribute(entity.entityid);
-        for (let l in list) {
+        for (const l in list) {
             const attributeName = list[l];
             const local = await loadAttributeDefinition(entityName, attributeName);
             const results = await attributeApi.query({ filter: { LogicalName: quote(attributeName) } }).execute();

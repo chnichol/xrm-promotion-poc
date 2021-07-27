@@ -3,7 +3,7 @@ import path from 'path';
 import { getConfig, getPath } from '../../common/config';
 import { ProjectForm } from './types';
 
-export const getEntityForms = async (entity: string) => {
+export const getEntityForms = async (entity: string): Promise<ProjectForm[]> => {
     const config = await getConfig();
     const entityDir = getPath(config).systemforms(entity);
     const formDirs = await fs.readdir(entityDir);

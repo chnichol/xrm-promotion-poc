@@ -7,7 +7,7 @@ import VirtualEntityMetadata from './VirtualEntityMetadata';
 /**
  * See {@link https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/entity?view=dynamics-ce-odata-9 docs.microsoft.com}
  */
-type Entity = Component<Properties, {}, {}, CollectionValuedNavigationProperties>;
+type Entity = Component<Properties, unknown, unknown, CollectionValuedNavigationProperties>;
 export default Entity;
 
 export type Properties = {

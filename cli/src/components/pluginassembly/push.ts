@@ -7,9 +7,9 @@ import { Command } from '../cli';
 import { getPluginAssemblyComponents } from '.';
 
 interface Diff {
-    added: object;
-    deleted: object;
-    updated: object;
+    added: Record<string, unknown>;
+    deleted: Record<string, unknown>;
+    updated: Record<string, unknown>;
 }
 
 const load = async (config: Config, name: string) => {
@@ -32,18 +32,21 @@ const push: Command = async (names: string[]) => {
             filter: { name: quote(names[i]) }
         }).execute();
         switch(results.length) {
-            case 0:
+            case 0: {
                 console.warn(`No remote plugin assemblies found where name="${names[i]}"`);
                 break;
-            case 1:
+            }
+            case 1: {
                 const remote = results[0];
                 const diff = detailedDiff(remote, pluginAssembly) as Diff;
                 if (Object.keys(diff.updated).length > 0) {
                     await api.pluginAssembly.patch(pluginAssembly.pluginassemblyid, diff.updated).execute();
                 }
                 break;
-            default:
+            }
+            default: {
                 console.warn(`Multiple remote plugin assemblies found where name="${names[i]}"`);
+            }
         }
     }
 }
