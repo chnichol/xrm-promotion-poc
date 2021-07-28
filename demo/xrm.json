@@ -8,7 +8,7 @@
         "forms": "xml",
         "root": "xrm",
         "solutions": [
-            "f889c9d8-0fa9-eb11-b1ac-000d3a5c4530"
+            "SaplingTrackingSystem"
         ],
         "types": "xrm/types",
         "pluginassemblies": "pluginassemblies",

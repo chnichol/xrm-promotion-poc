@@ -77,7 +77,7 @@ interface Entity_AttributeCollection extends Collection<Attribute_new_id | Attri
     get(name: 'ownerid'): Attribute_ownerid;
 }
 
-interface DataEntity extends Entity<new_sapling> {
+interface DataEntity extends Entity<'new_sapling'> {
     attributes: Entity_AttributeCollection;
 }
 
