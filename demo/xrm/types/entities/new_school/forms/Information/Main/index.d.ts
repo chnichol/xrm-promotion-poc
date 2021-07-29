@@ -151,7 +151,7 @@ interface Entity_AttributeCollection extends Collection<Attribute_new_name | Att
     get(name: 'new_addresszip'): Attribute_new_addresszip;
 }
 
-interface DataEntity extends Entity<new_school> {
+interface DataEntity extends Entity<'new_school'> {
     attributes: Entity_AttributeCollection;
 }
 

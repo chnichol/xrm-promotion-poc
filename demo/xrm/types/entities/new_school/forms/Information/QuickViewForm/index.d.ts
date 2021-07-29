@@ -35,7 +35,7 @@ interface Entity_AttributeCollection extends Collection<Attribute_new_name | Att
     get(name: 'ownerid'): Attribute_ownerid;
 }
 
-interface DataEntity extends Entity<new_school> {
+interface DataEntity extends Entity<'new_school'> {
     attributes: Entity_AttributeCollection;
 }
 

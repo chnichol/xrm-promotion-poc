@@ -93,7 +93,7 @@ const saveDataEntity = (entity: string, attributes: Attribute[], sourceFile: Sou
     saveDataEntityAttributeCollection(attributes, sourceFile);
     sourceFile.addInterface({
         name: 'DataEntity',
-        extends: [ `Entity<${entity}>` ],
+        extends: [ `Entity<'${entity}'>` ],
         properties: [
             { name: 'attributes', type: 'Entity_AttributeCollection' }
         ]

@@ -77,7 +77,7 @@ interface Entity_AttributeCollection extends Collection<Attribute_new_name | Att
     get(name: 'new_numberoftimesimcool'): Attribute_new_numberoftimesimcool;
 }
 
-interface DataEntity extends Entity<new_student> {
+interface DataEntity extends Entity<'new_student'> {
     attributes: Entity_AttributeCollection;
 }
 
