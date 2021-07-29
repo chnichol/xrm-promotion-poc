@@ -1,27 +1,26 @@
-import fs from 'fs';
+import fs from 'fs/promises';
+import path from 'path';
 import { AuthenticationResult } from '@azure/msal-node';
+import { exists, mkdir, parseFile, saveFile } from '../common';
 
 export default class TokenStore {
     private _path: string;
 
-    constructor (path: string) {
-        this._path = path;
+    constructor (p: string) {
+        this._path = p;
     }
 
-    loadToken = (): Promise<AuthenticationResult | undefined> => new Promise(resolve => {
-        if (fs.existsSync(this._path) && fs.lstatSync(this._path).isFile) {
-            fs.readFile(
-                this._path,
-                'utf8',
-                (_, data) => resolve(data ? JSON.parse(data) as AuthenticationResult : undefined)
-            );
+    loadToken = async (): Promise<AuthenticationResult | undefined> => {
+        if (await exists(this._path) && (await fs.lstat(this._path)).isFile()) {
+            return await parseFile<AuthenticationResult>(this._path);
         }
         else {
-            resolve(undefined);
+            return undefined;
         }
-    });
+    }
 
-    saveToken = (token: AuthenticationResult): Promise<void> => new Promise<void>(resolve => {
-        fs.writeFile(this._path, JSON.stringify(token, undefined, 4), () => resolve());
-    });
+    saveToken = async (token: AuthenticationResult): Promise<void> => {
+        await mkdir(path.dirname(this._path));
+        await saveFile(this._path, token);
+    }
 }

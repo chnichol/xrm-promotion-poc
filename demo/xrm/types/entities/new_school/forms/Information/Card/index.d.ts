@@ -63,7 +63,7 @@ interface Entity_AttributeCollection extends Collection<Attribute_statuscode | A
     get(name: 'createdon'): Attribute_createdon;
 }
 
-interface DataEntity extends Entity<new_school> {
+interface DataEntity extends Entity<'new_school'> {
     attributes: Entity_AttributeCollection;
 }
 
