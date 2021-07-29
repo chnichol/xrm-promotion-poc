@@ -7,24 +7,29 @@ export const ILMERGE_PATH: string = (() => {
         return '';
     }
     const dir = `${process.env.USERPROFILE}/.nuget/packages/ilmerge`;
-    const version = fs.readdirSync(dir).sort((a, b) => {
-        const [aMajor, aMinor, aPatch] = a.split('.').map(s => Number.parseInt(s));
-        const [bMajor, bMinor, bPatch] = b.split('.').map(s => Number.parseInt(s));
-        
-        const compareMajor = bMajor - aMajor;
-        if (compareMajor) {
-            return compareMajor;
-        }
-
-        const compareMinor = bMinor - aMinor;
-        if (compareMinor) {
-            return compareMinor;
-        }
-
-        return bPatch - aPatch;
-    })[0];
-    const exe = `${dir}/${version}/tools/net452/ILMerge.exe`;
-    return exe;
+    try {
+        const version = fs.readdirSync(dir).sort((a, b) => {
+            const [aMajor, aMinor, aPatch] = a.split('.').map(s => Number.parseInt(s));
+            const [bMajor, bMinor, bPatch] = b.split('.').map(s => Number.parseInt(s));
+            
+            const compareMajor = bMajor - aMajor;
+            if (compareMajor) {
+                return compareMajor;
+            }
+    
+            const compareMinor = bMinor - aMinor;
+            if (compareMinor) {
+                return compareMinor;
+            }
+    
+            return bPatch - aPatch;
+        })[0];
+        const exe = `${dir}/${version}/tools/net452/ILMerge.exe`;
+        return exe;
+    }
+    catch {
+        return dir;
+    }
 })();
 
 export const NET_SDK_TOOLS_PATH: string = (() => {
