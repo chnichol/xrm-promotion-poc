@@ -4,6 +4,22 @@ Base toolkit that provides a unified interface to build Dynamics projects.
 
 ---
 
+### Initialize Project
+
+Only needs to be ran after first pulling down the project.
+
+```
+npm install
+```
+
+### Build the Project
+
+Required for changes to made available to the CLI instance being used by the example project.
+
+```
+npm run build
+```
+
 ## Installing the CLI
 
 ##### *These steps will need to be performed any time you are updating the CLI.*
@@ -53,25 +69,3 @@ Limit the action to only components with the given names. All positional argumen
 |---------|-----------------------|
 | help    | Show help             |
 | version | Show version number   |
-
----
-
-## Development
-
-The following commands assume your current directory is `[project]/cli`
-
-### Initialize Project
-
-Only needs to be ran after first pulling down the project.
-
-```
-npm install
-```
-
-### Build the Project
-
-Required for changes to made available to the CLI instance being used by the example project.
-
-```
-npm run build
-```
