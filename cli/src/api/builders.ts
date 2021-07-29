@@ -7,7 +7,7 @@ class RequestBuilder<Response> implements Request<Response> {
         this.body = request;
     }
     execute(): Promise<Response> {
-        return handler<never, Response>(this.body);
+        return handler<unknown, Response>(this.body);
     }
 }
 
