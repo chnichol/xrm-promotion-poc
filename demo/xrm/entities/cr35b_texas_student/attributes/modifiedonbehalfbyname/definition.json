@@ -1,0 +1,103 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.StringAttributeMetadata",
+    "MetadataId": "1536c0bb-cc71-4200-a3ab-092ea494dfd7",
+    "HasChanged": null,
+    "AttributeOf": "modifiedonbehalfby",
+    "AttributeType": "String",
+    "ColumnNumber": 14,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_student",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": false,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "modifiedonbehalfbyname",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "ModifiedOnBehalfByName",
+    "ExternalName": null,
+    "IsLogical": true,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T16:41:22Z",
+    "ModifiedOn": "2021-06-29T16:41:22Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "Format": "Text",
+    "ImeMode": "Auto",
+    "MaxLength": 100,
+    "YomiOf": null,
+    "IsLocalizable": false,
+    "DatabaseLength": 513,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "StringType"
+    },
+    "Description": {
+        "LocalizedLabels": [],
+        "UserLocalizedLabel": null
+    },
+    "DisplayName": {
+        "LocalizedLabels": [],
+        "UserLocalizedLabel": null
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "FormatName": {
+        "Value": "Text"
+    }
+}

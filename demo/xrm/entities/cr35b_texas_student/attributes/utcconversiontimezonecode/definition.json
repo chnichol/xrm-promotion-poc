@@ -1,0 +1,125 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.IntegerAttributeMetadata",
+    "MetadataId": "36601692-2d0b-455e-89bb-dce6278815b2",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Integer",
+    "ColumnNumber": 32,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_student",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "utcconversiontimezonecode",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "UTCConversionTimeZoneCode",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T16:41:22Z",
+    "ModifiedOn": "2021-06-29T16:41:22Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "Format": "None",
+    "MaxValue": 2147483647,
+    "MinValue": -1,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "IntegerType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Time zone code that was in use when the record was created.",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "6262f9d2-f8d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Time zone code that was in use when the record was created.",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "6262f9d2-f8d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "UTC Conversion Time Zone Code",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "6362f9d2-f8d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "UTC Conversion Time Zone Code",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "6362f9d2-f8d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

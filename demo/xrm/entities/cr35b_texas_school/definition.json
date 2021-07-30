@@ -1,0 +1,22 @@
+{
+    "entitysetname": "cr35b_texas_schools",
+    "logicalname": "cr35b_texas_school",
+    "entityid": "dffc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "basetablename": "cr35b_texas_schoolBase",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "versionnumber": 8486709,
+    "originallocalizedcollectionname": "Schools",
+    "name": "cr35b_texas_school",
+    "componentstate": 0,
+    "physicalname": "cr35b_texas_school",
+    "collectionname": "cr35b_texas_schools",
+    "reportviewname": "Filteredcr35b_texas_school",
+    "logicalcollectionname": "cr35b_texas_schools",
+    "originallocalizedname": "School",
+    "extensiontablename": null,
+    "addresstablename": null,
+    "parentcontrollingattributename": null,
+    "externalcollectionname": null,
+    "externalname": null
+}

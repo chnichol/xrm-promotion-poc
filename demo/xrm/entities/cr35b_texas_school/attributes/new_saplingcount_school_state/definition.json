@@ -1,0 +1,125 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.IntegerAttributeMetadata",
+    "MetadataId": "44c0e29b-ae72-4b05-828d-e90ea3243ce2",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Integer",
+    "ColumnNumber": 41,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_school",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_saplingcount_school_state",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "new_SaplingCount_School_State",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T20:03:02Z",
+    "ModifiedOn": "2021-06-29T20:03:45Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "Format": "None",
+    "MaxValue": 2147483647,
+    "MinValue": -2147483648,
+    "FormulaDefinition": null,
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "IntegerType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "State of rollup field Sapling Count.",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "0a44bf01-15d9-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "State of rollup field Sapling Count.",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "0a44bf01-15d9-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Sapling Count (State)",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "0c44bf01-15d9-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Sapling Count (State)",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "0c44bf01-15d9-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

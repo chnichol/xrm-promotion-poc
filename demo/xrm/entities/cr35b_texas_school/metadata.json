@@ -1,0 +1,340 @@
+{
+    "@odata.context": "https://orgc840d94a.crm.dynamics.com/api/data/v9.0/$metadata#EntityDefinitions(Attributes())/$entity",
+    "MetadataId": "dffc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+    "HasChanged": null,
+    "ActivityTypeMask": 0,
+    "AutoRouteToOwnerQueue": false,
+    "CanTriggerWorkflow": true,
+    "EntityHelpUrlEnabled": false,
+    "EntityHelpUrl": null,
+    "IsDocumentManagementEnabled": false,
+    "IsOneNoteIntegrationEnabled": false,
+    "IsInteractionCentricEnabled": false,
+    "IsKnowledgeManagementEnabled": false,
+    "IsSLAEnabled": false,
+    "IsBPFEntity": false,
+    "IsDocumentRecommendationsEnabled": false,
+    "IsMSTeamsIntegrationEnabled": false,
+    "SettingOf": null,
+    "DataProviderId": null,
+    "DataSourceId": null,
+    "AutoCreateAccessTeams": false,
+    "IsActivity": false,
+    "IsActivityParty": false,
+    "IsAvailableOffline": false,
+    "IsChildEntity": false,
+    "IsAIRUpdated": false,
+    "IconLargeName": null,
+    "IconMediumName": null,
+    "IconSmallName": null,
+    "IconVectorName": null,
+    "IsCustomEntity": true,
+    "IsBusinessProcessEnabled": false,
+    "SyncToExternalSearchIndex": false,
+    "IsOptimisticConcurrencyEnabled": true,
+    "ChangeTrackingEnabled": false,
+    "IsImportable": true,
+    "IsIntersect": false,
+    "IsManaged": false,
+    "IsEnabledForCharts": true,
+    "IsEnabledForTrace": false,
+    "IsValidForAdvancedFind": true,
+    "DaysSinceRecordLastModified": 0,
+    "MobileOfflineFilters": "",
+    "IsReadingPaneEnabled": true,
+    "IsQuickCreateEnabled": false,
+    "LogicalName": "cr35b_texas_school",
+    "ObjectTypeCode": 10743,
+    "OwnershipType": "UserOwned",
+    "PrimaryNameAttribute": "cr35b_texas_school_name",
+    "PrimaryImageAttribute": null,
+    "PrimaryIdAttribute": "cr35b_texas_schoolid",
+    "RecurrenceBaseEntityLogicalName": null,
+    "ReportViewName": "Filteredcr35b_texas_school",
+    "SchemaName": "cr35b_texas_school",
+    "IntroducedVersion": "1.0.0.0",
+    "IsStateModelAware": true,
+    "EnforceStateTransitions": false,
+    "ExternalName": null,
+    "EntityColor": "",
+    "LogicalCollectionName": "cr35b_texas_schools",
+    "ExternalCollectionName": null,
+    "CollectionSchemaName": "cr35b_texas_schools",
+    "EntitySetName": "cr35b_texas_schools",
+    "IsEnabledForExternalChannels": false,
+    "IsPrivate": false,
+    "UsesBusinessDataLabelTable": false,
+    "IsLogicalEntity": false,
+    "HasNotes": false,
+    "HasActivities": false,
+    "HasFeedback": false,
+    "IsSolutionAware": false,
+    "CreatedOn": "2021-06-29T16:04:50Z",
+    "ModifiedOn": "2021-06-29T16:04:50Z",
+    "HasEmailAddresses": true,
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e2fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e2fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayCollectionName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Schools",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e1fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Schools",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e1fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "School",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e0fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "School",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e0fc9cb4-f3d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsValidForQueue": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyqueuesettings"
+    },
+    "IsConnectionsEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyconnectionsettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsMappable": {
+        "Value": true,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "ismappable"
+    },
+    "IsDuplicateDetectionEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyduplicatedetectionsettings"
+    },
+    "CanCreateAttributes": {
+        "Value": true,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "cancreateattributes"
+    },
+    "CanCreateForms": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreateforms"
+    },
+    "CanCreateViews": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreateviews"
+    },
+    "CanCreateCharts": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreatecharts"
+    },
+    "CanBeRelatedEntityInRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canberelatedentityinrelationship"
+    },
+    "CanBePrimaryEntityInRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeprimaryentityinrelationship"
+    },
+    "CanBeInManyToMany": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeinmanytomany"
+    },
+    "CanBeInCustomEntityAssociation": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeincustomentityassociation"
+    },
+    "CanEnableSyncToExternalSearchIndex": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canenablesynctoexternalsearchindex"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "CanChangeHierarchicalRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canchangehierarchicalrelationship"
+    },
+    "CanChangeTrackingBeEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canchangetrackingbeenabled"
+    },
+    "IsMailMergeEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymailmergesettings"
+    },
+    "IsVisibleInMobile": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobilevisibility"
+    },
+    "IsVisibleInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientvisibility"
+    },
+    "IsReadOnlyInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientreadonly"
+    },
+    "IsOfflineInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientoffline"
+    },
+    "Privileges": [
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvCreatecr35b_texas_school",
+            "PrivilegeId": "6a4e72be-c9cb-49a6-a560-518cb2439146",
+            "PrivilegeType": "Create"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvReadcr35b_texas_school",
+            "PrivilegeId": "28901214-bb83-4b5d-a725-41edcd59ead1",
+            "PrivilegeType": "Read"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvWritecr35b_texas_school",
+            "PrivilegeId": "d2c019ec-fcc2-408c-9412-c4e002ca5528",
+            "PrivilegeType": "Write"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvDeletecr35b_texas_school",
+            "PrivilegeId": "440a567a-cf9e-4af0-a3b8-a75ccb12c0b5",
+            "PrivilegeType": "Delete"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAssigncr35b_texas_school",
+            "PrivilegeId": "1da7f628-4b39-45c6-a2ae-b49be9bbad1d",
+            "PrivilegeType": "Assign"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvSharecr35b_texas_school",
+            "PrivilegeId": "cfc8daf2-5995-40f5-a4e5-99052234b954",
+            "PrivilegeType": "Share"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAppendcr35b_texas_school",
+            "PrivilegeId": "29f57d60-298d-4d60-a244-bad94741491b",
+            "PrivilegeType": "Append"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAppendTocr35b_texas_school",
+            "PrivilegeId": "518faf82-e7c2-49b7-b55e-13829175fef2",
+            "PrivilegeType": "AppendTo"
+        }
+    ],
+    "Settings": []
+}

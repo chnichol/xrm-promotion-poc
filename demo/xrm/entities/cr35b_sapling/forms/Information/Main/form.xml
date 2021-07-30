@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<form headerdensity="HighWithControls">
+  <tabs>
+    <tab verticallayout="true" id="{6d20cc29-3a7d-441d-9bd4-d05c5709f812}" IsUserDefined="1" name="Sapling_Details">
+      <labels>
+        <label description="Details" languagecode="1033"/>
+      </labels>
+      <columns>
+        <column width="100%">
+          <sections>
+            <section showlabel="false" showbar="false" IsUserDefined="0" id="{cb3b411e-e407-4fef-a73c-d9729b25e8a8}" name="Sapling_Info">
+              <labels>
+                <label description="Information" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{9047fdab-da71-4e0a-ba7a-d00d12f85b96}" showlabel="true" visible="false">
+                    <labels>
+                      <label description="Sapling ID" languagecode="1033"/>
+                    </labels>
+                    <control id="cr35b_sapling_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cr35b_sapling_name"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{d5b0074e-665a-7ce4-d106-533b1bc74690}" showlabel="true" locklevel="0">
+                    <labels>
+                      <label description="Species Planted" languagecode="1033"/>
+                    </labels>
+                    <control id="new_speciesplanted" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="new_speciesplanted" disabled="false"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{88721b6b-cdec-41e1-80f8-50c569b07bdb}" locklevel="0" showlabel="true">
+                    <labels>
+                      <label description="Student" languagecode="1033"/>
+                    </labels>
+                    <control id="new_cr35b_texas_student" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="new_cr35b_texas_student" disabled="false" uniqueid="{d4a23162-92a8-2618-11ec-713d5c4d8c5b}">
+                      <parameters>
+                        <AutoResolve>true</AutoResolve>
+                        <DisableMru>false</DisableMru>
+                        <DisableQuickFind>false</DisableQuickFind>
+                        <DisableViewPicker>false</DisableViewPicker>
+                        <DefaultViewId>{2DD73381-3AF0-4D3D-BC3B-126451FDF401}</DefaultViewId>
+                        <FilterRelationshipName>new_cr35b_texas_student_new_School2_cr35b</FilterRelationshipName>
+                        <DependentAttributeName>cr35b_sapling.new_cr35b_texas_school</DependentAttributeName>
+                        <DependentAttributeType>cr35b_texas_school</DependentAttributeType>
+                        <AllowFilterOff>true</AllowFilterOff>
+                      </parameters>
+                    </control>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{b2ff0945-b492-4446-a654-978462faad63}" locklevel="0" showlabel="true">
+                    <labels>
+                      <label description="School" languagecode="1033"/>
+                    </labels>
+                    <control id="new_cr35b_texas_school" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="new_cr35b_texas_school" disabled="false" uniqueid="{9bd66a5e-53b6-783c-6b0d-7b47a7cdd689}">
+                      <parameters>
+                        <AutoResolve>true</AutoResolve>
+                        <DisableMru>false</DisableMru>
+                        <DisableQuickFind>false</DisableQuickFind>
+                        <DisableViewPicker>false</DisableViewPicker>
+                        <DefaultViewId>{76587900-82BF-4988-812F-B281856C36FF}</DefaultViewId>
+                        <FilterRelationshipName>new_cr35b_texas_student_new_School2_cr35b</FilterRelationshipName>
+                        <DependentAttributeName>cr35b_sapling.new_cr35b_texas_student</DependentAttributeName>
+                        <DependentAttributeType>cr35b_texas_student</DependentAttributeType>
+                        <AllowFilterOff>true</AllowFilterOff>
+                      </parameters>
+                    </control>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{52746be2-b848-43f5-8955-5de32992b323}">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+          </sections>
+        </column>
+      </columns>
+    </tab>
+  </tabs>
+  <header id="{663dd993-b34b-49d7-b481-c9effd865761}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{5996390a-8225-44f7-8d63-d9538fe370de}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{1ae4636f-e83a-434e-8181-4fbca3942981}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{d7cbf431-93f4-426e-b6e0-beb46cd7e929}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </header>
+  <footer id="{16dbbc8b-22b0-4082-9935-32e3c1e029ce}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+    <rows>
+      <row>
+        <cell id="{d7e5f373-fffa-4ef1-a901-12789fb80fe6}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{246660ae-23fb-43b2-bc69-2d27dd544bf4}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+        <cell id="{a82d7668-15d0-4f81-b75c-950a8d2f3bd4}" showlabel="false">
+          <labels>
+            <label description="" languagecode="1033"/>
+          </labels>
+        </cell>
+      </row>
+    </rows>
+  </footer>
+  <Navigation>
+    <NavBar/>
+    <NavBarAreas>
+      <NavBarArea Id="Info">
+        <Titles>
+          <Title LCID="1033" Text="Common"/>
+        </Titles>
+      </NavBarArea>
+      <NavBarArea Id="Sales">
+        <Titles>
+          <Title LCID="1033" Text="Sales"/>
+        </Titles>
+      </NavBarArea>
+      <NavBarArea Id="Service">
+        <Titles>
+          <Title LCID="1033" Text="Service"/>
+        </Titles>
+      </NavBarArea>
+      <NavBarArea Id="Marketing">
+        <Titles>
+          <Title LCID="1033" Text="Marketing"/>
+        </Titles>
+      </NavBarArea>
+      <NavBarArea Id="ProcessCenter">
+        <Titles>
+          <Title LCID="1033" Text="Process Sessions"/>
+        </Titles>
+      </NavBarArea>
+    </NavBarAreas>
+  </Navigation>
+  <controlDescriptions/>
+  <DisplayConditions Order="0" FallbackForm="true">
+    <Everyone/>
+  </DisplayConditions>
+  <formLibraries>
+    <Library name="new_OnLoad.JS" libraryUniqueId="{a20a38dc-b4f3-486f-a794-364dd9b0f4ee}"/>
+  </formLibraries>
+</form>

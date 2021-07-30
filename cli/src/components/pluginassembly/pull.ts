@@ -15,8 +15,8 @@ const save = async (config: Config, pluginAssembly: PluginAssembly) => {
 
 const pull: Command = async (names: string[]) => {
     const config = await getConfig();
-    const [ components ] = await getProjectSolutionComponents(ComponentType.PluginAssembly);
-    names = (names.length === 0 ? Array.from(components) : names);
+    const [ _, components ] = await getProjectSolutionComponents(ComponentType.PluginAssembly);
+    names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
     const pluginAssemblies = new Set<string>();
     for (let i = 0; i < names.length; i++) {
@@ -32,7 +32,7 @@ const pull: Command = async (names: string[]) => {
                 console.warn(`No Plugin Assemblies found where ${property}="${name}"`)
                 break;
             case 1:
-                if (!components.has(results[0].pluginassemblyid)) {
+                if (!components.find(c => c.objectid === results[0].pluginassemblyid)) {
                     console.warn(`No solution includes the plugin assembly ${results[0].name} (${results[0].pluginassemblyid})`);
                 }
                 else if (!pluginAssemblies.has(results[0].pluginassemblyid)) {
