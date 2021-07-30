@@ -24,8 +24,8 @@ const save = async (config: Config, entity: Entity, metadata: EntityMetadata) =>
 
 const pull: Command = async (names: string[]) => {
     const config = await getConfig();
-    const [ components ] = await getProjectSolutionComponents(ComponentType.Entity);
-    names = (names.length === 0 ? Array.from(components) : names);
+    const [ _, components ] = await getProjectSolutionComponents(ComponentType.Entity);
+    names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
     const entities = new Set<string>();
     for (let i = 0; i < names.length; i++) {
@@ -42,7 +42,7 @@ const pull: Command = async (names: string[]) => {
                 break;
             }
             case 1: {
-                if (!components.has(results[0].entityid)) {
+                if (!components.find(c => c.objectid === results[0].entityid)) {
                     console.warn(`No solution includes the entity ${results[0].logicalname} (${results[0].entityid})`);
                 }
                 else if (!entities.has(results[0].entityid)) {
