@@ -5,7 +5,7 @@ export const getProjectSolutionComponents = async (componentType?: ComponentType
     const components = new Set<string>();
     const results: SolutionComponent[] = [];
     (await getProjectSolutions()).forEach(s => {
-        results.concat((s.solution_solutioncomponent ?? []).filter(c => {
+        results.push(...(s.solution_solutioncomponent ?? []).filter(c => {
             if (c.componenttype !== componentType) {
                 return false;
             }
