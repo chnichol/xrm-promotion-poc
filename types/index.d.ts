@@ -48,7 +48,7 @@ declare global {
             /**
              * Clears a notification in the app.
              * 
-             * {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-app/clearglobalnotification docs.microsoft.com}
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-app/clearglobalnotification docs.microsoft.com}
              * 
              * @param uniqueId The ID to use to clear a specific notification that was set using addGlobalNotification.
              * @returns A promise object.
@@ -171,9 +171,8 @@ declare global {
              * 
              * @param entityLogicalName Logical name of the table you want to create. For example: "account"
              * @param data A JSON object defining the columns and values for the new table record.
-             * 
              */
-            function createRecord(entityLogicalName: string, data: any): Promise<any>;
+            function createRecord(entityLogicalName: string, data: any): Promise<{ entityType: string, id: string }, { errorCode: number, message: string }>;
             /**
              * Retrieves a table record
              * 
@@ -182,7 +181,6 @@ declare global {
              * @param entityLogicalName The table logical name of the record you want to retrieve. For example: "account".
              * @param id GUID of the table record you want to retrieve.
              * @param options OData system query options, $select and $expand, to retrieve your data.
-             * 
              */
             function retrieveRecord(entityLogicalName: string, id: string, options?: string): Promise<any>;
             /**
@@ -192,9 +190,8 @@ declare global {
              * 
              * @param entityLogicalName The table logical name of the record you want to delete. For example: "account".
              * @param id GUID of the table record you want to delete.
-             * 
              */
-            function deleteRecord(entityLogicalName: string, id: string): Promise<any>;
+            function deleteRecord(entityLogicalName: string, id: string): Promise<{ entityType: string, id: string, name: string }>;
             /**
              * Updates a table record
              * 
@@ -203,21 +200,19 @@ declare global {
              * @param entityLogicalName The table logical name of the record you want to update. For example: "account".
              * @param id GUID of the table record you want to update.
              * @param data A JSON object containing key: value pairs, where `key` is the property of the table and value is the value of the property you want to update.
-             * 
              */
-            function updateRecord(entityLogicalName: string, id: string, data: any): Promise<any>;
+            function updateRecord(entityLogicalName: string, id: string, data: any): Promise<{ entityType: string, id: string }, { errorCode: number, message: string }>;
             /**
-             * 
              * Retrieves a collection a table record
              * 
              * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrievemultiplerecords docs.microsoft.com}
              * 
              * @param entityLogicalName The table logical name of the records you want to retrieve. For example: "account".
              * @param options OData system query options or FetchXML query to retrieve your data. Following system query options are supported: $select, $top, $filter, $expand, and $orderby.
-             * @param maxPageSize Specify a positive number that indicates the number of table records to be returned per page. If you do not specify this parameter, the value is defaulted to the maximum limit of 5000 records.
-             * 
+             * @param maxPageSize Specify a positive number that indicates the number of table records to be returned per page. If you do not specify this parameter, the value is defaulted
+             * to the maximum limit of 5000 records.
              */
-            function retrieveMultipleRecords(entityLogicalName: string, options?: string, maxPageSize?: number): Promise<any>;
+            function retrieveMultipleRecords(entityLogicalName: string, options?: string, maxPageSize?: number): Promise<{entities: any, nextLink?: string, fetchXmlPagingCookie?: string}>;
         }
     }
 }
