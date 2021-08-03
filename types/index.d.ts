@@ -163,5 +163,61 @@ declare global {
              */
             function openWebResource(webResourceName: string, windowOptions?: SizeOptions, data?: string): void;
         }
+        namespace WebApi {
+            /**
+             * Creates a table record
+             * 
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/createrecord docs.microsoft.com}
+             * 
+             * @param entityLogicalName Logical name of the table you want to create. For example: "account"
+             * @param data A JSON object defining the columns and values for the new table record.
+             * 
+             */
+            function createRecord(entityLogicalName: string, data: any): Promise<any>;
+            /**
+             * Retrieves a table record
+             * 
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrieverecord docs.microsoft.com}
+             * 
+             * @param entityLogicalName The table logical name of the record you want to retrieve. For example: "account".
+             * @param id GUID of the table record you want to retrieve.
+             * @param options OData system query options, $select and $expand, to retrieve your data.
+             * 
+             */
+            function retrieveRecord(entityLogicalName: string, id: string, options?: string): Promise<any>;
+            /**
+             * Deletes a table record
+             * 
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/deleterecord docs.microsoft.com}
+             * 
+             * @param entityLogicalName The table logical name of the record you want to delete. For example: "account".
+             * @param id GUID of the table record you want to delete.
+             * 
+             */
+            function deleteRecord(entityLogicalName: string, id: string): Promise<any>;
+            /**
+             * Updates a table record
+             * 
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/updaterecord docs.microsoft.com}
+             * 
+             * @param entityLogicalName The table logical name of the record you want to update. For example: "account".
+             * @param id GUID of the table record you want to update.
+             * @param data A JSON object containing key: value pairs, where `key` is the property of the table and value is the value of the property you want to update.
+             * 
+             */
+            function updateRecord(entityLogicalName: string, id: string, data: any): Promise<any>;
+            /**
+             * 
+             * Retrieves a collection a table record
+             * 
+             * See {@link https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrievemultiplerecords docs.microsoft.com}
+             * 
+             * @param entityLogicalName The table logical name of the records you want to retrieve. For example: "account".
+             * @param options OData system query options or FetchXML query to retrieve your data. Following system query options are supported: $select, $top, $filter, $expand, and $orderby.
+             * @param maxPageSize Specify a positive number that indicates the number of table records to be returned per page. If you do not specify this parameter, the value is defaulted to the maximum limit of 5000 records.
+             * 
+             */
+            function retrieveMultipleRecords(entityLogicalName: string, options?: string, maxPageSize?: number): Promise<any>;
+        }
     }
 }
