@@ -15,8 +15,8 @@ const save = async (config: Config, webResource: WebResource) => {
 
 const pull: Command = async (names: string[]) => {
     const config = await getConfig();
-    const [ components ] = await getProjectSolutionComponents(ComponentType.WebResource);
-    names = (names.length === 0 ? Array.from(components) : names);
+    const [ _, components ] = await getProjectSolutionComponents(ComponentType.WebResource);
+    names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
     const webResources = new Set<string>();
     for (let i = 0; i < names.length; i++) {
@@ -32,7 +32,7 @@ const pull: Command = async (names: string[]) => {
                 console.warn(`No Web Resources found where ${property}="${name}"`)
                 break;
             case 1:
-                if (!components.has(results[0].webresourceid)) {
+                if (!components.find(c => c.objectid === results[0].webresourceid)) {
                     console.warn(`No solution includes the web resource ${results[0].name} (${results[0].webresourceid})`);
                 }
                 else if (!webResources.has(results[0].webresourceid)) {

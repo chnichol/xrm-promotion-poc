@@ -1,0 +1,36 @@
+{
+    "@odata.etag": "W/\"7989172\"",
+    "overwritetime": "1900-01-01T00:00:00Z",
+    "_organizationid_value": "6b1b073f-24ba-401e-bb6e-7ab1624f6e52",
+    "publishedon": "2021-06-29T16:41:52Z",
+    "solutionid": "fd140aae-4df4-11dd-bd17-0019b9312238",
+    "introducedversion": "1.0.0.0",
+    "formid": "04b1f791-c4cb-4d0b-9d6e-bf114eba48f0",
+    "istabletenabled": false,
+    "isdesktopenabled": false,
+    "formidunique": "8e4f4571-e711-4d53-8732-e43c22f3ec28",
+    "ismanaged": false,
+    "isdefault": false,
+    "objecttypecode": "cr35b_texas_student",
+    "type": 6,
+    "componentstate": 0,
+    "formpresentation": 1,
+    "formactivationstate": 1,
+    "description": null,
+    "versionnumber": 7989172,
+    "isairmerged": false,
+    "name": "Information",
+    "uniquename": null,
+    "version": null,
+    "_ancestorformid_value": null,
+    "iscustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizableanddeletable"
+    },
+    "canbedeleted": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbedeleted"
+    }
+}

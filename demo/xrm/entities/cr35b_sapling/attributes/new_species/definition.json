@@ -1,0 +1,125 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.MultiSelectPicklistAttributeMetadata",
+    "MetadataId": "e0ff1b9b-11d9-eb11-bacb-000d3a5775cd",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Virtual",
+    "ColumnNumber": 38,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_sapling",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": true,
+    "CanBeSecuredForCreate": true,
+    "CanBeSecuredForUpdate": true,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_species",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "new_Species",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T19:38:41Z",
+    "ModifiedOn": "2021-07-01T19:46:26Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "DefaultFormValue": -1,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "ParentPicklistLogicalName": null,
+    "ChildPicklistLogicalNames": [],
+    "AttributeTypeName": {
+        "Value": "MultiSelectPicklistType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "bf0ff441-f24e-4a4d-97f1-1fdf49a3a63f",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "bf0ff441-f24e-4a4d-97f1-1fdf49a3a63f",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Species",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "6362ea78-09de-4bc1-8ffb-faece7d538a4",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Species",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "6362ea78-09de-4bc1-8ffb-faece7d538a4",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

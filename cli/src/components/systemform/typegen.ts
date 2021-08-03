@@ -14,7 +14,7 @@ const loadFormXml = async (file: string) => {
 const saveImports = (attributes: Attribute[], sourceFile: SourceFile) => {
     sourceFile.addImportDeclaration({
         moduleSpecifier: 'xrm-types',
-        namedImports: [ 'Collection', 'Entity', 'FormContext', 'FormContextData', 'FormContextUI', 'Section', 'Tab' ]
+        namedImports: [ 'Collection', 'Control', 'Entity', 'FormContext', 'FormContextData', 'FormContextUI', 'Section', 'Tab' ]
     });
     sourceFile.addImportDeclarations(attributes.map(attribute => ({
         moduleSpecifier: `../../../attributes/${attribute.name}`,
@@ -62,6 +62,7 @@ const saveControls = (controls: Control[], sourceFile: SourceFile) => {
         const attribute = control.field ? `Attribute_${control.field}` : 'undefined';
         sourceFile.addInterface({
             name: `Control_${control.id}`,
+            extends: [ 'Control' ],
             methods: [
                 generateMethod('getAttribute', undefined, attribute)
             ]
@@ -261,9 +262,14 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
             { name: 'data', type: 'Data' },
             { name: 'ui', type: 'UI' }
         ],
-        methods: form.attributes.map(attribute => [
-            generateMethod('getAttribute', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
-        ]).reduce((acc, val) => acc.concat(val), [])
+        methods: [
+            ...form.attributes.map(attribute => [
+                generateMethod('getAttribute', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
+            ]).reduce((acc, val) => acc.concat(val), []), 
+            ...form.controls.map(control => [
+                generateMethod('getControl', { name: `'${control.id}'`}, `Control_${control.id}`)
+            ]).reduce((acc, val) => acc.concat(val), [])
+        ]
     });
 }
 
@@ -278,7 +284,7 @@ const typegenForm = async (entity: string, projectForm: ProjectForm, project: Pr
         
         const form: Form = { attributes: [], controls: [], entity: entity, tabs: [] };
         const attributes = new Map<string, string[]>();
-        const tabs = formXml.form.tabs[0].tab;
+        const tabs = formXml.form.tabs[0].tab ?? [];
         tabs.forEach((t, i) => {
             const tab: Tab = {
                 index: i,
@@ -286,10 +292,10 @@ const typegenForm = async (entity: string, projectForm: ProjectForm, project: Pr
                 name: t.$.name,
                 sections: []
             };
-            const columns = t.columns[0].column;
+            const columns = t.columns[0].column ?? [];
             let sectionIndex = 0;
             columns.forEach(c => {
-                const sections = c.sections[0].section;
+                const sections = c.sections[0].section ?? [];
                 sections.forEach(s => {
                     const section: Section = {
                         index: sectionIndex,
@@ -299,7 +305,7 @@ const typegenForm = async (entity: string, projectForm: ProjectForm, project: Pr
                     };
                     const rows = s.rows?.[0].row ?? [];
                     rows.forEach(r => {
-                        const cells = r.cell;
+                        const cells = r.cell ?? [];
                         cells.forEach(cell => {
                             if (cell.control) {
                                 const control = {

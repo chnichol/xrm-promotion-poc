@@ -1,14 +1,14 @@
 {
     "auth": {
-        "authority": "https://login.microsoftonline.com/22f99e51-8625-4879-ba58-ea18fd4b299a",
-        "clientId": "4ce1950f-d9e0-453b-813f-90fd14ed4cc5"
+        "authority": "https://login.microsoftonline.com/ac2d7ce5-fae0-42e9-b01a-2eb6e86c0eab",
+        "clientId": "106f1a90-7645-46b8-b5fa-cf85de7d480b"
     },
-    "dynamics": "https://org3652e152.crm.dynamics.com",
+    "dynamics": "https://orgc840d94a.crm.dynamics.com",
     "project": {
         "forms": "xml",
         "root": "xrm",
         "solutions": [
-            "SaplingTrackingSystem"
+            "SaplingTrackingApp"
         ],
         "types": "xrm/types",
         "pluginassemblies": "pluginassemblies",

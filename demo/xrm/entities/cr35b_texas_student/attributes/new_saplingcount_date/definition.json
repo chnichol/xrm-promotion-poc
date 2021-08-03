@@ -1,0 +1,134 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.DateTimeAttributeMetadata",
+    "MetadataId": "62abdd76-6681-479b-af75-514e3899468a",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "DateTime",
+    "ColumnNumber": 42,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_student",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_saplingcount_date",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "new_SaplingCount_Date",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T19:41:18Z",
+    "ModifiedOn": "2021-06-29T20:01:54Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "MinSupportedValue": "1753-01-01T00:00:00Z",
+    "MaxSupportedValue": "9999-12-30T23:59:59Z",
+    "Format": "DateAndTime",
+    "ImeMode": "Inactive",
+    "SourceTypeMask": 0,
+    "FormulaDefinition": null,
+    "AttributeTypeName": {
+        "Value": "DateTimeType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Last Updated time of rollup field Sapling Count.",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e441bcf8-11d9-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Last Updated time of rollup field Sapling Count.",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e441bcf8-11d9-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Sapling Count (Last Updated On)",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e641bcf8-11d9-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Sapling Count (Last Updated On)",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e641bcf8-11d9-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "DateTimeBehavior": {
+        "Value": "UserLocal"
+    },
+    "CanChangeDateTimeBehavior": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifybehavior"
+    }
+}
