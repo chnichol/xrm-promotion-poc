@@ -1,6 +1,14 @@
-# xrm-cli
+# Smelter
 
-Ecosystem for building Dynamics projects in a unified way.
+Smelter empowers developers to create, build, and deploy Power Platform solutions as code.
+
+## Features
+
+- Generate a JSON file structure that represents the full-state of your environment
+- Deploy configurations, plugins, and web resources from the cli with a single command
+- Build web resources as a full NPM project
+- Generate classes based on your environment's entities
+- Automatically merge dependency DLL's into your plugin assemblies using ILMerge
 
 ## Project State
 
