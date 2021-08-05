@@ -1,7 +1,7 @@
 import { Project, SourceFile } from 'ts-morph';
 import { getEntityForms } from '.';
 import { parseFileXML } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import { generateMethod } from '../../common/typegen';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
@@ -274,10 +274,9 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
 }
 
 const typegenForm = async (entity: string, projectForm: ProjectForm, project: Project) => {
-    const config = await getConfig();
     for (const t in projectForm.types) {
         const type = projectForm.types[t];
-        const paths = getPath(config).systemform(entity, projectForm.name, type.name);
+        const paths = config.paths.entities(entity).systemForms(projectForm.name, type.name);
         const file = paths.typedef;
         const fileXml = paths.form;
         const formXml = await loadFormXml(fileXml);

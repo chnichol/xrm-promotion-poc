@@ -1,11 +1,11 @@
 import { AuthenticationResult, CryptoProvider, PublicClientApplication } from '@azure/msal-node';
 import express from 'express';
 import open from 'open';
-import Config, { getConfig } from '../common/config';
+import config from '../common/config';
 
-const createApp = (config: Config) => {
+const createApp = () => {
     const app = express();
-    const pca = new PublicClientApplication({ auth: config.auth });
+    const pca = new PublicClientApplication({ auth: config.settings.auth });
     
     app.locals.pkceCodes = {
         challenge: '',
@@ -20,8 +20,8 @@ const createApp = (config: Config) => {
             app.locals.pkceCodes.verifier = verifier;
     
             const authCodeUrlParameters = {
-                scopes: [ `${config.dynamics}/user_impersonation` ],
-                redirectUri: config.urls.redirect,
+                scopes: [ `${config.settings.dynamics}/user_impersonation` ],
+                redirectUri: config.settings.urls.redirect,
                 codeChallenge: app.locals.pkceCodes.challenge,
                 codeChallengeMethod: app.locals.pkceCodes.challengeMethod
             };
@@ -34,8 +34,8 @@ const createApp = (config: Config) => {
         app.get('/redirect', (request, response) => {
             const tokenRequest = {
                 code: (request.query.code ?? '').toString(),
-                scopes: [ `${config.dynamics}/user_impersonation` ],
-                redirectUri: config.urls.redirect,
+                scopes: [ `${config.settings.dynamics}/user_impersonation` ],
+                redirectUri: config.settings.urls.redirect,
                 codeVerifier: app.locals.pkceCodes.verifier
             };
         
@@ -51,11 +51,10 @@ const createApp = (config: Config) => {
 };
 
 export default async (): Promise<AuthenticationResult> => {
-    const config = await getConfig();
-    const app = createApp(config);
+    const app = createApp();
 
-    const server = app.app.listen(config.urls.port);
-    const process = await open(config.urls.home, {app: { name: open.apps.edge, arguments: [ '--new-window' ]}});
+    const server = app.app.listen(config.settings.urls.port);
+    const process = await open(config.settings.urls.home, {app: { name: open.apps.edge, arguments: [ '--new-window' ]}});
 
     const token = await app.token;
     process.kill();

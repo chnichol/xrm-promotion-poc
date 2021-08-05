@@ -4,7 +4,7 @@ import path from 'path';
 import { v4 as uuid } from 'uuid';
 import { execPromise, exists } from '../../common';
 import { NET_SDK_TOOLS_SN_PATH } from '../../common/constants';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import { replaceVarsInDirectory } from '../../common/vars';
 import { Command } from '../cli';
 import { getPluginAssemblyProjects } from '.';
@@ -12,7 +12,6 @@ import { getPluginAssemblyProjects } from '.';
 const build: Command = async (names: string[]) => {
     names = names.length === 0 ? await getPluginAssemblyProjects() : names;
 
-    const config = await getConfig();
     const projects = names.map(n => ({
         name: n,
         uuid: uuid()
@@ -23,11 +22,11 @@ const build: Command = async (names: string[]) => {
             directory: path.join(root),
             dll: path.join(root, 'bin', 'Debug', 'net462', `${n.name}.dll`),
             key: path.join(root, `${n.name}.snk`),
-            output: getPath(config).pluginassembly(n.name).content
+            output: config.paths.pluginAssemblies(n.name).content
         });
         return {
-            build: f(path.join(config.project.pluginassemblies, n.uuid)),
-            source: f(path.join(config.project.pluginassemblies, n.name))
+            build: f(path.join(config.settings.project.pluginassemblies, n.uuid)),
+            source: f(path.join(config.settings.project.pluginassemblies, n.name))
         };
     });
 

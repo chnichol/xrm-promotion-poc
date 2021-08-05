@@ -1,7 +1,7 @@
 import path from 'path';
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import Solution from '../../types/entity/Solution';
 import { Command } from '../cli';
 
@@ -12,10 +12,8 @@ const save = async (outdir: string, solution: Solution) => {
 }
 
 const pull: Command = async (names: string[]) => {
-    const config = await getConfig();
-
-    names = (names.length === 0 ? config.project.solutions : names);
-    const outdir = getPath(config).solutions;
+    names = (names.length === 0 ? config.settings.project.solutions : names);
+    const outdir = config.paths.solutions.directory;
     
     const solutions = new Set<string>();
     for (let i = 0; i < names?.length; i++) {

@@ -1,12 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { parseFile } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import Solution from '../../types/entity/Solution';
 
 export const getProjectSolutionFiles = async (names?: string[]): Promise<string[]> => {
-    const config = await getConfig();
-    const folder = getPath(config).solutions;
+    const folder = config.paths.solutions.directory;
     const dir = await fs.readdir(folder);
     const files = dir.map(f => path.join(folder, f));
     if (names && names.length > 0) {

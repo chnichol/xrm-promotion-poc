@@ -1,10 +1,10 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 import { parse } from 'jsonc-parser';
 import { getExtension } from '../components/webresource';
 import { WebResourceType } from '../types/entity/WebResource';
 
-export default interface Config {
+type ConfigFile = Partial<{
     auth: {
         authority: string;
         clientId: string;
@@ -23,55 +23,285 @@ export default interface Config {
         port: number;
         redirect: string;
     };
+}>
+
+type Paths = {
+    readonly root: string;
+    readonly cache: {
+        readonly directory: string;
+        readonly token: string;
+    };
+    readonly entities: {
+        readonly directory: string;
+        readonly typedef: string;
+        (name: string): {
+            readonly directory: string;
+            readonly definition: string;
+            readonly metadata: string;
+            readonly typedef: string;
+            readonly attributes: {
+                readonly directory: string;
+                (name: string): {
+                    readonly directory: string;
+                    readonly definition: string;
+                    readonly typedef: string;
+                };
+            };
+            readonly systemForms: {
+                readonly directory: string;
+                (name: string, type: string): {
+                    readonly directory: string;
+                    readonly definition: string;
+                    readonly form: string;
+                    readonly typedef: string;
+                };
+            };
+        };
+    };
+    readonly pluginAssemblies: {
+        readonly directory: string;
+        (name: string): {
+            readonly directory: string;
+            readonly content: string;
+            readonly definition: string;
+        };
+    };
+    readonly solutions: {
+        readonly directory: string;
+        (name: string): {
+            readonly directory: string;
+            readonly definition: string;
+        };
+    };
+    readonly types: {
+        readonly directory: string;
+        readonly package: string;
+    };
+    readonly webResources: {
+        readonly directory: string;
+        (name: string): {
+            readonly directory: string;
+            readonly definition: string;
+        };
+        (name: string, type: WebResourceType): {
+            readonly directory: string;
+            readonly content: string;
+            readonly definition: string;
+        };
+    };
 }
 
-export const getConfig = (): Promise<Config> => new Promise<Config>(resolve => {
-    fs.readFile('./xrm.json', 'utf8').then(data => resolve(parse(data) as Config));
-});
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const getPath = (config: Config) => ({
-    attributes: (entity: string) => path.join(config.project.root, 'entities', entity, 'attributes'),
-    attribute: (entity: string, attribute: string) => ({
-        directory: path.join(config.project.root, 'entities', entity, 'attributes', attribute),
-        definition: path.join(config.project.root, 'entities', entity, 'attributes', attribute, 'definition.json'),
-        typedef: path.join(config.project.types, 'entities', entity, 'attributes', attribute, 'index.d.ts')
-    }),
-    entities: {
-        directory: path.join(config.project.root, 'entities'),
-        typedef: path.join(config.project.types, 'entities', 'index.d.ts')
+const defaults: Required<ConfigFile> = {
+    auth: {
+        authority: '',
+        clientId: ''
     },
-    entity: (entity: { logicalname: string }) => ({
-        directory: path.join(config.project.root, 'entities', entity.logicalname),
-        definition: path.join(config.project.root, 'entities', entity.logicalname, 'definition.json'),
-        metadata: path.join(config.project.root, 'entities', entity.logicalname, 'metadata.json'),
-        typedef: path.join(config.project.types, 'entities', entity.logicalname, 'index.d.ts')
-    }),
-    solutions: path.join(config.project.root, 'solutions'),
-    solution: (solution: { uniquename: string }) => path.join(config.project.root, 'solutions', solution.uniquename + '.json'),
-    systemforms: (entity: string) => path.join(config.project.root, 'entities', entity, 'forms'),
-    systemform: (entity: string, name: string, type: string) => ({
-        definition: path.join(config.project.root, 'entities', entity, 'forms', name, type, 'definition.json'),
-        directory: path.join(config.project.root, 'entities', entity, 'forms', name, type),
-        form: path.join(config.project.root, 'entities', entity, 'forms', name, type, `form.${config.project.forms}`),
-        typedef: path.join(config.project.types, 'entities', entity, 'forms', name, type, 'index.d.ts')
-    }),
-    types: {
-        package: path.join(config.project.types, 'package.json')
+    dynamics: '',
+    project: {
+        forms: 'json',
+        pluginassemblies: 'pluginassemblies',
+        root: 'xrm',
+        solutions: [],
+        types: 'xrm/types',
+        webresources: 'webresources'
     },
-    webresources: path.join(config.project.root, 'webresources'),
-    webresource: (webresource: { name: string, webresourcetype?: WebResourceType }) => ({
-        content: webresource.webresourcetype ? path.join(config.project.root, 'webresources', webresource.name, 'content.' + getExtension({ webresourcetype: webresource.webresourcetype })) : undefined,
-        directory: path.join(config.project.root, 'webresources', webresource.name),
-        definition: path.join(config.project.root, 'webresources', webresource.name, 'definition.json'),
-        typedef: path.join(config.project.types, 'webresources', webresource.name, 'index.d.ts')
-    }),
-    pluginassemblies: path.join(config.project.root, 'pluginassemblies'),
-    pluginassembly: (name: string) => ({
-        content: path.join(config.project.root, 'pluginassemblies', name, 'content.dll'),
-        definition: path.join(config.project.root, 'pluginassemblies', name, 'definition.json'),
-        directory: path.join(config.project.root, 'pluginassemblies', name)
-    })
-})
+    urls: {
+        home: 'http://localhost:3000',
+        port: 3000,
+        redirect: 'http://localhost:3000/redirect'
+    }
+}
 
-export const saveConfig = (config: Config): Promise<void> => fs.writeFile('./xrmconfig.jsonc', JSON.stringify(config, undefined, 4), 'utf8')
+class Config {
+    private readonly _configFile: ConfigFile;
+    private readonly _configLocation: string;
+    private readonly _configSettings: Required<ConfigFile>;
+    private readonly _paths: Paths;
+
+    constructor () {
+        this._configLocation = this._findConfigFile();
+        this._configFile = parse(fs.readFileSync(this._configLocation, 'utf8'));
+
+        this._validateRequiredKeys();
+
+        this._configSettings = {
+            ...defaults,
+            ...this._configFile
+        };
+
+        this._paths = this._createPaths();
+    }
+
+    public get paths(): Paths {
+        return this._paths;
+    }
+
+    public get settings(): Required<ConfigFile> {
+        return this._configSettings;
+    }
+
+    private _createPaths = () => {
+        const dir = path.resolve(path.dirname(this._configLocation));
+        const root = path.join(dir, this._configSettings.project.root);
+        const assign = <T, U>(source: T, target: U) => Object.assign(target, source);
+        const definition = (p: string) => path.join(p, 'definition.json');
+        const typedef = (p: string) => path.join(p, 'index.d.ts');
+
+        const cacheDir = path.join(dir, '.xrm');
+        const cache: Paths['cache'] = {
+            directory: cacheDir,
+            token: path.join(cacheDir, 'id')
+        };
+
+        const entityDir = path.join(root, 'entities');
+        const entities: Paths['entities'] = assign(
+            {
+                directory: entityDir,
+                typedef: typedef(entityDir)
+            },
+            (name: string) => {
+                const entityNamedDir = path.join(root, 'entities', name);
+                const attributeDir = path.join(entityNamedDir, 'attributes');
+                const systemFormDir = path.join(entityNamedDir, 'systemforms');
+                return {
+                    directory: entityNamedDir,
+                    definition: definition(entityNamedDir),
+                    metadata: path.join(entityNamedDir, 'metadata.json'),
+                    typedef: definition(entityNamedDir),
+                    attributes: assign(
+                        {
+                            directory: attributeDir,
+                        },
+                        (name: string) => {
+                            const attributeNamedDir = path.join(attributeDir, name);
+                            return {
+                                directory: attributeNamedDir,
+                                definition: definition(attributeNamedDir),
+                                typedef: typedef(attributeNamedDir)
+                            };
+                        }
+                    ),
+                    systemForms: assign(
+                        {
+                            directory: systemFormDir
+                        },
+                        (name: string, type: string) => {
+                            const systemFormNamedDir = path.join(systemFormDir, name, type);
+                            return {
+                                directory: systemFormNamedDir,
+                                definition: definition(systemFormNamedDir),
+                                form: path.join(systemFormNamedDir, `form.${this._configSettings.project.forms}`),
+                                typedef: typedef(systemFormNamedDir)
+                            };
+                        }
+                    )
+                };
+            }
+        );
+
+        const pluginAssemblyDir = path.join(root, 'pluginassemblies');
+        const pluginAssemblies: Paths['pluginAssemblies'] = assign(
+            {
+                directory: pluginAssemblyDir
+            },
+            (name: string) => {
+                const pluginAssemblyNamedDir = path.join(pluginAssemblyDir, name);
+                return {
+                    directory: pluginAssemblyNamedDir,
+                    content: path.join(pluginAssemblyNamedDir, 'content.dll'),
+                    definition: definition(pluginAssemblyNamedDir)
+                };
+            }
+        );
+
+        const solutionDir = path.join(root, 'solutions');
+        const solutions: Paths['solutions'] = assign(
+            {
+                directory: solutionDir
+            },
+            (name: string) => {
+                return {
+                    directory: solutionDir,
+                    definition: path.join(solutionDir, `${name}.json`)
+                };
+            }
+        );
+
+        const typeDir = path.resolve(this._configSettings.project.types);
+        const types: Paths['types'] = {
+            directory: typeDir,
+            package: path.join(typeDir, 'package.json')
+        };
+
+        const webResourceDir = path.join(root, 'webresources');
+        const webResources: Paths['webResources'] = assign(
+            {
+                directory: webResourceDir
+            },
+            (name: string, type?: WebResourceType): any => {
+                const webResourceNamedDir = path.join(webResourceDir, name);
+                return type ? {
+                    directory: webResourceNamedDir,
+                    content: path.join(webResourceNamedDir, 'content.' + getExtension({ webresourcetype: type })),
+                    definition: definition(webResourceNamedDir)
+                } : {
+                    directory: webResourceNamedDir,
+                    definition: definition(webResourceNamedDir)
+                };
+            }
+        );
+
+        const paths: Paths = {
+            root,
+            cache,
+            entities,
+            pluginAssemblies,
+            solutions,
+            types,
+            webResources
+        };
+        return paths;
+    }
+
+    private _findConfigFile = (): string => {
+        const cwd = process.cwd();
+        const find = (p: string): string => {
+            const f = path.join(p, 'xrm.json');
+            if (fs.existsSync(f)) {
+                return f;
+            }
+            else {
+                const d = path.dirname(path.resolve(p));
+                const r = path.resolve('/');
+                if (d !== r && fs.existsSync(d)) {
+                    return find(d);
+                }
+                else {
+                    throw 'Failed to load xrm.json';
+                }
+            }
+        }
+        return find(cwd);
+    }
+
+    private _validateRequiredKeys = (): void => {
+        const msg = (key: string) => `Configuration missing required key "${key}"`;
+
+        // Validate connection settings.
+        if (!this._configFile.auth) {
+            throw msg('auth');
+        }
+        if (!this._configFile.auth.authority) {
+            throw msg('auth.authority');
+        }
+        if (!this._configFile.auth.clientId) {
+            throw msg('auth.clientId');
+        }
+        if (!this._configFile.dynamics) {
+            throw msg('dynamics');
+        }
+    }
+}
+
+const config = new Config();
+export default config;
