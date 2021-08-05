@@ -43,6 +43,7 @@
     "json-bigint": "^1.0.0",
     "jsonc-parser": "^3.0.0",
     "open": "^8.2.0",
+    "semaphore-async-await": "^1.5.1",
     "ts-morph": "^11.0.3",
     "uuid": "^8.3.2",
     "xml-formatter": "^2.4.0",
