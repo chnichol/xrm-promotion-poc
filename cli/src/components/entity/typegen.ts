@@ -1,7 +1,7 @@
 import os from 'os';
 import { Project } from 'ts-morph';
 import { parseFile } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import AttributeTypeCode from '../../types/enum/AttributeTypeCode';
 import AttributeMetadata from '../../types/metadata/AttributeMetadata';
 import { getEntityAttributes } from '../attribute';
@@ -29,12 +29,11 @@ const getAttributeType = (attributeType: AttributeTypeCode) => {
 }
 
 const typegen = async (name: string, project: Project) => {
-    const config = await getConfig();
-    const entityPaths = getPath(config).entity({ logicalname: name });
+    const entityPaths = config.paths.entities(name);
     const typeFile = entityPaths.typedef;
     const attributes = await getEntityAttributes(name);
     const attributeMetadata = await Promise.all(attributes.map(async attribute => {
-        const definitionFile = getPath(config).attribute(name, attribute).definition;
+        const definitionFile = entityPaths.attributes(attribute).definition;
         const definition = await parseFile<AttributeMetadata>(definitionFile);
         return definition;
     }));

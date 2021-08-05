@@ -1,7 +1,7 @@
 import axios from 'axios';
 import JSONBigInt from 'json-bigint';
 import { getToken } from '../auth';
-import { getConfig } from '../common/config';
+import config from '../common/config';
 import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
 
 export interface PublishManifest {
@@ -63,7 +63,7 @@ const createSelectString = (select: string[]) => {
     return '$select=' + select.join(',');
 }
 
-const getApiUrl = async () => `${(await getConfig()).dynamics}/api/data/v9.0`;
+const getApiUrl = async () => `${config.settings.dynamics}/api/data/v9.0`;
 
 const getAuthHeader = async () => ((token) => `${token.tokenType} ${token.accessToken}`)(await getToken());
 

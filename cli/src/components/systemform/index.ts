@@ -1,11 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import { ProjectForm } from './types';
 
 export const getEntityForms = async (entity: string): Promise<ProjectForm[]> => {
-    const config = await getConfig();
-    const entityDir = getPath(config).systemforms(entity);
+    const entityDir = config.paths.entities(entity).systemForms.directory;
     const formDirs = await fs.readdir(entityDir);
     const forms: ProjectForm[] = [];
     for (let i = 0; i < formDirs.length; i++) {

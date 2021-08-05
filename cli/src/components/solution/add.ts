@@ -1,12 +1,11 @@
 import api from '../../api';
 import { isUuid, quote } from '../../common';
-import { getConfig, saveConfig } from '../../common/config';
+import config from '../../common/config';
 import { Command } from '../cli';
 
 const add: Command = async (names?: string[]) => {
-    const config = await getConfig();
     names = names ?? [];
-    const solutions = config.project.solutions ?? [];
+    const solutions = config.settings.project.solutions ?? [];
     const set = new Set<string>(solutions);
 
     for (let i = 0; i < names.length; i++) {
@@ -34,7 +33,7 @@ const add: Command = async (names?: string[]) => {
         }
     }
 
-    config.project.solutions = solutions;
-    await saveConfig(config);
+    config.settings.project.solutions = solutions;
+    console.error('Adding solutions is not currently supported');
 }
 export default add;

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid } from '../../common';
-import { getConfig } from '../../common/config';
+import config from '../../common/config';
 import { getProjectSolutions } from '.';
 
 type ListRow = {
@@ -13,7 +13,7 @@ type ListRow = {
 
 const list = async (): Promise<void> => {
     const solutions = new Map<string, ListRow>();
-    ((await getConfig()).project.solutions ?? []).forEach(s => {
+    (config.settings.project.solutions ?? []).forEach(s => {
         if (!isUuid(s)) {
             return;
         }

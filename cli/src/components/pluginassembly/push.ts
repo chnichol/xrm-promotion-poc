@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
-import Config, { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import PluginAssembly from '../../types/entity/PluginAssembly';
 import { Command } from '../cli';
 import { getPluginAssemblyComponents } from '.';
@@ -12,9 +12,9 @@ interface Diff {
     updated: Record<string, unknown>;
 }
 
-const load = async (config: Config, name: string) => {
-    const definitionFile = getPath(config).pluginassembly(name).definition;
-    const contentFile = getPath(config).pluginassembly(name).content;
+const load = async (name: string) => {
+    const definitionFile = config.paths.pluginAssemblies(name).definition;
+    const contentFile = config.paths.pluginAssemblies(name).content;
     const definition = await parseFile<PluginAssembly>(definitionFile);
     if (contentFile) {
         definition.content = await parseFileB64(contentFile);
@@ -25,9 +25,8 @@ const load = async (config: Config, name: string) => {
 const push: Command = async (names: string[]) => {
     names = names.length === 0 ? await getPluginAssemblyComponents() : names;
 
-    const config = await getConfig();
     for (let i = 0; i < names.length; i++) {
-        const pluginAssembly = await load(config, names[i]);
+        const pluginAssembly = await load(names[i]);
         const results = await api.pluginAssembly.query({
             filter: { name: quote(names[i]) }
         }).execute();
