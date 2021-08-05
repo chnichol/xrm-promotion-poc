@@ -1,13 +1,12 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { getConfig } from '../../common/config';
+import config from '../../common/config';
 import { WebResourceType } from '../../types/entity/WebResource';
 
 export const getExtension = (webResource: { webresourcetype: WebResourceType }): string => WebResourceType[webResource.webresourcetype].toLowerCase().replace(/jscript/g, 'js');
 
 export const getWebResourceProjects = async (): Promise<string[]> => {
-    const config = await getConfig();
-    const root = path.join(config.project.webresources, 'src');
+    const root = path.join(config.settings.project.webresources, 'src');
     const webResources = (await Promise.all(
         (await fs.readdir(root)).map(async item => {
             const p = path.join(root, item);

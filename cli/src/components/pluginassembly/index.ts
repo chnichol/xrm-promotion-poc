@@ -1,11 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { exists } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 
 export const getPluginAssemblyComponents = async (): Promise<string[]> => {
-    const config = await getConfig();
-    const componentRoot = getPath(config).pluginassemblies;
+    const componentRoot = config.paths.pluginAssemblies.directory;
     const components = (await Promise.all(
         (await fs.readdir(componentRoot)).map(async item => {
             const p = path.join(componentRoot, item);
@@ -21,10 +20,9 @@ export const getPluginAssemblyComponents = async (): Promise<string[]> => {
 }
 
 export const getPluginAssemblyProjects = async (): Promise<string[]> => {
-    const config = await getConfig();
     const projects = (await Promise.all(
-        (await fs.readdir(config.project.pluginassemblies)).map(async item => {
-            const p = path.join(config.project.pluginassemblies, item);
+        (await fs.readdir(config.settings.project.pluginassemblies)).map(async item => {
+            const p = path.join(config.settings.project.pluginassemblies, item);
             if ((await fs.lstat(p)).isDirectory() && (await fs.readdir(p)).find(file => file === `${item}.csproj`)) {
                 return item;
             }

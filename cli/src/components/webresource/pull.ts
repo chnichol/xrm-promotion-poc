@@ -1,20 +1,19 @@
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
-import Config, { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 
-const save = async (config: Config, webResource: WebResource) => {
-    const paths = getPath(config).webresource(webResource);
+const save = async (webResource: WebResource) => {
+    const paths = config.paths.webResources(webResource.name, webResource.webresourcetype);
     await mkdir(paths.directory);
     await saveFile(paths.definition, { ...webResource, content: undefined });
-    await saveFileB64(paths.content as string, webResource.content);
+    await saveFileB64(paths.content, webResource.content);
 }
 
 const pull: Command = async (names: string[]) => {
-    const config = await getConfig();
     const [ _, components ] = await getProjectSolutionComponents(ComponentType.WebResource);
     names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
@@ -37,7 +36,7 @@ const pull: Command = async (names: string[]) => {
                 }
                 else if (!webResources.has(results[0].webresourceid)) {
                     webResources.add(results[0].webresourceid);
-                    await save(config, results[0]);
+                    await save(results[0]);
                 }
                 break;
             default:

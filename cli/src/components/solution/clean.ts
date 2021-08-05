@@ -1,12 +1,10 @@
 import api from '../../api';
 import { isUuid, quote } from '../../common';
-import { getConfig, saveConfig } from '../../common/config';
+import config from '../../common/config';
 import { Command } from '../cli';
 
 const clean: Command = async () => {
-    const config = await getConfig();
-
-    const solutions = config.project?.solutions ?? [];
+    const solutions = config.settings.project.solutions;
     const set: Set<string> = new Set();
     for (let i = 0; i < solutions.length; i++) {
         const name = solutions[i];
@@ -19,7 +17,7 @@ const clean: Command = async () => {
         }
     }
 
-    config.project.solutions = Array.from(set);
-    await saveConfig(config);
+    config.settings.project.solutions = Array.from(set);
+    console.error('Cleaning solutions is not currently supported');
 }
 export default clean;

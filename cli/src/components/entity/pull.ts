@@ -1,20 +1,20 @@
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import Config, { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import Entity from '../../types/entity/Entity';
 import { Command } from '../cli';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 
-const save = async (config: Config, entity: Entity, metadata: EntityMetadata) => {
-    const entityPaths = getPath(config).entity(entity);
+const save = async (entity: Entity, metadata: EntityMetadata) => {
+    const entityPaths = config.paths.entities(entity.logicalname);
     await mkdir(entityPaths.directory);
     await saveFile(entityPaths.definition, entity);
     if (metadata.Attributes) {
         for (const a in metadata.Attributes) {
             const attribute = metadata.Attributes[a];
-            const attributePaths = getPath(config).attribute(entity.logicalname, attribute.LogicalName);
+            const attributePaths = entityPaths.attributes(attribute.LogicalName);
             await mkdir(attributePaths.directory);
             await saveFile(attributePaths.definition, attribute);
         }
@@ -23,7 +23,6 @@ const save = async (config: Config, entity: Entity, metadata: EntityMetadata) =>
 }
 
 const pull: Command = async (names: string[]) => {
-    const config = await getConfig();
     const [ _, components ] = await getProjectSolutionComponents(ComponentType.Entity);
     names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
@@ -48,7 +47,7 @@ const pull: Command = async (names: string[]) => {
                 else if (!entities.has(results[0].entityid)) {
                     entities.add(results[0].entityid);
                     const metadata = await api.entityMetadata.lookup(results[0].entityid).expandCollection('Attributes').execute();
-                    await save(config, results[0], metadata);
+                    await save(results[0], metadata);
                 }
                 break;
             }

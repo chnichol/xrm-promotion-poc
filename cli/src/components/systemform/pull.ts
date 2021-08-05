@@ -3,17 +3,17 @@ import JSONBigInt from 'json-bigint';
 import xml2js from 'xml2js';
 import api from '../../api';
 import { isUuid, exists, mkdir, quote, saveFile, saveFileXML } from '../../common';
-import Config, { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import SystemForm, { FormType } from '../../types/entity/SystemForm';
 import { Command } from '../cli';
 
-const save = async (config: Config, form: SystemForm) => {
-    const paths = getPath(config).systemform(form.objecttypecode, form.name, FormType[form.type]);
+const save = async (form: SystemForm) => {
+    const paths = config.paths.entities(form.objecttypecode).systemForms(form.name, FormType[form.type]);
     await mkdir(paths.directory);
     await saveFile(paths.definition, { ...form, formjson: undefined, formxml: undefined });
-    switch (config.project.forms) {
+    switch (config.settings.project.forms) {
         case 'json': {
             const json = JSONBigInt.parse(form.formjson);
             await saveFile(paths.form, json);
@@ -48,7 +48,6 @@ const save = async (config: Config, form: SystemForm) => {
 }
 
 const pull: Command = async (names: string[]) => {
-    const config = await getConfig();
     const [_, components] = await getProjectSolutionComponents(ComponentType.Entity);
     names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
@@ -69,7 +68,7 @@ const pull: Command = async (names: string[]) => {
 
         const results = await api.systemform.query({ filter: { objecttypecode: quote(entity.logicalname) } }).execute();
         for (let j = 0; j < results.length; j++) {
-            await save(config, results[j]);
+            await save(results[j]);
         }
     }
 }

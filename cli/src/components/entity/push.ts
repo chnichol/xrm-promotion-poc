@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, quote } from '../../common';
-import { getConfig, getPath } from '../../common/config';
+import config from '../../common/config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import Entity from '../../types/entity/Entity';
 import { Command } from '../cli';
@@ -14,13 +14,12 @@ type Diff = {
 }
 
 const loadDefinition = async (name: string) => {
-    const file = getPath(await getConfig()).entity({ logicalname: name }).definition;
+    const file = config.paths.entities(name).definition;
     return await parseFile<Entity>(file);
 }
 
 const loadMetadata = async (name: string) => {
-    const paths = getPath(await getConfig());
-    const entityFiles = paths.entity({ logicalname: name });
+    const entityFiles = config.paths.entities(name);
     const metadata = await parseFile<EntityMetadata>(entityFiles.metadata);
     return metadata;
 }

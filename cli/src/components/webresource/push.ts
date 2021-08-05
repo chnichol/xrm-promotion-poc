@@ -3,7 +3,7 @@ import path from 'path';
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
-import Config, { getConfig, getPath } from '../../common/config'
+import config from '../../common/config'
 import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';
 
@@ -13,10 +13,10 @@ interface Diff {
     updated: Record<string, unknown>;
 }
 
-const load = async (config: Config, name: string) => {
-    const definitionFile = getPath(config).webresource({ name }).definition;
+const load = async (name: string) => {
+    const definitionFile = config.paths.webResources(name).definition;
     const definition = await parseFile<WebResource>(definitionFile);
-    const contentFile = getPath(config).webresource(definition).content;
+    const contentFile = config.paths.webResources(definition.name, definition.webresourcetype).content;
     if (contentFile) {
         definition.content = await parseFileB64(contentFile);
     }
@@ -24,9 +24,8 @@ const load = async (config: Config, name: string) => {
 }
 
 const push: Command = async (names: string[]) => {
-    const config = await getConfig();
     if (names.length === 0) {
-        const dir = getPath(config).webresources;
+        const dir = config.paths.webResources.directory;
         const dirlist = await fs.readdir(dir);
         for (let i = 0; i < dirlist.length; i++) {
             if ((await fs.lstat(path.join(dir, dirlist[i]))).isDirectory()) {
@@ -36,7 +35,7 @@ const push: Command = async (names: string[]) => {
     }
 
     for (let i = 0; i < names.length; i++) {
-        const webResource = await load(config, names[i]);
+        const webResource = await load(names[i]);
         const results = await api.webresource.query({
             filter: { name: quote(names[i]) }
         }).execute();
