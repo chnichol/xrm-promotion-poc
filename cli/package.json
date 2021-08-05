@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "node scripts/build.js",
     "cli": "node dist/index.js",
     "cli-ts": "ts-node src/index.ts",
     "lint": "eslint .",
