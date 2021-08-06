@@ -10,7 +10,7 @@ export {
     Entity
 }
 
-import FormContex, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
+import FormContext, { Entity, FooterSection, FormContextData, FormContextUI, FormType, HeaderSection, Section, Tab } from './formContext';
 export {
     FormContext,
     FooterSection,
@@ -172,7 +172,7 @@ declare global {
              * @param entityLogicalName Logical name of the table you want to create. For example: "account"
              * @param data A JSON object defining the columns and values for the new table record.
              */
-            function createRecord(entityLogicalName: string, data: any): Promise<{ entityType: string, id: string }, { errorCode: number, message: string }>;
+            function createRecord(entityLogicalName: string, data: any): Promise<{ entityType: string, id: string }>;
             /**
              * Retrieves a table record
              * 
@@ -201,7 +201,7 @@ declare global {
              * @param id GUID of the table record you want to update.
              * @param data A JSON object containing key: value pairs, where `key` is the property of the table and value is the value of the property you want to update.
              */
-            function updateRecord(entityLogicalName: string, id: string, data: any): Promise<{ entityType: string, id: string }, { errorCode: number, message: string }>;
+            function updateRecord(entityLogicalName: string, id: string, data: any): Promise<{ entityType: string, id: string }>;
             /**
              * Retrieves a collection a table record
              * 
