@@ -1,0 +1,120 @@
+{
+    "groups": [
+        {
+            "description": "Settings related to connecting to Dynamics 365.",
+            "properties": [
+                {
+                    "name": "aadClient",
+                    "description": "Client ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API.",
+                    "enabled": true,
+                    "required": true,
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "aadTenant",
+                    "description": "Tenant ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API.",
+                    "enabled": true,
+                    "required": true,
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "dynamics",
+                    "description": "Root URL of your Dynamics environment.",
+                    "enabled": true,
+                    "required": true,
+                    "type": "string",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "description": "Project configuration settings.",
+            "properties": [
+                {
+                    "name": "solutions",
+                    "description": "Solutions to include in the project.",
+                    "enabled": true,
+                    "required": true,
+                    "type": "array",
+                    "value": []
+                },
+                {
+                    "name": "pluginAssembliesDir",
+                    "description": "Directory plugin assembly projects are in.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "pluginassemblies"
+                },
+                {
+                    "name": "webResourcesDir",
+                    "description": "Directory web resource projects are in.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "webresources"
+                }
+            ]
+        },
+        {
+            "description": "Settings describing how Smelter should save the project source map.",
+            "properties": [
+                {
+                    "name": "rootDir",
+                    "description": "Root directory to store all source artifacts in.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "xrm"
+                },
+                {
+                    "name": "systemFormFormat",
+                    "description": "Format to save system form layouts in. (json, xml)",
+                    "enabled": false,
+                    "required": false,
+                    "type": "'json' | 'xml'",
+                    "value": "json"
+                },
+                {
+                    "name": "typesDir",
+                    "description": "Directory to save generated type definition files.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "xrm/types"
+                }
+            ]
+        },
+        {
+            "description": "Advanced settings.",
+            "properties": [
+                {
+                    "name": "authHome",
+                    "description": "URL to serve login screen from.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "http://localhost:3000"
+                },
+                {
+                    "name": "authPort",
+                    "description": "Port number to open for handling authentication requests.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "number",
+                    "value": 3000
+                },
+                {
+                    "name": "authRedirect",
+                    "description": "URL to receive authentication tokens at.",
+                    "enabled": false,
+                    "required": false,
+                    "type": "string",
+                    "value": "http://localhost:3000/redirect"
+                }
+            ]
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import JSONBigInt from 'json-bigint';
 import { getToken } from '../auth';
-import config from '../common/config';
+import config from '../config';
 import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
 
 export interface PublishManifest {
@@ -48,7 +48,7 @@ const createPublishSection = (sectionName: string, rowName: string, uuids: strin
 const createQueryString = (query: { filter?: { [key: string]: string | undefined }, select?: string[], expand?: ExpandBody[] }) => {
     const terms = [];
     if (query.filter && Object.keys(query.filter).length > 0) {
-        terms.push(createFilterString(query.filter));    
+        terms.push(createFilterString(query.filter));
     }
     if (query.select && query.select.length > 0) {
         terms.push(createSelectString(query.select));
@@ -63,18 +63,18 @@ const createSelectString = (select: string[]) => {
     return '$select=' + select.join(',');
 }
 
-const getApiUrl = async () => `${config.settings.dynamics}/api/data/v9.0`;
+const getApiUrl = async () => `${config().settings.dynamics}/api/data/v9.0`;
 
 const getAuthHeader = async () => ((token) => `${token.tokenType} ${token.accessToken}`)(await getToken());
 
-export const lookup = async <T> (lookupBody: LookupBody): Promise<T> => {
+export const lookup = async <T>(lookupBody: LookupBody): Promise<T> => {
     const queryString = createQueryString(lookupBody);
     const url = `${await getApiUrl()}/${lookupBody.resource}(${lookupBody.id})${queryString}`;
     const response = await axios.get(url, {
         headers: {
             Authorization: await getAuthHeader()
         },
-        transformResponse: [ data => data ]
+        transformResponse: [data => data]
     });
     const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
     return data as T;
@@ -103,14 +103,14 @@ export const publish = async (manifest: PublishManifest): Promise<void> => {
     });
 }
 
-export const query = async <T> (queryBody: QueryBody): Promise<QueryResponse<T>> => {
+export const query = async <T>(queryBody: QueryBody): Promise<QueryResponse<T>> => {
     const queryString = createQueryString(queryBody);
     const url = `${await getApiUrl()}/${queryBody.resource}${queryString}`;
     const response = await axios.get(url, {
         headers: {
             Authorization: await getAuthHeader()
         },
-        transformResponse: [ data => data ]
+        transformResponse: [data => data]
     });
     const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
     return data as QueryResponse<T>;

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import { getProjectSolutions } from '.';
 
 type ListRow = {
@@ -13,7 +13,7 @@ type ListRow = {
 
 const list = async (): Promise<void> => {
     const solutions = new Map<string, ListRow>();
-    (config.settings.project.solutions ?? []).forEach(s => {
+    (config().settings.solutions ?? []).forEach(s => {
         if (!isUuid(s)) {
             return;
         }
@@ -51,7 +51,7 @@ const list = async (): Promise<void> => {
             });
         }
     });
-    (await api.solution.query({ select: [ 'solutionid', 'uniquename' ] }).execute()).forEach(s => {
+    (await api.solution.query({ select: ['solutionid', 'uniquename'] }).execute()).forEach(s => {
         if (solutions.has(s.solutionid)) {
             const solution = solutions.get(s.solutionid);
             if (solution) {

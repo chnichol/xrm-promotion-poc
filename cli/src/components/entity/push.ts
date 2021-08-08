@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, quote } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import Entity from '../../types/entity/Entity';
 import { Command } from '../cli';
@@ -14,12 +14,12 @@ type Diff = {
 }
 
 const loadDefinition = async (name: string) => {
-    const file = config.paths.entities(name).definition;
+    const file = config().content.entities(name).definition;
     return await parseFile<Entity>(file);
 }
 
 const loadMetadata = async (name: string) => {
-    const entityFiles = config.paths.entities(name);
+    const entityFiles = config().content.entities(name);
     const metadata = await parseFile<EntityMetadata>(entityFiles.metadata);
     return metadata;
 }
@@ -53,8 +53,8 @@ const push: Command = async (names: string[]) => {
             const results = await api.entityMetadata.query({
                 filter: { LogicalName: quote(name) }
             })
-            .expandCollection('Attributes')
-            .execute();
+                .expandCollection('Attributes')
+                .execute();
             const remote = results.length === 1 ? results[0] : undefined;
             if (remote) {
                 const diff = detailedDiff(remote, local) as Diff;

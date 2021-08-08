@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import PluginAssembly from '../../types/entity/PluginAssembly';
 import { Command } from '../cli';
 import { getPluginAssemblyComponents } from '.';
@@ -13,8 +13,8 @@ interface Diff {
 }
 
 const load = async (name: string) => {
-    const definitionFile = config.paths.pluginAssemblies(name).definition;
-    const contentFile = config.paths.pluginAssemblies(name).content;
+    const definitionFile = config().content.pluginAssemblies(name).definition;
+    const contentFile = config().content.pluginAssemblies(name).content;
     const definition = await parseFile<PluginAssembly>(definitionFile);
     if (contentFile) {
         definition.content = await parseFileB64(contentFile);
@@ -30,7 +30,7 @@ const push: Command = async (names: string[]) => {
         const results = await api.pluginAssembly.query({
             filter: { name: quote(names[i]) }
         }).execute();
-        switch(results.length) {
+        switch (results.length) {
             case 0: {
                 console.warn(`No remote plugin assemblies found where name="${names[i]}"`);
                 break;

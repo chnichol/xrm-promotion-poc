@@ -3,158 +3,52 @@ import path from 'path';
 import { parse } from 'jsonc-parser';
 import { getExtension } from '../components/webresource';
 import { WebResourceType } from '../types/entity/WebResource';
-
-type ConfigFile = Partial<{
-    auth: {
-        authority: string;
-        clientId: string;
-    };
-    dynamics: string;
-    project: {
-        forms: 'json' | 'xml';
-        root: string;
-        solutions: string[];
-        types: string;
-        pluginassemblies: string;
-        webresources: string;
-    };
-    urls: {
-        home: string;
-        port: number;
-        redirect: string;
-    };
-}>
-
-type Paths = {
-    readonly root: string;
-    readonly cache: {
-        readonly directory: string;
-        readonly token: string;
-    };
-    readonly entities: {
-        readonly directory: string;
-        readonly typedef: string;
-        (name: string): {
-            readonly directory: string;
-            readonly definition: string;
-            readonly metadata: string;
-            readonly typedef: string;
-            readonly attributes: {
-                readonly directory: string;
-                (name: string): {
-                    readonly directory: string;
-                    readonly definition: string;
-                    readonly typedef: string;
-                };
-            };
-            readonly systemForms: {
-                readonly directory: string;
-                (name: string, type: string): {
-                    readonly directory: string;
-                    readonly definition: string;
-                    readonly form: string;
-                    readonly typedef: string;
-                };
-            };
-        };
-    };
-    readonly pluginAssemblies: {
-        readonly directory: string;
-        (name: string): {
-            readonly directory: string;
-            readonly content: string;
-            readonly definition: string;
-        };
-    };
-    readonly solutions: {
-        readonly directory: string;
-        (name: string): {
-            readonly directory: string;
-            readonly definition: string;
-        };
-    };
-    readonly types: {
-        readonly directory: string;
-        readonly package: string;
-    };
-    readonly webResources: {
-        readonly directory: string;
-        (name: string): {
-            readonly directory: string;
-            readonly definition: string;
-        };
-        (name: string, type: WebResourceType): {
-            readonly directory: string;
-            readonly content: string;
-            readonly definition: string;
-        };
-    };
-}
-
-const defaults: Required<ConfigFile> = {
-    auth: {
-        authority: '',
-        clientId: ''
-    },
-    dynamics: '',
-    project: {
-        forms: 'json',
-        pluginassemblies: 'pluginassemblies',
-        root: 'xrm',
-        solutions: [],
-        types: 'xrm/types',
-        webresources: 'webresources'
-    },
-    urls: {
-        home: 'http://localhost:3000',
-        port: 3000,
-        redirect: 'http://localhost:3000/redirect'
-    }
-}
+import { ConfigFile, ConfigSettings, defaults, validate } from './generated';
+import { ContentPaths, ProjectPaths } from './types';
 
 class Config {
     private readonly _configFile: ConfigFile;
     private readonly _configLocation: string;
-    private readonly _configSettings: Required<ConfigFile>;
-    private readonly _paths: Paths;
+    private readonly _configSettings: ConfigSettings;
+    private readonly _content: ContentPaths;
+    private readonly _project: ProjectPaths;
 
-    constructor () {
+    constructor() {
         this._configLocation = this._findConfigFile();
         this._configFile = parse(fs.readFileSync(this._configLocation, 'utf8'));
 
-        this._validateRequiredKeys();
+        validate(this._configFile);
 
         this._configSettings = {
             ...defaults,
             ...this._configFile
         };
 
-        this._paths = this._createPaths();
+        this._content = this._createContentPaths();
+        this._project = this._createProjectPaths();
     }
 
-    public get paths(): Paths {
-        return this._paths;
+    public get content(): ContentPaths {
+        return this._content;
+    }
+
+    public get project(): ProjectPaths {
+        return this._project;
     }
 
     public get settings(): Required<ConfigFile> {
         return this._configSettings;
     }
 
-    private _createPaths = () => {
+    private _createContentPaths = (): ContentPaths => {
         const dir = path.resolve(path.dirname(this._configLocation));
-        const root = path.join(dir, this._configSettings.project.root);
+        const root = path.join(dir, this._configSettings.rootDir);
         const assign = <T, U>(source: T, target: U) => Object.assign(target, source);
         const definition = (p: string) => path.join(p, 'definition.json');
         const typedef = (p: string) => path.join(p, 'index.d.ts');
 
-        const cacheDir = path.join(dir, '.xrm');
-        const cache: Paths['cache'] = {
-            directory: cacheDir,
-            token: path.join(cacheDir, 'id')
-        };
-
         const entityDir = path.join(root, 'entities');
-        const entities: Paths['entities'] = assign(
+        const entities: ContentPaths['entities'] = assign(
             {
                 directory: entityDir,
                 typedef: typedef(entityDir)
@@ -190,7 +84,7 @@ class Config {
                             return {
                                 directory: systemFormNamedDir,
                                 definition: definition(systemFormNamedDir),
-                                form: path.join(systemFormNamedDir, `form.${this._configSettings.project.forms}`),
+                                form: path.join(systemFormNamedDir, `form.${this._configSettings.systemFormFormat}`),
                                 typedef: typedef(systemFormNamedDir)
                             };
                         }
@@ -200,7 +94,7 @@ class Config {
         );
 
         const pluginAssemblyDir = path.join(root, 'pluginassemblies');
-        const pluginAssemblies: Paths['pluginAssemblies'] = assign(
+        const pluginAssemblies: ContentPaths['pluginAssemblies'] = assign(
             {
                 directory: pluginAssemblyDir
             },
@@ -215,7 +109,7 @@ class Config {
         );
 
         const solutionDir = path.join(root, 'solutions');
-        const solutions: Paths['solutions'] = assign(
+        const solutions: ContentPaths['solutions'] = assign(
             {
                 directory: solutionDir
             },
@@ -227,14 +121,14 @@ class Config {
             }
         );
 
-        const typeDir = path.resolve(this._configSettings.project.types);
-        const types: Paths['types'] = {
+        const typeDir = path.resolve(this._configSettings.typesDir);
+        const types: ContentPaths['types'] = {
             directory: typeDir,
             package: path.join(typeDir, 'package.json')
         };
 
         const webResourceDir = path.join(root, 'webresources');
-        const webResources: Paths['webResources'] = assign(
+        const webResources: ContentPaths['webResources'] = assign(
             {
                 directory: webResourceDir
             },
@@ -251,16 +145,37 @@ class Config {
             }
         );
 
-        const paths: Paths = {
+        return {
             root,
-            cache,
             entities,
             pluginAssemblies,
             solutions,
             types,
             webResources
         };
-        return paths;
+    }
+
+    private _createProjectPaths = (): ProjectPaths => {
+        const dir = path.resolve(path.dirname(this._configLocation));
+
+        const root = dir;
+        const cache = {
+            directory: path.join(dir, '.xrm'),
+            token: path.join(dir, '.xrm', 'id')
+        };
+        const pluginAssemblies = {
+            directory: path.join(dir, this._configSettings.pluginAssembliesDir)
+        };
+        const webResources = {
+            directory: path.join(dir, this._configSettings.webResourcesDir)
+        };
+
+        return {
+            root,
+            cache,
+            pluginAssemblies,
+            webResources
+        };
     }
 
     private _findConfigFile = (): string => {
@@ -283,25 +198,15 @@ class Config {
         }
         return find(cwd);
     }
-
-    private _validateRequiredKeys = (): void => {
-        const msg = (key: string) => `Configuration missing required key "${key}"`;
-
-        // Validate connection settings.
-        if (!this._configFile.auth) {
-            throw msg('auth');
-        }
-        if (!this._configFile.auth.authority) {
-            throw msg('auth.authority');
-        }
-        if (!this._configFile.auth.clientId) {
-            throw msg('auth.clientId');
-        }
-        if (!this._configFile.dynamics) {
-            throw msg('dynamics');
-        }
+}
+let _config: Config;
+const config = () => {
+    if (_config) {
+        return _config;
+    }
+    else {
+        _config = new Config();
+        return _config;
     }
 }
-
-const config = new Config();
 export default config;

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import Entity from '../../types/entity/Entity';
@@ -8,7 +8,7 @@ import { Command } from '../cli';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 
 const save = async (entity: Entity, metadata: EntityMetadata) => {
-    const entityPaths = config.paths.entities(entity.logicalname);
+    const entityPaths = config().content.entities(entity.logicalname);
     await mkdir(entityPaths.directory);
     await saveFile(entityPaths.definition, entity);
     if (metadata.Attributes) {
@@ -23,7 +23,7 @@ const save = async (entity: Entity, metadata: EntityMetadata) => {
 }
 
 const pull: Command = async (names: string[]) => {
-    const [ _, components ] = await getProjectSolutionComponents(ComponentType.Entity);
+    const [_, components] = await getProjectSolutionComponents(ComponentType.Entity);
     names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 
     const entities = new Set<string>();
@@ -32,10 +32,10 @@ const pull: Command = async (names: string[]) => {
         const results = await api.entity.query({
             filter: (isUuid(name) ? { entityid: quote(name) } : { logicalname: quote(name) })
         })
-        .execute();
+            .execute();
 
         const property = isUuid(name) ? 'entityid' : 'logicalname';
-        switch(results.length) {
+        switch (results.length) {
             case 0: {
                 console.warn(`No entities found where ${property}="${name}"`)
                 break;
@@ -55,6 +55,6 @@ const pull: Command = async (names: string[]) => {
                 console.warn(`Multiple entities found where ${property}="${name}"`)
             }
         }
-    }    
+    }
 }
 export default pull;
