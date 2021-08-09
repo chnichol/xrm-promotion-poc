@@ -1,4 +1,4 @@
-import FormContext from 'xrm-generated/entities/cr35b_texas_student/forms/Information/Main';
+import FormContext from 'xrm-generated/entities/cr35b_texas_student/systemforms/Information/Main';
 import { notifyFailure, notifySuccess } from './common/notifications';
 
 export function OnLoad(formContext: FormContext, speciesValue: number) {

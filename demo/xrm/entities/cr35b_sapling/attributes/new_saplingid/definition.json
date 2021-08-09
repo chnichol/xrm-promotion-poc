@@ -34,7 +34,7 @@
     "IsDataSourceSecret": false,
     "InheritsFrom": null,
     "CreatedOn": "2021-06-29T20:50:50Z",
-    "ModifiedOn": "2021-06-29T20:50:50Z",
+    "ModifiedOn": "2021-08-06T17:47:14Z",
     "SourceType": 0,
     "AutoNumberFormat": "SAP-{SEQNUM:9}",
     "Format": "Text",

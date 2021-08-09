@@ -1,19 +1,18 @@
 {
   /* Settings related to connecting to Dynamics 365. */
-  "aadClient": "106f1a90-7645-46b8-b5fa-cf85de7d480b", /* Client ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API. */
-  "aadTenant": "ac2d7ce5-fae0-42e9-b01a-2eb6e86c0eab", /* Tenant ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API. */
-  "dynamics": "https://orgc840d94a.crm.dynamics.com",  /* Root URL of your Dynamics environment. */
+  "aadClient": "",                                      /* Client ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API. */
+  "aadTenant": "",                                      /* Tenant ID of the Azure Active Directory App Registration used to authenticate to the Dynamics API. */
+  "dynamics": "",                                       /* Root URL of your Dynamics environment. */
 
   /* Project configuration settings. */
   "solutions": [                                        /* Solutions to include in the project. */
-    "SaplingTrackingApp"
-  ],
+  ]
   // "pluginAssembliesDir": "pluginassemblies",         /* Directory plugin assembly projects are in. */
   // "webResourcesDir": "webresources",                 /* Directory web resource projects are in. */
 
   /* Settings describing how Smelter should save the project source map. */
   // "rootDir": "xrm",                                  /* Root directory to store all source artifacts in. */
-  "systemFormFormat": "xml"                             /* Format to save system form layouts in. (json, xml) */
+  // "systemFormFormat": "json",                        /* Format to save system form layouts in. (json, xml) */
   // "typesDir": "xrm/types",                           /* Directory to save generated type definition files. */
 
   /* Advanced settings. */

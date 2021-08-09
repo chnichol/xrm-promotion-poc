@@ -37,7 +37,7 @@ export const defaults: ConfigSettings = {
     webResourcesDir: 'webresources',
     rootDir: 'xrm',
     systemFormFormat: 'json',
-    typesDir: 'xrm/types',
+    typesDir: 'types',
     authHome: 'http://localhost:3000',
     authPort: 3000,
     authRedirect: 'http://localhost:3000/redirect'

@@ -83,7 +83,7 @@
                     "enabled": false,
                     "required": false,
                     "type": "string",
-                    "value": "xrm/types"
+                    "value": "types"
                 }
             ]
         },

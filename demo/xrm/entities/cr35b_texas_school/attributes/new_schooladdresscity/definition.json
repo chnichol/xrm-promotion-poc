@@ -34,7 +34,7 @@
     "IsDataSourceSecret": false,
     "InheritsFrom": null,
     "CreatedOn": "2021-06-29T16:54:47Z",
-    "ModifiedOn": "2021-06-29T16:54:47Z",
+    "ModifiedOn": "2021-08-09T18:29:44Z",
     "SourceType": 0,
     "AutoNumberFormat": null,
     "Format": "Text",
@@ -51,7 +51,7 @@
     "Description": {
         "LocalizedLabels": [
             {
-                "Label": "",
+                "Label": "The city the school is in.",
                 "LanguageCode": 1033,
                 "IsManaged": false,
                 "MetadataId": "bd2424e9-62fc-422e-9c36-89fa4c64b179",
@@ -59,7 +59,7 @@
             }
         ],
         "UserLocalizedLabel": {
-            "Label": "",
+            "Label": "The city the school is in.",
             "LanguageCode": 1033,
             "IsManaged": false,
             "MetadataId": "bd2424e9-62fc-422e-9c36-89fa4c64b179",

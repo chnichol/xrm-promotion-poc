@@ -45,7 +45,17 @@ class Config {
         const root = path.join(dir, this._configSettings.rootDir);
         const assign = <T, U>(source: T, target: U) => Object.assign(target, source);
         const definition = (p: string) => path.join(p, 'definition.json');
-        const typedef = (p: string) => path.join(p, 'index.d.ts');
+
+        const typeDir = path.join(root, this._configSettings.typesDir);
+        const types: ContentPaths['types'] = {
+            directory: typeDir,
+            package: path.join(typeDir, 'package.json')
+        };
+
+        const typedef = (p: string) => path.join(
+            path.join(typeDir, path.relative(root, path.resolve(p))),
+            'index.d.ts'
+        );
 
         const entityDir = path.join(root, 'entities');
         const entities: ContentPaths['entities'] = assign(
@@ -61,7 +71,7 @@ class Config {
                     directory: entityNamedDir,
                     definition: definition(entityNamedDir),
                     metadata: path.join(entityNamedDir, 'metadata.json'),
-                    typedef: definition(entityNamedDir),
+                    typedef: typedef(entityNamedDir),
                     attributes: assign(
                         {
                             directory: attributeDir,
@@ -121,12 +131,6 @@ class Config {
             }
         );
 
-        const typeDir = path.resolve(this._configSettings.typesDir);
-        const types: ContentPaths['types'] = {
-            directory: typeDir,
-            package: path.join(typeDir, 'package.json')
-        };
-
         const webResourceDir = path.join(root, 'webresources');
         const webResources: ContentPaths['webResources'] = assign(
             {
@@ -181,7 +185,7 @@ class Config {
     private _findConfigFile = (): string => {
         const cwd = process.cwd();
         const find = (p: string): string => {
-            const f = path.join(p, 'xrm.json');
+            const f = path.join(p, 'xrm.jsonc');
             if (fs.existsSync(f)) {
                 return f;
             }
