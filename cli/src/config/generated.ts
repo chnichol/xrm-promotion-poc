@@ -36,7 +36,7 @@ export const defaults: ConfigSettings = {
     pluginAssembliesDir: 'pluginassemblies',
     webResourcesDir: 'webresources',
     rootDir: 'xrm',
-    systemFormFormat: 'json',
+    systemFormFormat: 'xml',
     typesDir: 'types',
     authHome: 'http://localhost:3000',
     authPort: 3000,

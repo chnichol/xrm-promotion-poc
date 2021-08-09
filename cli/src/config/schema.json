@@ -75,7 +75,7 @@
                     "enabled": false,
                     "required": false,
                     "type": "'json' | 'xml'",
-                    "value": "json"
+                    "value": "xml"
                 },
                 {
                     "name": "typesDir",
