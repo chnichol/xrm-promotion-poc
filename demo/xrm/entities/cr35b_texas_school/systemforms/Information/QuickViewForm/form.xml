@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<form>
+  <tabs>
+    <tab verticallayout="true" id="{932b41d9-b2e9-410e-918b-c2f657d49348}" IsUserDefined="1">
+      <labels>
+        <label description="" languagecode="1033"/>
+      </labels>
+      <columns>
+        <column width="100%">
+          <sections>
+            <section showlabel="false" showbar="false" IsUserDefined="0" id="{e6494ca9-8b00-4872-930b-9d1404629d02}">
+              <labels>
+                <label description="GENERAL" languagecode="1033"/>
+              </labels>
+              <rows>
+                <row>
+                  <cell id="{1581bd29-c2ad-437c-8e1f-97fd20553976}">
+                    <labels>
+                      <label description="School Name" languagecode="1033"/>
+                    </labels>
+                    <control id="cr35b_texas_school_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cr35b_texas_school_name"/>
+                  </cell>
+                </row>
+                <row>
+                  <cell id="{a2d1168d-ba0a-4819-a6d2-b22d7550ec24}">
+                    <labels>
+                      <label description="Owner" languagecode="1033"/>
+                    </labels>
+                    <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid"/>
+                  </cell>
+                </row>
+              </rows>
+            </section>
+          </sections>
+        </column>
+      </columns>
+    </tab>
+  </tabs>
+</form>

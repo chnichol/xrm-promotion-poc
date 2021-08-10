@@ -1,0 +1,124 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.LookupAttributeMetadata",
+    "MetadataId": "86b7260e-88c7-41b5-8c3a-129946815416",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Lookup",
+    "ColumnNumber": 23,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_sapling",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": false,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "owningteam",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "OwningTeam",
+    "ExternalName": null,
+    "IsLogical": true,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T16:49:49Z",
+    "ModifiedOn": "2021-06-29T16:49:49Z",
+    "SourceType": null,
+    "AutoNumberFormat": null,
+    "Targets": [
+        "team"
+    ],
+    "Format": "None",
+    "AttributeTypeName": {
+        "Value": "LookupType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Unique identifier for the team that owns the record.",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e2d9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Unique identifier for the team that owns the record.",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e2d9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Owning Team",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "e3d9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Owning Team",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "e3d9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "None",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

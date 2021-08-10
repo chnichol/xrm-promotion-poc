@@ -1,0 +1,131 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.StringAttributeMetadata",
+    "MetadataId": "3c6e48c7-04d9-eb11-bacb-000d3a5775cd",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "String",
+    "ColumnNumber": 34,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_student",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": true,
+    "CanBeSecuredForCreate": true,
+    "CanBeSecuredForUpdate": true,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_studentid",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "new_StudentID",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T18:06:52Z",
+    "ModifiedOn": "2021-06-29T20:49:41Z",
+    "SourceType": 0,
+    "AutoNumberFormat": "STU-{SEQNUM:9}",
+    "Format": "Text",
+    "ImeMode": "Auto",
+    "MaxLength": 100,
+    "YomiOf": null,
+    "IsLocalizable": false,
+    "DatabaseLength": 200,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "StringType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "3689d9da-c935-4d35-a2fa-c4181faf9a4d",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "3689d9da-c935-4d35-a2fa-c4181faf9a4d",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Student ID",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "44b3a4a8-ac7e-4891-bcbb-53680171370f",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Student ID",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "44b3a4a8-ac7e-4891-bcbb-53680171370f",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "ApplicationRequired",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "FormatName": {
+        "Value": "Text"
+    }
+}

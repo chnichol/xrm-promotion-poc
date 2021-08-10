@@ -1,0 +1,131 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.StringAttributeMetadata",
+    "MetadataId": "fabe71b2-6ade-eb11-bacb-000d3a56ae1c",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "String",
+    "ColumnNumber": 43,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_school",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": true,
+    "CanBeSecuredForCreate": true,
+    "CanBeSecuredForUpdate": true,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_schoolemail",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "new_SchoolEmail",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-07-06T14:59:11Z",
+    "ModifiedOn": "2021-07-06T14:59:11Z",
+    "SourceType": 0,
+    "AutoNumberFormat": null,
+    "Format": "Email",
+    "ImeMode": "Auto",
+    "MaxLength": 100,
+    "YomiOf": null,
+    "IsLocalizable": false,
+    "DatabaseLength": 200,
+    "FormulaDefinition": "",
+    "SourceTypeMask": 0,
+    "AttributeTypeName": {
+        "Value": "StringType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "f9c0517a-e663-40d2-b381-1ea53624994e",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "f9c0517a-e663-40d2-b381-1ea53624994e",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Email",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "1e6778a0-d827-43c6-b064-0d14885e9b74",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Email",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "1e6778a0-d827-43c6-b064-0d14885e9b74",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "ApplicationRequired",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": [],
+    "FormatName": {
+        "Value": "Email"
+    }
+}

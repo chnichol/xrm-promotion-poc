@@ -1,0 +1,119 @@
+{
+    "MetadataId": "59874b20-eaa1-4ce6-acf1-97a4c86cdad1",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Uniqueidentifier",
+    "ColumnNumber": 1,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_sapling",
+    "IsCustomAttribute": false,
+    "IsPrimaryId": true,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": false,
+    "CanBeSecuredForRead": false,
+    "CanBeSecuredForCreate": false,
+    "CanBeSecuredForUpdate": false,
+    "IsSecured": false,
+    "IsRetrievable": true,
+    "IsFilterable": true,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "cr35b_saplingid",
+    "IsValidForForm": false,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": false,
+    "SchemaName": "cr35b_saplingId",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-06-29T16:49:49Z",
+    "ModifiedOn": "2021-08-09T18:25:01Z",
+    "SourceType": null,
+    "AutoNumberFormat": null,
+    "AttributeTypeName": {
+        "Value": "UniqueidentifierType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "Unique identifier for entity instances",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "abd9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Unique identifier for entity instances",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "abd9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Sapling",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "acd9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Sapling",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "acd9bdfe-f9d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "SystemRequired",
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

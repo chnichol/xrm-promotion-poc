@@ -1,0 +1,124 @@
+{
+    "@odata.type": "#Microsoft.Dynamics.CRM.LookupAttributeMetadata",
+    "MetadataId": "24117b16-0d98-49d5-a280-747fc4cbad7e",
+    "HasChanged": null,
+    "AttributeOf": null,
+    "AttributeType": "Lookup",
+    "ColumnNumber": 44,
+    "DeprecatedVersion": null,
+    "IntroducedVersion": "1.0.0.0",
+    "EntityLogicalName": "cr35b_texas_student",
+    "IsCustomAttribute": true,
+    "IsPrimaryId": false,
+    "IsValidODataAttribute": true,
+    "IsPrimaryName": false,
+    "IsValidForCreate": true,
+    "IsValidForRead": true,
+    "IsValidForUpdate": true,
+    "CanBeSecuredForRead": true,
+    "CanBeSecuredForCreate": true,
+    "CanBeSecuredForUpdate": true,
+    "IsSecured": false,
+    "IsRetrievable": false,
+    "IsFilterable": false,
+    "IsSearchable": false,
+    "IsManaged": false,
+    "LinkedAttributeId": null,
+    "LogicalName": "new_school2",
+    "IsValidForForm": true,
+    "IsRequiredForForm": false,
+    "IsValidForGrid": true,
+    "SchemaName": "new_School2",
+    "ExternalName": null,
+    "IsLogical": false,
+    "IsDataSourceSecret": false,
+    "InheritsFrom": null,
+    "CreatedOn": "2021-07-01T14:53:46Z",
+    "ModifiedOn": "2021-07-01T16:28:23Z",
+    "SourceType": null,
+    "AutoNumberFormat": null,
+    "Targets": [
+        "cr35b_texas_school"
+    ],
+    "Format": "None",
+    "AttributeTypeName": {
+        "Value": "LookupType"
+    },
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "aa6de23f-c0bd-4667-ab97-cbd272df96b7",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "aa6de23f-c0bd-4667-ab97-cbd272df96b7",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "School",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "52e35d9a-0f03-40b4-a80a-3363d735bb25",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "School",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "52e35d9a-0f03-40b4-a80a-3363d735bb25",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsGlobalFilterEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings"
+    },
+    "IsSortableEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyissortablesettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsValidForAdvancedFind": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifysearchsettings"
+    },
+    "RequiredLevel": {
+        "Value": "ApplicationRequired",
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyrequirementlevelsettings"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "Settings": []
+}

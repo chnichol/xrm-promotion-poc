@@ -1,0 +1,340 @@
+{
+    "@odata.context": "https://orgc840d94a.crm.dynamics.com/api/data/v9.0/$metadata#EntityDefinitions(Attributes())/$entity",
+    "MetadataId": "7d751ecc-f8d8-eb11-bacb-000d3a5775cd",
+    "HasChanged": null,
+    "ActivityTypeMask": 0,
+    "AutoRouteToOwnerQueue": false,
+    "CanTriggerWorkflow": true,
+    "EntityHelpUrlEnabled": false,
+    "EntityHelpUrl": null,
+    "IsDocumentManagementEnabled": false,
+    "IsOneNoteIntegrationEnabled": false,
+    "IsInteractionCentricEnabled": false,
+    "IsKnowledgeManagementEnabled": false,
+    "IsSLAEnabled": false,
+    "IsBPFEntity": false,
+    "IsDocumentRecommendationsEnabled": false,
+    "IsMSTeamsIntegrationEnabled": false,
+    "SettingOf": null,
+    "DataProviderId": null,
+    "DataSourceId": null,
+    "AutoCreateAccessTeams": false,
+    "IsActivity": false,
+    "IsActivityParty": false,
+    "IsAvailableOffline": false,
+    "IsChildEntity": false,
+    "IsAIRUpdated": false,
+    "IconLargeName": null,
+    "IconMediumName": null,
+    "IconSmallName": null,
+    "IconVectorName": null,
+    "IsCustomEntity": true,
+    "IsBusinessProcessEnabled": false,
+    "SyncToExternalSearchIndex": false,
+    "IsOptimisticConcurrencyEnabled": true,
+    "ChangeTrackingEnabled": false,
+    "IsImportable": true,
+    "IsIntersect": false,
+    "IsManaged": false,
+    "IsEnabledForCharts": true,
+    "IsEnabledForTrace": false,
+    "IsValidForAdvancedFind": true,
+    "DaysSinceRecordLastModified": 0,
+    "MobileOfflineFilters": "",
+    "IsReadingPaneEnabled": true,
+    "IsQuickCreateEnabled": false,
+    "LogicalName": "cr35b_texas_student",
+    "ObjectTypeCode": 10744,
+    "OwnershipType": "UserOwned",
+    "PrimaryNameAttribute": "cr35b_student_name",
+    "PrimaryImageAttribute": null,
+    "PrimaryIdAttribute": "cr35b_texas_studentid",
+    "RecurrenceBaseEntityLogicalName": null,
+    "ReportViewName": "Filteredcr35b_texas_student",
+    "SchemaName": "cr35b_texas_student",
+    "IntroducedVersion": "1.0.0.0",
+    "IsStateModelAware": true,
+    "EnforceStateTransitions": false,
+    "ExternalName": null,
+    "EntityColor": "",
+    "LogicalCollectionName": "cr35b_texas_students",
+    "ExternalCollectionName": null,
+    "CollectionSchemaName": "cr35b_texas_students",
+    "EntitySetName": "cr35b_texas_students",
+    "IsEnabledForExternalChannels": false,
+    "IsPrivate": false,
+    "UsesBusinessDataLabelTable": false,
+    "IsLogicalEntity": false,
+    "HasNotes": false,
+    "HasActivities": false,
+    "HasFeedback": false,
+    "IsSolutionAware": false,
+    "CreatedOn": "2021-06-29T16:41:22Z",
+    "ModifiedOn": "2021-06-29T16:41:22Z",
+    "HasEmailAddresses": false,
+    "Description": {
+        "LocalizedLabels": [
+            {
+                "Label": "",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "81751ecc-f8d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "81751ecc-f8d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayCollectionName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Students",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "80751ecc-f8d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Students",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "80751ecc-f8d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "DisplayName": {
+        "LocalizedLabels": [
+            {
+                "Label": "Student",
+                "LanguageCode": 1033,
+                "IsManaged": false,
+                "MetadataId": "7f751ecc-f8d8-eb11-bacb-000d3a5775cd",
+                "HasChanged": null
+            }
+        ],
+        "UserLocalizedLabel": {
+            "Label": "Student",
+            "LanguageCode": 1033,
+            "IsManaged": false,
+            "MetadataId": "7f751ecc-f8d8-eb11-bacb-000d3a5775cd",
+            "HasChanged": null
+        }
+    },
+    "IsAuditEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyauditsettings"
+    },
+    "IsValidForQueue": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyqueuesettings"
+    },
+    "IsConnectionsEnabled": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyconnectionsettings"
+    },
+    "IsCustomizable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "iscustomizable"
+    },
+    "IsRenameable": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "isrenameable"
+    },
+    "IsMappable": {
+        "Value": true,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "ismappable"
+    },
+    "IsDuplicateDetectionEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyduplicatedetectionsettings"
+    },
+    "CanCreateAttributes": {
+        "Value": true,
+        "CanBeChanged": false,
+        "ManagedPropertyLogicalName": "cancreateattributes"
+    },
+    "CanCreateForms": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreateforms"
+    },
+    "CanCreateViews": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreateviews"
+    },
+    "CanCreateCharts": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "cancreatecharts"
+    },
+    "CanBeRelatedEntityInRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canberelatedentityinrelationship"
+    },
+    "CanBePrimaryEntityInRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeprimaryentityinrelationship"
+    },
+    "CanBeInManyToMany": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeinmanytomany"
+    },
+    "CanBeInCustomEntityAssociation": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canbeincustomentityassociation"
+    },
+    "CanEnableSyncToExternalSearchIndex": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canenablesynctoexternalsearchindex"
+    },
+    "CanModifyAdditionalSettings": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifyadditionalsettings"
+    },
+    "CanChangeHierarchicalRelationship": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canchangehierarchicalrelationship"
+    },
+    "CanChangeTrackingBeEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canchangetrackingbeenabled"
+    },
+    "IsMailMergeEnabled": {
+        "Value": true,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymailmergesettings"
+    },
+    "IsVisibleInMobile": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobilevisibility"
+    },
+    "IsVisibleInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientvisibility"
+    },
+    "IsReadOnlyInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientreadonly"
+    },
+    "IsOfflineInMobileClient": {
+        "Value": false,
+        "CanBeChanged": true,
+        "ManagedPropertyLogicalName": "canmodifymobileclientoffline"
+    },
+    "Privileges": [
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvCreatecr35b_texas_student",
+            "PrivilegeId": "825df211-f595-4daf-ba8a-b5defbd42d48",
+            "PrivilegeType": "Create"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvReadcr35b_texas_student",
+            "PrivilegeId": "29b7195f-c3b6-4f58-8433-2419a5a13ea9",
+            "PrivilegeType": "Read"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvWritecr35b_texas_student",
+            "PrivilegeId": "2491947b-3724-4d26-9d2f-f659161aed78",
+            "PrivilegeType": "Write"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvDeletecr35b_texas_student",
+            "PrivilegeId": "3ac6ba05-c3da-4eb8-a59f-0fc7feb4f34d",
+            "PrivilegeType": "Delete"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAssigncr35b_texas_student",
+            "PrivilegeId": "f8c4c092-d4e9-4ed5-8d8c-1dcf06d2b5ca",
+            "PrivilegeType": "Assign"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvSharecr35b_texas_student",
+            "PrivilegeId": "0a73b2b0-334a-485a-a80f-1071cf6bcbea",
+            "PrivilegeType": "Share"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAppendcr35b_texas_student",
+            "PrivilegeId": "aacd1a0b-033a-4271-a553-1f9fa1afc758",
+            "PrivilegeType": "Append"
+        },
+        {
+            "CanBeBasic": true,
+            "CanBeDeep": true,
+            "CanBeGlobal": true,
+            "CanBeLocal": true,
+            "CanBeEntityReference": false,
+            "CanBeParentEntityReference": false,
+            "Name": "prvAppendTocr35b_texas_student",
+            "PrivilegeId": "2b1f949d-7240-4e25-835b-28baddf8ed01",
+            "PrivilegeType": "AppendTo"
+        }
+    ],
+    "Settings": []
+}
