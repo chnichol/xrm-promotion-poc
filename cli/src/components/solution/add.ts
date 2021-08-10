@@ -1,20 +1,20 @@
 import api from '../../api';
 import { isUuid, quote } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import { Command } from '../cli';
 
 const add: Command = async (names?: string[]) => {
     names = names ?? [];
-    const solutions = config.settings.project.solutions ?? [];
+    const solutions = config().settings.solutions ?? [];
     const set = new Set<string>(solutions);
 
     for (let i = 0; i < names.length; i++) {
         const name = names[i];
         const property = isUuid(name) ? 'solutionid' : 'uniquename';
         const results = isUuid(name)
-            ? await api.solution.query({ filter: { solutionid: quote(name) }, select: [ 'solutionid', 'uniquename' ] }).execute()
-            : await api.solution.query({ filter: { uniquename: quote(name) }, select: [ 'solutionid', 'uniquename' ] }).execute()
-        
+            ? await api.solution.query({ filter: { solutionid: quote(name) }, select: ['solutionid', 'uniquename'] }).execute()
+            : await api.solution.query({ filter: { uniquename: quote(name) }, select: ['solutionid', 'uniquename'] }).execute()
+
         switch (results.length) {
             case 0:
                 console.warn(`No solutions found where ${property}="${name}"`);
@@ -33,7 +33,7 @@ const add: Command = async (names?: string[]) => {
         }
     }
 
-    config.settings.project.solutions = solutions;
+    config().settings.solutions = solutions;
     console.error('Adding solutions is not currently supported');
 }
 export default add;

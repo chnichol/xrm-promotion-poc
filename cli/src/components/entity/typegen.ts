@@ -1,7 +1,7 @@
 import os from 'os';
 import { Project } from 'ts-morph';
 import { parseFile } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import AttributeTypeCode from '../../types/enum/AttributeTypeCode';
 import AttributeMetadata from '../../types/metadata/AttributeMetadata';
 import { getEntityAttributes } from '../attribute';
@@ -29,7 +29,7 @@ const getAttributeType = (attributeType: AttributeTypeCode) => {
 }
 
 const typegen = async (name: string, project: Project) => {
-    const entityPaths = config.paths.entities(name);
+    const entityPaths = config().content.entities(name);
     const typeFile = entityPaths.typedef;
     const attributes = await getEntityAttributes(name);
     const attributeMetadata = await Promise.all(attributes.map(async attribute => {
@@ -55,7 +55,7 @@ const typegen = async (name: string, project: Project) => {
             }
             return {
                 name: attribute.LogicalName,
-                docs: [ docs.join(os.EOL) ],
+                docs: [docs.join(os.EOL)],
                 isReadonly: !attribute.IsValidForUpdate,
                 type: getAttributeType(attribute.AttributeType)
             }

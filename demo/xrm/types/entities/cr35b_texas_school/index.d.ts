@@ -82,7 +82,10 @@ export default interface cr35b_texas_school {
      * @readonly
      */
     readonly new_saplingcount_school_state: number;
-    /** @display School Address City */
+    /**
+     * The city the school is in.
+     * @display School Address City
+     */
     new_schooladdresscity: string;
     /** @display School Address State */
     new_schooladdressstate: string;
