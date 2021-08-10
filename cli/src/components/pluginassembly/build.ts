@@ -18,9 +18,9 @@ const build: Command = async (names: string[]) => {
     })).map(n => {
         const f = (root: string) => ({
             csproj: path.join(root, `${n.name}.csproj`),
-            dependencies: path.join(root, 'bin', 'Debug', 'net462'),
+            dependencies: path.join(root, 'bin', 'Debug'),
             directory: path.join(root),
-            dll: path.join(root, 'bin', 'Debug', 'net462', `${n.name}.dll`),
+            dll: path.join(root, 'bin', 'Debug', `${n.name}.dll`),
             key: path.join(root, `${n.name}.snk`),
             output: config().content.pluginAssemblies(n.name).content
         });
