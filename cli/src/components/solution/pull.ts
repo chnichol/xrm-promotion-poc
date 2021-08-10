@@ -1,7 +1,7 @@
 import path from 'path';
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import Solution from '../../types/entity/Solution';
 import { Command } from '../cli';
 
@@ -12,14 +12,14 @@ const save = async (outdir: string, solution: Solution) => {
 }
 
 const pull: Command = async (names: string[]) => {
-    names = (names.length === 0 ? config.settings.project.solutions : names);
-    const outdir = config.paths.solutions.directory;
-    
+    names = (names.length === 0 ? config().settings.solutions : names);
+    const outdir = config().content.solutions.directory;
+
     const solutions = new Set<string>();
     for (let i = 0; i < names?.length; i++) {
         const name = names[i];
         const property = isUuid(name) ? 'solutionid' : 'uniquename';
-        
+
         const results = await api.solution
             .query({
                 filter: (isUuid(name) ? { solutionid: quote(name) } : { uniquename: quote(name) })

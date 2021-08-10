@@ -1,7 +1,7 @@
 import { Project, SourceFile } from 'ts-morph';
 import { getEntityForms } from '.';
 import { parseFileXML } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import { generateMethod } from '../../common/typegen';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
@@ -14,7 +14,7 @@ const loadFormXml = async (file: string) => {
 const saveImports = (attributes: Attribute[], sourceFile: SourceFile) => {
     sourceFile.addImportDeclaration({
         moduleSpecifier: 'xrm-types',
-        namedImports: [ 'Collection', 'Control', 'Entity', 'FormContext', 'FormContextData', 'FormContextUI', 'Section', 'Tab' ]
+        namedImports: ['Collection', 'Control', 'Entity', 'FormContext', 'FormContextData', 'FormContextUI', 'Section', 'Tab']
     });
     sourceFile.addImportDeclarations(attributes.map(attribute => ({
         moduleSpecifier: `../../../attributes/${attribute.name}`,
@@ -25,10 +25,10 @@ const saveImports = (attributes: Attribute[], sourceFile: SourceFile) => {
 const saveAttributeControlCollection = (attribute: Attribute, sourceFile: SourceFile) => {
     const names = attribute.controls.map(c => `Control_${c}`);
     const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
-    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`; 
+    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`;
     sourceFile.addInterface({
         name: `Attribute_${attribute.name}_ControlCollection`,
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, list),
             generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
@@ -48,7 +48,7 @@ const saveAttributes = (attributes: Attribute[], sourceFile: SourceFile) => {
             saveAttributeControlCollection(attribute, sourceFile);
             sourceFile.addInterface({
                 name: `Attribute_${attribute.name}`,
-                extends: [ attribute.name ],
+                extends: [attribute.name],
                 properties: [
                     { name: 'controls', type: `Attribute_${attribute.name}_ControlCollection` }
                 ]
@@ -62,7 +62,7 @@ const saveControls = (controls: Control[], sourceFile: SourceFile) => {
         const attribute = control.field ? `Attribute_${control.field}` : 'undefined';
         sourceFile.addInterface({
             name: `Control_${control.id}`,
-            extends: [ 'Control' ],
+            extends: ['Control'],
             methods: [
                 generateMethod('getAttribute', undefined, attribute)
             ]
@@ -76,7 +76,7 @@ const saveDataEntityAttributeCollection = (attributes: Attribute[], sourceFile: 
     const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`;
     sourceFile.addInterface({
         name: 'Entity_AttributeCollection',
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, list),
             generateMethod('get', { index: 'number' }, `(${union})`),
@@ -84,7 +84,7 @@ const saveDataEntityAttributeCollection = (attributes: Attribute[], sourceFile: 
             generateMethod('getLength', undefined, attributes.length.toString())
         ].concat(
             attributes.filter(attribute => attribute.name).map(attribute => [
-                generateMethod('get', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
+                generateMethod('get', { name: `'${attribute.name}'` }, `Attribute_${attribute.name}`)
             ]).reduce((acc, val) => acc.concat(val), [])
         )
     })
@@ -94,7 +94,7 @@ const saveDataEntity = (entity: string, attributes: Attribute[], sourceFile: Sou
     saveDataEntityAttributeCollection(attributes, sourceFile);
     sourceFile.addInterface({
         name: 'DataEntity',
-        extends: [ `Entity<'${entity}'>` ],
+        extends: [`Entity<'${entity}'>`],
         properties: [
             { name: 'attributes', type: 'Entity_AttributeCollection' }
         ]
@@ -105,7 +105,7 @@ const saveData = (form: Form, sourceFile: SourceFile) => {
     saveDataEntity(form.entity, form.attributes, sourceFile);
     sourceFile.addInterface({
         name: 'Data',
-        extends: [ 'FormContextData' ],
+        extends: ['FormContextData'],
         properties: [
             { name: 'entity', type: 'DataEntity' }
         ]
@@ -115,10 +115,10 @@ const saveData = (form: Form, sourceFile: SourceFile) => {
 const saveUiControlCollection = (controls: Control[], sourceFile: SourceFile) => {
     const names = controls.map(c => `Control_${c.id}`);
     const union = names.length === 0 ? 'never' : `${names.join(' | ')}`;
-    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`; 
+    const list = names.length === 0 ? '[]' : `(${names.join(' | ')})[]`;
     sourceFile.addInterface({
         name: 'UI_ControlCollection',
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, list),
             generateMethod('get', { index: 'number' }, `(${union})`), // TODO: Figure out if the order of controls is deterministic.
@@ -126,7 +126,7 @@ const saveUiControlCollection = (controls: Control[], sourceFile: SourceFile) =>
             generateMethod('getLength', undefined, controls.length.toString())
         ].concat(
             controls.map(control => [
-                generateMethod('get', { name: `'${control.id}'`}, `Control_${control.id}`)
+                generateMethod('get', { name: `'${control.id}'` }, `Control_${control.id}`)
             ]).reduce((acc, val) => acc.concat(val), [])
         )
     });
@@ -138,7 +138,7 @@ const saveUiTabSectionControlCollection = (tabIndex: number, section: Section, s
     const tuple = names.length === 0 ? '[]' : `[${names.join(', ')}]`;
     sourceFile.addInterface({
         name: `UI_Tab${tabIndex}_Section${section.index}_ControlCollection`,
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, tuple),
             generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
@@ -167,7 +167,7 @@ const saveUiTabSections = (tab: Tab, sourceFile: SourceFile) => {
         saveUiTabSectionControlCollection(tab.index, section, sourceFile);
         sourceFile.addInterface({
             name: `UI_Tab${tab.index}_Section${section.index}`,
-            extends: [ 'Section' ],
+            extends: ['Section'],
             properties: [
                 { name: 'controls', type: `UI_Tab${tab.index}_Section${section.index}_ControlCollection` }
             ],
@@ -184,7 +184,7 @@ const saveUiTabSectionCollection = (tab: Tab, sourceFile: SourceFile) => {
     const tuple = `[${names.join(', ')}]`;
     sourceFile.addInterface({
         name: `UI_Tab${tab.index}_SectionCollection`,
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, tuple),
             generateMethod('get', { predicate: `` }, `(${union})[]`),
@@ -204,7 +204,7 @@ const saveUiTabs = (tabs: Tab[], sourceFile: SourceFile) => {
         saveUiTabSectionCollection(tab, sourceFile);
         sourceFile.addInterface({
             name: `UI_Tab${tab.index}`,
-            extends: [ 'Tab' ],
+            extends: ['Tab'],
             properties: [
                 { name: 'sections', type: `UI_Tab${tab.index}_SectionCollection` }
             ],
@@ -221,7 +221,7 @@ const saveUiTabCollection = (tabs: Tab[], sourceFile: SourceFile) => {
     const tuple = `[${names.join(', ')}]`;
     sourceFile.addInterface({
         name: 'UI_TabCollection',
-        extends: [ `Collection<${union}>` ],
+        extends: [`Collection<${union}>`],
         methods: [
             generateMethod('get', undefined, tuple),
             generateMethod('get', { predicate: `(value: ${union}, index: number) => boolean` }, `(${union})[]`),
@@ -241,7 +241,7 @@ const saveUi = (form: Form, sourceFile: SourceFile) => {
     saveUiTabCollection(form.tabs, sourceFile);
     sourceFile.addInterface({
         name: 'UI',
-        extends: [ 'FormContextUI' ],
+        extends: ['FormContextUI'],
         properties: [
             { name: 'controls', type: 'UI_ControlCollection' },
             { name: 'tabs', type: 'UI_TabCollection' }
@@ -256,7 +256,7 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
     saveUi(form, sourceFile);
     sourceFile.addInterface({
         name: 'GeneratedFormContext',
-        extends: [ 'FormContext' ],
+        extends: ['FormContext'],
         isDefaultExport: true,
         properties: [
             { name: 'data', type: 'Data' },
@@ -264,10 +264,10 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
         ],
         methods: [
             ...form.attributes.map(attribute => [
-                generateMethod('getAttribute', { name: `'${attribute.name}'`}, `Attribute_${attribute.name}`)
-            ]).reduce((acc, val) => acc.concat(val), []), 
+                generateMethod('getAttribute', { name: `'${attribute.name}'` }, `Attribute_${attribute.name}`)
+            ]).reduce((acc, val) => acc.concat(val), []),
             ...form.controls.map(control => [
-                generateMethod('getControl', { name: `'${control.id}'`}, `Control_${control.id}`)
+                generateMethod('getControl', { name: `'${control.id}'` }, `Control_${control.id}`)
             ]).reduce((acc, val) => acc.concat(val), [])
         ]
     });
@@ -276,11 +276,11 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
 const typegenForm = async (entity: string, projectForm: ProjectForm, project: Project) => {
     for (const t in projectForm.types) {
         const type = projectForm.types[t];
-        const paths = config.paths.entities(entity).systemForms(projectForm.name, type.name);
+        const paths = config().content.entities(entity).systemForms(projectForm.name, type.name);
         const file = paths.typedef;
         const fileXml = paths.form;
         const formXml = await loadFormXml(fileXml);
-        
+
         const form: Form = { attributes: [], controls: [], entity: entity, tabs: [] };
         const attributes = new Map<string, string[]>();
         const tabs = formXml.form.tabs[0].tab ?? [];
@@ -322,7 +322,7 @@ const typegenForm = async (entity: string, projectForm: ProjectForm, project: Pr
                             }
                         });
                     });
-                    
+
                     tab.sections.push(section);
                     sectionIndex++;
                 });

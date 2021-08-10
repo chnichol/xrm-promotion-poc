@@ -20,9 +20,9 @@ const update = async () => {
         const cmd = path.join(dir, 'xrm-cli.cmd');
 
         await fs.rm(ps1);
-        
+
         const script = await fs.readFile(cmd, 'ascii');
-        const rewrite = script.replace(/"%dp0%\\node_modules\\xrm-cli\\dist\\index.js"/g, 'node "%dp0%\\node_modules\\xrm-cli\\dist\\index.js"');
+        const rewrite = script.replace(/"%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"/g, 'node "%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"');
         await fs.writeFile(cmd, rewrite);
     }
 }

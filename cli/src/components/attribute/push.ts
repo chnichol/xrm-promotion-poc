@@ -1,6 +1,6 @@
 import api from '../../api';
 import { parseFile, quote } from '../../common';
-import config from '../../common/config';
+import config from '../../config';
 import AttributeMetadata from '../../types/metadata/AttributeMetadata';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';
@@ -8,12 +8,12 @@ import { getEntityAttributes } from '.';
 import Entity from '../../types/entity/Entity';
 
 const loadAttributeDefinition = async (entity: string, attribute: string) => {
-    const file = config.paths.entities(entity).attributes(attribute).definition;
+    const file = config().content.entities(entity).attributes(attribute).definition;
     return await parseFile<AttributeMetadata>(file);
 }
 
 const loadEntityDefinition = async (entity: string) => {
-    const file = config.paths.entities(entity).definition;
+    const file = config().content.entities(entity).definition;
     return await parseFile<Entity>(file);
 }
 
