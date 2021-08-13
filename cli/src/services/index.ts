@@ -16,8 +16,8 @@ export {
 
 const _appServices = ServiceBuilder
     .create()
-    .addSingleton<FileHandler>(LocalFileHandler)
     .addSingleton<JSONParser>(BigIntJSONParser)
+    .addSingleton<FileHandler>(LocalFileHandler)
     .addSingleton<VarReplacer>(LocalVarReplacer)
     .addSingleton<XMLParser>(XML2JSParser)
     .addTransient<Execute>(Execute);

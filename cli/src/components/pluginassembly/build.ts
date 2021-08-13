@@ -11,7 +11,7 @@ const build: Command = async (names: string[]) => {
     const execute = services('execute');
     const fileHandler = services('FileHandler');
     const varReplacer = await services('VarReplacer');
-    
+
     names = names.length === 0 ? await getPluginAssemblyProjects() : names;
 
     const projects = names.map(n => ({
