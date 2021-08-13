@@ -44,6 +44,14 @@ export type PutBody<Properties> = {
     data: Properties
 }
 
+export type PostBody<Properties> = {
+    type: 'create',
+    method: 'POST',
+    resource: string,
+    data: Properties
+}
+
+
 export type RequestBody = LookupBody | QueryBody;
 
 export type Request<Response> = {
@@ -57,6 +65,14 @@ export type UpdateRequest<Properties> = {
     readonly body: UpdateBody<Properties>;
     execute(): Promise<void>;
 }
+
+export type CreateBody<Properties, Response> = PostBody<Properties>;
+
+export type CreateRequest<Properties, Response> = {
+    readonly body: CreateBody<Properties, Response>;
+    execute(): Promise<Response>;
+}
+
 
 export type Expand<Singles, Collections, Response> = Request<Response> & {
     expandSingle<S extends keyof Singles, E extends keyof Singles[S]>(collection: S, parameters?: { select?: E[] }): Expand<
@@ -112,4 +128,8 @@ export type Query<Properties, Lookups, Singles, Collections> = {
 export type Update<Properties> = {
     put(id: string, data: Properties): UpdateRequest<Properties>;
     patch(id: string, data: Partial<Properties>): UpdateRequest<Properties>;
+}
+
+export type Create<Properties> = {
+    post(data: Properties): CreateRequest<Properties, Properties>;
 }

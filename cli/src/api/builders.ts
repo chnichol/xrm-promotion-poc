@@ -1,5 +1,5 @@
 import handler from './handler';
-import { ExpandArray, Filter, Request, RequestBody, Query, Lookup, Update, Expand, UpdateRequest, UpdateBody } from './types';
+import { ExpandArray, Filter, Request, RequestBody, Query, Lookup, Update, Expand, UpdateRequest, UpdateBody, Create, CreateBody, CreateRequest } from './types';
 
 class RequestBuilder<Response> implements Request<Response> {
     readonly body: RequestBody;
@@ -18,6 +18,16 @@ class UpdateRequestBuilder<Properties> implements UpdateRequest<Properties> {
     }
     execute(): Promise<void> {
         return handler<Properties, void>(this.body);
+    }
+}
+
+class CreateRequestBuilder<Properties, Response> implements CreateRequest<Properties, Response> {
+    readonly body: CreateBody<Properties, Response>;
+    constructor(request: CreateBody<Properties, Response>) {
+        this.body = request;
+    }
+    execute(): Promise<Response> {
+        return handler<Properties, Response>(this.body);
     }
 }
 
@@ -105,7 +115,7 @@ class ExpandArrayBuilder<Singles, Collections, Response> implements ExpandArray<
     }
 }
 
-export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S, C>, Update<P> {
+export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S, C>, Update<P>, Create<P> {          //add one for create&delete
     private readonly _resource: string;
     constructor(resource: string) {
         this._resource = resource;
@@ -142,6 +152,14 @@ export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S
             resource: this._resource,
             filter: parameters?.filter,
             select: parameters?.select?.map(s => s.toString())
+        });
+    }
+    post(data: P): CreateRequest<P, P> {
+        return new CreateRequestBuilder<P, P>({
+            type: 'create',
+            method: 'POST', 
+            resource: this._resource,               
+            data: data
         });
     }
 }

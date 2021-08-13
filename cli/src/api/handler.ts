@@ -2,7 +2,8 @@ import axios from 'axios';
 import JSONBigInt from 'json-bigint';
 import { getToken } from '../auth';
 import config from '../config';
-import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
+import { Properties } from '../types/metadata/AttributeMetadata';
+import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody, CreateBody } from './types';
 
 export interface PublishManifest {
     dashboards?: string[];
@@ -140,7 +141,17 @@ export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
     }
 }
 
-export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties>): Promise<Response> => {
+export const create = async (createBody: CreateBody<unknown, unknown>): Promise<any> => {
+    const url = `${await getApiUrl()}/${createBody.resource}`;
+    await axios.post(url, JSONBigInt({ useNativeBigInt: true }).stringify(createBody.data), {
+        headers: { 
+            Authorization: await getAuthHeader(),
+            'Content-Type': 'application/json'
+        }
+    });
+}
+
+export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties> | CreateBody<Properties, Properties>): Promise<Response> => {  // add case for create/delete
     switch (request.type) {
         case 'query':
             return (await query<Response>(request)).value;
@@ -148,5 +159,7 @@ export default async <Properties, Response>(request: RequestBody | UpdateBody<Pr
             return await lookup<Response>(request);
         case 'update':
             return (await update(request)) as unknown as Response;
+        case 'create':
+            return(await create(request)) as unknown as Response;
     }
 }
