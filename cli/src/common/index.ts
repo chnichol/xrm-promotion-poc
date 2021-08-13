@@ -1,7 +1,10 @@
 import { ChildProcess, exec } from 'child_process';
 import fs from 'fs/promises';
-import JSONBigInt from 'json-bigint';
 import xml2js from 'xml2js';
+
+import services from '../services';
+
+const JSONParser = services('JSONParser');
 
 export interface ChildProcessWithPromise extends ChildProcess {
     promise: Promise<unknown>;
@@ -55,7 +58,7 @@ export const mkdir = (path: string): Promise<string | void | undefined> => fs.mk
         }
     });
 
-export const parseFile = async <T>(path: string): Promise<T> => JSONBigInt({ useNativeBigInt: true }).parse(await fs.readFile(path, 'utf8')) as T;
+export const parseFile = async <T>(path: string): Promise<T> => JSONParser.parse<T>(await fs.readFile(path, 'utf8'));
 
 export const parseFileB64 = async (path: string): Promise<string> => Buffer.from(await fs.readFile(path, 'binary'), 'binary').toString('base64');
 
@@ -64,7 +67,7 @@ export const parseFileXML = async <T>(path: string): Promise<T> => (await xml2js
 export const quote = (a: string | { toString(): string }): string => `'${a}'`;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export const saveFile = async (path: string, data: any): Promise<void> => fs.writeFile(path, JSONBigInt({ useNativeBigInt: true }).stringify(data, undefined, 4));
+export const saveFile = async (path: string, data: any): Promise<void> => fs.writeFile(path, JSONParser.stringify(data, true));
 
 export const saveFileB64 = async (path: string, data: string): Promise<void> => fs.writeFile(path, Buffer.from(data, 'base64'));
 
