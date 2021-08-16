@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { execPromise } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { WebResourceType } from '../../types/entity/WebResource';
 import { Command } from '../cli';
 import { getWebResourceProjects } from '.'

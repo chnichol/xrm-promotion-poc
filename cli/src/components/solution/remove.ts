@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from '../../services/config';
 import { Command } from '../cli';
 
 const remove: Command = async (names: string[]) => {

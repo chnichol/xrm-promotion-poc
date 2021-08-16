@@ -1,6 +1,6 @@
 import path from 'path';
 import { exists } from '../../common';
-import { generateConfig } from '../../config/generators';
+import { generateConfig } from '../../services/config/generators';
 import { Command } from '../cli';
 
 const create: Command = async (_: string[]) => {

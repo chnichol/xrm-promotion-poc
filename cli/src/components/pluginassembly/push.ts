@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import PluginAssembly from '../../types/entity/PluginAssembly';
 import { Command } from '../cli';
 import { getPluginAssemblyComponents } from '.';

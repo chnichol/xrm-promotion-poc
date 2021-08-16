@@ -1,6 +1,6 @@
 import api from '../../api';
 import { parseFile, quote } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import AttributeMetadata from '../../types/metadata/AttributeMetadata';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';

@@ -1,6 +1,6 @@
 import { AuthenticationResult } from '@azure/msal-node';
 import { Lock } from 'semaphore-async-await';
-import config from '../config';
+import config from '../services/config';
 import createToken from './createToken';
 import TokenStore from './tokenStore';
 

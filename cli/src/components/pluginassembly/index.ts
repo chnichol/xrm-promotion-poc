@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { exists } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 
 export const getPluginAssemblyComponents = async (): Promise<string[]> => {
     const componentRoot = config().content.pluginAssemblies.directory;

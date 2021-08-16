@@ -1,14 +1,18 @@
 import ServiceBuilder, { ServiceCollection } from './serviceBuilder';
 
+import Config, { LocalConfig } from './config';
 import Execute from './execute';
 import FileHandler, { LocalFileHandler } from './fileHandler';
 import JSONParser, { BigIntJSONParser } from './jsonParser';
 import VarReplacer, { LocalVarReplacer } from './varReplacer';
 import XMLParser, { XML2JSParser } from './xmlParser';
+import FileQuickReader, { LocalFileQuickReader } from './fileQuickReader';
 
 export {
+    Config,
     Execute,
     FileHandler,
+    FileQuickReader,
     JSONParser,
     VarReplacer,
     XMLParser
@@ -16,8 +20,10 @@ export {
 
 const _appServices = ServiceBuilder
     .create()
+    .addSingleton<Config>(LocalConfig)
     .addSingleton<JSONParser>(BigIntJSONParser)
     .addSingleton<FileHandler>(LocalFileHandler)
+    .addSingleton<FileQuickReader>(LocalFileQuickReader)
     .addSingleton<VarReplacer>(LocalVarReplacer)
     .addSingleton<XMLParser>(XML2JSParser)
     .addTransient<Execute>(Execute);

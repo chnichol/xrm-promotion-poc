@@ -3,7 +3,7 @@ import path from 'path';
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
-import config from '../../config'
+import config from '../../services/config'
 import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';
 

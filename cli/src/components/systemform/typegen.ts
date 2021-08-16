@@ -1,7 +1,7 @@
 import { Project, SourceFile } from 'ts-morph';
 import { getEntityForms } from '.';
 import { parseFileXML } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { generateMethod } from '../../common/typegen';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import JSONBigInt from 'json-bigint';
 import { getToken } from '../auth';
-import config from '../config';
+import config from '../services/config';
 import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
 
 export interface PublishManifest {

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid, quote } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { Command } from '../cli';
 
 const add: Command = async (names?: string[]) => {

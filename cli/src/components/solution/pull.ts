@@ -1,7 +1,7 @@
 import path from 'path';
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import Solution from '../../types/entity/Solution';
 import { Command } from '../cli';
 

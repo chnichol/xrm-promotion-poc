@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
+import config from '../../services/config';
 import { ProjectForm } from './types';
 
 export const getEntityForms = async (entity: string): Promise<ProjectForm[]> => {

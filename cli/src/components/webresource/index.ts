@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
+import config from '../../services/config';
 import { WebResourceType } from '../../types/entity/WebResource';
 
 export const getExtension = (webResource: { webresourcetype: WebResourceType }): string => WebResourceType[webResource.webresourcetype].toLowerCase().replace(/jscript/g, 'js');

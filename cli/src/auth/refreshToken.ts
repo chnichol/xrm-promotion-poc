@@ -1,5 +1,5 @@
 import msal from '@azure/msal-node';
-import config from '../config';
+import config from '../services/config';
 
 export default async (refreshToken: string): Promise<msal.AuthenticationResult | undefined> => {
     const pca = new msal.PublicClientApplication({

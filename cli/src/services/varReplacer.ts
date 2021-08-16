@@ -1,11 +1,8 @@
 import path from 'path';
-import { FileHandler } from '.';
+import { Config, FileQuickReader } from '.';
 import { Service, ServiceCollection } from './serviceBuilder';
 
-// TODO: Make config a service.
-import config from '../config';
-
-export default interface VarReplacer extends Service<'VarReplacer', Promise<VarReplacer>> {
+export default interface VarReplacer extends Service<'VarReplacer', VarReplacer> {
     replace(content: string): string;
 }
 
@@ -21,18 +18,17 @@ export class LocalVarReplacer implements VarReplacer {
 
     public readonly name = 'VarReplacer';
 
-    public init = async (services: ServiceCollection) => {
-        const fileHandler: FileHandler = services.get('FileHandler');
-        
-        const root = config().project.root;
+    constructor (fileQuickReader: FileQuickReader, config: Config) {
+        const root = config.project.root;
         const paths = [path.join(root, 'vars.json'), path.join(root, 'secrets.json')];
-        const files = await Promise.all(paths.map(async p => await fileHandler.loadFile<VarFile>(p, 'json')));
+        const files = paths.map(p => fileQuickReader.loadFile<VarFile>(p, 'json'));
+        this._createVarMap(files);
+    }
 
-        const replacer = new LocalVarReplacer();
-        replacer._createVarMap(files);
-
-        return replacer;
-    };
+    public init = (services: ServiceCollection) => new LocalVarReplacer(
+        services.get('FileQuickReader'),
+        services.get('Config')
+    );
 
     public replace = (content: string) => {
         // Regex that matches text in handlebars syntax.

@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
+import config from '../../services/config';
 
 export const getProjectEntities = async (): Promise<string[]> => {
     const entitydir = config().content.entities.directory;

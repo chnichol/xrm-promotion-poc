@@ -1,7 +1,7 @@
 import { AuthenticationResult, CryptoProvider, PublicClientApplication } from '@azure/msal-node';
 import express from 'express';
 import open from 'open';
-import config from '../config';
+import config from '../services/config';
 
 const createApp = () => {
     const app = express();

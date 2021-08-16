@@ -3,7 +3,7 @@ import JSONBigInt from 'json-bigint';
 import xml2js from 'xml2js';
 import api from '../../api';
 import { isUuid, exists, mkdir, quote, saveFile, saveFileXML } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { getProjectSolutionComponents } from '../solutioncomponent';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import SystemForm, { FormType } from '../../types/entity/SystemForm';

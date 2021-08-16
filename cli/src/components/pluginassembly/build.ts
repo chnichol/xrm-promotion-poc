@@ -1,7 +1,7 @@
 import path from 'path';
 import { v4 as uuid } from 'uuid';
 import { NET_SDK_TOOLS_SN_PATH } from '../../common/constants';
-import config from '../../config';
+import config from '../../services/config';
 import { Command } from '../cli';
 import { getPluginAssemblyProjects } from '.';
 

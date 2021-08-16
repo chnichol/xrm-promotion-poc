@@ -1,7 +1,7 @@
 import { detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, quote } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import Entity from '../../types/entity/Entity';
 import { Command } from '../cli';

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import WebResource from '../../types/entity/WebResource';
 import { Command } from '../cli';

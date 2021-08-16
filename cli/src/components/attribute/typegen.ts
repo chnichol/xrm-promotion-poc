@@ -1,7 +1,7 @@
 import { Project } from 'ts-morph';
 import { getEntityAttributes } from '.';
 import { parseFile } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import AttributeMetadata from '../../types/metadata/AttributeMetadata';
 import { Command } from '../cli';
 import { getProjectEntities } from '../entity';

@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import { getProjectSolutions } from '.';
 
 type ListRow = {

@@ -1,6 +1,6 @@
 import { ChildProcess, exec } from 'child_process';
 import fs from 'fs/promises';
-import * as config from '../src/config/generators';
+import * as config from '../src/services/config/generators';
 
 type ChildProcessWithPromise = ChildProcess & {
     promise: Promise<unknown>;

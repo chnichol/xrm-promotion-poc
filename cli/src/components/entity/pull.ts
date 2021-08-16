@@ -1,6 +1,6 @@
 import api from '../../api';
 import { isUuid, mkdir, quote, saveFile } from '../../common';
-import config from '../../config';
+import config from '../../services/config';
 import EntityMetadata from '../../types/metadata/EntityMetadata';
 import { ComponentType } from '../../types/entity/SolutionComponent';
 import Entity from '../../types/entity/Entity';

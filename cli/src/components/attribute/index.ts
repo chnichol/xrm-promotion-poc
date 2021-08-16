@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
+import config from '../../services/config';
 
 export const getEntityAttributes = async (entity: string): Promise<string[]> => {
     const entityAttributeDir = config().content.entities(entity).attributes.directory;
