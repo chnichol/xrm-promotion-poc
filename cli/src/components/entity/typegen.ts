@@ -1,11 +1,10 @@
 import os from 'os';
 import { Project } from 'ts-morph';
-import { parseFile } from '../../common';
-import config from '../../config';
-import AttributeTypeCode from '../../types/enum/AttributeTypeCode';
-import AttributeMetadata from '../../types/metadata/AttributeMetadata';
-import { getEntityAttributes } from '../attribute';
-import { Command } from '../cli';
+import { getEntityAttributes } from 'components/attribute';
+import { Command } from 'components/cli';
+import services from 'services';
+import AttributeTypeCode from 'types/enum/AttributeTypeCode';
+import AttributeMetadata from 'types/metadata/AttributeMetadata';
 import { getProjectEntities } from '.';
 
 const getAttributeType = (attributeType: AttributeTypeCode) => {
@@ -29,12 +28,14 @@ const getAttributeType = (attributeType: AttributeTypeCode) => {
 }
 
 const typegen = async (name: string, project: Project) => {
-    const entityPaths = config().content.entities(name);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const entityPaths = config.content.entities(name);
     const typeFile = entityPaths.typedef;
     const attributes = await getEntityAttributes(name);
     const attributeMetadata = await Promise.all(attributes.map(async attribute => {
         const definitionFile = entityPaths.attributes(attribute).definition;
-        const definition = await parseFile<AttributeMetadata>(definitionFile);
+        const definition = await fileHandler.loadFile<AttributeMetadata>(definitionFile, 'json');
         return definition;
     }));
 

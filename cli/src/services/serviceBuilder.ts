@@ -51,8 +51,9 @@ export default class ServiceBuilder<C extends ServiceCollection> implements Serv
 
     private _addService = <T extends Service<string, unknown>>(service: new (...params: any[]) => T, type: 'singleton' | 'transient'): ServiceBuilder<{ get: (name: ServiceDestructure<T>[0]) => ServiceDestructure<T>[1] } & C> => {
         type serviceType = Service<ServiceDestructure<T>[0], ServiceDestructure<T>[1]>;
-        const name: serviceType['name'] = service.prototype.name;
-        const init: serviceType['init'] = service.prototype.init;
+        const dummy = new service();
+        const name: serviceType['name'] = dummy.name;
+        const init: serviceType['init'] = dummy.init;
 
         if (this._map.has(name)) {
             throw `Service already defined for "${name}"`;

@@ -1,4 +1,4 @@
-import { CommandModule } from '../cli';
+import { CommandModule } from 'components/cli';
 import build from './build';
 import pull from './pull';
 import push from './push';

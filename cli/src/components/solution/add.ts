@@ -1,11 +1,12 @@
-import api from '../../api';
+import { Command } from 'components/cli';
+import services from 'services';
 import { isUuid, quote } from '../../common';
-import config from '../../config';
-import { Command } from '../cli';
 
 const add: Command = async (names?: string[]) => {
     names = names ?? [];
-    const solutions = config().settings.solutions ?? [];
+    const api = services('DynamicsAPI');
+    const config = services('Config');
+    const solutions = config.settings.solutions ?? [];
     const set = new Set<string>(solutions);
 
     for (let i = 0; i < names.length; i++) {
@@ -33,7 +34,7 @@ const add: Command = async (names?: string[]) => {
         }
     }
 
-    config().settings.solutions = solutions;
+    config.settings.solutions = solutions;
     console.error('Adding solutions is not currently supported');
 }
 export default add;

@@ -1,11 +1,8 @@
 import path from 'path';
-import { FileHandler } from '.';
+import { Config, FileQuickReader } from '.';
 import { Service, ServiceCollection } from './serviceBuilder';
 
-// TODO: Make config a service.
-import config from '../config';
-
-export default interface VarReplacer extends Service<'VarReplacer', Promise<VarReplacer>> {
+export default interface VarReplacer extends Service<'VarReplacer', VarReplacer> {
     replace(content: string): string;
 }
 
@@ -17,21 +14,23 @@ type VarFile = {
  * Var replacer that loads its variables from the local filesystem.
  */
 export class LocalVarReplacer implements VarReplacer {
-    private _varMap: ReadonlyMap<string, string> = new Map<string, string>();
-
+    private readonly _varMap: ReadonlyMap<string, string> = new Map<string, string>();
     public readonly name = 'VarReplacer';
 
-    public init = async (services: ServiceCollection) => {
-        const fileHandler: FileHandler = services.get('FileHandler');
-        
-        const root = config().project.root;
+    constructor (varMap: ReadonlyMap<string, string>) {
+        this._varMap = varMap;
+    }
+
+    public init = (services: ServiceCollection) => {
+        const config: Config = services.get('Config');
+        const fileQuickReader: FileQuickReader = services.get('FileQuickReader');
+
+        const root = config.project.root;
         const paths = [path.join(root, 'vars.json'), path.join(root, 'secrets.json')];
-        const files = await Promise.all(paths.map(async p => await fileHandler.loadFile<VarFile>(p, 'json')));
+        const files = paths.map(p => fileQuickReader.loadFile<VarFile>(p, 'json'));
+        const varMap = this._createVarMap(files);
 
-        const replacer = new LocalVarReplacer();
-        replacer._createVarMap(files);
-
-        return replacer;
+        return new LocalVarReplacer(varMap);
     };
 
     public replace = (content: string) => {
@@ -79,7 +78,7 @@ export class LocalVarReplacer implements VarReplacer {
         );
 
         // Wrap the key in handlebars since that's how it'll be looked up.
-        this._varMap = new Map<string, string>(Object.keys(vars).map(k => [`{{${k}}}`, vars[k]]));
+        return new Map<string, string>(Object.keys(vars).map(k => [`{{${k}}}`, vars[k]]));
     };
 
     private _getVar = (key: string) => {

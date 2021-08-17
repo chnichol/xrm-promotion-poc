@@ -1,16 +1,17 @@
-import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
-import { WebResourceType } from '../../types/entity/WebResource';
+import services from 'services';
+import { WebResourceType } from 'types/entity/WebResource';
 
 export const getExtension = (webResource: { webresourcetype: WebResourceType }): string => WebResourceType[webResource.webresourcetype].toLowerCase().replace(/jscript/g, 'js');
 
 export const getWebResourceProjects = async (): Promise<string[]> => {
-    const root = path.join(config().project.webResources.directory, 'src');
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const root = path.join(config.project.webResources.directory, 'src');
     const webResources = (await Promise.all(
-        (await fs.readdir(root)).map(async item => {
+        (await fileHandler.readDir(root)).map(async item => {
             const p = path.join(root, item);
-            if ((await fs.lstat(p)).isFile() && item.match(/.*\.(js|ts)/g)) {
+            if ((await fileHandler.getStats(p)).isFile() && item.match(/.*\.(js|ts)/g)) {
                 return item;
             }
             else {
