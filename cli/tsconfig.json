@@ -49,6 +49,8 @@
       "components/*": ["src/components/*"],
       "services": ["src/services"],
       "services/*": ["src/services/*"],
+      "helpers": ["src/helpers"],
+      "helpers/*": ["src/helpers/*"],
       "types": ["src/types"],
       "types/*": ["src/types/*"]
     },
