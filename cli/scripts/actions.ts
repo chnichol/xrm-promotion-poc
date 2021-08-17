@@ -36,9 +36,18 @@ export const build = async () => {
 
     // Build the application.
     await execPromise('tsc').promise;
+    
+    const tsconfig = parse(await fs.readFile('tsconfig.json', 'utf8'));
+    
+    // Delete the build scripts (need to figure out how to not build them in the first place).
+    await fs.rm(path.join(tsconfig.compilerOptions.outDir, 'scripts'), {
+        force: true,
+        maxRetries: 10,
+        recursive: true,
+        retryDelay: 100
+    });
 
     // Copy over files needed to do custom import paths.
-    const tsconfig = parse(await fs.readFile('tsconfig.json', 'utf8'));
     const tsconfigString = JSON.stringify({
         compilerOptions: {
             baseUrl: tsconfig.compilerOptions.baseUrl,
