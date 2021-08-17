@@ -4,7 +4,7 @@ import { Service, ServiceCollection } from './serviceBuilder';
 
 export default interface FileQuickReader extends Service<'FileQuickReader', FileQuickReader> {
     exists(p: string): boolean;
-    loadFile<T>(p: string, format: 'json'): T;
+    loadFile<T>(p: string, format: 'json' | 'jsonc'): T;
     readFile(p: string, format: 'base64' | 'utf8'): string;
 }
 
