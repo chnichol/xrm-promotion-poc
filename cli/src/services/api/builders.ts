@@ -1,3 +1,4 @@
+import { Config, HTTP } from '..';
 import handler from './handler';
 import { ExpandArray, Filter, Request, RequestBody, Query, Lookup, Update, Expand, UpdateRequest, UpdateBody } from './types';
 

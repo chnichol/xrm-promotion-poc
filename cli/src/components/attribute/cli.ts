@@ -1,4 +1,4 @@
-import { CommandModule } from '../cli';
+import { CommandModule } from 'components/cli';
 import push from './push';
 import typegen from './typegen';
 

@@ -22,7 +22,10 @@ const update = async () => {
         await fs.rm(ps1);
 
         const script = await fs.readFile(cmd, 'ascii');
-        const rewrite = script.replace(/"%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"/g, 'node "%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"');
+        const rewrite = script.replace(
+            /"%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"/g,
+            'node -r "%dp0%\\node_modules\\xrm-cli\\dist\\tsregister" "%dp0%\\node_modules\\xrm-cli\\dist\\src\\index.js"'
+        );
         await fs.writeFile(cmd, rewrite);
     }
 }

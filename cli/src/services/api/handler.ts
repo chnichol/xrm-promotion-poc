@@ -1,7 +1,4 @@
-import axios from 'axios';
-import JSONBigInt from 'json-bigint';
-import { getToken } from '../auth';
-import config from '../config';
+import services from '..';
 import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
 
 export interface PublishManifest {
@@ -63,21 +60,17 @@ const createSelectString = (select: string[]) => {
     return '$select=' + select.join(',');
 }
 
-const getApiUrl = async () => `${config().settings.dynamics}/api/data/v9.0`;
+const getApiUrl = async () => `${services('Config').settings.dynamics}/api/data/v9.0`;
 
-const getAuthHeader = async () => ((token) => `${token.tokenType} ${token.accessToken}`)(await getToken());
+const getAuthHeader = async () => {
+    const token = await services('Auth').getToken();
+    return `${token.tokenType} ${token.accessToken}`;
+};
 
 export const lookup = async <T>(lookupBody: LookupBody): Promise<T> => {
     const queryString = createQueryString(lookupBody);
     const url = `${await getApiUrl()}/${lookupBody.resource}(${lookupBody.id})${queryString}`;
-    const response = await axios.get(url, {
-        headers: {
-            Authorization: await getAuthHeader()
-        },
-        transformResponse: [data => data]
-    });
-    const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
-    return data as T;
+    return services('HTTP').get<T>(url, { Authorization: await getAuthHeader() });
 }
 
 export const publish = async (manifest: PublishManifest): Promise<void> => {
@@ -93,27 +86,13 @@ export const publish = async (manifest: PublishManifest): Promise<void> => {
         manifest.webresources ? createPublishSection('webresources', 'webresource', manifest.webresources) : undefined,
         '</importexportxml>'
     ].filter(x => !!x).join('');
-
-    await axios.post(url, {
-        ParameterXml: xml
-    }, {
-        headers: {
-            Authorization: await getAuthHeader()
-        }
-    });
+    await services('HTTP').post(url, { ParameterXml: xml }, { Authorization: await getAuthHeader() });
 }
 
 export const query = async <T>(queryBody: QueryBody): Promise<QueryResponse<T>> => {
     const queryString = createQueryString(queryBody);
     const url = `${await getApiUrl()}/${queryBody.resource}${queryString}`;
-    const response = await axios.get(url, {
-        headers: {
-            Authorization: await getAuthHeader()
-        },
-        transformResponse: [data => data]
-    });
-    const data = JSONBigInt({ useNativeBigInt: true }).parse(response.data);
-    return data as QueryResponse<T>;
+    return await services('HTTP').get<QueryResponse<T>>(url, { Authorization: await getAuthHeader() });
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -121,20 +100,16 @@ export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
     const url = `${await getApiUrl()}/${updateBody.resource}(${updateBody.id})`;
     switch (updateBody.method) {
         case 'PATCH':
-            await axios.patch(url, JSONBigInt({ useNativeBigInt: true }).stringify(updateBody.data), {
-                headers: {
-                    Authorization: await getAuthHeader(),
-                    'Content-Type': 'application/json',
-                    'If-Match': '*'
-                }
+            await services('HTTP').patch(url, updateBody.data, {
+                Authorization: await getAuthHeader(),
+                'Content-Type': 'application/json',
+                'If-Match': '*'
             });
             break;
         case 'PUT':
-            await axios.put(url, JSONBigInt({ useNativeBigInt: true }).stringify(updateBody.data), {
-                headers: {
-                    Authorization: await getAuthHeader(),
-                    'Content-Type': 'application/json'
-                }
+            await services('HTTP').put(url, updateBody.data, {
+                Authorization: await getAuthHeader(),
+                'Content-Type': 'application/json'
             });
             break;
     }

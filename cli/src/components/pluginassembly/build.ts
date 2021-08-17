@@ -1,15 +1,16 @@
-import fs from 'fs/promises';
-import fsExtra from 'fs-extra';
 import path from 'path';
 import { v4 as uuid } from 'uuid';
-import { execPromise, exists } from '../../common';
+import { Command } from 'components/cli';
+import services from 'services';
 import { NET_SDK_TOOLS_SN_PATH } from '../../common/constants';
-import config from '../../config';
-import { replaceVarsInDirectory } from '../../common/vars';
-import { Command } from '../cli';
 import { getPluginAssemblyProjects } from '.';
 
 const build: Command = async (names: string[]) => {
+    const config = services('Config');
+    const execute = services('execute');
+    const fileHandler = services('FileHandler');
+    const varReplacer = services('VarReplacer');
+
     names = names.length === 0 ? await getPluginAssemblyProjects() : names;
 
     const projects = names.map(n => ({
@@ -22,40 +23,46 @@ const build: Command = async (names: string[]) => {
             directory: path.join(root),
             dll: path.join(root, 'bin', 'Debug', `${n.name}.dll`),
             key: path.join(root, `${n.name}.snk`),
-            output: config().content.pluginAssemblies(n.name).content
+            output: config.content.pluginAssemblies(n.name).content
         });
         return {
-            build: f(path.join(config().project.pluginAssemblies.directory, n.uuid)),
-            source: f(path.join(config().project.pluginAssemblies.directory, n.name))
+            build: f(path.join(config.project.pluginAssemblies.directory, n.uuid)),
+            source: f(path.join(config.project.pluginAssemblies.directory, n.name))
         };
     });
 
     await Promise.all(
         projects.map(async p => {
             // Generate a strong name key.
-            if (!(await exists(p.source.key))) {
-                await execPromise(`"${NET_SDK_TOOLS_SN_PATH}" -k ${p.source.key}`).promise;
+            if (!(await fileHandler.exists(p.source.key))) {
+                await execute(`"${NET_SDK_TOOLS_SN_PATH}" -k ${p.source.key}`).promise;
             }
 
             // Create a temp build directory to do any work in.
-            await fsExtra.copy(p.source.directory, p.build.directory, { overwrite: true, recursive: true });
+            await fileHandler.copyDir(p.source.directory, p.build.directory);
             try {
                 // Handle variable replacements.
-                await replaceVarsInDirectory(p.build.directory, /.*\w+\.cs/g);
+                await Promise.all(
+                    (await fileHandler.readDir(p.build.directory, true, /.*\w+\.cs/g)).map(async f => {
+                        const oldContents = await fileHandler.readFile(f, 'utf8');
+                        const newContents = varReplacer.replace(oldContents);
+                        await fileHandler.writeFile(f, newContents, 'utf8');
+                    })
+                );
 
                 // Build the project.
-                await execPromise(`dotnet build "${p.build.csproj}"`).promise;
+                await execute(`dotnet build "${p.build.csproj}"`).promise;
 
                 // Merge DLL's into a single file for uploading.
                 // await mkdir(path.dirname(p.distributable));
                 // const dependencies = (await fs.readdir(p.dependencies)).filter(d => d.match(/.*.dll/g)).map(d => path.join(p.dependencies, d));
-                // await execPromise(`${ILMERGE_PATH} /out:${p.distributable} ${dependencies.join(' ')}`).promise;
+                // await exec(`${ILMERGE_PATH} /out:${p.distributable} ${dependencies.join(' ')}`).promise;
 
                 // Sign the DLL.
-                await execPromise(`${NET_SDK_TOOLS_SN_PATH}" -TS "${p.build.dll}" "${p.build.key}"`).promise;
+                await execute(`${NET_SDK_TOOLS_SN_PATH}" -TS "${p.build.dll}" "${p.build.key}"`).promise;
 
                 // Copy the DLL to it's output location.
-                await fs.copyFile(p.build.dll, p.build.output);
+                await fileHandler.copyFile(p.build.dll, p.build.output);
             }
             catch (e) {
                 // For now, just do nothing if an error occurred.
@@ -63,7 +70,7 @@ const build: Command = async (names: string[]) => {
             }
             // Clean up the temp build directory.
             finally {
-                await fsExtra.rm(p.build.directory, { force: true, maxRetries: 10, recursive: true, retryDelay: 100 });
+                await fileHandler.removeDir(p.build.directory, true, true);
             }
         })
     );

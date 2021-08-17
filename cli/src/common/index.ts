@@ -1,12 +1,3 @@
-import { ChildProcess, exec } from 'child_process';
-import fs from 'fs/promises';
-import JSONBigInt from 'json-bigint';
-import xml2js from 'xml2js';
-
-export interface ChildProcessWithPromise extends ChildProcess {
-    promise: Promise<unknown>;
-}
-
 export const createSearchUrl = (url: string, parameters: { [key: string]: string | undefined }, base?: string | URL | undefined): URL => {
     const searchUrl = new URL(url, base);
     for (const key in parameters) {
@@ -18,29 +9,6 @@ export const createSearchUrl = (url: string, parameters: { [key: string]: string
     return searchUrl;
 }
 
-export const execPromise = (command: string): ChildProcessWithPromise => {
-    const child = exec(command) as ChildProcessWithPromise;
-    const promise = new Promise((resolve, reject) => {
-        child.addListener('error', reject);
-        child.addListener('exit', resolve);
-    });
-    child.promise = promise;
-    return child;
-}
-
-export const exists = async (path: string): Promise<boolean> => {
-    try {
-        await fs.access(path);
-        return true;
-    }
-    catch (e) {
-        if (e.code == 'ENOENT') {
-            return false;
-        }
-        throw e;
-    }
-}
-
 export const getPositionals = (args: { _: (number | string)[] }): string[] => args._.slice(1).map(a => a.toString());
 
 export const isUuid = (text: string): boolean => {
@@ -48,25 +16,4 @@ export const isUuid = (text: string): boolean => {
     return (text.match(uuidRegex) ?? []).length > 0
 }
 
-export const mkdir = (path: string): Promise<string | void | undefined> => fs.mkdir(path, { recursive: true })
-    .catch(e => {
-        if (e.code !== 'EEXIST') {
-            throw e;
-        }
-    });
-
-export const parseFile = async <T>(path: string): Promise<T> => JSONBigInt({ useNativeBigInt: true }).parse(await fs.readFile(path, 'utf8')) as T;
-
-export const parseFileB64 = async (path: string): Promise<string> => Buffer.from(await fs.readFile(path, 'binary'), 'binary').toString('base64');
-
-export const parseFileXML = async <T>(path: string): Promise<T> => (await xml2js.parseStringPromise(await fs.readFile(path, 'utf8'))) as T;
-
 export const quote = (a: string | { toString(): string }): string => `'${a}'`;
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export const saveFile = async (path: string, data: any): Promise<void> => fs.writeFile(path, JSONBigInt({ useNativeBigInt: true }).stringify(data, undefined, 4));
-
-export const saveFileB64 = async (path: string, data: string): Promise<void> => fs.writeFile(path, Buffer.from(data, 'base64'));
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export const saveFileXML = async (path: string, data: any): Promise<void> => fs.writeFile(path, new xml2js.Builder().buildObject(data), 'utf8');

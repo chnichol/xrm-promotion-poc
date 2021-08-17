@@ -1,10 +1,9 @@
 import { detailedDiff } from 'deep-object-diff';
-import api from '../../api';
-import { parseFile, quote } from '../../common';
-import config from '../../config';
-import EntityMetadata from '../../types/metadata/EntityMetadata';
-import Entity from '../../types/entity/Entity';
-import { Command } from '../cli';
+import { Command } from 'components/cli';
+import services from 'services';
+import Entity from 'types/entity/Entity';
+import EntityMetadata from 'types/metadata/EntityMetadata';
+import { quote } from '../../common';
 import { getProjectEntities } from '.';
 
 type Diff = {
@@ -14,17 +13,22 @@ type Diff = {
 }
 
 const loadDefinition = async (name: string) => {
-    const file = config().content.entities(name).definition;
-    return await parseFile<Entity>(file);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const file = config.content.entities(name).definition;
+    return await fileHandler.loadFile<Entity>(file, 'json');
 }
 
 const loadMetadata = async (name: string) => {
-    const entityFiles = config().content.entities(name);
-    const metadata = await parseFile<EntityMetadata>(entityFiles.metadata);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const entityFiles = config.content.entities(name);
+    const metadata = await fileHandler.loadFile<EntityMetadata>(entityFiles.metadata, 'json');
     return metadata;
 }
 
 const push: Command = async (names: string[]) => {
+    const api = services('DynamicsAPI');
     const projectNames = new Set<string>(await getProjectEntities());
     names = (names.length === 0 ? Array.from(projectNames) : names);
     for (let i = 0; i < names.length; i++) {

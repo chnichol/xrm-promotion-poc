@@ -17,6 +17,7 @@ export enum ComponentBehavior {
 }
 
 export enum ComponentType {
+    AppModule = 80,
     AIConfiguration = 402,
     AIProject = 401,
     AIProjectType = 400,
