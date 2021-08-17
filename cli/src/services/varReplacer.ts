@@ -14,21 +14,24 @@ type VarFile = {
  * Var replacer that loads its variables from the local filesystem.
  */
 export class LocalVarReplacer implements VarReplacer {
-    private _varMap: ReadonlyMap<string, string> = new Map<string, string>();
-
+    private readonly _varMap: ReadonlyMap<string, string> = new Map<string, string>();
     public readonly name = 'VarReplacer';
 
-    constructor (fileQuickReader: FileQuickReader, config: Config) {
+    constructor (varMap: ReadonlyMap<string, string>) {
+        this._varMap = varMap;
+    }
+
+    public init = (services: ServiceCollection) => {
+        const config: Config = services.get('Config');
+        const fileQuickReader: FileQuickReader = services.get('FileQuickReader');
+
         const root = config.project.root;
         const paths = [path.join(root, 'vars.json'), path.join(root, 'secrets.json')];
         const files = paths.map(p => fileQuickReader.loadFile<VarFile>(p, 'json'));
-        this._createVarMap(files);
-    }
+        const varMap = this._createVarMap(files);
 
-    public init = (services: ServiceCollection) => new LocalVarReplacer(
-        services.get('FileQuickReader'),
-        services.get('Config')
-    );
+        return new LocalVarReplacer(varMap);
+    };
 
     public replace = (content: string) => {
         // Regex that matches text in handlebars syntax.
@@ -75,7 +78,7 @@ export class LocalVarReplacer implements VarReplacer {
         );
 
         // Wrap the key in handlebars since that's how it'll be looked up.
-        this._varMap = new Map<string, string>(Object.keys(vars).map(k => [`{{${k}}}`, vars[k]]));
+        return new Map<string, string>(Object.keys(vars).map(k => [`{{${k}}}`, vars[k]]));
     };
 
     private _getVar = (key: string) => {

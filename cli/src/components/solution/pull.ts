@@ -1,19 +1,21 @@
 import path from 'path';
-import api from '../../api';
-import { isUuid, mkdir, quote, saveFile } from '../../common';
-import config from '../../services/config';
-import Solution from '../../types/entity/Solution';
-import { Command } from '../cli';
+import { Command } from 'components/cli';
+import services from 'services';
+import Solution from 'types/entity/Solution';
+import { isUuid, quote } from '../../common';
 
 const save = async (outdir: string, solution: Solution) => {
+    const fileHandler = services('FileHandler');
     const outfile = path.join(outdir, solution.uniquename + '.json');
-    await mkdir(outdir);
-    await saveFile(outfile, solution);
+    await fileHandler.makeDir(outdir);
+    await fileHandler.saveFile(outfile, solution, 'json');
 }
 
 const pull: Command = async (names: string[]) => {
-    names = (names.length === 0 ? config().settings.solutions : names);
-    const outdir = config().content.solutions.directory;
+    const api = services('DynamicsAPI');
+    const config = services('Config');
+    const outdir = config.content.solutions.directory;
+    names = (names.length === 0 ? config.settings.solutions : names);
 
     const solutions = new Set<string>();
     for (let i = 0; i < names?.length; i++) {

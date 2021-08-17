@@ -1,11 +1,12 @@
-import fs from 'fs/promises';
 import path from 'path';
-import config from '../../services/config';
+import services from 'services';
 
 export const getProjectEntities = async (): Promise<string[]> => {
-    const entitydir = config().content.entities.directory;
-    return (await Promise.all((await fs.readdir(entitydir)).map(async item => {
-        if ((await fs.lstat(path.join(entitydir, item))).isDirectory()) {
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const entitydir = config.content.entities.directory;
+    return (await Promise.all((await fileHandler.readDir(entitydir)).map(async item => {
+        if ((await fileHandler.getStats(path.join(entitydir, item))).isDirectory()) {
             return item;
         }
         else {

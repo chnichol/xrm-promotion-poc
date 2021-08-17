@@ -1,12 +1,13 @@
-import config from '../../services/config';
-import { Command } from '../cli';
+import { Command } from 'components/cli';
+import services from 'services';
 
 const remove: Command = async (names: string[]) => {
-    const solutions = config().settings.solutions ?? [];
+    const config = services('Config');
+    const solutions = config.settings.solutions ?? [];
     const set = new Set<string>(solutions);
 
     if (names.length === 0) {
-        config().settings.solutions = [];
+        config.settings.solutions = [];
     }
     else {
         for (let i = 0; i < names.length; i++) {
@@ -18,7 +19,7 @@ const remove: Command = async (names: string[]) => {
                 console.warn(`Project doesn't contain a solution for ${name}`);
             }
         }
-        config().settings.solutions = Array.from(set);
+        config.settings.solutions = Array.from(set);
     }
     console.error('Removing solutions is not currently supported');
 }

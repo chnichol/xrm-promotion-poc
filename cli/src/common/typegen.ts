@@ -1,7 +1,6 @@
-import fs from 'fs/promises';
 import path from 'path';
 import { OptionalKind, MethodSignatureStructure } from 'ts-morph';
-import { mkdir } from '.';
+import services from 'services';
 
 export const generateMethod = (name: string, parameters?: { [key: string]: string; }, returnType?: string): OptionalKind<MethodSignatureStructure> => ({
     name,
@@ -10,6 +9,7 @@ export const generateMethod = (name: string, parameters?: { [key: string]: strin
 });
 
 export const generatePackage = async (file: string): Promise<void> => {
+    const fileHandler = services('FileHandler');
     const pkg = {
         name: '@types/xrm-generated',
         version: '1.0.0',
@@ -20,6 +20,6 @@ export const generatePackage = async (file: string): Promise<void> => {
         devDependencies: {},
         dependencies: {}
     };
-    await mkdir(path.dirname(file));
-    await fs.writeFile(file, JSON.stringify(pkg, undefined, 2));
+    await fileHandler.makeDir(path.dirname(file));
+    await fileHandler.saveFile(file, pkg, 'json');
 }

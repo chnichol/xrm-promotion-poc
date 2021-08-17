@@ -1,5 +1,5 @@
-import SolutionComponent, { ComponentType } from '../../types/entity/SolutionComponent';
-import { getProjectSolutions } from '../solution';
+import { getProjectSolutions } from 'components/solution';
+import SolutionComponent, { ComponentType } from 'types/entity/SolutionComponent';
 
 export const getProjectSolutionComponents = async (componentType?: ComponentType): Promise<[Set<string>, SolutionComponent[]]> => {
     const components = new Set<string>();

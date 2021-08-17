@@ -1,16 +1,15 @@
 import path from 'path';
 import { v4 as uuid } from 'uuid';
+import { Command } from 'components/cli';
+import services from 'services';
 import { NET_SDK_TOOLS_SN_PATH } from '../../common/constants';
-import config from '../../services/config';
-import { Command } from '../cli';
 import { getPluginAssemblyProjects } from '.';
 
-import services from '../../services';
-
 const build: Command = async (names: string[]) => {
+    const config = services('Config');
     const execute = services('execute');
     const fileHandler = services('FileHandler');
-    const varReplacer = await services('VarReplacer');
+    const varReplacer = services('VarReplacer');
 
     names = names.length === 0 ? await getPluginAssemblyProjects() : names;
 
@@ -24,11 +23,11 @@ const build: Command = async (names: string[]) => {
             directory: path.join(root),
             dll: path.join(root, 'bin', 'Debug', `${n.name}.dll`),
             key: path.join(root, `${n.name}.snk`),
-            output: config().content.pluginAssemblies(n.name).content
+            output: config.content.pluginAssemblies(n.name).content
         });
         return {
-            build: f(path.join(config().project.pluginAssemblies.directory, n.uuid)),
-            source: f(path.join(config().project.pluginAssemblies.directory, n.name))
+            build: f(path.join(config.project.pluginAssemblies.directory, n.uuid)),
+            source: f(path.join(config.project.pluginAssemblies.directory, n.name))
         };
     });
 

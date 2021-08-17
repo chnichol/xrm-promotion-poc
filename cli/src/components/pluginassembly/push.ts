@@ -1,9 +1,8 @@
 import { detailedDiff } from 'deep-object-diff';
-import api from '../../api';
-import { parseFile, parseFileB64, quote } from '../../common';
-import config from '../../services/config';
-import PluginAssembly from '../../types/entity/PluginAssembly';
-import { Command } from '../cli';
+import { Command } from 'components/cli';
+import services from 'services';
+import PluginAssembly from 'types/entity/PluginAssembly';
+import { quote } from '../../common';
 import { getPluginAssemblyComponents } from '.';
 
 interface Diff {
@@ -13,18 +12,20 @@ interface Diff {
 }
 
 const load = async (name: string) => {
-    const definitionFile = config().content.pluginAssemblies(name).definition;
-    const contentFile = config().content.pluginAssemblies(name).content;
-    const definition = await parseFile<PluginAssembly>(definitionFile);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const definitionFile = config.content.pluginAssemblies(name).definition;
+    const contentFile = config.content.pluginAssemblies(name).content;
+    const definition = await fileHandler.loadFile<PluginAssembly>(definitionFile, 'json');
     if (contentFile) {
-        definition.content = await parseFileB64(contentFile);
+        definition.content = await fileHandler.readFile(contentFile, 'base64');
     }
     return definition;
 }
 
 const push: Command = async (names: string[]) => {
     names = names.length === 0 ? await getPluginAssemblyComponents() : names;
-
+    const api = services('DynamicsAPI');
     for (let i = 0; i < names.length; i++) {
         const pluginAssembly = await load(names[i]);
         const results = await api.pluginAssembly.query({

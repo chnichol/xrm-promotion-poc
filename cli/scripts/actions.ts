@@ -1,5 +1,6 @@
 import { ChildProcess, exec } from 'child_process';
 import fs from 'fs/promises';
+import path from 'path';
 import * as config from '../src/services/config/generators';
 
 type ChildProcessWithPromise = ChildProcess & {
@@ -34,4 +35,8 @@ export const build = async () => {
 
     // Build the application.
     await execPromise('tsc').promise;
+
+    // Copy over files needed to do custom import paths.
+    // await fs.copyFile('tsconfig.json', path.join('dist', 'tsconfig.json'));
+    // await fs.copyFile('tsregister.js', path.join('dist', 'tsregister.js'));
 }

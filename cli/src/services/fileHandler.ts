@@ -1,3 +1,4 @@
+import { Stats } from 'fs';
 import fs, { FileHandle } from 'fs/promises';
 import os from 'os';
 import path from 'path';
@@ -9,6 +10,7 @@ export default interface FileHandler extends Service<'FileHandler', FileHandler>
     copyDir(src: string, dest: string, recursive?: boolean): Promise<void>;
     copyFile(src: string, dest: string): Promise<void>;
     exists(p: string): Promise<boolean>;
+    getStats(p: string): Promise<Stats>;
     loadFile<T>(p: string, format: 'json' | 'xml'): Promise<T>;
     makeDir(p: string): Promise<void>;
     readDir(p: string, recursive?: boolean, regex?: RegExp): Promise<string[]>;
@@ -53,9 +55,11 @@ export class LocalFileHandler implements FileHandler {
         }
     };
 
-    public loadFile = async <T>(p: string, format: 'json' | 'xml') =>
-        format === 'json'
-            ? this._jsonParser.parse<T>(await fs.readFile(p, 'utf8'))
+    public getStats = (p: string) => fs.lstat(p);
+
+    public loadFile = async <T>(p: string, format: 'json' | 'jsonc' | 'xml') =>
+        format.startsWith('json')
+            ? this._jsonParser.parse<T>(await fs.readFile(p, 'utf8'), format === 'jsonc')
             : await this._xmlParser.parse<T>(await fs.readFile(p, 'utf8'))
 
     public makeDir = async (p: string) => {
@@ -82,7 +86,7 @@ export class LocalFileHandler implements FileHandler {
                     }
                 }
             )
-        )).reduce((acc, val) => acc.concat(val), []);
+        )).reduce((acc, val) => acc.concat(val), []).map(p => path.basename(p));
 
     public readFile = async (p: string, format: 'base64' | 'utf8') =>
         format === 'base64'

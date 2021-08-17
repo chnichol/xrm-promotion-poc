@@ -1,14 +1,14 @@
 import { Project, SourceFile } from 'ts-morph';
+import { Command } from 'components/cli';
+import { getProjectEntities } from 'components/entity';
+import services from 'services';
 import { getEntityForms } from '.';
-import { parseFileXML } from '../../common';
-import config from '../../services/config';
 import { generateMethod } from '../../common/typegen';
-import { Command } from '../cli';
-import { getProjectEntities } from '../entity';
 import { Attribute, Control, Form, FormXML, ProjectForm, Section, Tab } from './types';
 
 const loadFormXml = async (file: string) => {
-    return await parseFileXML<FormXML>(file);
+    const fileHandler = services('FileHandler');
+    return await fileHandler.loadFile<FormXML>(file, 'xml');
 }
 
 const saveImports = (attributes: Attribute[], sourceFile: SourceFile) => {
@@ -274,9 +274,10 @@ const saveTypeDef = (form: Form, sourceFile: SourceFile) => {
 }
 
 const typegenForm = async (entity: string, projectForm: ProjectForm, project: Project) => {
+    const config = services('Config');
     for (const t in projectForm.types) {
         const type = projectForm.types[t];
-        const paths = config().content.entities(entity).systemForms(projectForm.name, type.name);
+        const paths = config.content.entities(entity).systemForms(projectForm.name, type.name);
         const file = paths.typedef;
         const fileXml = paths.form;
         const formXml = await loadFormXml(fileXml);

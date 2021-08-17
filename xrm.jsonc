@@ -1,0 +1,8 @@
+{
+  "aadClient": "106f1a90-7645-46b8-b5fa-cf85de7d480b",
+  "aadTenant": "ac2d7ce5-fae0-42e9-b01a-2eb6e86c0eab",
+  "dynamics": "https://orgc840d94a.crm.dynamics.com",
+  "solutions": [
+    "SaplingTrackingApp"
+  ],"systemFormFormat": "xml"
+}

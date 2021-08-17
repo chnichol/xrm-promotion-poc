@@ -1,24 +1,28 @@
-import api from '../../api';
-import { parseFile, quote } from '../../common';
-import config from '../../services/config';
-import AttributeMetadata from '../../types/metadata/AttributeMetadata';
-import { Command } from '../cli';
-import { getProjectEntities } from '../entity';
+import { Command } from 'components/cli';
+import { getProjectEntities } from 'components/entity';
+import services from 'services';
+import AttributeMetadata from 'types/metadata/AttributeMetadata';
+import Entity from 'types/entity/Entity';
+import { quote } from '../../common';
 import { getEntityAttributes } from '.';
-import Entity from '../../types/entity/Entity';
 
 const loadAttributeDefinition = async (entity: string, attribute: string) => {
-    const file = config().content.entities(entity).attributes(attribute).definition;
-    return await parseFile<AttributeMetadata>(file);
+    const config = services('Config');
+    const { loadFile } = services('FileHandler');
+    const file = config.content.entities(entity).attributes(attribute).definition;
+    return await loadFile<AttributeMetadata>(file, 'json');
 }
 
 const loadEntityDefinition = async (entity: string) => {
-    const file = config().content.entities(entity).definition;
-    return await parseFile<Entity>(file);
+    const config = services('Config');
+    const { loadFile } = services('FileHandler');
+    const file = config.content.entities(entity).definition;
+    return await loadFile<Entity>(file, 'json');
 }
 
 const push: Command = async (names: string[]) => {
     // Split names into entity and attribute components.
+    const api = services('DynamicsAPI');
     const attributes = new Map<string, string[]>();
     names.forEach(n => {
         const [entity, attribute] = n.split('/');

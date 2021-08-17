@@ -1,16 +1,16 @@
-import fs from 'fs/promises';
 import path from 'path';
-import { parseFile } from '../../common';
-import config from '../../services/config';
-import Solution from '../../types/entity/Solution';
+import services from 'services';
+import Solution from 'types/entity/Solution';
 
 export const getProjectSolutionFiles = async (names?: string[]): Promise<string[]> => {
-    const folder = config().content.solutions.directory;
-    const dir = await fs.readdir(folder);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const folder = config.content.solutions.directory;
+    const dir = await fileHandler.readDir(folder);
     const files = dir.map(f => path.join(folder, f));
     if (names && names.length > 0) {
         for (let i = 0; i < files.length; i++) {
-            const solution = await parseFile<Solution>(files[i]);
+            const solution = await fileHandler.loadFile<Solution>(files[i], 'json');
             if (!names.find(n => n === solution.solutionid || n === solution.uniquename)) {
                 files.splice(i, 1);
                 i--;
@@ -21,8 +21,9 @@ export const getProjectSolutionFiles = async (names?: string[]): Promise<string[
 }
 
 export const getProjectSolutions = async (names?: string[]): Promise<Solution[]> => {
+    const fileHandler = services('FileHandler');
     const files = await getProjectSolutionFiles(names);
-    return Promise.all(files.map(f => parseFile<Solution>(f)));
+    return Promise.all(files.map(f => fileHandler.loadFile<Solution>(f, 'json')));
 }
 
 /*

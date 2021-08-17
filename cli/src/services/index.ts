@@ -1,18 +1,25 @@
 import ServiceBuilder, { ServiceCollection } from './serviceBuilder';
 
+import DynamicsAPI from './api';
+import Auth, { OnBehalfOfAuth } from './auth';
+import TokenStore, { FileTokenStore } from './auth/tokenStore';
 import Config, { LocalConfig } from './config';
 import Execute from './execute';
 import FileHandler, { LocalFileHandler } from './fileHandler';
+import FileQuickReader, { LocalFileQuickReader } from './fileQuickReader';
+import HTTP, { AxiosHTTP } from './http';
 import JSONParser, { BigIntJSONParser } from './jsonParser';
 import VarReplacer, { LocalVarReplacer } from './varReplacer';
 import XMLParser, { XML2JSParser } from './xmlParser';
-import FileQuickReader, { LocalFileQuickReader } from './fileQuickReader';
 
 export {
+    Auth,
     Config,
+    DynamicsAPI,
     Execute,
     FileHandler,
     FileQuickReader,
+    HTTP,
     JSONParser,
     VarReplacer,
     XMLParser
@@ -20,13 +27,17 @@ export {
 
 const _appServices = ServiceBuilder
     .create()
+    .addSingleton<Auth>(OnBehalfOfAuth)
     .addSingleton<Config>(LocalConfig)
-    .addSingleton<JSONParser>(BigIntJSONParser)
+    .addSingleton<DynamicsAPI>(DynamicsAPI)
+    .addTransient<Execute>(Execute)
     .addSingleton<FileHandler>(LocalFileHandler)
     .addSingleton<FileQuickReader>(LocalFileQuickReader)
+    .addSingleton<HTTP>(AxiosHTTP)
+    .addSingleton<JSONParser>(BigIntJSONParser)
+    .addSingleton<TokenStore>(FileTokenStore)
     .addSingleton<VarReplacer>(LocalVarReplacer)
     .addSingleton<XMLParser>(XML2JSParser)
-    .addTransient<Execute>(Execute);
 
 let _services: ServiceCollection | null = null;
 
