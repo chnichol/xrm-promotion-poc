@@ -1,5 +1,6 @@
 import { ChildProcess, exec } from 'child_process';
 import fs from 'fs/promises';
+import { parse } from 'jsonc-parser';
 import path from 'path';
 import * as config from '../src/services/config/generators';
 
@@ -37,6 +38,13 @@ export const build = async () => {
     await execPromise('tsc').promise;
 
     // Copy over files needed to do custom import paths.
-    // await fs.copyFile('tsconfig.json', path.join('dist', 'tsconfig.json'));
-    // await fs.copyFile('tsregister.js', path.join('dist', 'tsregister.js'));
+    const tsconfig = parse(await fs.readFile('tsconfig.json', 'utf8'));
+    const tsconfigString = JSON.stringify({
+        compilerOptions: {
+            baseUrl: tsconfig.compilerOptions.baseUrl,
+            paths: tsconfig.compilerOptions.paths
+        }
+    });
+    await fs.writeFile(path.join(tsconfig.compilerOptions.outDir, 'tspaths.json'), tsconfigString);
+    await fs.copyFile('tsregister.js', path.join(tsconfig.compilerOptions.outDir, 'tsregister.js'));
 }

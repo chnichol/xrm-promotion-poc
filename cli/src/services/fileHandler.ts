@@ -97,10 +97,17 @@ export class LocalFileHandler implements FileHandler {
 
     public removeFile = (p: string, force?: boolean) => fs.rm(p, { force });
 
-    public saveFile = async <T>(p: string, data: T, format: 'json' | 'xml') =>
-        format === 'json'
-            ? await fs.writeFile(p, this._jsonParser.stringify(data, true), 'utf8')
-            : await fs.writeFile(p, this._xmlParser.stringify(data), 'utf8');
+    public saveFile = async <T>(p: string, data: T, format: 'json' | 'xml') => {
+        if (!(await this.exists(path.dirname(p)))) {
+            await this.makeDir(p);
+        }
+        if (format === 'json') {
+            await fs.writeFile(p, this._jsonParser.stringify(data, true), 'utf8')
+        }
+        else {
+            await fs.writeFile(p, this._xmlParser.stringify(data), 'utf8');
+        }
+    }
 
     public write = async (f: FileHandle, content: string) => {
         await fs.write(f, content);
@@ -110,8 +117,15 @@ export class LocalFileHandler implements FileHandler {
         await fs.write(f, content + os.EOL);
     };
 
-    public writeFile = async (p: string, content: string, format: 'base64' | 'utf8') =>
-        format === 'base64'
-            ? await fs.writeFile(p, Buffer.from(content, 'base64'))
-            : await fs.writeFile(p, content);
+    public writeFile = async (p: string, content: string, format: 'base64' | 'utf8') => {
+        if (!(await this.exists(path.dirname(p)))) {
+            this.makeDir(path.dirname(p));
+        }
+        if (format === 'base64') {
+            await fs.writeFile(p, Buffer.from(content, 'base64'))
+        }
+        else {
+            await fs.writeFile(p, content);
+        }
+    }
 }
