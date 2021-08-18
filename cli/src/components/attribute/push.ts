@@ -60,7 +60,7 @@ const push: Command = async (names: string[]) => {
                 await attributeApi.put(remote.MetadataId, local).execute();
             }
             else {
-                console.error(`No attribute found with name "${attributeName}" on entity "${entityName}"`);
+                throw new Error(`No attribute found with name "${attributeName}" on entity "${entityName}"`);
             }
         }
     }

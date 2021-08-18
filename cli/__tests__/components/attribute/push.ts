@@ -7,7 +7,9 @@ import { data, MockConfig, MockFileHandler } from '../mocks';
 
 import push from 'components/attribute/push';
 
-const puts = new Set<string>();
+const _attribute = data.entities[0].attributes[0];
+type Attribute = typeof _attribute;
+const puts = new Map<string, Attribute>();
 
 describe('components/attributes/push', () => {
     beforeAll(() => {
@@ -16,8 +18,8 @@ describe('components/attributes/push', () => {
             init = () => new MockAPI();
 
             attribute = (entityid: string) => ({
-                put: (id: string, value: any) => ({
-                    execute: () => puts.add(id)
+                put: (id: string, value: Attribute) => ({
+                    execute: () => puts.set(id, value)
                 }),
                 query: (q: { filter: { LogicalName: string }}) => ({
                     execute: () =>
@@ -44,46 +46,62 @@ describe('components/attributes/push', () => {
         puts.clear();
     });
 
-    it('pushes a single attribute', async () => {
+    it('can update a single attribute', async () => {
         await push([`${data.entities[0].name}/${data.entities[0].attributes[0].LogicalName}`]);
 
-        const results = Array.from(puts.keys());
-        assert.match(results, [data.entities[0].attributes[0].MetadataId]);
+        const results = Array.from(puts.values());
+        assert.match(results, [data.entities[0].attributes[0]]);
     });
 
-    it('pushes multiple attributes', async () => {
+    it('can update multiple attributes', async () => {
         await push(data.entities[0].attributes.map(a => `${data.entities[0].name}/${a.LogicalName}`));
 
-        const results = Array.from(puts.keys());
-        assert.match(results, data.entities[0].attributes.map(a => a.MetadataId));
+        const results = Array.from(puts.values());
+        assert.match(results, data.entities[0].attributes);
     });
 
-    it('pushes a single entity', async () => {
+    it('can update a single entity', async () => {
         await push([data.entities[1].name]);
 
-        const results = Array.from(puts.keys());
-        assert.match(results, data.entities[1].attributes.map(a => a.MetadataId));
+        const results = Array.from(puts.values());
+        assert.match(results, data.entities[1].attributes);
     });
 
-    it('pushes multiple entities', async () => {
+    it('can update multiple entities', async () => {
         await push([data.entities[1].name, data.entities[2].name]);
 
-        const results = Array.from(puts.keys());
+        const results = Array.from(puts.values());
         assert.match(results, [
-            ...data.entities[1].attributes.map(a => a.MetadataId),
-            ...data.entities[2].attributes.map(a => a.MetadataId)
+            ...data.entities[1].attributes,
+            ...data.entities[2].attributes
         ]);
     });
 
-    it('pushes everything', async () => {
+    it('can update all project attributes', async () => {
         await push([]);
 
-        const results = Array.from(puts.keys());
-        assert.match(results, flatten(data.entities.map(e => e.attributes.map(a => a.MetadataId))))
+        const results = Array.from(puts.values());
+        assert.match(results, flatten(data.entities.map(e => e.attributes)));
     })
 
-    it('pushes entities', () => {
-        assert.pass(undefined);
+    it('cannot update missing attributes', async () => {
+        try {
+            await push([`${data.entities[0].name}/missing`]);
+            assert.fail();
+        }
+        catch {
+            assert.pass({});
+        }
+    });
+
+    it('cannot update missing entities', async () => {
+        try {
+            await push(['missing']);
+            assert.fail();
+        }
+        catch {
+            assert.pass({});
+        }
     });
 
     afterAll(() => {

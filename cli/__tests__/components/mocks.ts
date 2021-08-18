@@ -132,7 +132,12 @@ export class MockFileHandler implements Service<'FileHandler', MockFileHandler> 
                 if (p === path.join(data.entityDir, entity.name, 'definition.json')) {
                     return entity;
                 }
-
+                for (const a in entity.attributes) {
+                    const attribute = entity.attributes[a];
+                    if (p === path.join(data.entityDir, entity.name, data.attrDir, attribute.LogicalName, 'definition.json')) {
+                        return attribute;
+                    }
+                }
             }
         }
     }
