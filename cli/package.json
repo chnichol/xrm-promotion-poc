@@ -15,7 +15,6 @@
   "bin": {
     "xrm-cli": "dist/src/index.js"
   },
-
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -31,6 +30,7 @@
     "@typescript-eslint/parser": "^4.28.5",
     "@vercel/ncc": "^0.28.6",
     "eslint": "^7.31.0",
+    "jest": "^27.0.6",
     "sloc": "^0.2.1",
     "ts-jest": "^27.0.5",
     "ts-loader": "^9.2.2",
