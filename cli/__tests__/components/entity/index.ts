@@ -1,13 +1,12 @@
-import { assert } from 'sinon';
 import { init } from 'services';
 import ServiceBuilder from 'services/serviceBuilder';
+import { assert } from 'sinon';
 import { data, MockConfig, MockFileHandler } from '../mocks';
 
-import { getEntityAttributes } from 'components/attribute';
+import { getProjectEntities } from 'components/entity';
 
-describe('components/attribute/getEntityAttributes', () => {
+describe('components/entity/getProjectEntities', () => {
     beforeAll(() => {
-        // Setup.
         init(
             ServiceBuilder
                 .create()
@@ -16,13 +15,13 @@ describe('components/attribute/getEntityAttributes', () => {
                 .services
         );
     });
-
-    it('Gets attributes.', async () => {
-        const attributes = await getEntityAttributes(data.entities[0].name);
-        assert.match(attributes, data.entities[0].attributes.map(a => a.LogicalName));
+    
+    it('can get the project entities', async () => {
+        const results = await getProjectEntities();
+        assert.match(results, data.entities.map(e => e.name));
     });
 
     afterAll(() => {
         init(ServiceBuilder.create().services);
-    });
+    })
 });

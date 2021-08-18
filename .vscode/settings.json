@@ -1,4 +1,6 @@
 {
     "debug.javascript.unmapMissingSources": true,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "jest.jestCommandLine": "npx jest",
+    "jest.rootPath": "cli"
 }
