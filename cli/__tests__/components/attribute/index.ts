@@ -7,31 +7,27 @@ import { getEntityAttributes } from 'components/attribute';
 
 describe('components/attributes/getEntityAttributes', () => {
     it('Gets attributes.', () => {
-        // Setup.
         const entityName = 'entity_name';
         const attrDir = 'attributes';
         const attrs = [ 'attribute_dir_a', 'attribute_dir_b', 'attribute_dir_c' ];
+
         class MockConfig implements Service<'Config', MockConfig> {
             readonly name = 'Config';
             init = () => new MockConfig();
-            get content(): any {
-                return {
-                    entities: (name: string) => {
-                        if (name === entityName) {
-                            return {
-                                attributes: {
-                                    directory: attrDir
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+
+            content = {
+                entities: (name: string) => ({
+                    attributes: name === entityName ? {
+                        directory: attrDir
+                    } : undefined
+                })
+            };
         }
         
         class MockFileHandler implements Service<'FileHandler', MockFileHandler> {
             readonly name = 'FileHandler';
             init = () => new MockFileHandler();
+
             getStats = (p: string): Promise<any> => Promise.resolve({
                 isDirectory: () => attrs.map(a => path.join(attrDir, a)).includes(p)
             });
@@ -44,6 +40,7 @@ describe('components/attributes/getEntityAttributes', () => {
             );
         }
 
+        // Setup.
         init(
             ServiceBuilder
                 .create()
