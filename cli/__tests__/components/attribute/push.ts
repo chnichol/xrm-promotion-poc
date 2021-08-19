@@ -1,5 +1,3 @@
-
-import { assert } from 'sinon';
 import { flatten } from 'helpers';
 import { init } from 'services';
 import ServiceBuilder, { Service } from 'services/serviceBuilder';
@@ -29,7 +27,7 @@ describe('components/attributes/push', () => {
                             a => a.LogicalName === q.filter.LogicalName.substr(1, q.filter.LogicalName.length - 2)
                         )
                 })
-            })
+            });
         }
 
         init(
@@ -50,28 +48,28 @@ describe('components/attributes/push', () => {
         await push([`${data.entities[0].name}/${data.entities[0].attributes[0].LogicalName}`]);
 
         const results = Array.from(puts.values());
-        assert.match(results, [data.entities[0].attributes[0]]);
+        expect(results).toStrictEqual([data.entities[0].attributes[0]]);
     });
 
     it('can update multiple attributes', async () => {
         await push(data.entities[0].attributes.map(a => `${data.entities[0].name}/${a.LogicalName}`));
 
         const results = Array.from(puts.values());
-        assert.match(results, data.entities[0].attributes);
+        expect(results).toStrictEqual(data.entities[0].attributes);
     });
 
     it('can update a single entity', async () => {
         await push([data.entities[1].name]);
 
         const results = Array.from(puts.values());
-        assert.match(results, data.entities[1].attributes);
+        expect(results).toStrictEqual(data.entities[1].attributes);
     });
 
     it('can update multiple entities', async () => {
         await push([data.entities[1].name, data.entities[2].name]);
 
         const results = Array.from(puts.values());
-        assert.match(results, [
+        expect(results).toStrictEqual([
             ...data.entities[1].attributes,
             ...data.entities[2].attributes
         ]);
@@ -81,26 +79,26 @@ describe('components/attributes/push', () => {
         await push([]);
 
         const results = Array.from(puts.values());
-        assert.match(results, flatten(data.entities.map(e => e.attributes)));
+        expect(results).toStrictEqual(flatten(data.entities.map(e => e.attributes)));
     })
 
     it('cannot update missing attributes', async () => {
         try {
             await push([`${data.entities[0].name}/missing`]);
-            assert.fail();
+            expect(true).toBeFalsy();
         }
         catch {
-            assert.pass({});
+            expect(true).toBeTruthy();
         }
     });
 
     it('cannot update missing entities', async () => {
         try {
             await push(['missing']);
-            assert.fail();
+            expect(true).toBeFalsy();
         }
         catch {
-            assert.pass({});
+            expect(true).toBeTruthy();
         }
     });
 

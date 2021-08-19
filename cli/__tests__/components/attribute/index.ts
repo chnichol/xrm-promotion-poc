@@ -1,4 +1,3 @@
-import { assert } from 'sinon';
 import { init } from 'services';
 import ServiceBuilder from 'services/serviceBuilder';
 import { data, MockConfig, MockFileHandler } from '../mocks';
@@ -19,7 +18,7 @@ describe('components/attribute/getEntityAttributes', () => {
 
     it('Gets attributes.', async () => {
         const attributes = await getEntityAttributes(data.entities[0].name);
-        assert.match(attributes, data.entities[0].attributes.map(a => a.LogicalName));
+        expect(attributes).toStrictEqual(data.entities[0].attributes.map(a => a.LogicalName));
     });
 
     afterAll(() => {

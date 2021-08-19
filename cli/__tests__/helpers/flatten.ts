@@ -1,5 +1,4 @@
 import { flatten } from 'helpers';
-import { assert } from 'sinon';
 
 describe('helpers/flatten', () => {
     it('can flatten multidimensional arrays of one type', () => {
@@ -8,7 +7,7 @@ describe('helpers/flatten', () => {
             [4, 5, 6]
         ];
         const result = flatten(array);
-        assert.match(result, [1, 2, 3, 4, 5, 6]);
+        expect(result).toStrictEqual([1, 2, 3, 4, 5, 6]);
     });
 
     it('can flatten multidimensional arrays of two types', () => {
@@ -17,6 +16,6 @@ describe('helpers/flatten', () => {
             ['a', 'b', 'c']
         ];
         const result = flatten<number | string>(array);
-        assert.match(result, [1, 2, 3, 'a', 'b', 'c']);
+        expect(result).toStrictEqual([1, 2, 3, 'a', 'b', 'c']);
     });
 });

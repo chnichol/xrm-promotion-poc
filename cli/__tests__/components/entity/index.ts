@@ -1,6 +1,5 @@
 import { init } from 'services';
 import ServiceBuilder from 'services/serviceBuilder';
-import { assert } from 'sinon';
 import { data, MockConfig, MockFileHandler } from '../mocks';
 
 import { getProjectEntities } from 'components/entity';
@@ -18,7 +17,7 @@ describe('components/entity/getProjectEntities', () => {
     
     it('can get the project entities', async () => {
         const results = await getProjectEntities();
-        assert.match(results, data.entities.map(e => e.name));
+        expect(results).toStrictEqual(data.entities.map(e => e.name));
     });
 
     afterAll(() => {
