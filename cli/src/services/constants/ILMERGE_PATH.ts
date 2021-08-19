@@ -6,11 +6,10 @@ export default class ILMERGE_PATH implements Service<'ILMERGE_PATH', string> {
     public readonly name = 'ILMERGE_PATH';
     public init = (services: ServiceCollection) => {
         if (process.platform !== 'win32') {
-            console.warn('.NET SDK Tools are only available on Windows');
-            return '';
+            throw new Error('ILMerge is only available on Windows');
         }
         const fileQuickReader: FileQuickReader = services.get('FileQuickReader');
-        const dir = `${process.env.USERPROFILE}/.nuget/packages/ilmerge`;
+        const dir = path.join(process.env.USERPROFILE || 'missing_userprofile', '.nuget', 'packages', 'ilmerge');
         try {
             const version = fileQuickReader.readDir(dir).sort((a, b) => {
                 const [aMajor, aMinor, aPatch] = a.split('.').map(s => Number.parseInt(s));
@@ -32,7 +31,7 @@ export default class ILMERGE_PATH implements Service<'ILMERGE_PATH', string> {
             return exe;
         }
         catch {
-            return dir;
+            throw new Error('Couldn\'t find ILMerge.exe');
         }
     }
 }

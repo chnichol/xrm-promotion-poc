@@ -65,7 +65,7 @@ describe('services/constants/NET_SDK_TOOLS_PATH', () => {
 
     it('cannot resolve when .NET SDK tools are not installed', () => {
         process.platform = 'win32';
-        expect(() => new NET_SDK_TOOLS_PATH().init(new EmptyServiceCollection())).toThrow();
+        expect(() => new NET_SDK_TOOLS_PATH().init(new EmptyServiceCollection())).toThrow('Couldn\'t find .NET SDK Tools');
     });
 
     afterAll(() => {
