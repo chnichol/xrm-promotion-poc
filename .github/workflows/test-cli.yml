@@ -28,8 +28,11 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v2.4.0
       
-      - name: Install dependencies
+      - name: Install project dependencies
         run: npm install --prefix cli
         
-      - name: Run tests
+      - name: Install Jest
+        run: npm install --prefix cli --save-dev jest
+        
+      - name: Run test script
         run: npm run test --prefix cli
