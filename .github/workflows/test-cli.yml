@@ -32,7 +32,7 @@ jobs:
         run: npm install --prefix cli --save-dev ts-node
         
       - name: Build project
-        run: npm run build
+        run: npm run build --prefix cli
 
   # Run the CLI project's unit tests
   unit-test:
