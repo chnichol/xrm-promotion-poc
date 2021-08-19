@@ -6,8 +6,7 @@ export default class NET_SDK_TOOLS_PATH implements Service<'NET_SDK_TOOLS_PATH',
     public readonly name = 'NET_SDK_TOOLS_PATH';
     public init = (services: ServiceCollection) => {
         if (process.platform !== 'win32') {
-            console.warn('.NET SDK Tools are only available on Windows');
-            return '';
+            throw new Error('.NET SDK Tools are only available on Windows');
         }
 
         const fileQuickReader: FileQuickReader = services.get('FileQuickReader');
