@@ -47,6 +47,8 @@ export default class ServiceBuilder<C extends ServiceCollection> implements Serv
 
     public addSingleton = <T extends Service<string, unknown>>(service: new (...params: any[]) => T): ServiceBuilder<{ get: (name: ServiceDestructure<T>[0]) => ServiceDestructure<T>[1] } & C> => this._addService(service, 'singleton');
 
+    public addServices = <T extends ServiceCollection>(add: (builder: ServiceBuilder<C>) => ServiceBuilder<T>) => add(this);
+
     public addTransient = <T extends Service<string, unknown>>(service: new (...params: any[]) => T): ServiceBuilder<{ get: (name: ServiceDestructure<T>[0]) => ServiceDestructure<T>[1] } & C> => this._addService(service, 'transient');
 
     private _addService = <T extends Service<string, unknown>>(service: new (...params: any[]) => T, type: 'singleton' | 'transient'): ServiceBuilder<{ get: (name: ServiceDestructure<T>[0]) => ServiceDestructure<T>[1] } & C> => {

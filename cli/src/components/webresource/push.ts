@@ -1,9 +1,9 @@
 import path from 'path';
 import { detailedDiff } from 'deep-object-diff';
 import { Command } from 'components/cli';
+import { quote } from 'helpers';
 import services from 'services';
 import WebResource from 'types/entity/WebResource';
-import { quote } from '../../common';
 
 interface Diff {
     added: Record<string, unknown>;

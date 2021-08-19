@@ -1,9 +1,9 @@
 import { detailedDiff } from 'deep-object-diff';
 import { Command } from 'components/cli';
+import { quote } from 'helpers';
 import services from 'services';
 import Entity from 'types/entity/Entity';
 import EntityMetadata from 'types/metadata/EntityMetadata';
-import { quote } from '../../common';
 import { getProjectEntities } from '.';
 
 type Diff = {

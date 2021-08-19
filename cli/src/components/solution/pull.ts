@@ -1,8 +1,8 @@
 import path from 'path';
 import { Command } from 'components/cli';
+import { isUuid, quote } from 'helpers';
 import services from 'services';
 import Solution from 'types/entity/Solution';
-import { isUuid, quote } from '../../common';
 
 const save = async (outdir: string, solution: Solution) => {
     const fileHandler = services('FileHandler');

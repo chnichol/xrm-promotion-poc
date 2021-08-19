@@ -1,9 +1,9 @@
 import { Command } from 'components/cli';
 import { getProjectEntities } from 'components/entity';
+import { quote } from 'helpers';
 import services from 'services';
 import AttributeMetadata from 'types/metadata/AttributeMetadata';
 import Entity from 'types/entity/Entity';
-import { quote } from '../../common';
 import { getEntityAttributes } from '.';
 
 const loadAttributeDefinition = async (entity: string, attribute: string) => {

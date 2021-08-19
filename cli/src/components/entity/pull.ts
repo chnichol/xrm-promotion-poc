@@ -1,10 +1,10 @@
 import { Command } from 'components/cli';
 import { getProjectSolutionComponents } from 'components/solutioncomponent';
+import { isUuid, quote } from 'helpers';
 import services from 'services';
 import Entity from 'types/entity/Entity';
 import { ComponentType } from 'types/entity/SolutionComponent';
 import EntityMetadata from 'types/metadata/EntityMetadata';
-import { isUuid, quote } from '../../common';
 
 const save = async (entity: Entity, metadata: EntityMetadata) => {
     const config = services('Config');

@@ -1,8 +1,8 @@
 import { detailedDiff } from 'deep-object-diff';
 import { Command } from 'components/cli';
+import { quote } from 'helpers';
 import services from 'services';
 import PluginAssembly from 'types/entity/PluginAssembly';
-import { quote } from '../../common';
 import { getPluginAssemblyComponents } from '.';
 
 interface Diff {

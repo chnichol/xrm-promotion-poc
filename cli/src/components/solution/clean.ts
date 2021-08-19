@@ -1,6 +1,6 @@
 import { Command } from 'components/cli';
+import { isUuid, quote } from 'helpers';
 import services from 'services';
-import { isUuid, quote } from '../../common';
 
 const clean: Command = async () => {
     const api = services('DynamicsAPI');

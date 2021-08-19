@@ -4,6 +4,7 @@ import DynamicsAPI from './api';
 import Auth, { OnBehalfOfAuth } from './auth';
 import TokenStore, { FileTokenStore } from './auth/tokenStore';
 import Config, { LocalConfig } from './config';
+import constants from './constants';
 import Execute from './execute';
 import FileHandler, { LocalFileHandler } from './fileHandler';
 import FileQuickReader, { LocalFileQuickReader } from './fileQuickReader';
@@ -25,8 +26,9 @@ export {
     XMLParser
 }
 
-const _appServices = ServiceBuilder
-    .create()
+const _builder = ServiceBuilder.create();
+const _appServices = _builder
+    .addServices(constants)
     .addSingleton<Auth>(OnBehalfOfAuth)
     .addSingleton<Config>(LocalConfig)
     .addSingleton<DynamicsAPI>(DynamicsAPI)
@@ -37,8 +39,7 @@ const _appServices = ServiceBuilder
     .addSingleton<JSONParser>(BigIntJSONParser)
     .addSingleton<TokenStore>(FileTokenStore)
     .addSingleton<VarReplacer>(LocalVarReplacer)
-    .addSingleton<XMLParser>(XML2JSParser)
-
+    .addSingleton<XMLParser>(XML2JSParser);
 let _services: ServiceCollection | null = null;
 
 /**

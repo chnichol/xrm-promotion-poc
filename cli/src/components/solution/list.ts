@@ -1,5 +1,5 @@
+import { isUuid } from 'helpers';
 import services from 'services';
-import { isUuid } from '../../common';
 import { getProjectSolutions } from '.';
 
 type ListRow = {

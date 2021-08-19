@@ -1,6 +1,6 @@
-import { isUuid, quote, } from '../../common';
 import { Command } from 'components/cli';
 import { getProjectSolutionComponents } from 'components/solutioncomponent';
+import { isUuid, quote, } from 'helpers';
 import services from 'services';
 import { ComponentType } from 'types/entity/SolutionComponent';
 import SystemForm, { FormType } from 'types/entity/SystemForm';
