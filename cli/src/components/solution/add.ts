@@ -1,6 +1,6 @@
 import { Command } from 'components/cli';
+import { isUuid, quote } from 'helpers';
 import services from 'services';
-import { isUuid, quote } from '../../common';
 
 const add: Command = async (names?: string[]) => {
     names = names ?? [];

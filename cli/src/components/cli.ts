@@ -1,4 +1,5 @@
-import yargs, { Argv, showCompletionScript } from 'yargs';
+import yargs, { Argv } from 'yargs';
+import { getPositionals } from 'helpers';
 import AttributeModule from './attribute/cli';
 import ConfigModule from './config/cli';
 import EntityModule from './entity/cli';
@@ -6,7 +7,6 @@ import PluginAssemblyModule from './pluginassembly/cli';
 import SolutionModule from './solution/cli';
 import SystemFormModule from './systemform/cli';
 import WebResourceModule from './webresource/cli';
-import { getPositionals } from '../common';
 
 const commandModules = [
     AttributeModule,

@@ -2,10 +2,11 @@ import path from 'path';
 import { v4 as uuid } from 'uuid';
 import { Command } from 'components/cli';
 import services from 'services';
-import { NET_SDK_TOOLS_SN_PATH } from '../../common/constants';
 import { getPluginAssemblyProjects } from '.';
 
 const build: Command = async (names: string[]) => {
+    const NET_SDK_TOOLS_SN_PATH = services('NET_SDK_TOOLS_PATH');
+
     const config = services('Config');
     const execute = services('execute');
     const fileHandler = services('FileHandler');

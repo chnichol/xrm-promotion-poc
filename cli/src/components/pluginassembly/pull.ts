@@ -1,9 +1,9 @@
 import { Command } from 'components/cli';
 import { getProjectSolutionComponents } from 'components/solutioncomponent';
+import { isUuid, quote } from 'helpers';
 import services from 'services';
 import PluginAssembly from 'types/entity/PluginAssembly';
 import { ComponentType } from 'types/entity/SolutionComponent';
-import { isUuid, quote } from '../../common';
 
 const save = async (pluginAssembly: PluginAssembly) => {
     const config = services('Config');

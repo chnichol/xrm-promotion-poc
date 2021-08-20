@@ -5,6 +5,7 @@ import { Service, ServiceCollection } from './serviceBuilder';
 export default interface FileQuickReader extends Service<'FileQuickReader', FileQuickReader> {
     exists(p: string): boolean;
     loadFile<T>(p: string, format: 'json' | 'jsonc'): T;
+    readDir(p: string): string[];
     readFile(p: string, format: 'base64' | 'utf8'): string;
 }
 
@@ -23,6 +24,8 @@ export class LocalFileQuickReader implements FileQuickReader {
     public exists = (p: string) => fs.existsSync(p);
 
     public loadFile = <T>(p: string, format: 'json' | 'jsonc') => this._jsonParser.parse<T>(fs.readFileSync(p, 'utf8'), format === 'jsonc');
+
+    public readDir = (p: string) => fs.readdirSync(p);
 
     public readFile = (p: string, format: 'base64' | 'utf8') =>
         format === 'base64'
