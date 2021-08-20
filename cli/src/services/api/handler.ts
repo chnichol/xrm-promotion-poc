@@ -1,5 +1,5 @@
 import services from '..';
-import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody } from './types';
+import { RequestBody, QueryBody, ExpandBody, LookupBody, UpdateBody, CreateBody } from './types';
 
 export interface PublishManifest {
     dashboards?: string[];
@@ -115,7 +115,17 @@ export const update = async (updateBody: UpdateBody<any>): Promise<void> => {
     }
 }
 
-export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties>): Promise<Response> => {
+export const create = async (createBody: CreateBody<unknown, unknown>): Promise<any> => {
+    const url = `${await getApiUrl()}/${createBody.resource}`;
+    await services('HTTP').post(url, createBody.data, {
+            Authorization: await getAuthHeader(),
+            'Content-Type': 'application/json',
+            'Prefer' : 'return=representation'
+        }
+    );
+}
+
+export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties> | CreateBody<Properties, Properties>): Promise<Response> => {
     switch (request.type) {
         case 'query':
             return (await query<Response>(request)).value;
@@ -123,5 +133,7 @@ export default async <Properties, Response>(request: RequestBody | UpdateBody<Pr
             return await lookup<Response>(request);
         case 'update':
             return (await update(request)) as unknown as Response;
+        case 'create':
+            return(await create(request)) as unknown as Response;
     }
 }

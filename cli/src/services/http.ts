@@ -26,7 +26,7 @@ export class AxiosHTTP implements HTTP {
 
     public patch = <T>(url: string, data: Partial<T>, headers?: any) => axios.patch(url, this._jsonParser.stringify(data), { headers }) as Promise<void>;
 
-    public post = <T>(url: string, data: T, headers?: any) => axios.post(url, data, { headers }) as Promise<T>;
+    public post = <T>(url: string, data: T, headers?: any) => axios.post(url, this._jsonParser.stringify(data), { headers }) as Promise<T>;
 
     public put = <T>(url: string, data: T, headers?: any) => axios.put(url, this._jsonParser.stringify(data), { headers }) as Promise<void>;
 
