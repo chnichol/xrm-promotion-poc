@@ -1,10 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { detailedDiff } from 'deep-object-diff';
+import { addedDiff, detailedDiff } from 'deep-object-diff';
 import api from '../../api';
 import { parseFile, parseFileB64, quote } from '../../common';
 import config from '../../config'
-import WebResource from '../../types/entity/WebResource';
+import WebResource, { WebResourceType } from '../../types/entity/WebResource';
 import { Command } from '../cli';
 
 interface Diff {
@@ -34,14 +34,36 @@ const push: Command = async (names: string[]) => {
         }
     }
 
+    const changes = [];
     for (let i = 0; i < names.length; i++) {
-        const webResource = await load(names[i]);
+        const webResource = await load(names[i]);  
         const results = await api.webresource.query({
             filter: { name: quote(names[i]) }
         }).execute();
         switch (results.length) {
             case 0: {
-                console.warn(`No remote web resources found where name="${names[i]}"`);
+                const wr = {
+                ...webResource,
+                versionnumber: undefined,
+                _organizationid_value: undefined,
+                "organizationid@odata.bind": `/organizations(${webResource._organizationid_value})`,
+                _createdby_value: undefined,
+                "createdby@odata.bind": `/systemusers(${webResource._createdby_value})`,
+                _modifiedby_value: undefined,
+                "modifiedby@odata.bind": `/systemusers(${webResource._modifiedby_value})`,
+                _modifiedonbehalfby_value: undefined,
+                "modifiedonbehalfby@odata.bind": null,
+                _createdonbehalfby_value: undefined,
+                "createdonbehalfof@odata.bind": null,
+                contentfileref: undefined,
+                "ContentFileRef@odata.bind": null,
+                contentjsonfileref: undefined,
+                "ContentJsonFileRef@odata.bind" : null
+            };
+
+            //TODO: Figure out the proper type to use for the post requests
+                await api.webresource.post(wr as any).execute();
+                changes.push(wr);             
                 break;
             }
             case 1: {
@@ -49,9 +71,7 @@ const push: Command = async (names: string[]) => {
                 const diff = detailedDiff(remote, webResource) as Diff;
                 if (Object.keys(diff.updated).length > 0) {
                     await api.webresource.patch(webResource.webresourceid, diff.updated).execute();
-                    await api.publish({
-                        webresources: [webResource.webresourceid]
-                    });
+                    changes.push(webResource);
                 }
                 break;
             }
@@ -60,5 +80,8 @@ const push: Command = async (names: string[]) => {
             }
         }
     }
+    await api.publish({
+        webresources: changes.map(c => c.webresourceid)
+    }); 
 }
 export default push;

@@ -146,7 +146,8 @@ export const create = async (createBody: CreateBody<unknown, unknown>): Promise<
     await axios.post(url, JSONBigInt({ useNativeBigInt: true }).stringify(createBody.data), {
         headers: { 
             Authorization: await getAuthHeader(),
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Prefer' : 'return=representation'
         }
     });
 }
