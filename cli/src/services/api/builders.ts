@@ -116,7 +116,7 @@ class ExpandArrayBuilder<Singles, Collections, Response> implements ExpandArray<
     }
 }
 
-export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S, C>, Update<P>, Create<P> {          //add one for create&delete
+export class ApiBuilder<P, L, S, C> implements Lookup<P, L, S, C>, Query<P, L, S, C>, Update<P>, Create<P> {
     private readonly _resource: string;
     constructor(resource: string) {
         this._resource = resource;

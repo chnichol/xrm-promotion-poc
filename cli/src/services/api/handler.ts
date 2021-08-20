@@ -125,7 +125,7 @@ export const create = async (createBody: CreateBody<unknown, unknown>): Promise<
     );
 }
 
-export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties> | CreateBody<Properties, Properties>): Promise<Response> => {  // add case for create/delete
+export default async <Properties, Response>(request: RequestBody | UpdateBody<Properties> | CreateBody<Properties, Properties>): Promise<Response> => {
     switch (request.type) {
         case 'query':
             return (await query<Response>(request)).value;
