@@ -1,14 +1,14 @@
-import fs from 'fs/promises';
 import path from 'path';
-import { exists } from '../../common';
-import config from '../../config';
+import services from 'services';
 
 export const getPluginAssemblyComponents = async (): Promise<string[]> => {
-    const componentRoot = config().content.pluginAssemblies.directory;
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const componentRoot = config.content.pluginAssemblies.directory;
     const components = (await Promise.all(
-        (await fs.readdir(componentRoot)).map(async item => {
+        (await fileHandler.readDir(componentRoot)).map(async item => {
             const p = path.join(componentRoot, item);
-            if ((await fs.lstat(p)).isDirectory() && await exists(path.join(p, 'definition.json'))) {
+            if ((await fileHandler.getStats(p)).isDirectory() && await fileHandler.exists(path.join(p, 'definition.json'))) {
                 return item;
             }
             else {
@@ -20,10 +20,12 @@ export const getPluginAssemblyComponents = async (): Promise<string[]> => {
 }
 
 export const getPluginAssemblyProjects = async (): Promise<string[]> => {
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
     const projects = (await Promise.all(
-        (await fs.readdir(config().project.pluginAssemblies.directory)).map(async item => {
-            const p = path.join(config().project.pluginAssemblies.directory, item);
-            if ((await fs.lstat(p)).isDirectory() && (await fs.readdir(p)).find(file => file === `${item}.csproj`)) {
+        (await fileHandler.readDir(config.project.pluginAssemblies.directory)).map(async item => {
+            const p = path.join(config.project.pluginAssemblies.directory, item);
+            if ((await fileHandler.getStats(p)).isDirectory() && (await fileHandler.readDir(p)).find(file => file === `${item}.csproj`)) {
                 return item;
             }
             else {

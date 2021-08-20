@@ -1,4 +1,4 @@
-import { WebResourceType } from '../types/entity/WebResource';
+import { WebResourceType } from '../../types/entity/WebResource';
 
 export interface ContentPaths {
     readonly root: string;

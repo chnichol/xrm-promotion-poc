@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Test CLI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Validate the CLI project can build successfully
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2.4.0
+        
+      - name: Install project dependencies
+        run: npm install --prefix cli
+        
+      - name: Install ts-node
+        run: npm install --prefix cli --save-dev ts-node
+        
+      - name: Build project
+        run: npm run build --prefix cli
+
+  # Run the CLI project's unit tests
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2.4.0
+      
+      - name: Install project dependencies
+        run: npm install --prefix cli
+        
+      - name: Install Jest
+        run: npm install --prefix cli --save-dev jest
+        
+      - name: Run test script
+        run: npm run test --prefix cli

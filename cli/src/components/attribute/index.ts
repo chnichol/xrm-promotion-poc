@@ -1,14 +1,14 @@
-import fs from 'fs/promises';
 import path from 'path';
-import config from '../../config';
+import services from 'services';
 
 export const getEntityAttributes = async (entity: string): Promise<string[]> => {
-    const entityAttributeDir = config().content.entities(entity).attributes.directory;
-    const attributeDirs = await fs.readdir(entityAttributeDir);
+    const [config, fileHandler] = [services('Config'), services('FileHandler')];
+    const entityAttributeDir = config.content.entities(entity).attributes.directory;
+    const attributeDirs = await fileHandler.readDir(entityAttributeDir);
     const attributes = [];
     for (const a in attributeDirs) {
         const attributeDir = path.join(entityAttributeDir, attributeDirs[a]);
-        if ((await fs.lstat(attributeDir)).isDirectory()) {
+        if ((await fileHandler.getStats(attributeDir)).isDirectory()) {
             attributes.push(attributeDirs[a]);
         }
     }

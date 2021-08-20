@@ -1,19 +1,21 @@
-import api from '../../api';
-import { isUuid, mkdir, quote, saveFile, saveFileB64 } from '../../common';
-import config from '../../config';
-import { ComponentType } from '../../types/entity/SolutionComponent';
-import WebResource from '../../types/entity/WebResource';
-import { Command } from '../cli';
-import { getProjectSolutionComponents } from '../solutioncomponent';
+import { Command } from 'components/cli';
+import { getProjectSolutionComponents } from 'components/solutioncomponent';
+import services from 'services';
+import { ComponentType } from 'types/entity/SolutionComponent';
+import WebResource from 'types/entity/WebResource';
+import { isUuid, quote } from '../../common';
 
 const save = async (webResource: WebResource) => {
-    const paths = config().content.webResources(webResource.name, webResource.webresourcetype);
-    await mkdir(paths.directory);
-    await saveFile(paths.definition, { ...webResource, content: undefined });
-    await saveFileB64(paths.content, webResource.content);
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const paths = config.content.webResources(webResource.name, webResource.webresourcetype);
+    await fileHandler.makeDir(paths.directory);
+    await fileHandler.saveFile(paths.definition, { ...webResource, content: undefined }, 'json');
+    await fileHandler.writeFile(paths.content, webResource.content, 'base64');
 }
 
 const pull: Command = async (names: string[]) => {
+    const api = services('DynamicsAPI');
     const [_, components] = await getProjectSolutionComponents(ComponentType.WebResource);
     names = (names.length === 0 ? Array.from(components.map(c => c.objectid)) : names);
 

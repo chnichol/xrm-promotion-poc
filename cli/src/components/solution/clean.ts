@@ -1,10 +1,11 @@
-import api from '../../api';
+import { Command } from 'components/cli';
+import services from 'services';
 import { isUuid, quote } from '../../common';
-import config from '../../config';
-import { Command } from '../cli';
 
 const clean: Command = async () => {
-    const solutions = config().settings.solutions;
+    const api = services('DynamicsAPI');
+    const config = services('Config');
+    const solutions = config.settings.solutions;
     const set: Set<string> = new Set();
     for (let i = 0; i < solutions.length; i++) {
         const name = solutions[i];
@@ -17,7 +18,7 @@ const clean: Command = async () => {
         }
     }
 
-    config().settings.solutions = Array.from(set);
+    config.settings.solutions = Array.from(set);
     console.error('Cleaning solutions is not currently supported');
 }
 export default clean;

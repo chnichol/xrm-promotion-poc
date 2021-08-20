@@ -1,31 +1,27 @@
-import fs from 'fs';
 import path from 'path';
-import { parse } from 'jsonc-parser';
-import { getExtension } from '../components/webresource';
-import { WebResourceType } from '../types/entity/WebResource';
+import { getExtension } from '../../components/webresource';
+import { WebResourceType } from '../../types/entity/WebResource';
+import { Service, ServiceCollection } from '../serviceBuilder';
+import FileQuickReader from '../fileQuickReader';
 import { ConfigFile, ConfigSettings, defaults, validate } from './generated';
 import { ContentPaths, ProjectPaths } from './types';
 
-class Config {
-    private readonly _configFile: ConfigFile;
-    private readonly _configLocation: string;
+export default interface Config extends Service<'Config', Config> {
+    get content(): ContentPaths;
+    get project(): ProjectPaths;
+    get settings(): ConfigSettings;
+}
+
+export class LocalConfig implements Config {
     private readonly _configSettings: ConfigSettings;
     private readonly _content: ContentPaths;
     private readonly _project: ProjectPaths;
+    public readonly name = 'Config';
 
-    constructor() {
-        this._configLocation = this._findConfigFile();
-        this._configFile = parse(fs.readFileSync(this._configLocation, 'utf8'));
-
-        validate(this._configFile);
-
-        this._configSettings = {
-            ...defaults,
-            ...this._configFile
-        };
-
-        this._content = this._createContentPaths();
-        this._project = this._createProjectPaths();
+    constructor (settings: ConfigSettings, contentPaths: ContentPaths, projectPaths: ProjectPaths) {
+        this._configSettings = settings;
+        this._content = contentPaths;
+        this._project = projectPaths;
     }
 
     public get content(): ContentPaths {
@@ -40,13 +36,32 @@ class Config {
         return this._configSettings;
     }
 
-    private _createContentPaths = (): ContentPaths => {
-        const dir = path.resolve(path.dirname(this._configLocation));
-        const root = path.join(dir, this._configSettings.rootDir);
+    public init = (services: ServiceCollection) => {
+        const fileQuickReader: FileQuickReader = services.get('FileQuickReader');
+
+        const configLocation = this._findConfigFile(fileQuickReader);
+        const configFile = fileQuickReader.loadFile<ConfigFile>(configLocation, 'jsonc');
+
+        validate(configFile);
+
+        const configSettings = {
+            ...defaults,
+            ...configFile
+        };
+
+        const content = this._createContentPaths(configLocation, configSettings);
+        const project = this._createProjectPaths(configLocation, configSettings);
+
+        return new LocalConfig(configSettings, content, project);
+    };
+
+    private _createContentPaths = (configLocation: string, configSettings: ConfigSettings): ContentPaths => {
+        const dir = path.resolve(path.dirname(configLocation));
+        const root = path.join(dir, configSettings.rootDir);
         const assign = <T, U>(source: T, target: U) => Object.assign(target, source);
         const definition = (p: string) => path.join(p, 'definition.json');
 
-        const typeDir = path.join(root, this._configSettings.typesDir);
+        const typeDir = path.join(root, configSettings.typesDir);
         const types: ContentPaths['types'] = {
             directory: typeDir,
             package: path.join(typeDir, 'package.json')
@@ -94,7 +109,7 @@ class Config {
                             return {
                                 directory: systemFormNamedDir,
                                 definition: definition(systemFormNamedDir),
-                                form: path.join(systemFormNamedDir, `form.${this._configSettings.systemFormFormat}`),
+                                form: path.join(systemFormNamedDir, `form.${configSettings.systemFormFormat}`),
                                 typedef: typedef(systemFormNamedDir)
                             };
                         }
@@ -159,8 +174,8 @@ class Config {
         };
     }
 
-    private _createProjectPaths = (): ProjectPaths => {
-        const dir = path.resolve(path.dirname(this._configLocation));
+    private _createProjectPaths = (configLocation: string, configSettings: ConfigSettings): ProjectPaths => {
+        const dir = path.resolve(path.dirname(configLocation));
 
         const root = dir;
         const cache = {
@@ -168,10 +183,10 @@ class Config {
             token: path.join(dir, '.xrm', 'id')
         };
         const pluginAssemblies = {
-            directory: path.join(dir, this._configSettings.pluginAssembliesDir)
+            directory: path.join(dir, configSettings.pluginAssembliesDir)
         };
         const webResources = {
-            directory: path.join(dir, this._configSettings.webResourcesDir)
+            directory: path.join(dir, configSettings.webResourcesDir)
         };
 
         return {
@@ -182,35 +197,24 @@ class Config {
         };
     }
 
-    private _findConfigFile = (): string => {
+    private _findConfigFile = (fileQuickReader: FileQuickReader): string => {
         const cwd = process.cwd();
         const find = (p: string): string => {
             const f = path.join(p, 'xrm.jsonc');
-            if (fs.existsSync(f)) {
+            if (fileQuickReader.exists(f)) {
                 return f;
             }
             else {
                 const d = path.dirname(path.resolve(p));
                 const r = path.resolve('/');
-                if (d !== r && fs.existsSync(d)) {
+                if (d !== r && fileQuickReader.exists(d)) {
                     return find(d);
                 }
                 else {
-                    throw 'Failed to load xrm.json';
+                    throw 'Failed to load xrm.jsonc';
                 }
             }
         }
         return find(cwd);
     }
 }
-let _config: Config;
-const config = () => {
-    if (_config) {
-        return _config;
-    }
-    else {
-        _config = new Config();
-        return _config;
-    }
-}
-export default config;

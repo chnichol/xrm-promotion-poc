@@ -1,11 +1,12 @@
 import path from 'path';
-import { exists } from '../../common';
-import { generateConfig } from '../../config/generators';
-import { Command } from '../cli';
+import { Command } from 'components/cli';
+import services from 'services';
+import { generateConfig } from 'services/config/generators';
 
 const create: Command = async (_: string[]) => {
     const configFile = path.join(process.cwd(), 'xrm.jsonc');
-    if (await exists(configFile)) {
+    const fileHandler = services('FileHandler');
+    if (await fileHandler.exists(configFile)) {
         console.error('Cannot create config file, one already exists.');
     }
     else {

@@ -1,11 +1,9 @@
-import fs from 'fs/promises';
 import path from 'path';
-import { addedDiff, detailedDiff } from 'deep-object-diff';
-import api from '../../api';
-import { parseFile, parseFileB64, quote } from '../../common';
-import config from '../../config'
-import WebResource, { WebResourceType } from '../../types/entity/WebResource';
-import { Command } from '../cli';
+import { detailedDiff } from 'deep-object-diff';
+import { Command } from 'components/cli';
+import services from 'services';
+import WebResource from 'types/entity/WebResource';
+import { quote } from '../../common';
 
 interface Diff {
     added: Record<string, unknown>;
@@ -14,21 +12,26 @@ interface Diff {
 }
 
 const load = async (name: string) => {
-    const definitionFile = config().content.webResources(name).definition;
-    const definition = await parseFile<WebResource>(definitionFile);
-    const contentFile = config().content.webResources(definition.name, definition.webresourcetype).content;
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
+    const definitionFile = config.content.webResources(name).definition;
+    const definition = await fileHandler.loadFile<WebResource>(definitionFile, 'json');
+    const contentFile = config.content.webResources(definition.name, definition.webresourcetype).content;
     if (contentFile) {
-        definition.content = await parseFileB64(contentFile);
+        definition.content = await fileHandler.readFile(contentFile, 'base64');
     }
     return definition;
 }
 
 const push: Command = async (names: string[]) => {
+    const api = services('DynamicsAPI');
+    const config = services('Config');
+    const fileHandler = services('FileHandler');
     if (names.length === 0) {
-        const dir = config().content.webResources.directory;
-        const dirlist = await fs.readdir(dir);
+        const dir = config.content.webResources.directory;
+        const dirlist = await fileHandler.readDir(dir);
         for (let i = 0; i < dirlist.length; i++) {
-            if ((await fs.lstat(path.join(dir, dirlist[i]))).isDirectory()) {
+            if ((await fileHandler.getStats(path.join(dir, dirlist[i]))).isDirectory()) {
                 names.push(dirlist[i]);
             }
         }
