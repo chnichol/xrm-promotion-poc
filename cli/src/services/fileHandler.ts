@@ -7,7 +7,7 @@ import { JSONParser, XMLParser } from '.';
 import { Service, ServiceCollection } from './serviceBuilder';
 
 export default interface FileHandler extends Service<'FileHandler', FileHandler> {
-    copyDir(src: string, dest: string, recursive?: boolean): Promise<void>;
+    copyDir(src: string, dest: string): Promise<void>;
     copyFile(src: string, dest: string): Promise<void>;
     exists(p: string): Promise<boolean>;
     getStats(p: string): Promise<Stats>;
@@ -38,7 +38,7 @@ export class LocalFileHandler implements FileHandler {
         services.get('XMLParser')
     );
 
-    public copyDir = (src: string, dest: string, recursive?: boolean) => fsExtra.copy(src, dest, { overwrite: true, recursive });
+    public copyDir = (src: string, dest: string) => fsExtra.copy(src, dest, { overwrite: true });
 
     public copyFile =  (src: string, dest: string) => fs.copyFile(src, dest);
     
@@ -78,12 +78,14 @@ export class LocalFileHandler implements FileHandler {
             (await fs.readdir(p)).map(
                 async (pPartial) => {
                     const pFull = path.join(p, pPartial);
-                    if ((await fs.lstat(pFull)).isDirectory()) {
-                        return recursive ? await this.readDir(pFull, true, regex) : [];
+                    const results = [];
+                    if (!regex || pFull.match(regex)) {
+                        results.push(pFull);
                     }
-                    else {
-                        return (!regex || pFull.match(regex)) ? [ pFull ] : [];
+                    if (recursive && (await fs.lstat(pFull)).isDirectory()) {
+                        results.push(...(await this.readDir(pFull, true, regex)));
                     }
+                    return results;
                 }
             )
         )).reduce((acc, val) => acc.concat(val), []).map(p => path.basename(p));
@@ -93,13 +95,16 @@ export class LocalFileHandler implements FileHandler {
             ? Buffer.from(await fs.readFile(p, 'binary'), 'binary').toString('base64')
             : await fs.readFile(p, 'utf8');
 
-    public removeDir = (p: string, recursive?: boolean, force?: boolean) => fs.rm(p, { force, maxRetries: 10, recursive, retryDelay: 100 });
+    public removeDir = (p: string, recursive?: boolean, force?: boolean) =>
+        recursive
+            ? fs.rm(p, { force: !!force, maxRetries: 10, recursive: !!recursive, retryDelay: 100 })
+            : fs.rmdir(p);
 
-    public removeFile = (p: string, force?: boolean) => fs.rm(p, { force });
+    public removeFile = (p: string) => fs.rm(p);
 
     public saveFile = async <T>(p: string, data: T, format: 'json' | 'xml') => {
         if (!(await this.exists(path.dirname(p)))) {
-            await this.makeDir(p);
+            await this.makeDir(path.dirname(p));
         }
         if (format === 'json') {
             await fs.writeFile(p, this._jsonParser.stringify(data, true), 'utf8')
@@ -109,12 +114,14 @@ export class LocalFileHandler implements FileHandler {
         }
     }
 
+    // If this method is on f, not fs, is it worth having?
     public write = async (f: FileHandle, content: string) => {
-        await fs.write(f, content);
+        await f.write(content);
     };
 
+    // If this method is on f, not fs, is it worth having?
     public writeln = async (f: FileHandle, content: string) => {
-        await fs.write(f, content + os.EOL);
+        await f.write(content + os.EOL);
     };
 
     public writeFile = async (p: string, content: string, format: 'base64' | 'utf8') => {
